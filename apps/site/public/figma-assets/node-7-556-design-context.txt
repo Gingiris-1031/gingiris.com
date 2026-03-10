@@ -1,0 +1,1324 @@
+const imgImageIrisProfile = "https://www.figma.com/api/mcp/asset/b4e11b0c-2af6-4051-9143-545b963e13fc";
+const imgVector = "https://www.figma.com/api/mcp/asset/8ab75d64-309f-4c3a-8a88-fdba252c65bb";
+const imgVector1 = "https://www.figma.com/api/mcp/asset/a58c266b-1570-40e5-9753-96df38403ac7";
+const imgWegic1 = "https://www.figma.com/api/mcp/asset/071b7719-a224-4ee9-95ee-e23afe4b3518";
+const imgVector2 = "https://www.figma.com/api/mcp/asset/c0d49d34-6370-4d20-a68d-24a41d2da9c8";
+const imgAiEditor1 = "https://www.figma.com/api/mcp/asset/dc4b5ba9-b32f-4339-885d-09e986172ae3";
+const imgTeable1 = "https://www.figma.com/api/mcp/asset/94eea58b-421a-41bb-b4e8-d6e3c893465d";
+const imgIcon = "https://www.figma.com/api/mcp/asset/a5c76774-a98f-4916-a913-37b2d069f10e";
+const imgIcon1 = "https://www.figma.com/api/mcp/asset/7f50238d-4a3f-47b5-8a41-5bb7eac38af2";
+const imgFrame = "https://www.figma.com/api/mcp/asset/932d2d5c-1d33-4036-8393-e4c8ae24fbec";
+const imgIcon2 = "https://www.figma.com/api/mcp/asset/1c8975cd-271c-4175-bb22-582f34d8c827";
+const imgVector3 = "https://www.figma.com/api/mcp/asset/23273da1-ac71-48b8-8f1e-931ac0f40fa8";
+const imgVector4 = "https://www.figma.com/api/mcp/asset/cad782b6-daf6-44d5-886c-faef4850b441";
+const imgIcon3 = "https://www.figma.com/api/mcp/asset/a3791df8-88a6-41b6-84ce-d95994212720";
+const imgIcon4 = "https://www.figma.com/api/mcp/asset/0dd2f74b-d469-4306-a077-3b6e59824109";
+const imgIcon5 = "https://www.figma.com/api/mcp/asset/4346d4a2-f69f-4a27-8089-28f42e85df55";
+const imgIcon6 = "https://www.figma.com/api/mcp/asset/29f482c1-6c02-43b9-a16c-fc0e5f8a935e";
+const imgIcon7 = "https://www.figma.com/api/mcp/asset/05cb5168-e07f-4c52-8638-7b3c6476217c";
+const imgIcon8 = "https://www.figma.com/api/mcp/asset/125d40fd-8559-4ee3-a7da-028ae679e50b";
+
+export default function PersonalH5IntroductionPage() {
+  return (
+    <div className="bg-[#fbfbf9] relative size-full" data-name="Personal H5 Introduction Page" data-node-id="7:556">
+      <div className="absolute content-stretch flex flex-col gap-[17px] items-center left-0 top-[48px] w-[576px]" data-node-id="28:118">
+        <div className="bg-[rgba(255,255,255,0)] border-4 border-[#fbfbf9] border-solid content-stretch flex flex-col items-start overflow-clip p-[4px] relative rounded-[16777200px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_8px_10px_-1px_rgba(3,6,8,0.18)] shrink-0 size-[128px]" data-name="Container" data-node-id="7:585">
+          <div className="h-[120px] relative shrink-0 w-full" data-name="Image (Iris Profile)" data-node-id="7:586">
+            <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImageIrisProfile} />
+          </div>
+        </div>
+        <p className="font-['Josefin_Slab:Bold','Noto_Sans_JP:Bold',sans-serif] font-bold leading-[36px] min-w-full relative shrink-0 text-[#030608] text-[30px] text-center tracking-[-0.45px] w-[min-content]" data-node-id="7:560">
+          生姜 Iris
+        </p>
+        <p className="font-['Josefin_Slab:Regular','Noto_Sans_JP:Regular','Noto_Sans_SC:Regular','Noto_Sans_JP:Bold',sans-serif] font-normal leading-[0] min-w-full relative shrink-0 text-[#243842] text-[18px] text-center tracking-[0.16px] w-[min-content]" data-node-id="7:562">
+          <span className="leading-[28px]">{`增长顾问 `}</span>
+          <span className="font-['Josefin_Slab:Bold','Noto_Sans_JP:Regular','Noto_Sans_SC:Regular','Noto_Sans_JP:Bold',sans-serif] font-bold leading-[28px]">{`| Startup Coach｜ Ex-AFFiNE Co-founder & COO`}</span>
+        </p>
+        <div className="content-stretch flex gap-[8px] items-center relative shrink-0" data-node-id="28:116">
+          <div className="bg-[rgba(70,143,160,0.5)] h-[24px] relative rounded-[16777200px] shrink-0 w-[90.82px]" data-name="Text" data-node-id="7:564">
+            <div className="absolute left-[12px] size-[12px] top-[6px]" data-name="Icon" data-node-id="7:565">
+              <img alt="" className="absolute block max-w-none size-full" src={imgIcon} />
+            </div>
+            <p className="-translate-x-1/2 absolute font-['Josefin_Slab:SemiBold','Noto_Sans_JP:Bold',sans-serif] font-semibold h-[12px] leading-[16px] left-[51.82px] text-[#fbfbf9] text-[12px] text-center top-[6px] tracking-[0.16px] w-[55px]" data-node-id="7:568">{` Base 昆山`}</p>
+          </div>
+          <div className="bg-[rgba(70,143,160,0.5)] h-[24px] relative rounded-[16777200px] shrink-0 w-[161.102px]" data-name="Text" data-node-id="7:569">
+            <div className="absolute left-[12px] size-[12px] top-[6px]" data-name="Icon" data-node-id="7:570">
+              <img alt="" className="absolute block max-w-none size-full" src={imgIcon1} />
+            </div>
+            <p className="-translate-x-1/2 absolute font-['Josefin_Slab:SemiBold','Noto_Sans_JP:Bold','Noto_Sans_SC:Bold',sans-serif] font-semibold h-[12px] leading-[16px] left-[89px] text-[#fbfbf9] text-[12px] text-center top-[6px] tracking-[0.16px] w-[125px]" data-node-id="7:574">{` 出海 / 开源 / 运营咨询`}</p>
+          </div>
+        </div>
+        <div className="content-stretch flex flex-col font-normal items-center justify-center relative shrink-0 text-[#243842] text-[14px] text-center tracking-[0.16px] w-full" data-node-id="28:117">
+          <p className="font-['Josefin_Slab:Regular','Noto_Sans_SC:Regular','Noto_Sans_JP:Regular',sans-serif] leading-[0] relative shrink-0 w-[443px]" data-node-id="7:582">
+            <span className="font-['Josefin_Slab:Bold','Noto_Sans_SC:Regular','Noto_Sans_JP:Regular',sans-serif] font-bold leading-[22.75px]">AFFiNE (60k star open-source Notion/Miro Alternative)</span>
+            <span className="leading-[22.75px]">{` 联合创始人。`}</span>
+          </p>
+          <p className="font-['Josefin_Slab:Regular','Noto_Sans_SC:Regular','Noto_Sans_JP:Regular',sans-serif] leading-[0] relative shrink-0 whitespace-nowrap" data-node-id="7:583">
+            <span className="leading-[22.75px]">{`爱丁堡大学 `}</span>
+            <span className="font-['Josefin_Slab:Bold','Noto_Sans_JP:Regular','Noto_Sans_SC:Regular',sans-serif] font-bold leading-[22.75px]">{`PHD `}</span>
+            <span className="leading-[22.75px]">退学创业｜</span>
+            <span className="font-['Josefin_Slab:Bold','Noto_Sans_JP:Regular','Noto_Sans_SC:Regular',sans-serif] font-bold leading-[22.75px]">RTE</span>
+            <span className="leading-[22.75px]">{` 社区顾问｜`}</span>
+            <span className="font-['Josefin_Slab:Bold','Noto_Sans_JP:Regular','Noto_Sans_SC:Regular',sans-serif] font-bold leading-[22.75px]">DKU</span>
+            <span className="leading-[22.75px]">{` 创业导师`}</span>
+          </p>
+          <p className="font-['Josefin_Slab:Regular','Noto_Sans_JP:Regular','Noto_Sans_SC:Regular',sans-serif] leading-[22.75px] relative shrink-0 whitespace-nowrap" data-node-id="28:115">
+            日常做开源、出海和运营咨询
+          </p>
+        </div>
+        <div className="content-stretch flex gap-[17px] items-center justify-center relative shrink-0 w-full" data-node-id="27:63">
+          <div className="bg-[#f6f7f2] border border-[#c0ccb3] border-solid content-stretch flex items-start py-[17px] relative rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_0px_rgba(3,6,8,0.18)] shrink-0 w-[122px]" data-name="Container" data-node-id="7:609">
+            <div className="content-stretch flex flex-[1_0_0] flex-col gap-[2px] items-center justify-center min-h-px min-w-px relative text-center tracking-[0.16px]" data-node-id="26:1202">
+              <div className="flex flex-col font-['Josefin_Slab:Bold',sans-serif] font-bold justify-center leading-[0] relative shrink-0 text-[#678e3e] text-[30px] w-full" data-node-id="7:611">
+                <p className="leading-[36px]">$10M+</p>
+              </div>
+              <div className="flex flex-col font-['Josefin_Slab:SemiBold','Noto_Sans_JP:Bold','Noto_Sans_SC:Bold',sans-serif] font-semibold justify-center leading-[0] relative shrink-0 text-[#030608] text-[14px] w-full" data-node-id="7:613">
+                <p className="leading-[20px]">累计融资</p>
+              </div>
+              <p className="font-['Josefin_Slab:Bold',sans-serif] font-bold leading-[16px] relative shrink-0 text-[#243842] text-[12px] w-full" data-node-id="7:615">
+                AFFiNE
+              </p>
+            </div>
+          </div>
+          <div className="bg-[#f6f7f2] border border-[#c0ccb3] border-solid content-stretch flex items-start py-[17px] relative rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_0px_rgba(3,6,8,0.18)] shrink-0 w-[122px]" data-name="Container" data-node-id="27:79">
+            <div className="content-stretch flex flex-[1_0_0] flex-col gap-[2px] items-center justify-center min-h-px min-w-px relative text-center tracking-[0.16px]" data-node-id="27:80">
+              <div className="flex flex-col font-['Josefin_Slab:Bold','Noto_Sans_JP:Bold',sans-serif] font-bold justify-center leading-[0] relative shrink-0 text-[#678e3e] text-[30px] w-full" data-node-id="27:81">
+                <p className="leading-[36px]">4年</p>
+              </div>
+              <div className="flex flex-col font-['Josefin_Slab:SemiBold','Noto_Sans_SC:Bold','Noto_Sans_JP:Bold',sans-serif] font-semibold justify-center leading-[0] relative shrink-0 text-[#030608] text-[14px] w-full" data-node-id="27:82">
+                <p className="leading-[20px]">创业历程</p>
+              </div>
+              <p className="font-['Josefin_Slab:Regular','Noto_Sans_JP:Regular','Noto_Sans_SC:Regular',sans-serif] font-normal leading-[16px] relative shrink-0 text-[#243842] text-[12px] w-full" data-node-id="27:83">
+                从种子轮到 Pre-A
+              </p>
+            </div>
+          </div>
+          <div className="bg-[#f6f7f2] border border-[#c0ccb3] border-solid content-stretch flex items-start py-[17px] relative rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_0px_rgba(3,6,8,0.18)] shrink-0 w-[122px]" data-name="Container" data-node-id="27:84">
+            <div className="content-stretch flex flex-[1_0_0] flex-col gap-[2px] items-center justify-center min-h-px min-w-px relative text-center tracking-[0.16px]" data-node-id="27:85">
+              <div className="flex flex-col font-['Josefin_Slab:Bold',sans-serif] font-bold justify-center leading-[0] relative shrink-0 text-[#678e3e] text-[30px] w-full" data-node-id="27:86">
+                <p className="leading-[36px]">U30</p>
+              </div>
+              <div className="flex flex-col font-['Josefin_Slab:SemiBold','Noto_Sans_JP:Bold','Noto_Sans_SC:Bold',sans-serif] font-semibold justify-center leading-[0] relative shrink-0 text-[#030608] text-[14px] w-full" data-node-id="27:87">
+                <p className="leading-[20px]">福布斯亚洲</p>
+              </div>
+              <p className="font-['Josefin_Slab:Bold',sans-serif] font-bold leading-[16px] relative shrink-0 text-[#243842] text-[12px] w-full" data-node-id="27:88">
+                30U30
+              </p>
+            </div>
+          </div>
+          <div className="bg-[#f6f7f2] border border-[#c0ccb3] border-solid content-stretch flex items-start py-[17px] relative rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_0px_rgba(3,6,8,0.18)] shrink-0 w-[122px]" data-name="Container" data-node-id="27:89">
+            <div className="content-stretch flex flex-[1_0_0] flex-col gap-[2px] items-center justify-center min-h-px min-w-px relative text-center tracking-[0.16px]" data-node-id="27:90">
+              <div className="flex flex-col font-['Josefin_Slab:Bold',sans-serif] font-bold justify-center leading-[0] relative shrink-0 text-[#678e3e] text-[30px] w-full" data-node-id="27:91">
+                <p className="leading-[36px]">40+</p>
+              </div>
+              <div className="flex flex-col font-['Josefin_Slab:SemiBold','Noto_Sans_SC:Bold','Noto_Sans_JP:Bold',sans-serif] font-semibold justify-center leading-[0] relative shrink-0 text-[#030608] text-[14px] w-full" data-node-id="27:92">
+                <p className="leading-[20px]">辅导项目</p>
+              </div>
+              <p className="font-['Josefin_Slab:Regular','Noto_Sans_SC:Regular','Noto_Sans_JP:Regular',sans-serif] font-normal leading-[16px] relative shrink-0 text-[#243842] text-[12px] w-full" data-node-id="27:93">
+                累计辅导项目数
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="content-stretch flex gap-[17px] items-center justify-center relative shrink-0 w-full" data-node-id="27:94">
+          <div className="bg-[#f6f7f2] border border-[#c0ccb3] border-solid content-stretch flex items-start py-[17px] relative rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_0px_rgba(3,6,8,0.18)] shrink-0 w-[122px]" data-name="Container" data-node-id="27:95">
+            <div className="content-stretch flex flex-[1_0_0] flex-col gap-[2px] items-center justify-center min-h-px min-w-px relative text-center tracking-[0.16px]" data-node-id="27:96">
+              <div className="flex flex-col font-['Josefin_Slab:Bold',sans-serif] font-bold justify-center leading-[0] relative shrink-0 text-[#678e3e] text-[30px] w-full" data-node-id="27:97">
+                <p className="leading-[36px]">30+</p>
+              </div>
+              <div className="flex flex-col font-['Josefin_Slab:SemiBold','Noto_Sans_JP:Bold',sans-serif] font-semibold justify-center leading-[0] relative shrink-0 text-[#030608] text-[14px] w-full" data-node-id="27:98">
+                <p>
+                  <span className="font-['Josefin_Slab:Bold','Noto_Sans_JP:Bold',sans-serif] font-bold leading-[20px]">{`PH `}</span>
+                  <span className="leading-[20px]">日榜第一</span>
+                </p>
+              </div>
+              <p className="font-['Josefin_Slab:Regular','Noto_Sans_SC:Regular','Noto_Sans_JP:Regular',sans-serif] font-normal leading-[16px] relative shrink-0 text-[#243842] text-[12px] w-full" data-node-id="27:99">
+                辅导过的项目
+              </p>
+            </div>
+          </div>
+          <div className="bg-[#f6f7f2] border border-[#c0ccb3] border-solid content-stretch flex items-start py-[17px] relative rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_0px_rgba(3,6,8,0.18)] shrink-0 w-[122px]" data-name="Container" data-node-id="27:100">
+            <div className="content-stretch flex flex-[1_0_0] flex-col gap-[2px] items-center justify-center min-h-px min-w-px relative text-center tracking-[0.16px]" data-node-id="27:101">
+              <div className="flex flex-col font-['Josefin_Slab:Bold',sans-serif] font-bold justify-center leading-[0] relative shrink-0 text-[#678e3e] text-[30px] w-full" data-node-id="27:102">
+                <p className="leading-[36px]">6K+</p>
+              </div>
+              <div className="flex flex-col font-['Josefin_Slab:SemiBold','Noto_Sans_JP:Bold',sans-serif] font-semibold justify-center leading-[0] relative shrink-0 text-[#030608] text-[14px] w-full" data-node-id="27:103">
+                <p className="leading-[20px]">首周 Stars</p>
+              </div>
+              <p className="font-['Josefin_Slab:Regular','Noto_Sans_JP:Regular','Noto_Sans_SC:Regular',sans-serif] font-normal leading-[16px] relative shrink-0 text-[#243842] text-[12px] w-full" data-node-id="27:104">
+                开源项目冷启动成绩
+              </p>
+            </div>
+          </div>
+          <div className="bg-[#f6f7f2] border border-[#c0ccb3] border-solid content-stretch flex items-start py-[17px] relative rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_0px_rgba(3,6,8,0.18)] shrink-0 w-[122px]" data-name="Container" data-node-id="27:105">
+            <div className="content-stretch flex flex-[1_0_0] flex-col gap-[2px] items-center justify-center min-h-px min-w-px relative text-center tracking-[0.16px]" data-node-id="27:106">
+              <div className="flex flex-col font-['Josefin_Slab:Bold',sans-serif] font-bold justify-center leading-[0] relative shrink-0 text-[#678e3e] text-[30px] w-full" data-node-id="27:107">
+                <p className="leading-[36px]">10+</p>
+              </div>
+              <div className="flex flex-col font-['Josefin_Slab:SemiBold','Noto_Sans_JP:Bold','Noto_Sans_SC:Bold',sans-serif] font-semibold justify-center leading-[0] relative shrink-0 text-[#030608] text-[14px] w-full" data-node-id="27:108">
+                <p className="leading-[20px]">日常辅导项目数</p>
+              </div>
+              <p className="font-['Josefin_Slab:Regular','Noto_Sans_JP:Regular','Noto_Sans_SC:Regular',sans-serif] font-normal leading-[16px] relative shrink-0 text-[#243842] text-[12px] w-full" data-node-id="27:109">
+                出海/开源运营
+              </p>
+            </div>
+          </div>
+          <div className="bg-[#f6f7f2] border border-[#c0ccb3] border-solid content-stretch flex items-start py-[17px] relative rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_0px_rgba(3,6,8,0.18)] shrink-0 w-[122px]" data-name="Container" data-node-id="27:110">
+            <div className="content-stretch flex flex-[1_0_0] flex-col gap-[2px] items-center justify-center min-h-px min-w-px relative text-center tracking-[0.16px]" data-node-id="27:111">
+              <div className="flex flex-col font-['Josefin_Slab:Bold',sans-serif] font-bold justify-center leading-[0] relative shrink-0 text-[#678e3e] text-[30px] w-full" data-node-id="27:112">
+                <p className="leading-[36px]">100+</p>
+              </div>
+              <div className="flex flex-col font-['Josefin_Slab:SemiBold','Noto_Sans_JP:Bold',sans-serif] font-semibold justify-center leading-[0] relative shrink-0 text-[#030608] text-[14px] w-full" data-node-id="27:113">
+                <p className="leading-[20px]">国家/地区</p>
+              </div>
+              <p className="font-['Josefin_Slab:Regular','Noto_Sans_SC:Regular','Noto_Sans_JP:Regular',sans-serif] font-normal leading-[16px] relative shrink-0 text-[#243842] text-[12px] w-full" data-node-id="27:114">
+                触达过用户所在
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute content-stretch flex flex-col gap-[16px] h-[266px] items-start left-[16px] top-[705px] w-[544px]" data-name="Container" data-node-id="7:683">
+        <p className="font-['Josefin_Slab:Bold','Noto_Sans_SC:Bold','Noto_Sans_JP:Bold',sans-serif] font-bold leading-[28px] relative shrink-0 text-[#243842] text-[26px] text-center tracking-[1.08px] uppercase w-[544px]" data-node-id="7:685">
+          辅导过的项目
+        </p>
+        <div className="bg-[#f6f7f2] border border-[#c0ccb3] border-solid content-stretch flex flex-col h-[213px] items-start px-[12px] py-[17px] relative rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_0px_rgba(3,6,8,0.18)] shrink-0" data-name="Container" data-node-id="7:687">
+          <div className="content-stretch flex flex-col gap-[12px] items-center relative shrink-0 w-[520px]" data-node-id="29:668">
+            <div className="h-[28px] relative shrink-0 w-[510px]" data-name="Container" data-node-id="7:688">
+              <div className="absolute h-[28px] left-0 top-0 w-[20.164px]" data-name="Text" data-node-id="7:689">
+                <p className="absolute font-['Josefin_Slab:Regular',sans-serif] font-normal leading-[28px] left-0 text-[#030608] text-[20px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:690">
+                  🏆
+                </p>
+              </div>
+              <div className="absolute h-[24px] left-[28.16px] top-[3px] w-[203.789px]" data-name="Container" data-node-id="7:691">
+                <p className="absolute font-['Josefin_Slab:Bold',sans-serif] font-bold leading-[24px] left-0 text-[#030608] text-[16px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:692">
+                  Product Hunt Coach
+                </p>
+              </div>
+            </div>
+            <div className="content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-full" data-node-id="29:667">
+              <div className="content-stretch flex gap-[11px] items-center relative shrink-0 w-full" data-node-id="29:656">
+                <div className="h-[61px] overflow-clip relative shrink-0 w-[166px]" data-name="Frame" data-node-id="29:638">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgFrame} />
+                  <div className="absolute inset-[26.42%_12.5%_27.36%_12.85%]" data-name="Vector" data-node-id="29:640">
+                    <img alt="" className="absolute block max-w-none size-full" height="28.198" src={imgVector} width="123.924" />
+                  </div>
+                </div>
+                <div className="h-[61px] overflow-clip relative shrink-0 w-[166px]" data-name="Frame" data-node-id="29:631">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgFrame} />
+                  <div className="absolute inset-[26.42%_12.5%_27.36%_12.85%]" data-name="Vector" data-node-id="29:633">
+                    <img alt="" className="absolute block max-w-none size-full" height="28.198" src={imgVector1} width="123.924" />
+                  </div>
+                </div>
+                <div className="h-[61px] overflow-clip relative shrink-0 w-[166px]" data-name="Frame" data-node-id="29:653">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgFrame} />
+                  <div className="absolute aspect-[107/45] left-[24.1%] right-[24.1%] top-[13px]" data-name="wegic 1" data-node-id="30:697">
+                    <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgWegic1} />
+                  </div>
+                </div>
+              </div>
+              <div className="content-stretch flex gap-[11px] items-center relative shrink-0 w-full" data-node-id="29:657">
+                <div className="h-[61px] overflow-clip relative shrink-0 w-[166px]" data-name="Frame" data-node-id="29:658">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgFrame} />
+                  <div className="absolute inset-[26.42%_12.5%_27.36%_12.85%]" data-name="Vector" data-node-id="29:660">
+                    <img alt="" className="absolute block max-w-none size-full" height="28.198" src={imgVector2} width="123.924" />
+                  </div>
+                </div>
+                <div className="h-[61px] overflow-clip relative shrink-0 w-[166px]" data-name="Frame" data-node-id="29:661">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgFrame} />
+                  <div className="absolute aspect-[182/50] left-[12.65%] right-[12.05%] top-[14px]" data-name="AIEditor 1" data-node-id="30:698">
+                    <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgAiEditor1} />
+                  </div>
+                </div>
+                <div className="h-[61px] overflow-clip relative shrink-0 w-[166px]" data-name="Frame" data-node-id="29:664">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgFrame} />
+                  <div className="absolute aspect-[158/50] left-[14.46%] right-[14.46%] top-[12px]" data-name="Teable 1" data-node-id="30:699">
+                    <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgTeable1} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="bg-[#f6f7f2] border border-[#c0ccb3] border-solid content-stretch flex flex-col h-[213px] items-start px-[12px] py-[17px] relative rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_0px_rgba(3,6,8,0.18)] shrink-0" data-name="Container" data-node-id="29:669">
+          <div className="content-stretch flex flex-col gap-[12px] items-center relative shrink-0 w-[520px]" data-node-id="29:670">
+            <div className="h-[28px] relative shrink-0 w-[510px]" data-name="Container" data-node-id="29:671">
+              <div className="absolute h-[28px] left-0 top-0 w-[20.164px]" data-name="Text" data-node-id="29:672">
+                <p className="absolute font-['Josefin_Slab:Regular',sans-serif] font-normal leading-[28px] left-0 text-[#030608] text-[20px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="29:673">
+                  🏆
+                </p>
+              </div>
+              <div className="absolute h-[24px] left-[28.16px] top-[3px] w-[203.789px]" data-name="Container" data-node-id="29:674">
+                <p className="absolute font-['Josefin_Slab:Bold',sans-serif] font-bold leading-[24px] left-0 text-[#030608] text-[16px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="29:675">
+                  Open Source Launch/Operation Coach
+                </p>
+              </div>
+            </div>
+            <div className="content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-full" data-node-id="29:676">
+              <div className="content-stretch flex gap-[11px] items-center relative shrink-0 w-full" data-node-id="29:677">
+                <div className="h-[61px] overflow-clip relative shrink-0 w-[166px]" data-name="Frame" data-node-id="29:678">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgFrame} />
+                  <div className="absolute inset-[26.42%_12.5%_27.36%_12.85%]" data-name="Vector" data-node-id="29:680">
+                    <img alt="" className="absolute block max-w-none size-full" height="28.198" src={imgVector} width="123.924" />
+                  </div>
+                </div>
+                <div className="h-[61px] overflow-clip relative shrink-0 w-[166px]" data-name="Frame" data-node-id="29:681">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgFrame} />
+                  <div className="absolute inset-[26.42%_12.5%_27.36%_12.85%]" data-name="Vector" data-node-id="29:683">
+                    <img alt="" className="absolute block max-w-none size-full" height="28.198" src={imgVector} width="123.924" />
+                  </div>
+                </div>
+                <div className="h-[61px] overflow-clip relative shrink-0 w-[166px]" data-name="Frame" data-node-id="29:684">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgFrame} />
+                  <div className="absolute inset-[26.42%_12.5%_27.36%_12.85%]" data-name="Vector" data-node-id="29:686">
+                    <img alt="" className="absolute block max-w-none size-full" height="28.198" src={imgVector} width="123.924" />
+                  </div>
+                </div>
+              </div>
+              <div className="content-stretch flex gap-[11px] items-center relative shrink-0 w-full" data-node-id="29:687">
+                <div className="h-[61px] overflow-clip relative shrink-0 w-[166px]" data-name="Frame" data-node-id="29:688">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgFrame} />
+                  <div className="absolute inset-[26.42%_12.5%_27.36%_12.85%]" data-name="Vector" data-node-id="29:690">
+                    <img alt="" className="absolute block max-w-none size-full" height="28.198" src={imgVector} width="123.924" />
+                  </div>
+                </div>
+                <div className="h-[61px] overflow-clip relative shrink-0 w-[166px]" data-name="Frame" data-node-id="29:691">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgFrame} />
+                  <div className="absolute inset-[26.42%_12.5%_27.36%_12.85%]" data-name="Vector" data-node-id="29:693">
+                    <img alt="" className="absolute block max-w-none size-full" height="28.198" src={imgVector} width="123.924" />
+                  </div>
+                </div>
+                <div className="h-[61px] overflow-clip relative shrink-0 w-[166px]" data-name="Frame" data-node-id="29:694">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgFrame} />
+                  <div className="absolute inset-[26.42%_12.5%_27.36%_12.85%]" data-name="Vector" data-node-id="29:696">
+                    <img alt="" className="absolute block max-w-none size-full" height="28.198" src={imgVector} width="123.924" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute content-stretch flex flex-col gap-[16px] h-[204px] items-start left-[16px] top-[1646px] w-[544px]" data-name="Container" data-node-id="7:777">
+        <div className="h-[28px] relative shrink-0 w-full" data-name="Heading 2" data-node-id="7:778">
+          <p className="absolute font-['Josefin_Slab:Bold','Noto_Sans_JP:Bold','Noto_Sans_SC:Bold',sans-serif] font-bold leading-[28px] left-0 text-[#243842] text-[18px] top-0 tracking-[1.08px] uppercase whitespace-nowrap" data-node-id="7:779">{`了解我 & 我的项目`}</p>
+        </div>
+        <div className="h-[160px] relative shrink-0 w-full" data-name="Container" data-node-id="7:780">
+          <div className="absolute bg-[#f6f7f2] border border-[#c0ccb3] border-solid content-stretch flex gap-[16px] h-[74px] items-center left-0 overflow-clip px-[17px] py-px rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_-1px_rgba(3,6,8,0.18)] top-0 w-[544px]" data-name="Link" data-node-id="7:781">
+            <div className="bg-[rgba(103,142,62,0.1)] relative rounded-[16777200px] shrink-0 size-[40px]" data-name="Container" data-node-id="7:782">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+                <div className="relative shrink-0 size-[20px]" data-name="Icon" data-node-id="7:783">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgIcon2} />
+                </div>
+              </div>
+            </div>
+            <div className="flex-[1_0_0] h-[40px] min-h-px min-w-px relative" data-name="Container" data-node-id="7:786">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4px] items-start relative size-full">
+                <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-name="Heading 3" data-node-id="7:787">
+                  <p className="absolute font-['Josefin_Slab:SemiBold',sans-serif] font-semibold leading-[20px] left-0 text-[#030608] text-[16px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:788">
+                    AFFiNE Github
+                  </p>
+                </div>
+                <div className="h-[16px] overflow-clip relative shrink-0 w-full" data-name="Paragraph" data-node-id="7:789">
+                  <p className="absolute font-['Josefin_Slab:Regular',sans-serif] font-normal leading-[16px] left-0 text-[#243842] text-[12px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:790">
+                    The Next-Gen Knowledge Base
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="relative shrink-0 size-[20px]" data-name="Container" data-node-id="7:791">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start relative size-full">
+                <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-name="Icon" data-node-id="7:792">
+                  <div className="absolute bottom-1/2 left-[20.83%] right-[20.83%] top-1/2" data-name="Vector" data-node-id="7:793">
+                    <div className="absolute inset-[-0.83px_-7.14%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector3} />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-[20.83%] left-1/2 right-[20.83%] top-[20.83%]" data-name="Vector" data-node-id="7:794">
+                    <div className="absolute inset-[-7.14%_-14.29%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector4} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="absolute bg-[#f6f7f2] border border-[#c0ccb3] border-solid content-stretch flex gap-[16px] h-[74px] items-center left-0 overflow-clip px-[17px] py-px rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_-1px_rgba(3,6,8,0.18)] top-[86px] w-[544px]" data-name="Link" data-node-id="7:795">
+            <div className="bg-[rgba(103,142,62,0.1)] relative rounded-[16777200px] shrink-0 size-[40px]" data-name="Container" data-node-id="7:796">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+                <div className="relative shrink-0 size-[24px]" data-name="Icon" data-node-id="7:797">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgIcon3} />
+                </div>
+              </div>
+            </div>
+            <div className="flex-[1_0_0] h-[40px] min-h-px min-w-px relative" data-name="Container" data-node-id="7:799">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4px] items-start relative size-full">
+                <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-name="Heading 3" data-node-id="7:800">
+                  <p className="absolute font-['Josefin_Slab:SemiBold','Noto_Sans_JP:Bold',sans-serif] font-semibold leading-[20px] left-0 text-[#030608] text-[16px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:801">
+                    了解自己的小工具
+                  </p>
+                </div>
+                <div className="h-[16px] overflow-clip relative shrink-0 w-full" data-name="Paragraph" data-node-id="7:802">
+                  <p className="absolute font-['Josefin_Slab:Regular',sans-serif] font-normal leading-[16px] left-0 text-[#243842] text-[12px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:803">
+                    VipaLabs AI
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="relative shrink-0 size-[20px]" data-name="Container" data-node-id="7:804">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start relative size-full">
+                <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-name="Icon" data-node-id="7:805">
+                  <div className="absolute bottom-1/2 left-[20.83%] right-[20.83%] top-1/2" data-name="Vector" data-node-id="7:806">
+                    <div className="absolute inset-[-0.83px_-7.14%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector3} />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-[20.83%] left-1/2 right-[20.83%] top-[20.83%]" data-name="Vector" data-node-id="7:807">
+                    <div className="absolute inset-[-7.14%_-14.29%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector4} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute content-stretch flex flex-col gap-[16px] h-[634px] items-start left-[16px] top-[1882px] w-[544px]" data-name="Container" data-node-id="7:808">
+        <div className="h-[28px] relative shrink-0 w-full" data-name="Heading 2" data-node-id="7:809">
+          <p className="absolute font-['Josefin_Slab:Bold','Noto_Sans_JP:Bold','Noto_Sans_SC:Bold',sans-serif] font-bold leading-[28px] left-0 text-[#243842] text-[18px] top-0 tracking-[1.08px] uppercase whitespace-nowrap" data-node-id="7:810">{`出海 & 运营干货`}</p>
+        </div>
+        <div className="h-[590px] relative shrink-0 w-full" data-name="Container" data-node-id="7:811">
+          <div className="absolute bg-[#f6f7f2] border border-[#c0ccb3] border-solid content-stretch flex gap-[16px] h-[74px] items-center left-0 overflow-clip px-[17px] py-px rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_-1px_rgba(3,6,8,0.18)] top-0 w-[544px]" data-name="Link" data-node-id="7:812">
+            <div className="bg-[rgba(103,142,62,0.1)] relative rounded-[16777200px] shrink-0 size-[40px]" data-name="Container" data-node-id="7:813">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+                <div className="relative shrink-0 size-[20px]" data-name="Icon" data-node-id="7:814">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgIcon4} />
+                </div>
+              </div>
+            </div>
+            <div className="flex-[1_0_0] h-[20px] min-h-px min-w-px relative" data-name="Heading 3" data-node-id="7:820">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid overflow-clip relative rounded-[inherit] size-full">
+                <p className="absolute font-['Josefin_Slab:SemiBold','Noto_Sans_JP:Bold','Noto_Sans_SC:Bold',sans-serif] font-semibold leading-[20px] left-0 text-[#030608] text-[16px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:821">
+                  Product Hunt打榜经验分享
+                </p>
+              </div>
+            </div>
+            <div className="relative shrink-0 size-[20px]" data-name="Container" data-node-id="7:822">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start relative size-full">
+                <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-name="Icon" data-node-id="7:823">
+                  <div className="absolute bottom-1/2 left-[20.83%] right-[20.83%] top-1/2" data-name="Vector" data-node-id="7:824">
+                    <div className="absolute inset-[-0.83px_-7.14%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector3} />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-[20.83%] left-1/2 right-[20.83%] top-[20.83%]" data-name="Vector" data-node-id="7:825">
+                    <div className="absolute inset-[-7.14%_-14.29%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector4} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="absolute bg-[#f6f7f2] border border-[#c0ccb3] border-solid content-stretch flex gap-[16px] h-[74px] items-center left-0 overflow-clip px-[17px] py-px rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_-1px_rgba(3,6,8,0.18)] top-[86px] w-[544px]" data-name="Link" data-node-id="7:826">
+            <div className="bg-[rgba(103,142,62,0.1)] relative rounded-[16777200px] shrink-0 size-[40px]" data-name="Container" data-node-id="7:827">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+                <div className="relative shrink-0 size-[20px]" data-name="Icon" data-node-id="7:828">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgIcon4} />
+                </div>
+              </div>
+            </div>
+            <div className="flex-[1_0_0] h-[20px] min-h-px min-w-px relative" data-name="Heading 3" data-node-id="7:834">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid overflow-clip relative rounded-[inherit] size-full">
+                <p className="absolute font-['Josefin_Slab:SemiBold','Noto_Sans_SC:Bold','Noto_Sans_JP:Bold',sans-serif] font-semibold leading-[20px] left-0 text-[#030608] text-[16px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:835">
+                  竞品调研框架文档
+                </p>
+              </div>
+            </div>
+            <div className="relative shrink-0 size-[20px]" data-name="Container" data-node-id="7:836">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start relative size-full">
+                <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-name="Icon" data-node-id="7:837">
+                  <div className="absolute bottom-1/2 left-[20.83%] right-[20.83%] top-1/2" data-name="Vector" data-node-id="7:838">
+                    <div className="absolute inset-[-0.83px_-7.14%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector3} />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-[20.83%] left-1/2 right-[20.83%] top-[20.83%]" data-name="Vector" data-node-id="7:839">
+                    <div className="absolute inset-[-7.14%_-14.29%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector4} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="absolute bg-[#f6f7f2] border border-[#c0ccb3] border-solid content-stretch flex gap-[16px] h-[74px] items-center left-0 overflow-clip px-[17px] py-px rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_-1px_rgba(3,6,8,0.18)] top-[172px] w-[544px]" data-name="Link" data-node-id="7:840">
+            <div className="bg-[rgba(103,142,62,0.1)] relative rounded-[16777200px] shrink-0 size-[40px]" data-name="Container" data-node-id="7:841">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+                <div className="relative shrink-0 size-[20px]" data-name="Icon" data-node-id="7:842">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgIcon4} />
+                </div>
+              </div>
+            </div>
+            <div className="flex-[1_0_0] h-[20px] min-h-px min-w-px relative" data-name="Heading 3" data-node-id="7:848">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid overflow-clip relative rounded-[inherit] size-full">
+                <p className="absolute font-['Josefin_Slab:SemiBold','Noto_Sans_JP:Bold','Noto_Sans_SC:Bold',sans-serif] font-semibold leading-[20px] left-0 text-[#030608] text-[16px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:849">
+                  开源出海运营经验分享
+                </p>
+              </div>
+            </div>
+            <div className="relative shrink-0 size-[20px]" data-name="Container" data-node-id="7:850">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start relative size-full">
+                <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-name="Icon" data-node-id="7:851">
+                  <div className="absolute bottom-1/2 left-[20.83%] right-[20.83%] top-1/2" data-name="Vector" data-node-id="7:852">
+                    <div className="absolute inset-[-0.83px_-7.14%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector3} />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-[20.83%] left-1/2 right-[20.83%] top-[20.83%]" data-name="Vector" data-node-id="7:853">
+                    <div className="absolute inset-[-7.14%_-14.29%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector4} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="absolute bg-[#f6f7f2] border border-[#c0ccb3] border-solid content-stretch flex gap-[16px] h-[74px] items-center left-0 overflow-clip px-[17px] py-px rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_-1px_rgba(3,6,8,0.18)] top-[258px] w-[544px]" data-name="Link" data-node-id="7:854">
+            <div className="bg-[rgba(103,142,62,0.1)] relative rounded-[16777200px] shrink-0 size-[40px]" data-name="Container" data-node-id="7:855">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+                <div className="relative shrink-0 size-[20px]" data-name="Icon" data-node-id="7:856">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgIcon4} />
+                </div>
+              </div>
+            </div>
+            <div className="flex-[1_0_0] h-[20px] min-h-px min-w-px relative" data-name="Heading 3" data-node-id="7:862">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid overflow-clip relative rounded-[inherit] size-full">
+                <p className="absolute font-['Josefin_Slab:SemiBold','Noto_Sans_JP:Bold','Noto_Sans_SC:Bold',sans-serif] font-semibold leading-[20px] left-0 text-[#030608] text-[16px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:863">
+                  开源launch的相关复盘
+                </p>
+              </div>
+            </div>
+            <div className="relative shrink-0 size-[20px]" data-name="Container" data-node-id="7:864">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start relative size-full">
+                <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-name="Icon" data-node-id="7:865">
+                  <div className="absolute bottom-1/2 left-[20.83%] right-[20.83%] top-1/2" data-name="Vector" data-node-id="7:866">
+                    <div className="absolute inset-[-0.83px_-7.14%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector3} />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-[20.83%] left-1/2 right-[20.83%] top-[20.83%]" data-name="Vector" data-node-id="7:867">
+                    <div className="absolute inset-[-7.14%_-14.29%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector4} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="absolute bg-[#f6f7f2] border border-[#c0ccb3] border-solid content-stretch flex gap-[16px] h-[74px] items-center left-0 overflow-clip px-[17px] py-px rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_-1px_rgba(3,6,8,0.18)] top-[344px] w-[544px]" data-name="Link" data-node-id="7:868">
+            <div className="bg-[rgba(103,142,62,0.1)] relative rounded-[16777200px] shrink-0 size-[40px]" data-name="Container" data-node-id="7:869">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+                <div className="relative shrink-0 size-[20px]" data-name="Icon" data-node-id="7:870">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgIcon4} />
+                </div>
+              </div>
+            </div>
+            <div className="flex-[1_0_0] h-[20px] min-h-px min-w-px relative" data-name="Heading 3" data-node-id="7:876">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid overflow-clip relative rounded-[inherit] size-full">
+                <p className="absolute font-['Josefin_Slab:SemiBold','Noto_Sans_JP:Bold','Noto_Sans_SC:Bold',sans-serif] font-semibold leading-[20px] left-0 text-[#030608] text-[16px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:877">
+                  关于转化的相关复盘
+                </p>
+              </div>
+            </div>
+            <div className="relative shrink-0 size-[20px]" data-name="Container" data-node-id="7:878">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start relative size-full">
+                <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-name="Icon" data-node-id="7:879">
+                  <div className="absolute bottom-1/2 left-[20.83%] right-[20.83%] top-1/2" data-name="Vector" data-node-id="7:880">
+                    <div className="absolute inset-[-0.83px_-7.14%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector3} />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-[20.83%] left-1/2 right-[20.83%] top-[20.83%]" data-name="Vector" data-node-id="7:881">
+                    <div className="absolute inset-[-7.14%_-14.29%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector4} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="absolute bg-[#f6f7f2] border border-[#c0ccb3] border-solid content-stretch flex gap-[16px] h-[74px] items-center left-0 overflow-clip px-[17px] py-px rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_-1px_rgba(3,6,8,0.18)] top-[430px] w-[544px]" data-name="Link" data-node-id="7:882">
+            <div className="bg-[rgba(103,142,62,0.1)] relative rounded-[16777200px] shrink-0 size-[40px]" data-name="Container" data-node-id="7:883">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+                <div className="relative shrink-0 size-[20px]" data-name="Icon" data-node-id="7:884">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgIcon4} />
+                </div>
+              </div>
+            </div>
+            <div className="flex-[1_0_0] h-[20px] min-h-px min-w-px relative" data-name="Heading 3" data-node-id="7:890">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid overflow-clip relative rounded-[inherit] size-full">
+                <p className="absolute font-['Josefin_Slab:SemiBold','Noto_Sans_JP:Bold','Noto_Sans_SC:Bold',sans-serif] font-semibold leading-[20px] left-0 text-[#030608] text-[16px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:891">
+                  出海0-1的文字复盘
+                </p>
+              </div>
+            </div>
+            <div className="relative shrink-0 size-[20px]" data-name="Container" data-node-id="7:892">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start relative size-full">
+                <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-name="Icon" data-node-id="7:893">
+                  <div className="absolute bottom-1/2 left-[20.83%] right-[20.83%] top-1/2" data-name="Vector" data-node-id="7:894">
+                    <div className="absolute inset-[-0.83px_-7.14%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector3} />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-[20.83%] left-1/2 right-[20.83%] top-[20.83%]" data-name="Vector" data-node-id="7:895">
+                    <div className="absolute inset-[-7.14%_-14.29%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector4} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="absolute bg-[rgba(103,142,62,0.05)] border border-[rgba(103,142,62,0.4)] border-solid content-stretch flex gap-[16px] h-[74px] items-center left-0 overflow-clip px-[17px] py-px rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_-1px_rgba(3,6,8,0.18)] top-[516px] w-[544px]" data-name="Link" data-node-id="7:896">
+            <div className="bg-[rgba(103,142,62,0.1)] relative rounded-[16777200px] shrink-0 size-[40px]" data-name="Container" data-node-id="7:897">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+                <div className="relative shrink-0 size-[20px]" data-name="Icon" data-node-id="7:898">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgIcon4} />
+                </div>
+              </div>
+            </div>
+            <div className="flex-[1_0_0] h-[40px] min-h-px min-w-px relative" data-name="Container" data-node-id="7:904">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4px] items-start relative size-full">
+                <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-name="Heading 3" data-node-id="7:905">
+                  <p className="absolute font-['Josefin_Slab:SemiBold','Noto_Sans_JP:Bold','Noto_Sans_SC:Bold','Noto_Sans_KR:Bold',sans-serif] font-semibold leading-[20px] left-0 text-[#030608] text-[16px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:906">
+                    软件出海0-1全球化增长实战
+                  </p>
+                </div>
+                <div className="h-[16px] overflow-clip relative shrink-0 w-full" data-name="Paragraph" data-node-id="7:907">
+                  <p className="absolute font-['Josefin_Slab:Regular','Noto_Sans_JP:Regular','Noto_Sans_SC:Regular',sans-serif] font-normal leading-[16px] left-0 text-[#243842] text-[12px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:908">
+                    付费资料领取
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="relative shrink-0 size-[20px]" data-name="Container" data-node-id="7:909">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start relative size-full">
+                <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-name="Icon" data-node-id="7:910">
+                  <div className="absolute bottom-1/2 left-[20.83%] right-[20.83%] top-1/2" data-name="Vector" data-node-id="7:911">
+                    <div className="absolute inset-[-0.83px_-7.14%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector3} />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-[20.83%] left-1/2 right-[20.83%] top-[20.83%]" data-name="Vector" data-node-id="7:912">
+                    <div className="absolute inset-[-7.14%_-14.29%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector4} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute content-stretch flex flex-col gap-[16px] h-[1064px] items-start left-[16px] top-[2548px] w-[544px]" data-name="Container" data-node-id="7:913">
+        <div className="h-[28px] relative shrink-0 w-full" data-name="Heading 2" data-node-id="7:914">
+          <p className="absolute font-['Josefin_Slab:Bold','Noto_Sans_JP:Bold','Noto_Sans_SC:Bold',sans-serif] font-bold leading-[28px] left-0 text-[#243842] text-[18px] top-0 tracking-[1.08px] uppercase whitespace-nowrap" data-node-id="7:915">
+            播客访谈
+          </p>
+        </div>
+        <div className="h-[1020px] relative shrink-0 w-full" data-name="Container" data-node-id="7:916">
+          <div className="absolute bg-[#f6f7f2] border border-[#c0ccb3] border-solid content-stretch flex gap-[16px] h-[74px] items-center left-0 overflow-clip px-[17px] py-px rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_-1px_rgba(3,6,8,0.18)] top-0 w-[544px]" data-name="Link" data-node-id="7:917">
+            <div className="bg-[rgba(103,142,62,0.1)] relative rounded-[16777200px] shrink-0 size-[40px]" data-name="Container" data-node-id="7:918">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+                <div className="relative shrink-0 size-[20px]" data-name="Icon" data-node-id="7:919">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgIcon5} />
+                </div>
+              </div>
+            </div>
+            <div className="flex-[1_0_0] h-[20px] min-h-px min-w-px relative" data-name="Heading 3" data-node-id="7:923">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid overflow-clip relative rounded-[inherit] size-full">
+                <p className="absolute font-['Josefin_Slab:SemiBold','Noto_Sans_JP:Bold','Noto_Sans_SC:Bold',sans-serif] font-semibold leading-[20px] left-0 text-[#030608] text-[16px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:924">
+                  Ep.1 出海运营/创业经历
+                </p>
+              </div>
+            </div>
+            <div className="relative shrink-0 size-[20px]" data-name="Container" data-node-id="7:925">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start relative size-full">
+                <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-name="Icon" data-node-id="7:926">
+                  <div className="absolute bottom-1/2 left-[20.83%] right-[20.83%] top-1/2" data-name="Vector" data-node-id="7:927">
+                    <div className="absolute inset-[-0.83px_-7.14%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector3} />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-[20.83%] left-1/2 right-[20.83%] top-[20.83%]" data-name="Vector" data-node-id="7:928">
+                    <div className="absolute inset-[-7.14%_-14.29%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector4} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="absolute bg-[#f6f7f2] border border-[#c0ccb3] border-solid content-stretch flex gap-[16px] h-[74px] items-center left-0 overflow-clip px-[17px] py-px rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_-1px_rgba(3,6,8,0.18)] top-[86px] w-[544px]" data-name="Link" data-node-id="7:929">
+            <div className="bg-[rgba(103,142,62,0.1)] relative rounded-[16777200px] shrink-0 size-[40px]" data-name="Container" data-node-id="7:930">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+                <div className="relative shrink-0 size-[20px]" data-name="Icon" data-node-id="7:931">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgIcon5} />
+                </div>
+              </div>
+            </div>
+            <div className="flex-[1_0_0] h-[20px] min-h-px min-w-px relative" data-name="Heading 3" data-node-id="7:935">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid overflow-clip relative rounded-[inherit] size-full">
+                <p className="absolute font-['Josefin_Slab:SemiBold','Noto_Sans_JP:Bold','Noto_Sans_SC:Bold',sans-serif] font-semibold leading-[20px] left-0 text-[#030608] text-[16px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:936">
+                  Ep.2 第一段创业踩过的坑
+                </p>
+              </div>
+            </div>
+            <div className="relative shrink-0 size-[20px]" data-name="Container" data-node-id="7:937">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start relative size-full">
+                <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-name="Icon" data-node-id="7:938">
+                  <div className="absolute bottom-1/2 left-[20.83%] right-[20.83%] top-1/2" data-name="Vector" data-node-id="7:939">
+                    <div className="absolute inset-[-0.83px_-7.14%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector3} />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-[20.83%] left-1/2 right-[20.83%] top-[20.83%]" data-name="Vector" data-node-id="7:940">
+                    <div className="absolute inset-[-7.14%_-14.29%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector4} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="absolute bg-[#f6f7f2] border border-[#c0ccb3] border-solid content-stretch flex gap-[16px] h-[74px] items-center left-0 overflow-clip px-[17px] py-px rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_-1px_rgba(3,6,8,0.18)] top-[172px] w-[544px]" data-name="Link" data-node-id="7:941">
+            <div className="bg-[rgba(103,142,62,0.1)] relative rounded-[16777200px] shrink-0 size-[40px]" data-name="Container" data-node-id="7:942">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+                <div className="relative shrink-0 size-[20px]" data-name="Icon" data-node-id="7:943">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgIcon5} />
+                </div>
+              </div>
+            </div>
+            <div className="flex-[1_0_0] h-[20px] min-h-px min-w-px relative" data-name="Heading 3" data-node-id="7:947">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid overflow-clip relative rounded-[inherit] size-full">
+                <p className="absolute font-['Josefin_Slab:SemiBold','Noto_Sans_JP:Bold','Noto_Sans_SC:Bold',sans-serif] font-semibold leading-[20px] left-0 text-[#030608] text-[16px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:948">
+                  Ep.3 出海产品冷启动运营指南
+                </p>
+              </div>
+            </div>
+            <div className="relative shrink-0 size-[20px]" data-name="Container" data-node-id="7:949">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start relative size-full">
+                <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-name="Icon" data-node-id="7:950">
+                  <div className="absolute bottom-1/2 left-[20.83%] right-[20.83%] top-1/2" data-name="Vector" data-node-id="7:951">
+                    <div className="absolute inset-[-0.83px_-7.14%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector3} />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-[20.83%] left-1/2 right-[20.83%] top-[20.83%]" data-name="Vector" data-node-id="7:952">
+                    <div className="absolute inset-[-7.14%_-14.29%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector4} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="absolute bg-[#f6f7f2] border border-[#c0ccb3] border-solid content-stretch flex gap-[16px] h-[74px] items-center left-0 overflow-clip px-[17px] py-px rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_-1px_rgba(3,6,8,0.18)] top-[258px] w-[544px]" data-name="Link" data-node-id="7:953">
+            <div className="bg-[rgba(103,142,62,0.1)] relative rounded-[16777200px] shrink-0 size-[40px]" data-name="Container" data-node-id="7:954">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+                <div className="relative shrink-0 size-[20px]" data-name="Icon" data-node-id="7:955">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgIcon5} />
+                </div>
+              </div>
+            </div>
+            <div className="flex-[1_0_0] h-[20px] min-h-px min-w-px relative" data-name="Heading 3" data-node-id="7:959">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid overflow-clip relative rounded-[inherit] size-full">
+                <p className="absolute font-['Josefin_Slab:SemiBold','Noto_Sans_JP:Bold','Noto_Sans_SC:Bold',sans-serif] font-semibold leading-[20px] left-0 text-[#030608] text-[16px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:960">
+                  Ep.4 开源产品发布方法论
+                </p>
+              </div>
+            </div>
+            <div className="relative shrink-0 size-[20px]" data-name="Container" data-node-id="7:961">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start relative size-full">
+                <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-name="Icon" data-node-id="7:962">
+                  <div className="absolute bottom-1/2 left-[20.83%] right-[20.83%] top-1/2" data-name="Vector" data-node-id="7:963">
+                    <div className="absolute inset-[-0.83px_-7.14%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector3} />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-[20.83%] left-1/2 right-[20.83%] top-[20.83%]" data-name="Vector" data-node-id="7:964">
+                    <div className="absolute inset-[-7.14%_-14.29%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector4} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="absolute bg-[#f6f7f2] border border-[#c0ccb3] border-solid content-stretch flex gap-[16px] h-[74px] items-center left-0 overflow-clip px-[17px] py-px rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_-1px_rgba(3,6,8,0.18)] top-[344px] w-[544px]" data-name="Link" data-node-id="7:965">
+            <div className="bg-[rgba(103,142,62,0.1)] relative rounded-[16777200px] shrink-0 size-[40px]" data-name="Container" data-node-id="7:966">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+                <div className="relative shrink-0 size-[20px]" data-name="Icon" data-node-id="7:967">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgIcon5} />
+                </div>
+              </div>
+            </div>
+            <div className="flex-[1_0_0] h-[20px] min-h-px min-w-px relative" data-name="Heading 3" data-node-id="7:971">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid overflow-clip relative rounded-[inherit] size-full">
+                <p className="absolute font-['Josefin_Slab:SemiBold','Noto_Sans_JP:Bold','Noto_Sans_SC:Bold',sans-serif] font-semibold leading-[20px] left-0 text-[#030608] text-[16px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:972">
+                  Ep.5 出海+运营+创业的tips
+                </p>
+              </div>
+            </div>
+            <div className="relative shrink-0 size-[20px]" data-name="Container" data-node-id="7:973">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start relative size-full">
+                <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-name="Icon" data-node-id="7:974">
+                  <div className="absolute bottom-1/2 left-[20.83%] right-[20.83%] top-1/2" data-name="Vector" data-node-id="7:975">
+                    <div className="absolute inset-[-0.83px_-7.14%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector3} />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-[20.83%] left-1/2 right-[20.83%] top-[20.83%]" data-name="Vector" data-node-id="7:976">
+                    <div className="absolute inset-[-7.14%_-14.29%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector4} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="absolute bg-[#f6f7f2] border border-[#c0ccb3] border-solid content-stretch flex gap-[16px] h-[74px] items-center left-0 overflow-clip px-[17px] py-px rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_-1px_rgba(3,6,8,0.18)] top-[430px] w-[544px]" data-name="Link" data-node-id="7:977">
+            <div className="bg-[rgba(103,142,62,0.1)] relative rounded-[16777200px] shrink-0 size-[40px]" data-name="Container" data-node-id="7:978">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+                <div className="relative shrink-0 size-[20px]" data-name="Icon" data-node-id="7:979">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgIcon5} />
+                </div>
+              </div>
+            </div>
+            <div className="flex-[1_0_0] h-[20px] min-h-px min-w-px relative" data-name="Heading 3" data-node-id="7:983">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid overflow-clip relative rounded-[inherit] size-full">
+                <p className="absolute font-['Josefin_Slab:SemiBold','Noto_Sans_SC:Bold','Noto_Sans_JP:Bold',sans-serif] font-semibold leading-[20px] left-0 text-[#030608] text-[16px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:984">
+                  Ep.6 大厂经历/超级个体
+                </p>
+              </div>
+            </div>
+            <div className="relative shrink-0 size-[20px]" data-name="Container" data-node-id="7:985">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start relative size-full">
+                <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-name="Icon" data-node-id="7:986">
+                  <div className="absolute bottom-1/2 left-[20.83%] right-[20.83%] top-1/2" data-name="Vector" data-node-id="7:987">
+                    <div className="absolute inset-[-0.83px_-7.14%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector3} />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-[20.83%] left-1/2 right-[20.83%] top-[20.83%]" data-name="Vector" data-node-id="7:988">
+                    <div className="absolute inset-[-7.14%_-14.29%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector4} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="absolute bg-[#f6f7f2] border border-[#c0ccb3] border-solid content-stretch flex gap-[16px] h-[74px] items-center left-0 overflow-clip px-[17px] py-px rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_-1px_rgba(3,6,8,0.18)] top-[516px] w-[544px]" data-name="Link" data-node-id="7:989">
+            <div className="bg-[rgba(103,142,62,0.1)] relative rounded-[16777200px] shrink-0 size-[40px]" data-name="Container" data-node-id="7:990">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+                <div className="relative shrink-0 size-[20px]" data-name="Icon" data-node-id="7:991">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgIcon5} />
+                </div>
+              </div>
+            </div>
+            <div className="flex-[1_0_0] h-[20px] min-h-px min-w-px relative" data-name="Heading 3" data-node-id="7:995">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid overflow-clip relative rounded-[inherit] size-full">
+                <p className="absolute font-['Josefin_Slab:SemiBold','Noto_Sans_JP:Bold','Noto_Sans_SC:Bold',sans-serif] font-semibold leading-[20px] left-0 text-[#030608] text-[16px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:996">
+                  Ep.7 投融资相关tips
+                </p>
+              </div>
+            </div>
+            <div className="relative shrink-0 size-[20px]" data-name="Container" data-node-id="7:997">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start relative size-full">
+                <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-name="Icon" data-node-id="7:998">
+                  <div className="absolute bottom-1/2 left-[20.83%] right-[20.83%] top-1/2" data-name="Vector" data-node-id="7:999">
+                    <div className="absolute inset-[-0.83px_-7.14%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector3} />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-[20.83%] left-1/2 right-[20.83%] top-[20.83%]" data-name="Vector" data-node-id="7:1000">
+                    <div className="absolute inset-[-7.14%_-14.29%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector4} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="absolute bg-[rgba(103,142,62,0.05)] border border-[rgba(103,142,62,0.4)] border-solid content-stretch flex gap-[16px] h-[74px] items-center left-0 overflow-clip px-[17px] py-px rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_-1px_rgba(3,6,8,0.18)] top-[602px] w-[544px]" data-name="Link" data-node-id="7:1001">
+            <div className="bg-[rgba(103,142,62,0.1)] relative rounded-[16777200px] shrink-0 size-[40px]" data-name="Container" data-node-id="7:1002">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+                <div className="relative shrink-0 size-[20px]" data-name="Icon" data-node-id="7:1003">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgIcon5} />
+                </div>
+              </div>
+            </div>
+            <div className="flex-[1_0_0] h-[20px] min-h-px min-w-px relative" data-name="Heading 3" data-node-id="7:1007">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid overflow-clip relative rounded-[inherit] size-full">
+                <p className="absolute font-['Josefin_Slab:SemiBold','Noto_Sans_JP:Bold','Noto_Sans_SC:Bold',sans-serif] font-semibold leading-[20px] left-0 text-[#030608] text-[16px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:1008">
+                  Ep.8 用户运营/商业化认知 (强推!)
+                </p>
+              </div>
+            </div>
+            <div className="relative shrink-0 size-[20px]" data-name="Container" data-node-id="7:1009">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start relative size-full">
+                <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-name="Icon" data-node-id="7:1010">
+                  <div className="absolute bottom-1/2 left-[20.83%] right-[20.83%] top-1/2" data-name="Vector" data-node-id="7:1011">
+                    <div className="absolute inset-[-0.83px_-7.14%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector3} />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-[20.83%] left-1/2 right-[20.83%] top-[20.83%]" data-name="Vector" data-node-id="7:1012">
+                    <div className="absolute inset-[-7.14%_-14.29%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector4} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="absolute bg-[#f6f7f2] border border-[#c0ccb3] border-solid content-stretch flex gap-[16px] h-[74px] items-center left-0 overflow-clip px-[17px] py-px rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_-1px_rgba(3,6,8,0.18)] top-[688px] w-[544px]" data-name="Link" data-node-id="7:1013">
+            <div className="bg-[rgba(103,142,62,0.1)] relative rounded-[16777200px] shrink-0 size-[40px]" data-name="Container" data-node-id="7:1014">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+                <div className="relative shrink-0 size-[20px]" data-name="Icon" data-node-id="7:1015">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgIcon5} />
+                </div>
+              </div>
+            </div>
+            <div className="flex-[1_0_0] h-[20px] min-h-px min-w-px relative" data-name="Heading 3" data-node-id="7:1019">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid overflow-clip relative rounded-[inherit] size-full">
+                <p className="absolute font-['Josefin_Slab:SemiBold','Noto_Sans_JP:Bold','Noto_Sans_SC:Bold',sans-serif] font-semibold leading-[20px] left-0 text-[#030608] text-[16px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:1020">
+                  Ep.9 英国系统性压迫
+                </p>
+              </div>
+            </div>
+            <div className="relative shrink-0 size-[20px]" data-name="Container" data-node-id="7:1021">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start relative size-full">
+                <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-name="Icon" data-node-id="7:1022">
+                  <div className="absolute bottom-1/2 left-[20.83%] right-[20.83%] top-1/2" data-name="Vector" data-node-id="7:1023">
+                    <div className="absolute inset-[-0.83px_-7.14%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector3} />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-[20.83%] left-1/2 right-[20.83%] top-[20.83%]" data-name="Vector" data-node-id="7:1024">
+                    <div className="absolute inset-[-7.14%_-14.29%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector4} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="absolute bg-[#f6f7f2] border border-[#c0ccb3] border-solid content-stretch flex gap-[16px] h-[74px] items-center left-0 overflow-clip px-[17px] py-px rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_-1px_rgba(3,6,8,0.18)] top-[774px] w-[544px]" data-name="Link" data-node-id="7:1025">
+            <div className="bg-[rgba(103,142,62,0.1)] relative rounded-[16777200px] shrink-0 size-[40px]" data-name="Container" data-node-id="7:1026">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+                <div className="relative shrink-0 size-[20px]" data-name="Icon" data-node-id="7:1027">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgIcon5} />
+                </div>
+              </div>
+            </div>
+            <div className="flex-[1_0_0] h-[20px] min-h-px min-w-px relative" data-name="Heading 3" data-node-id="7:1031">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid overflow-clip relative rounded-[inherit] size-full">
+                <p className="absolute font-['Josefin_Slab:SemiBold','Noto_Sans_JP:Bold',sans-serif] font-semibold leading-[20px] left-0 text-[#030608] text-[16px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:1032">
+                  Ep.10 关于善良的“既得利益者”
+                </p>
+              </div>
+            </div>
+            <div className="relative shrink-0 size-[20px]" data-name="Container" data-node-id="7:1033">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start relative size-full">
+                <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-name="Icon" data-node-id="7:1034">
+                  <div className="absolute bottom-1/2 left-[20.83%] right-[20.83%] top-1/2" data-name="Vector" data-node-id="7:1035">
+                    <div className="absolute inset-[-0.83px_-7.14%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector3} />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-[20.83%] left-1/2 right-[20.83%] top-[20.83%]" data-name="Vector" data-node-id="7:1036">
+                    <div className="absolute inset-[-7.14%_-14.29%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector4} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="absolute bg-[#f6f7f2] border border-[#c0ccb3] border-solid content-stretch flex gap-[16px] h-[74px] items-center left-0 overflow-clip px-[17px] py-px rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_-1px_rgba(3,6,8,0.18)] top-[860px] w-[544px]" data-name="Link" data-node-id="7:1037">
+            <div className="bg-[rgba(103,142,62,0.1)] relative rounded-[16777200px] shrink-0 size-[40px]" data-name="Container" data-node-id="7:1038">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+                <div className="relative shrink-0 size-[20px]" data-name="Icon" data-node-id="7:1039">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgIcon5} />
+                </div>
+              </div>
+            </div>
+            <div className="flex-[1_0_0] h-[20px] min-h-px min-w-px relative" data-name="Heading 3" data-node-id="7:1043">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid overflow-clip relative rounded-[inherit] size-full">
+                <p className="absolute font-['Josefin_Slab:SemiBold','Noto_Sans_SC:Bold','Noto_Sans_JP:Bold',sans-serif] font-semibold leading-[20px] left-0 text-[#030608] text-[16px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:1044">
+                  Ep.11 60min听完4年创业故事
+                </p>
+              </div>
+            </div>
+            <div className="relative shrink-0 size-[20px]" data-name="Container" data-node-id="7:1045">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start relative size-full">
+                <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-name="Icon" data-node-id="7:1046">
+                  <div className="absolute bottom-1/2 left-[20.83%] right-[20.83%] top-1/2" data-name="Vector" data-node-id="7:1047">
+                    <div className="absolute inset-[-0.83px_-7.14%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector3} />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-[20.83%] left-1/2 right-[20.83%] top-[20.83%]" data-name="Vector" data-node-id="7:1048">
+                    <div className="absolute inset-[-7.14%_-14.29%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector4} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="absolute bg-[#f6f7f2] border border-[#c0ccb3] border-solid content-stretch flex gap-[16px] h-[74px] items-center left-0 overflow-clip px-[17px] py-px rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_-1px_rgba(3,6,8,0.18)] top-[946px] w-[544px]" data-name="Link" data-node-id="7:1049">
+            <div className="bg-[rgba(103,142,62,0.1)] relative rounded-[16777200px] shrink-0 size-[40px]" data-name="Container" data-node-id="7:1050">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+                <div className="relative shrink-0 size-[20px]" data-name="Icon" data-node-id="7:1051">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgIcon5} />
+                </div>
+              </div>
+            </div>
+            <div className="flex-[1_0_0] h-[20px] min-h-px min-w-px relative" data-name="Heading 3" data-node-id="7:1055">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid overflow-clip relative rounded-[inherit] size-full">
+                <p className="absolute font-['Josefin_Slab:SemiBold','Noto_Sans_JP:Bold','Noto_Sans_SC:Bold',sans-serif] font-semibold leading-[20px] left-0 text-[#030608] text-[16px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:1056">
+                  Ep.12 女性创业需要关注的困境和机会
+                </p>
+              </div>
+            </div>
+            <div className="relative shrink-0 size-[20px]" data-name="Container" data-node-id="7:1057">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start relative size-full">
+                <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-name="Icon" data-node-id="7:1058">
+                  <div className="absolute bottom-1/2 left-[20.83%] right-[20.83%] top-1/2" data-name="Vector" data-node-id="7:1059">
+                    <div className="absolute inset-[-0.83px_-7.14%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector3} />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-[20.83%] left-1/2 right-[20.83%] top-[20.83%]" data-name="Vector" data-node-id="7:1060">
+                    <div className="absolute inset-[-7.14%_-14.29%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector4} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute content-stretch flex flex-col gap-[16px] h-[290px] items-start left-[16px] top-[3644px] w-[544px]" data-name="Container" data-node-id="7:1061">
+        <div className="h-[28px] relative shrink-0 w-full" data-name="Heading 2" data-node-id="7:1062">
+          <p className="absolute font-['Josefin_Slab:Bold','Noto_Sans_SC:Bold','Noto_Sans_JP:Bold',sans-serif] font-bold leading-[28px] left-0 text-[#243842] text-[18px] top-0 tracking-[1.08px] uppercase whitespace-nowrap" data-node-id="7:1063">{`视频分享 & 资源`}</p>
+        </div>
+        <div className="h-[246px] relative shrink-0 w-full" data-name="Container" data-node-id="7:1064">
+          <div className="absolute bg-[#f6f7f2] border border-[#c0ccb3] border-solid content-stretch flex gap-[16px] h-[74px] items-center left-0 overflow-clip px-[17px] py-px rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_-1px_rgba(3,6,8,0.18)] top-0 w-[544px]" data-name="Link" data-node-id="7:1065">
+            <div className="bg-[rgba(103,142,62,0.1)] relative rounded-[16777200px] shrink-0 size-[40px]" data-name="Container" data-node-id="7:1066">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+                <div className="relative shrink-0 size-[20px]" data-name="Icon" data-node-id="7:1067">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgIcon6} />
+                </div>
+              </div>
+            </div>
+            <div className="flex-[1_0_0] h-[40px] min-h-px min-w-px relative" data-name="Container" data-node-id="7:1070">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4px] items-start relative size-full">
+                <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-name="Heading 3" data-node-id="7:1071">
+                  <p className="absolute font-['Josefin_Slab:SemiBold','Noto_Sans_JP:Bold','Noto_Sans_SC:Bold',sans-serif] font-semibold leading-[20px] left-0 text-[#030608] text-[16px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:1072">
+                    互联网大厂裸辞，创业血泪史
+                  </p>
+                </div>
+                <div className="h-[16px] overflow-clip relative shrink-0 w-full" data-name="Paragraph" data-node-id="7:1073">
+                  <p className="absolute font-['Josefin_Slab:Regular','Noto_Sans_KR:Regular','Noto_Sans_SC:Regular','Noto_Sans_JP:Regular',sans-serif] font-normal leading-[16px] left-0 text-[#243842] text-[12px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:1074">
+                    Bilibili 对谈生姜Iris
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="relative shrink-0 size-[20px]" data-name="Container" data-node-id="7:1075">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start relative size-full">
+                <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-name="Icon" data-node-id="7:1076">
+                  <div className="absolute bottom-1/2 left-[20.83%] right-[20.83%] top-1/2" data-name="Vector" data-node-id="7:1077">
+                    <div className="absolute inset-[-0.83px_-7.14%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector3} />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-[20.83%] left-1/2 right-[20.83%] top-[20.83%]" data-name="Vector" data-node-id="7:1078">
+                    <div className="absolute inset-[-7.14%_-14.29%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector4} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="absolute bg-[#f6f7f2] border border-[#c0ccb3] border-solid content-stretch flex gap-[16px] h-[74px] items-center left-0 overflow-clip px-[17px] py-px rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_-1px_rgba(3,6,8,0.18)] top-[86px] w-[544px]" data-name="Link" data-node-id="7:1079">
+            <div className="bg-[rgba(103,142,62,0.1)] relative rounded-[16777200px] shrink-0 size-[40px]" data-name="Container" data-node-id="7:1080">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+                <div className="relative shrink-0 size-[20px]" data-name="Icon" data-node-id="7:1081">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgIcon6} />
+                </div>
+              </div>
+            </div>
+            <div className="flex-[1_0_0] h-[40px] min-h-px min-w-px relative" data-name="Container" data-node-id="7:1084">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4px] items-start relative size-full">
+                <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-name="Heading 3" data-node-id="7:1085">
+                  <p className="absolute font-['Josefin_Slab:SemiBold','Noto_Sans_JP:Bold','Noto_Sans_SC:Bold',sans-serif] font-semibold leading-[20px] left-0 text-[#030608] text-[16px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:1086">
+                    1000万美金融资经验SOP
+                  </p>
+                </div>
+                <div className="h-[16px] overflow-clip relative shrink-0 w-full" data-name="Paragraph" data-node-id="7:1087">
+                  <p className="absolute font-['Josefin_Slab:Regular','Noto_Sans_JP:Regular','Noto_Sans_SC:Regular',sans-serif] font-normal leading-[16px] left-0 text-[#243842] text-[12px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:1088">
+                    小红书
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="relative shrink-0 size-[20px]" data-name="Container" data-node-id="7:1089">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start relative size-full">
+                <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-name="Icon" data-node-id="7:1090">
+                  <div className="absolute bottom-1/2 left-[20.83%] right-[20.83%] top-1/2" data-name="Vector" data-node-id="7:1091">
+                    <div className="absolute inset-[-0.83px_-7.14%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector3} />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-[20.83%] left-1/2 right-[20.83%] top-[20.83%]" data-name="Vector" data-node-id="7:1092">
+                    <div className="absolute inset-[-7.14%_-14.29%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector4} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="absolute bg-[#f6f7f2] border border-[#c0ccb3] border-solid content-stretch flex gap-[16px] h-[74px] items-center left-0 overflow-clip px-[17px] py-px rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_-1px_rgba(3,6,8,0.18)] top-[172px] w-[544px]" data-name="Link" data-node-id="7:1093">
+            <div className="bg-[rgba(103,142,62,0.1)] relative rounded-[16777200px] shrink-0 size-[40px]" data-name="Container" data-node-id="7:1094">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+                <div className="relative shrink-0 size-[20px]" data-name="Icon" data-node-id="7:1095">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgIcon7} />
+                </div>
+              </div>
+            </div>
+            <div className="flex-[1_0_0] h-[40px] min-h-px min-w-px relative" data-name="Container" data-node-id="7:1099">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4px] items-start relative size-full">
+                <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-name="Heading 3" data-node-id="7:1100">
+                  <p className="absolute font-['Josefin_Slab:SemiBold','Noto_Sans_SC:Bold','Noto_Sans_JP:Bold','Noto_Sans_KR:Bold',sans-serif] font-semibold leading-[20px] left-0 text-[#030608] text-[16px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:1101">
+                    Iris软件出海实战分享
+                  </p>
+                </div>
+                <div className="h-[16px] overflow-clip relative shrink-0 w-full" data-name="Paragraph" data-node-id="7:1102">
+                  <p className="absolute font-['Josefin_Slab:Regular','Noto_Sans_JP:Regular','Noto_Sans_SC:Regular',sans-serif] font-normal leading-[16px] left-0 text-[#243842] text-[12px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:1103">
+                    百度网盘 (提取码: v75t)
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="relative shrink-0 size-[20px]" data-name="Container" data-node-id="7:1104">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start relative size-full">
+                <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-name="Icon" data-node-id="7:1105">
+                  <div className="absolute bottom-1/2 left-[20.83%] right-[20.83%] top-1/2" data-name="Vector" data-node-id="7:1106">
+                    <div className="absolute inset-[-0.83px_-7.14%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector3} />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-[20.83%] left-1/2 right-[20.83%] top-[20.83%]" data-name="Vector" data-node-id="7:1107">
+                    <div className="absolute inset-[-7.14%_-14.29%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector4} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute content-stretch flex flex-col gap-[16px] h-[204px] items-start left-[16px] top-[3966px] w-[544px]" data-name="Container" data-node-id="7:1108">
+        <div className="h-[28px] relative shrink-0 w-full" data-name="Heading 2" data-node-id="7:1109">
+          <p className="absolute font-['Josefin_Slab:Bold','Noto_Sans_JP:Bold','Noto_Sans_SC:Bold',sans-serif] font-bold leading-[28px] left-0 text-[#243842] text-[18px] top-0 tracking-[1.08px] uppercase whitespace-nowrap" data-node-id="7:1110">{`个人成长 & 亲密关系`}</p>
+        </div>
+        <div className="h-[160px] relative shrink-0 w-full" data-name="Container" data-node-id="7:1111">
+          <div className="absolute bg-[#f6f7f2] border border-[#c0ccb3] border-solid content-stretch flex gap-[16px] h-[74px] items-center left-0 overflow-clip px-[17px] py-px rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_-1px_rgba(3,6,8,0.18)] top-0 w-[544px]" data-name="Link" data-node-id="7:1112">
+            <div className="bg-[rgba(103,142,62,0.1)] relative rounded-[16777200px] shrink-0 size-[40px]" data-name="Container" data-node-id="7:1113">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+                <div className="relative shrink-0 size-[20px]" data-name="Icon" data-node-id="7:1114">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgIcon8} />
+                </div>
+              </div>
+            </div>
+            <div className="flex-[1_0_0] h-[20px] min-h-px min-w-px relative" data-name="Heading 3" data-node-id="7:1116">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid overflow-clip relative rounded-[inherit] size-full">
+                <p className="absolute font-['Josefin_Slab:SemiBold','Noto_Sans_JP:Bold','Noto_Sans_SC:Bold',sans-serif] font-semibold leading-[20px] left-0 text-[#030608] text-[16px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:1117">
+                  你可以爱一个人，但仍然和ta说再见
+                </p>
+              </div>
+            </div>
+            <div className="relative shrink-0 size-[20px]" data-name="Container" data-node-id="7:1118">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start relative size-full">
+                <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-name="Icon" data-node-id="7:1119">
+                  <div className="absolute bottom-1/2 left-[20.83%] right-[20.83%] top-1/2" data-name="Vector" data-node-id="7:1120">
+                    <div className="absolute inset-[-0.83px_-7.14%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector3} />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-[20.83%] left-1/2 right-[20.83%] top-[20.83%]" data-name="Vector" data-node-id="7:1121">
+                    <div className="absolute inset-[-7.14%_-14.29%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector4} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="absolute bg-[#f6f7f2] border border-[#c0ccb3] border-solid content-stretch flex gap-[16px] h-[74px] items-center left-0 overflow-clip px-[17px] py-px rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_-1px_rgba(3,6,8,0.18)] top-[86px] w-[544px]" data-name="Link" data-node-id="7:1122">
+            <div className="bg-[rgba(103,142,62,0.1)] relative rounded-[16777200px] shrink-0 size-[40px]" data-name="Container" data-node-id="7:1123">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+                <div className="relative shrink-0 size-[20px]" data-name="Icon" data-node-id="7:1124">
+                  <img alt="" className="absolute block max-w-none size-full" src={imgIcon8} />
+                </div>
+              </div>
+            </div>
+            <div className="flex-[1_0_0] h-[20px] min-h-px min-w-px relative" data-name="Heading 3" data-node-id="7:1126">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid overflow-clip relative rounded-[inherit] size-full">
+                <p className="absolute font-['Josefin_Slab:SemiBold','Noto_Sans_JP:Bold',sans-serif] font-semibold leading-[20px] left-0 text-[#030608] text-[16px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:1127">
+                  个人成长 / 女性力量
+                </p>
+              </div>
+            </div>
+            <div className="relative shrink-0 size-[20px]" data-name="Container" data-node-id="7:1128">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start relative size-full">
+                <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-name="Icon" data-node-id="7:1129">
+                  <div className="absolute bottom-1/2 left-[20.83%] right-[20.83%] top-1/2" data-name="Vector" data-node-id="7:1130">
+                    <div className="absolute inset-[-0.83px_-7.14%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector3} />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-[20.83%] left-1/2 right-[20.83%] top-[20.83%]" data-name="Vector" data-node-id="7:1131">
+                    <div className="absolute inset-[-7.14%_-14.29%]">
+                      <img alt="" className="block max-w-none size-full" src={imgVector4} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute bg-[#f6f7f2] border border-[#c0ccb3] border-solid h-[373px] left-[16px] rounded-[16px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_2px_4px_0px_rgba(3,6,8,0.18)] top-[4202px] w-[544px]" data-name="Container" data-node-id="7:1132">
+        <div className="absolute h-[28px] left-[24px] top-[24px] w-[494px]" data-name="Heading 3" data-node-id="7:1133">
+          <p className="absolute font-['Josefin_Slab:Bold','Noto_Sans_JP:Bold','Noto_Sans_SC:Bold',sans-serif] font-bold leading-[28px] left-0 text-[#030608] text-[20px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:1134">
+            咨询服务
+          </p>
+        </div>
+        <div className="absolute h-[20px] left-[24px] top-[60px] w-[494px]" data-name="Paragraph" data-node-id="7:1135">
+          <p className="absolute font-['Josefin_Slab:Regular','Noto_Sans_JP:Regular','Noto_Sans_SC:Regular',sans-serif] font-normal leading-[20px] left-0 text-[#243842] text-[14px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:1136">
+            精力有限，不提供免费咨询，敬请谅解 😭
+          </p>
+        </div>
+        <div className="absolute content-stretch flex flex-col gap-[16px] h-[243px] items-start left-[24px] top-[104px] w-[494px]" data-name="Container" data-node-id="7:1137">
+          <div className="border-[#c0ccb3] border-b border-solid content-stretch flex h-[45px] items-start justify-between pb-px relative shrink-0 w-full" data-name="Container" data-node-id="7:1138">
+            <div className="h-[24px] relative shrink-0 w-[132.938px]" data-name="Heading 4" data-node-id="7:1139">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
+                <p className="absolute font-['Josefin_Slab:SemiBold','Noto_Sans_JP:Bold','Noto_Sans_SC:Bold',sans-serif] font-semibold leading-[24px] left-0 text-[#030608] text-[16px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:1140">
+                  单次咨询 (30分钟)
+                </p>
+              </div>
+            </div>
+            <div className="bg-[#468fa0] h-[28px] relative rounded-[4.4px] shrink-0 w-[75.391px]" data-name="Container" data-node-id="7:1141">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
+                <p className="absolute font-['Josefin_Slab:Bold',sans-serif] font-bold leading-[20px] left-[8px] text-[#fbfbf9] text-[14px] top-[4px] tracking-[0.16px] whitespace-nowrap" data-node-id="7:1142">
+                  800 RMB
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="border-[#c0ccb3] border-b border-solid content-stretch flex h-[45px] items-start justify-between pb-px relative shrink-0 w-full" data-name="Container" data-node-id="7:1143">
+            <div className="h-[24px] relative shrink-0 w-[133.977px]" data-name="Heading 4" data-node-id="7:1144">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
+                <p className="absolute font-['Josefin_Slab:SemiBold','Noto_Sans_SC:Bold','Noto_Sans_JP:Bold',sans-serif] font-semibold leading-[24px] left-0 text-[#030608] text-[16px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:1145">
+                  单次咨询 (60分钟)
+                </p>
+              </div>
+            </div>
+            <div className="bg-[#468fa0] h-[28px] relative rounded-[4.4px] shrink-0 w-[78.969px]" data-name="Container" data-node-id="7:1146">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
+                <p className="absolute font-['Josefin_Slab:Bold',sans-serif] font-bold leading-[20px] left-[8px] text-[#fbfbf9] text-[14px] top-[4px] tracking-[0.16px] whitespace-nowrap" data-node-id="7:1147">
+                  1500 RMB
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="border-[#c0ccb3] border-b border-solid content-stretch flex h-[61px] items-start justify-between pb-px relative shrink-0 w-full" data-name="Container" data-node-id="7:1148">
+            <div className="h-[44px] relative shrink-0 w-[133.766px]" data-name="Container" data-node-id="7:1149">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4px] items-start relative size-full">
+                <div className="h-[24px] relative shrink-0 w-full" data-name="Heading 4" data-node-id="7:1150">
+                  <p className="absolute font-['Josefin_Slab:SemiBold','Noto_Sans_JP:Bold','Noto_Sans_SC:Bold',sans-serif] font-semibold leading-[24px] left-0 text-[#030608] text-[16px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:1151">
+                    出海0-1资料包
+                  </p>
+                </div>
+                <div className="h-[16px] relative shrink-0 w-full" data-name="Paragraph" data-node-id="7:1152">
+                  <p className="absolute font-['Josefin_Slab:Regular','Noto_Sans_JP:Regular','Noto_Sans_SC:Regular',sans-serif] font-normal leading-[16px] left-0 text-[#243842] text-[12px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:1153">
+                    包含方法论和初始工具包
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="bg-[#468fa0] h-[28px] relative rounded-[4.4px] shrink-0 w-[65.18px]" data-name="Container" data-node-id="7:1154">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
+                <p className="absolute font-['Josefin_Slab:Bold',sans-serif] font-bold leading-[20px] left-[8px] text-[#fbfbf9] text-[14px] top-[4px] tracking-[0.16px] whitespace-nowrap" data-node-id="7:1155">
+                  99 RMB
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="content-stretch flex h-[44px] items-start justify-between relative shrink-0 w-full" data-name="Container" data-node-id="7:1156">
+            <div className="h-[44px] relative shrink-0 w-[164.508px]" data-name="Container" data-node-id="7:1157">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4px] items-start relative size-full">
+                <div className="h-[24px] relative shrink-0 w-full" data-name="Heading 4" data-node-id="7:1158">
+                  <p className="absolute font-['Josefin_Slab:SemiBold','Noto_Sans_SC:Bold','Noto_Sans_JP:Bold',sans-serif] font-semibold leading-[24px] left-0 text-[#030608] text-[16px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:1159">
+                    企业陪跑咨询
+                  </p>
+                </div>
+                <div className="h-[16px] relative shrink-0 w-full" data-name="Paragraph" data-node-id="7:1160">
+                  <p className="absolute font-['Josefin_Slab:Regular','Noto_Sans_JP:Regular','Noto_Sans_SC:Regular',sans-serif] font-normal leading-[16px] left-0 text-[#243842] text-[12px] top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:1161">
+                    每月累计咨询时长不超过5小时
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="bg-[#468fa0] h-[28px] relative rounded-[4.4px] shrink-0 w-[102.875px]" data-name="Container" data-node-id="7:1162">
+              <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
+                <p className="absolute font-['Josefin_Slab:Bold','Noto_Sans_JP:Bold',sans-serif] font-bold leading-[20px] left-[8px] text-[#fbfbf9] text-[14px] top-[4px] tracking-[0.16px] whitespace-nowrap" data-node-id="7:1163">
+                  7000 RMB/月
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute content-stretch flex flex-col gap-[16px] h-[132px] items-center justify-center left-[16px] top-[4623px] w-[544px]" data-name="Container" data-node-id="7:1164">
+        <div className="h-[20px] relative shrink-0 w-[89.32px]" data-name="Paragraph" data-node-id="7:1165">
+          <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
+            <p className="-translate-x-1/2 absolute font-['Josefin_Slab:Regular','Noto_Sans_JP:Regular','Noto_Sans_SC:Regular',sans-serif] font-normal leading-[20px] left-[45px] text-[#243842] text-[14px] text-center top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:1166">
+              很高兴认识 🙇
+            </p>
+          </div>
+        </div>
+        <div className="h-[16px] relative shrink-0 w-[115.461px]" data-name="Paragraph" data-node-id="7:1167">
+          <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
+            <p className="-translate-x-1/2 absolute font-['Josefin_Slab:Regular','Noto_Sans_JP:Regular','Noto_Sans_SC:Regular',sans-serif] font-normal leading-[16px] left-[58px] text-[#243842] text-[12px] text-center top-0 tracking-[0.16px] whitespace-nowrap" data-node-id="7:1168">
+              公众号: 云宝的桃花坞
+            </p>
+          </div>
+        </div>
+        <div className="shrink-0 size-0" data-name="Container" data-node-id="7:1169" />
+      </div>
+    </div>
+  );
+}

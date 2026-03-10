@@ -1,0 +1,33 @@
+{
+  "name": "yipei-monorepo",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Production-grade personal website monorepo (Next.js + Sanity + Supabase).",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace @yipei/site\" \"npm run dev --workspace @yipei/web\"",
+    "dev:all": "concurrently \"npm run dev --workspace @yipei/site\" \"npm run dev --workspace @yipei/web\" \"npm run dev --workspace @yipei/studio\"",
+    "dev:site": "npm run dev --workspace @yipei/site",
+    "dev:web": "npm run dev --workspace @yipei/web",
+    "dev:studio": "npm run dev --workspace @yipei/studio",
+    "build": "npm run build --workspace @yipei/site && npm run build --workspace @yipei/web",
+    "build:all": "npm run build --workspace @yipei/site && npm run build --workspace @yipei/web && npm run build --workspace @yipei/studio",
+    "build:site": "npm run build --workspace @yipei/site",
+    "build:web": "npm run build --workspace @yipei/web",
+    "build:studio": "npm run build --workspace @yipei/studio",
+    "lint": "npm run lint --workspace @yipei/web",
+    "typecheck": "npm run typecheck --workspace @yipei/web",
+    "check": "npm run lint && npm run typecheck",
+    "figma:parse": "node scripts/parse-figma-url.mjs",
+    "figma:extract-tiles": "python3 scripts/extract-figma-assets.py"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

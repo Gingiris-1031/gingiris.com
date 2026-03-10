@@ -1,0 +1,186 @@
+---
+import {
+  isSiteLocale,
+  projectGroups,
+  servicesContentByLocale,
+  supportedLocales,
+  type SiteLocale,
+} from "@yipei/site-content";
+import ProjectWall from "../../components/ProjectWall.astro";
+import { buildAppHref, buildAuthHref, buildCheckoutHref } from "../../lib/app";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export function getStaticPaths() {
+  return supportedLocales.map((locale) => ({ params: { locale } }));
+}
+
+const localeParam = Astro.params.locale;
+if (!localeParam || !isSiteLocale(localeParam)) {
+  throw new Error("Invalid locale");
+}
+
+const locale = localeParam as SiteLocale;
+const content = servicesContentByLocale[locale];
+const appOrigin = (import.meta.env.PUBLIC_APP_ORIGIN ?? "http://localhost:3000").replace(/\/$/, "");
+const featuredPlan = content.plans[1] ?? content.plans[0];
+---
+
+<BaseLayout locale={locale} title={content.title} description={content.intro}>
+  <section class="page-hero services-page-hero">
+    <div class="page-hero-copy">
+      <p class="eyebrow">{content.eyebrow}</p>
+      <h1>{content.title}</h1>
+      <p>{content.intro}</p>
+      <div class="hero-actions">
+        <a
+          class="primary-button"
+          data-app-link
+          data-app-action="checkout"
+          data-plan-code={featuredPlan.checkoutPlanCode}
+          data-channel={featuredPlan.preferredChannel ?? undefined}
+          href={buildCheckoutHref(appOrigin, locale, {
+            planCode: featuredPlan.checkoutPlanCode,
+            channel: featuredPlan.preferredChannel,
+          })}
+        >
+          {locale === "zh" ? "继续支付" : "Continue to checkout"}
+        </a>
+        <a class="ghost-button" data-app-link data-app-action="orders" href={buildAppHref(appOrigin, locale, "orders")}>
+          <span data-orders-label>{locale === "zh" ? "查看订单" : "View orders"}</span>
+        </a>
+        <a class="ghost-button" data-app-link data-app-action="account" href={buildAuthHref(appOrigin, locale)}>
+          {locale === "zh" ? "登录" : "Sign in"}
+        </a>
+      </div>
+    </div>
+    <div class="service-hero-aside">
+      <div class="service-app-status-card">
+        <span class="eyebrow">{locale === "zh" ? "Account" : "Account"}</span>
+        <p class="service-app-status" data-app-status>
+          {locale === "zh" ? "登录后继续预约与订单" : "Sign in to continue"}
+        </p>
+        <div class="service-app-chip-row">
+          <span class="bridge-chip">{locale === "zh" ? "微信支付" : "WeChat Pay"}</span>
+          <span class="bridge-chip">{locale === "zh" ? "支付宝" : "Alipay"}</span>
+          <span class="bridge-chip">{locale === "zh" ? "订单中心" : "Orders center"}</span>
+        </div>
+      </div>
+      <div class="service-pillar-grid">
+        {content.pillars.map((pillar) => (
+          <article class="service-pillar-card">
+            <strong>{pillar.title}</strong>
+            <p>{pillar.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="app-entry-section">
+    <div class="section-heading">
+      <p class="eyebrow">{locale === "zh" ? "Account Access" : "Account Access"}</p>
+      <h2>{locale === "zh" ? "预约、支付与订单都从同一个账户继续" : "Bookings, payments, and orders continue from one account"}</h2>
+    </div>
+    <div class="app-entry-grid">
+      {content.entries.map((entry) => (
+        <article class="app-entry-card">
+          <h3>{entry.title}</h3>
+          <p>{entry.body}</p>
+          <a
+            class="inline-link"
+            data-app-link
+            data-app-action={entry.action}
+            href={entry.action === "orders" ? buildAppHref(appOrigin, locale, "orders") : entry.action === "app" ? buildAppHref(appOrigin, locale, "app") : buildAuthHref(appOrigin, locale)}
+          >
+            {entry.ctaLabel}
+          </a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="pricing-section premium-pricing-section">
+    <div class="section-heading">
+      <p class="eyebrow">{locale === "zh" ? "Engagement" : "Engagement"}</p>
+      <h2>{locale === "zh" ? "四种正式合作入口" : "Four formal ways to start working together"}</h2>
+    </div>
+    <div class="premium-pricing-grid">
+      {content.plans.map((plan, index) => (
+        <article class:list={["premium-pricing-card", index === 1 && "is-featured", index === 3 && "is-wide"]}>
+          <div class="premium-pricing-topline">
+            <span class="service-preview-index">{String(index + 1).padStart(2, "0")}</span>
+            <strong>{plan.price}</strong>
+          </div>
+          <div class="premium-pricing-copy">
+            <h3>{plan.title}</h3>
+            {plan.subtitle ? <p>{plan.subtitle}</p> : null}
+            <p>{plan.detail}</p>
+          </div>
+          <div class="premium-pricing-footer">
+            <p>{plan.deliveryNote}</p>
+            <a
+              class="inline-link"
+              data-app-link
+              data-app-action="checkout"
+              data-plan-code={plan.checkoutPlanCode}
+              data-channel={plan.preferredChannel ?? undefined}
+              href={buildCheckoutHref(appOrigin, locale, {
+                planCode: plan.checkoutPlanCode,
+                channel: plan.preferredChannel,
+              })}
+            >
+              {plan.ctaLabel}
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="payment-architecture-section">
+    <div class="section-heading">
+      <p class="eyebrow">{locale === "zh" ? "Flow" : "Flow"}</p>
+      <h2>{content.paymentHeading}</h2>
+      <p>{content.paymentIntro}</p>
+    </div>
+    <div class="payment-step-grid">
+      {content.paymentSteps.map((step) => (
+        <article class="payment-step-card">
+          <h3>{step.title}</h3>
+          <p>{step.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="project-section">
+    <div class="section-heading">
+      <p class="eyebrow">{locale === "zh" ? "Proof" : "Proof"}</p>
+      <h2>{locale === "zh" ? "辅导过的成功项目" : "Selected coached projects"}</h2>
+    </div>
+    <ProjectWall groups={projectGroups} />
+  </section>
+
+  <section class="notes-grid premium-notes-grid">
+    {content.notes.map((note) => (
+      <article class="note-card">
+        <p>{note}</p>
+      </article>
+    ))}
+  </section>
+
+  <section class="faq-section">
+    <div class="section-heading">
+      <p class="eyebrow">FAQ</p>
+      <h2>{locale === "zh" ? "常见问题" : "Frequently asked questions"}</h2>
+    </div>
+    <div class="faq-list">
+      {content.faq.map((item) => (
+        <details>
+          <summary>{item.question}</summary>
+          <p>{item.answer}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

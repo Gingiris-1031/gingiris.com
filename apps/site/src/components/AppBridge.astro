@@ -1,0 +1,105 @@
+---
+import type { SiteLocale } from "@yipei/site-content";
+import { APP_SESSION_COOKIE, appBridgeCopy, buildAppHref, buildAuthHref } from "../lib/app";
+
+interface Props {
+  locale: SiteLocale;
+  appOrigin: string;
+}
+
+const { locale, appOrigin } = Astro.props;
+const copy = appBridgeCopy[locale];
+---
+
+<script
+  define:vars={{
+    locale,
+    appOrigin,
+    cookieName: APP_SESSION_COOKIE,
+    copy,
+    ordersHref: buildAppHref(appOrigin, locale, "orders"),
+    appHref: buildAppHref(appOrigin, locale, "app"),
+    authHref: buildAuthHref(appOrigin, locale),
+  }}
+>
+  function readBridgeCookie(name) {
+    return document.cookie
+      .split("; ")
+      .find((entry) => entry.startsWith(`${name}=`))
+      ?.split("=")[1];
+  }
+
+  function buildCheckoutTarget(planCode, channel) {
+    const url = new URL(`${appOrigin}/${locale}/checkout`);
+    if (planCode) {
+      url.searchParams.set("plan", planCode);
+    }
+    if (channel) {
+      url.searchParams.set("channel", channel);
+    }
+    return url.toString();
+  }
+
+  function buildAuthTarget(nextPath) {
+    const url = new URL(authHref);
+    if (nextPath) {
+      url.searchParams.set("next", nextPath);
+    }
+    return url.toString();
+  }
+
+  function syncBridgeState() {
+    const signedIn = readBridgeCookie(cookieName) === "1";
+    document.documentElement.dataset.appState = signedIn ? "signed-in" : "signed-out";
+
+    document.querySelectorAll("[data-auth-visible]").forEach((element) => {
+      const mode = element.getAttribute("data-auth-visible");
+      const shouldShow =
+        (signedIn && mode === "signed-in") ||
+        (!signedIn && mode === "signed-out") ||
+        mode === "always";
+      element.hidden = !shouldShow;
+    });
+
+    document.querySelectorAll("[data-app-status]").forEach((element) => {
+      element.textContent = signedIn ? copy.statusSignedIn : copy.statusSignedOut;
+      element.setAttribute("data-state", signedIn ? "signed-in" : "signed-out");
+    });
+
+    document.querySelectorAll("[data-app-link]").forEach((node) => {
+      if (!(node instanceof HTMLAnchorElement)) {
+        return;
+      }
+
+      const action = node.dataset.appAction;
+      const planCode = node.dataset.planCode;
+      const channel = node.dataset.channel;
+      const checkoutTarget = buildCheckoutTarget(planCode, channel);
+
+      if (action === "checkout") {
+        node.href = signedIn ? checkoutTarget : buildAuthTarget(new URL(checkoutTarget).pathname + new URL(checkoutTarget).search);
+      } else if (action === "orders") {
+        node.href = signedIn ? ordersHref : buildAuthTarget(`/${locale}/me/orders`);
+      } else if (action === "app") {
+        node.href = signedIn ? appHref : authHref;
+      } else if (action === "account") {
+        node.href = signedIn ? appHref : authHref;
+        node.textContent = signedIn ? copy.accountSignedIn : copy.accountSignedOut;
+      } else if (action === "auth") {
+        node.href = authHref;
+      }
+    });
+
+    document.querySelectorAll("[data-orders-label]").forEach((element) => {
+      element.textContent = copy.orders;
+    });
+  }
+
+  syncBridgeState();
+  window.addEventListener("focus", syncBridgeState);
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) {
+      syncBridgeState();
+    }
+  });
+</script>

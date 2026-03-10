@@ -1,0 +1,331 @@
+const imgF32B28E2B7D598E0D4A0E6208C5239Ca38D46E5F = "https://www.figma.com/api/mcp/asset/67b6822d-e7f3-45ad-9e9b-b0ac2bdf9877";
+const img56Afd5Daa62C1693Bafdda20D28Bc39C = "https://www.figma.com/api/mcp/asset/1a42ac2b-63a0-4cbb-8045-be5e75084d51";
+const imgVector4 = "https://www.figma.com/api/mcp/asset/ce88263b-ba33-45a2-9b6f-5397a9622fb9";
+const imgDatastratoBlack = "https://www.figma.com/api/mcp/asset/6fc6c6fe-765e-4d22-a8d6-2ffe55ae5846";
+const imgVector8 = "https://www.figma.com/api/mcp/asset/9bb55bf9-789f-4aec-bd72-bcb34b18b9f8";
+const imgVector9 = "https://www.figma.com/api/mcp/asset/dcbdd581-565d-4c4f-9860-09078e426df4";
+const imgIShot202602221137281 = "https://www.figma.com/api/mcp/asset/1efc5284-ddc0-4f82-b682-805bf2bbe10b";
+const imgIShot202602221146421 = "https://www.figma.com/api/mcp/asset/6e7b3784-f918-42f6-997e-2f795f0c6ca7";
+const imgVector10 = "https://www.figma.com/api/mcp/asset/125e0726-cf5c-4578-8ae8-77ad5e256ce0";
+const imgKusapicsAiAnimeGeneratorLogo = "https://www.figma.com/api/mcp/asset/c0dd37ad-96e5-4c28-9d2a-25ce2fa82ad8";
+const imgImage1 = "https://www.figma.com/api/mcp/asset/69963e18-b40a-42ce-9cd6-a8d1a48e1687";
+const imgVector12 = "https://www.figma.com/api/mcp/asset/52eb2505-6e2b-42f9-822d-7aebfc9d9191";
+const imgTenFrameworl = "https://www.figma.com/api/mcp/asset/f8447d3c-3300-4c12-b6a6-f49ee2cb847c";
+const imgFrame = "https://www.figma.com/api/mcp/asset/7d675ed6-e9a3-4ae1-a082-795ed0c9117e";
+const imgVector = "https://www.figma.com/api/mcp/asset/d49f7ff3-ad8e-4695-b515-7976fda83c09";
+const imgVector1 = "https://www.figma.com/api/mcp/asset/f7f3f01f-ac74-4712-923c-7596085fb0eb";
+const imgVector2 = "https://www.figma.com/api/mcp/asset/b1841d19-f6eb-47c2-af07-e7852be95885";
+const imgVector3 = "https://www.figma.com/api/mcp/asset/7badef55-b629-4e49-9743-ce558f0b95d0";
+const imgVector5 = "https://www.figma.com/api/mcp/asset/52b88086-1029-45c8-b808-7fd5f84c809f";
+const imgVector6 = "https://www.figma.com/api/mcp/asset/2127e1b6-0781-45d9-8758-c284d1ec6446";
+const imgGroup = "https://www.figma.com/api/mcp/asset/ccac69b8-bc86-4267-97f8-5bf2ebd8c23f";
+const imgGroup3 = "https://www.figma.com/api/mcp/asset/cab58a3f-57c0-4837-a978-47d7276305fa";
+const imgVector7 = "https://www.figma.com/api/mcp/asset/2d1d37f3-b9b8-4f44-820a-66fdc9a2d4b0";
+const imgPapergen = "https://www.figma.com/api/mcp/asset/bf20b426-acb6-4aa1-9eac-dc30feab3eb9";
+const imgVector11 = "https://www.figma.com/api/mcp/asset/c974d564-370d-4ad5-83a0-1e68985e5308";
+const imgGroup1 = "https://www.figma.com/api/mcp/asset/6efdb7ef-d24e-4a92-9284-8b5f31c07f9d";
+const imgFrame1 = "https://www.figma.com/api/mcp/asset/8d0be233-e042-4ba3-8586-471e02cead1a";
+const imgGroup2 = "https://www.figma.com/api/mcp/asset/74242f3d-f9af-4b41-8720-c0311e69867a";
+const imgGroup4 = "https://www.figma.com/api/mcp/asset/fcf28c2f-25fd-4f61-81d0-5dfc1e3a2c7a";
+const imgFrame2 = "https://www.figma.com/api/mcp/asset/6a749a72-0ed4-4431-ae2a-663364eadeb0";
+
+export default function Component34Logo() {
+  return (
+    <div className="bg-white relative size-full" data-name="3：4 logo 墙 1" data-node-id="209:75">
+      <div className="absolute content-stretch flex flex-col h-[768px] items-center justify-center left-0 top-0 w-[576px]" data-node-id="209:76">
+        <div className="content-stretch flex flex-col h-[769px] items-center justify-center relative shrink-0 w-full" data-name="项目案例" data-node-id="220:592">
+          <div className="content-stretch flex flex-col gap-[26px] items-center relative shrink-0" data-node-id="271:815">
+            <div className="grid-cols-[max-content] grid-rows-[max-content] inline-grid leading-[0] place-items-start relative shrink-0" data-name="辅导过的项目" data-node-id="220:708">
+              <div className="col-1 content-stretch flex flex-col items-center justify-center ml-0 mt-[7px] px-[174px] py-[10px] relative row-1 w-[576px]" data-node-id="220:709">
+                <div className="bg-[rgba(192,204,179,0.65)] h-[13px] rounded-[30px] shrink-0 w-full" data-node-id="220:710" />
+              </div>
+              <p className="col-1 font-['Alimama_DongFangDaKai:Regular',sans-serif] leading-[28px] ml-0 mt-0 not-italic relative row-1 text-[#243842] text-[26px] text-center tracking-[1.08px] uppercase w-[576px]" data-node-id="220:711">
+                辅导过的项目
+              </p>
+            </div>
+            <div className="content-stretch flex flex-col gap-[21px] items-start relative shrink-0 w-[544px]" data-node-id="220:595">
+              <div className="bg-[#f6f7f2] border border-[#c0ccb3] border-solid h-[206px] relative rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_0px_rgba(3,6,8,0.18)] shrink-0 w-full" data-name="OpenSource Launch" data-node-id="220:624">
+                <div className="absolute content-stretch flex gap-[8px] h-[28px] items-center left-[11px] text-[#030608] top-[16px] tracking-[0.16px] w-[520px] whitespace-nowrap" data-name="标题" data-node-id="220:626">
+                  <p className="font-['Josefin_Slab:Regular',sans-serif] font-normal leading-[28px] relative shrink-0 text-[20px]" data-node-id="220:628">
+                    🏆
+                  </p>
+                  <p className="font-['Alimama_DongFangDaKai:Regular',sans-serif] leading-[24px] not-italic relative shrink-0 text-[16px]" data-node-id="220:630">
+                    OpenSource Launch
+                  </p>
+                </div>
+                <div className="absolute gap-x-[12px] gap-y-[12px] grid grid-cols-[repeat(4,minmax(0,1fr))] grid-rows-[___fit-content(100%)_fit-content(100%)_61.00px] left-[11px] top-[54px] w-[516px]" data-node-id="222:81">
+                  <div className="col-1 grid-cols-[max-content] grid-rows-[max-content] inline-grid justify-self-start leading-[0] place-items-start relative row-2 self-start shrink-0" data-name="ten-frameworl" data-node-id="225:4">
+                    <div className="col-1 h-[61px] ml-0 mt-[73px] relative row-1 w-[120px]" data-name="ten-frameworl" data-node-id="225:5">
+                      <img alt="" className="absolute block max-w-none size-full" src={imgTenFrameworl} />
+                    </div>
+                    <div className="col-1 h-[17px] ml-[9px] mt-[93px] relative row-1 w-[102px]" data-name="Frame" data-node-id="225:23">
+                      <img alt="" className="absolute block max-w-none size-full" src={imgFrame} />
+                    </div>
+                  </div>
+                  <div className="col-1 grid-cols-[max-content] grid-rows-[max-content] inline-grid justify-self-start leading-[0] place-items-start relative row-1 self-start shrink-0" data-name="second me" data-node-id="222:97">
+                    <div className="col-1 h-[61px] ml-0 mt-0 relative row-1 w-[120px]" data-name="Vector" data-node-id="222:95">
+                      <img alt="" className="absolute block max-w-none size-full" src={imgVector} />
+                    </div>
+                    <div className="col-1 h-[14px] ml-[1.55%] mt-[11.59%] relative row-1 w-[104px]" data-name="f32b28e2b7d598e0d4a0e6208c5239ca38d46e5f" data-node-id="222:96">
+                      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                        <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgF32B28E2B7D598E0D4A0E6208C5239Ca38D46E5F} />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-2 grid-cols-[max-content] grid-rows-[max-content] inline-grid justify-self-start leading-[0] place-items-start relative row-1 self-start shrink-0" data-name="memu" data-node-id="222:101">
+                    <div className="col-1 h-[61px] ml-[132px] mt-0 relative row-1 w-[120px]" data-node-id="222:98">
+                      <img alt="" className="absolute block max-w-none size-full" src={imgTenFrameworl} />
+                    </div>
+                    <div className="col-1 h-[42px] ml-[26.74%] mt-[4.83%] relative row-1 w-[111px]" data-name="56afd5daa62c1693bafdda20d28bc39c" data-node-id="242:548">
+                      <img alt="" className="absolute block max-w-none size-full" height="42" src={img56Afd5Daa62C1693Bafdda20D28Bc39C} width="111" />
+                    </div>
+                  </div>
+                  <div className="col-3 h-[61px] overflow-clip relative row-1 shrink-0 w-[120px]" data-name="Frame" data-node-id="242:589">
+                    <div className="absolute contents inset-0" data-name="Clip path group" data-node-id="242:590">
+                      <div className="absolute contents inset-[0.82%_0.42%]" data-name="Group" data-node-id="242:593">
+                        <div className="absolute inset-[0.82%_0.42%] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[-0.5px_-0.5px] mask-size-[120px_61px]" data-name="Vector" data-node-id="242:594" style={{ maskImage: `url('${imgVector1}')` }}>
+                          <div className="absolute inset-[-0.83%_-0.42%]">
+                            <img alt="" className="block max-w-none size-full" src={imgVector2} />
+                          </div>
+                        </div>
+                        <div className="absolute contents inset-[29.51%_4.17%_29.51%_5%]" data-name="Mask group" data-node-id="242:595">
+                          <div className="absolute contents inset-[29.51%_4.71%_29.51%_5%]" data-name="Group" data-node-id="242:598">
+                            <div className="absolute inset-[29.51%_74.36%_29.51%_5%] mask-position-[-6px_-18px,_0px_0px]" data-name="Vector" data-node-id="242:599" style={{ maskImage: `url('${imgVector1}'), url('${imgVector3}')` }}>
+                              <img alt="" className="absolute block max-w-none size-full" height="25" src={imgVector4} width="24.773" />
+                            </div>
+                            <div className="absolute inset-[39.01%_4.71%_40.54%_32.37%] mask-position-[-38.84px_-23.798px,_-32.84px_-5.798px]" data-name="Vector" data-node-id="242:600" style={{ maskImage: `url('${imgVector1}'), url('${imgVector3}')` }}>
+                              <img alt="" className="absolute block max-w-none size-full" src={imgVector5} />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-2 grid-cols-[max-content] grid-rows-[max-content] inline-grid justify-self-start leading-[0] place-items-start relative row-2 self-start shrink-0" data-name="camel" data-node-id="250:2">
+                    <div className="col-1 grid-cols-[max-content] grid-rows-[max-content] inline-grid ml-[132px] mt-[73px] place-items-start relative row-1" data-node-id="250:3">
+                      <div className="col-1 h-[61px] ml-[132px] mt-[73px] relative row-1 w-[120px]" data-name="Vector" data-node-id="250:4">
+                        <img alt="" className="absolute block max-w-none size-full" src={imgVector6} />
+                      </div>
+                      <div className="col-1 grid-cols-[max-content] grid-rows-[max-content] inline-grid ml-[26.36%] mt-[45.41%] place-items-start relative row-1" data-name="svgviewer-output (10)" data-node-id="250:28">
+                        <div className="col-1 h-[18px] ml-[26.36%] mt-[45.41%] relative row-1 w-[111.176px]" data-name="Group" data-node-id="250:29">
+                          <img alt="" className="absolute block max-w-none size-full" src={imgGroup} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-4 grid-cols-[max-content] grid-rows-[max-content] inline-grid justify-self-start leading-[0] place-items-start relative row-1 self-start shrink-0" data-name="datastrato" data-node-id="223:723">
+                    <div className="col-1 grid-cols-[max-content] grid-rows-[max-content] inline-grid ml-[76.74%] mt-0 place-items-start relative row-1" data-node-id="223:724">
+                      <div className="col-1 h-[61px] ml-[76.74%] mt-0 relative row-1 w-[120px]" data-name="Vector" data-node-id="223:725">
+                        <img alt="" className="absolute block max-w-none size-full" src={imgVector} />
+                      </div>
+                      <div className="col-1 h-[24px] ml-[78.29%] mt-[9.18%] relative row-1 w-[107px]" data-name="datastrato-black" data-node-id="225:2">
+                        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                          <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgDatastratoBlack} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-2 grid-cols-[max-content] grid-rows-[max-content] inline-grid justify-self-start leading-[0] place-items-start relative row-2 self-start shrink-0" data-name="BUDDLE" data-node-id="239:2">
+                    <div className="col-1 h-[61px] ml-[25.58%] mt-[35.27%] relative row-1 w-[120px]" data-node-id="239:3">
+                      <img alt="" className="absolute block max-w-none size-full" src={imgGroup3} />
+                    </div>
+                    <div className="col-1 h-[32px] ml-[26.94%] mt-[42.51%] overflow-clip relative row-1 w-[101px]" data-name="Frame" data-node-id="239:15">
+                      <div className="absolute inset-[30.09%_0.98%_33%_40.23%]" data-name="Vector" data-node-id="239:16">
+                        <img alt="" className="absolute block max-w-none size-full" src={imgVector7} />
+                      </div>
+                      <div className="absolute inset-[0_69.49%_0_0]" data-name="Vector" data-node-id="239:17">
+                        <img alt="" className="absolute block max-w-none size-full" height="32" src={imgVector8} width="30.814" />
+                      </div>
+                      <div className="absolute inset-[30.09%_0.98%_33%_40.23%]" data-name="Vector" data-node-id="239:18">
+                        <img alt="" className="absolute block max-w-none size-full" src={imgVector7} />
+                      </div>
+                      <div className="absolute inset-[0_69.49%_0_0]" data-name="Vector" data-node-id="239:19">
+                        <img alt="" className="absolute block max-w-none size-full" height="32" src={imgVector9} width="30.814" />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-3 grid-cols-[max-content] grid-rows-[max-content] inline-grid justify-self-start leading-[0] place-items-start relative row-2 self-start shrink-0" data-name="ACEMusic" data-node-id="267:24">
+                    <div className="col-1 h-[61px] ml-[51.16%] mt-[35.27%] relative row-1 w-[120px]" data-name="Vector" data-node-id="267:4">
+                      <img alt="" className="absolute block max-w-none size-full" src={imgVector} />
+                    </div>
+                    <div className="aspect-[1126/182] col-1 ml-[53.29%] mt-[96px] relative row-1 w-[98px]" data-name="iShot_2026-02-22_11.37.28 1" data-node-id="267:23">
+                      <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgIShot202602221137281} />
+                    </div>
+                  </div>
+                  <div className="col-4 grid-cols-[max-content] grid-rows-[max-content] inline-grid justify-self-start leading-[0] place-items-start relative row-2 self-start shrink-0" data-name="Acontext" data-node-id="269:97">
+                    <div className="col-1 grid-cols-[max-content] grid-rows-[max-content] inline-grid ml-[76.74%] mt-[35.27%] place-items-start relative row-1" data-name="papergen" data-node-id="269:76">
+                      <div className="col-1 h-[61px] ml-[76.74%] mt-[35.27%] relative row-1 w-[120px]" data-name="papergen" data-node-id="269:77">
+                        <img alt="" className="absolute block max-w-none size-full" src={imgPapergen} />
+                      </div>
+                    </div>
+                    <div className="col-1 grid-cols-[max-content] grid-rows-[max-content] inline-grid ml-[404px] mt-[87px] place-items-start relative row-1" data-node-id="269:75">
+                      <div className="col-1 h-[33.333px] ml-[404px] mt-[87px] relative row-1 w-[29.333px]" data-name="iShot_2026-02-22_11.46.42 1" data-node-id="269:72">
+                        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                          <img alt="" className="absolute h-full left-0 max-w-none top-0 w-[606.06%]" src={imgIShot202602221146421} />
+                        </div>
+                      </div>
+                      <div className="col-1 h-[33.333px] ml-[433.33px] mt-[87px] relative row-1 w-[74.667px]" data-name="iShot_2026-02-22_11.46.42 2" data-node-id="269:73">
+                        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                          <img alt="" className="absolute h-full left-[-138.1%] max-w-none top-0 w-[238.1%]" src={imgIShot202602221146421} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-[#f6f7f2] border border-[#c0ccb3] border-solid h-[206px] relative rounded-[10.4px] shadow-[0px_4px_14px_0px_rgba(3,6,8,0.18),0px_1px_2px_0px_rgba(3,6,8,0.18)] shrink-0 w-full" data-name="OpenSource Launch" data-node-id="222:82">
+                <div className="absolute content-stretch flex gap-[8px] h-[28px] items-center left-[11px] text-[#030608] top-[16px] tracking-[0.16px] w-[520px] whitespace-nowrap" data-name="标题" data-node-id="222:83">
+                  <p className="font-['Josefin_Slab:Regular',sans-serif] font-normal leading-[28px] relative shrink-0 text-[20px]" data-node-id="222:84">
+                    🏆
+                  </p>
+                  <p className="font-['Alimama_DongFangDaKai:Regular',sans-serif] leading-[24px] not-italic relative shrink-0 text-[16px]" data-node-id="222:85">
+                    Startup Coach
+                  </p>
+                </div>
+                <div className="absolute gap-x-[12px] gap-y-[12px] grid grid-cols-[repeat(4,minmax(0,1fr))] grid-rows-[repeat(2,fit-content(100%))] leading-[0] left-[11px] top-[54px] w-[516px]" data-node-id="222:86">
+                  <div className="col-3 grid-cols-[max-content] grid-rows-[max-content] inline-grid justify-self-start place-items-start relative row-1 self-start shrink-0" data-name="万物时" data-node-id="226:20">
+                    <div className="col-1 h-[61px] ml-[264px] mt-0 relative row-1 w-[120px]" data-node-id="226:21">
+                      <img alt="" className="absolute block max-w-none size-full" src={imgTenFrameworl} />
+                    </div>
+                    <div className="col-1 h-[39px] ml-[270px] mt-[11px] overflow-clip relative row-1 w-[107px]" data-name="Frame" data-node-id="226:33">
+                      <div className="absolute inset-[0_63.01%_0_0]" data-name="Vector" data-node-id="226:34">
+                        <img alt="" className="absolute block max-w-none size-full" height="39" src={imgVector10} width="39.584" />
+                      </div>
+                      <div className="absolute inset-[26.4%_0.78%_26.46%_45.23%]" data-name="Vector" data-node-id="226:35">
+                        <img alt="" className="absolute block max-w-none size-full" src={imgVector11} />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-4 grid-cols-[max-content] grid-rows-[max-content] inline-grid justify-self-start place-items-start relative row-1 self-start shrink-0" data-name="datastrato" data-node-id="240:942">
+                    <div className="col-1 grid-cols-[max-content] grid-rows-[max-content] inline-grid ml-[396px] mt-0 place-items-start relative row-1" data-name="ten-frameworl" data-node-id="240:943">
+                      <div className="col-1 h-[61px] ml-[396px] mt-0 relative row-1 w-[120px]" data-name="Vector" data-node-id="240:944">
+                        <img alt="" className="absolute block max-w-none size-full" src={imgVector} />
+                      </div>
+                      <div className="col-1 grid-cols-[max-content] grid-rows-[max-content] inline-grid ml-[78.1%] mt-[13.43%] place-items-start relative row-1" data-name="svgviewer-output (1) copy" data-node-id="240:945">
+                        <div className="col-1 h-[26.465px] ml-[78.1%] mt-[13.43%] relative row-1 w-[102.441px]" data-name="Group" data-node-id="240:946">
+                          <img alt="" className="absolute block max-w-none size-full" src={imgGroup1} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-1 grid-cols-[max-content] grid-rows-[max-content] inline-grid justify-self-start place-items-start relative row-2 self-start shrink-0" data-name="KUSA" data-node-id="240:808">
+                    <div className="col-1 h-[61px] ml-0 mt-[73px] relative row-1 w-[120px]" data-node-id="240:809">
+                      <img alt="" className="absolute block max-w-none size-full" src={imgTenFrameworl} />
+                    </div>
+                    <div className="col-1 h-[61px] ml-0 mt-[54.48%] overflow-clip relative row-1 w-[120px]" data-name="Frame" data-node-id="240:811">
+                      <div className="absolute inset-[0.82%_0.42%]" data-name="Vector" data-node-id="240:812">
+                        <div className="absolute inset-[-0.83%_-0.42%]">
+                          <img alt="" className="block max-w-none size-full" src={imgVector2} />
+                        </div>
+                      </div>
+                      <div className="absolute inset-[14.75%_14.17%_14.75%_15%]" data-name="kusapics-ai-anime-generator-logo" data-node-id="240:813">
+                        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                          <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgKusapicsAiAnimeGeneratorLogo} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-2 grid-cols-[max-content] grid-rows-[max-content] inline-grid justify-self-start place-items-start relative row-2 self-start shrink-0" data-name="EEZYCOLLB" data-node-id="226:79">
+                    <div className="col-1 h-[61px] ml-[132px] mt-[73px] relative row-1 w-[120px]" data-node-id="226:80">
+                      <img alt="" className="absolute block max-w-none size-full" src={imgTenFrameworl} />
+                    </div>
+                    <div className="col-1 h-[10px] ml-[145px] mt-[99px] relative row-1 w-[99px]" data-name="Frame" data-node-id="226:97">
+                      <img alt="" className="absolute block max-w-none size-full" src={imgFrame1} />
+                    </div>
+                  </div>
+                  <div className="col-3 grid-cols-[max-content] grid-rows-[max-content] inline-grid justify-self-start place-items-start relative row-2 self-start shrink-0" data-name="NOMOFLY" data-node-id="240:1212">
+                    <div className="col-1 grid-cols-[max-content] grid-rows-[max-content] inline-grid ml-[51.16%] mt-[54.48%] place-items-start relative row-1" data-node-id="240:1213">
+                      <div className="col-1 h-[61px] ml-[51.16%] mt-[54.48%] relative row-1 w-[120px]" data-name="Vector" data-node-id="240:1214">
+                        <img alt="" className="absolute block max-w-none size-full" src={imgVector} />
+                      </div>
+                      <div className="col-1 grid-cols-[max-content] grid-rows-[max-content] inline-grid ml-[270px] mt-[84px] place-items-start relative row-1" data-name="文字 logo" data-node-id="240:1215">
+                        <div className="col-1 grid-cols-[max-content] grid-rows-[max-content] inline-grid ml-[270px] mt-[84px] place-items-start relative row-1" data-name="Group" data-node-id="240:1216">
+                          <div className="col-1 h-[39.168px] ml-[52.33%] mt-[62.69%] row-1 w-[107.462px]" data-name="Rectangle" data-node-id="240:1217" />
+                          <div className="col-1 h-[20.086px] ml-[280.28px] mt-[93.62px] relative row-1 w-[86.873px]" data-name="Group" data-node-id="240:1218">
+                            <img alt="" className="absolute block max-w-none size-full" src={imgGroup2} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-4 grid-cols-[max-content] grid-rows-[max-content] inline-grid justify-self-start place-items-start relative row-2 self-start shrink-0" data-name="papergen" data-node-id="240:1300">
+                    <div className="col-1 h-[61px] ml-[76.74%] mt-[54.48%] relative row-1 w-[120px]" data-name="Vector" data-node-id="240:1301">
+                      <img alt="" className="absolute block max-w-none size-full" src={imgVector} />
+                    </div>
+                    <div className="col-1 grid-cols-[max-content] grid-rows-[max-content] inline-grid ml-[78.68%] mt-[67.91%] place-items-start relative row-1" data-name="PAPERGEN lgo" data-node-id="240:1302">
+                      <div className="col-1 h-[20.241px] ml-[78.68%] mt-[67.91%] relative row-1 w-[103.999px]" data-name="Group" data-node-id="240:1303">
+                        <div className="absolute inset-[-8.65%_0_-7.35%_-1.68%]">
+                          <img alt="" className="block max-w-none size-full" src={imgGroup4} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-1 grid-cols-[max-content] grid-rows-[max-content] inline-grid justify-self-start place-items-start relative row-1 self-start shrink-0" data-name="BONJOR" data-node-id="226:174">
+                    <div className="col-1 grid-cols-[max-content] grid-rows-[max-content] inline-grid ml-0 mt-0 place-items-start relative row-1" data-node-id="226:175">
+                      <div className="col-1 h-[61px] ml-0 mt-0 relative row-1 w-[120px]" data-name="Vector" data-node-id="226:176">
+                        <img alt="" className="absolute block max-w-none size-full" src={imgVector} />
+                      </div>
+                      <div className="col-1 grid-cols-[max-content] grid-rows-[max-content] inline-grid ml-0 mt-0 place-items-start relative row-1" data-name="SparkLab" data-node-id="226:177">
+                        <div className="col-1 h-[61px] ml-0 mt-0 relative row-1 w-[120px]" data-node-id="226:178">
+                          <img alt="" className="absolute block max-w-none size-full" src={imgTenFrameworl} />
+                        </div>
+                      </div>
+                      <div className="col-1 h-[31px] ml-[9px] mt-[15px] relative row-1 w-[103px]" data-name="image 1" data-node-id="239:56">
+                        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage1} />
+                      </div>
+                    </div>
+                    <div className="col-1 h-[61px] ml-0 mt-0 overflow-clip relative row-1 w-[120px]" data-name="Frame" data-node-id="240:779">
+                      <div className="absolute inset-[0.82%_0.42%]" data-name="Vector" data-node-id="240:780">
+                        <div className="absolute inset-[-0.83%_-0.42%]">
+                          <img alt="" className="block max-w-none size-full" src={imgVector2} />
+                        </div>
+                      </div>
+                      <div className="absolute inset-[0.82%_0.42%]" data-name="Vector" data-node-id="240:781">
+                        <div className="absolute inset-[-0.83%_-0.42%]">
+                          <img alt="" className="block max-w-none size-full" src={imgVector2} />
+                        </div>
+                      </div>
+                      <div className="absolute inset-[24.59%_6.67%_24.59%_7.5%]" data-name="Vector" data-node-id="240:782">
+                        <img alt="" className="absolute block max-w-none size-full" height="31" src={imgVector12} width="103" />
+                      </div>
+                      <div className="absolute inset-0 overflow-clip" data-name="Frame" data-node-id="240:784">
+                        <div className="absolute inset-[0.82%_0.42%]" data-name="Vector" data-node-id="240:785">
+                          <div className="absolute inset-[-0.83%_-0.42%]">
+                            <img alt="" className="block max-w-none size-full" src={imgVector2} />
+                          </div>
+                        </div>
+                        <div className="absolute inset-[0.82%_0.42%]" data-name="Vector" data-node-id="240:786">
+                          <div className="absolute inset-[-0.83%_-0.42%]">
+                            <img alt="" className="block max-w-none size-full" src={imgVector2} />
+                          </div>
+                        </div>
+                        <div className="absolute inset-[24.59%_6.67%_24.59%_7.5%]" data-name="Vector" data-node-id="240:787">
+                          <img alt="" className="absolute block max-w-none size-full" height="31" src={imgVector12} width="103" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-2 grid-cols-[max-content] grid-rows-[max-content] inline-grid justify-self-start place-items-start relative row-1 self-start shrink-0" data-name="SparkLab" data-node-id="226:159">
+                    <div className="col-1 grid-cols-[max-content] grid-rows-[max-content] inline-grid ml-[132px] mt-0 place-items-start relative row-1" data-node-id="226:160">
+                      <div className="col-1 h-[61px] ml-[132px] mt-0 relative row-1 w-[120px]" data-name="Vector" data-node-id="226:161">
+                        <img alt="" className="absolute block max-w-none size-full" src={imgVector} />
+                      </div>
+                      <div className="col-1 grid-cols-[max-content] grid-rows-[max-content] inline-grid ml-[132px] mt-0 place-items-start relative row-1" data-name="SparkLab" data-node-id="226:162">
+                        <div className="col-1 h-[61px] ml-[132px] mt-0 relative row-1 w-[120px]" data-node-id="226:163">
+                          <img alt="" className="absolute block max-w-none size-full" src={imgTenFrameworl} />
+                        </div>
+                        <div className="col-1 h-[22px] ml-[136px] mt-[20px] relative row-1 w-[104px]" data-name="Frame" data-node-id="226:165">
+                          <img alt="" className="absolute block max-w-none size-full" src={imgFrame2} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

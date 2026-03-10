@@ -1,0 +1,37 @@
+---
+import type { ProjectGroup } from "@yipei/site-content";
+
+interface Props {
+  groups: ProjectGroup[];
+}
+
+const { groups } = Astro.props;
+---
+
+<div class="project-wall" aria-label="Coached projects">
+  {groups.map((group, groupIndex) => (
+    <section class="project-wall-group">
+      <header class="project-wall-head">
+        <span class="project-wall-dot" aria-hidden="true"></span>
+        <h3>{group.title}</h3>
+      </header>
+      <div class={`project-exhibit ${groupIndex % 2 === 1 ? "is-alternate" : ""}`}>
+        {group.logos.map((logo) => (
+          <figure class:list={["project-card", logo.sourceKind === "reconstructed" && "is-reconstructed", logo.sourceKind === "raw" && "is-raw"]}>
+            <img
+              alt={logo.name}
+              class:list={[
+                "project-logo",
+                logo.fit === "cover" ? "is-cover" : "is-contain",
+                logo.sourceKind === "reconstructed" && "is-reconstructed",
+                logo.sourceKind === "raw" && "is-raw",
+              ]}
+              src={logo.src}
+              loading="lazy"
+            />
+          </figure>
+        ))}
+      </div>
+    </section>
+  ))}
+</div>
