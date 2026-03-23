@@ -6,32 +6,159 @@ Build the complete multi-page personal website from the Figma file into `/Users/
 ## Current Focus
 Cinematic Rebuild v2 for the marketing site (`apps/site`): full UI overhaul for home + services + insights + links + insight detail with a premium cinematic visual system.
 
+## Single-Entry Integration Plan (2026-03-21)
+### Phase U1: Design & Scope
+- [x] Confirm whether “one site” means single entrypoint or full app merge.
+- [x] Choose single entrypoint with split runtimes (`Astro` public entry + proxied `Next` functional routes).
+- [x] Record the design in `docs/plans/2026-03-21-single-entry-site-design.md`.
+- **Status:** complete
+
+### Phase U2: Same-Origin Links + Local Entry
+- [x] Remove `localhost:3000` fallback behavior from `apps/site` link generation.
+- [x] Add `Astro` local proxy coverage for functional app routes and `/_next`.
+- [x] Align local-visible URL defaults with `http://localhost:4321`.
+- **Status:** complete
+
+### Phase U3: Production Routing
+- [x] Add a production `site` container for `apps/site`.
+- [x] Split `nginx` routing between static public pages and functional `apps/web` routes.
+- [x] Update deployment-facing docs/config to reflect the single entrypoint.
+- **Status:** complete
+
+### Phase U4: Verification
+- [x] Verify public routes from `http://localhost:4321`.
+- [x] Verify functional routes through the same entrypoint.
+- [x] Run relevant workspace checks/builds after routing changes.
+- **Status:** complete
+
+## Vercel Site-Only Cleanup Plan (2026-03-21)
+### Phase V1: Design & Scope
+- [x] Confirm that only `apps/site` should deploy to Vercel.
+- [x] Keep `apps/web` and `apps/studio` in the repo but outside the default production path.
+- [x] Record the design in `docs/plans/2026-03-21-vercel-site-only-cleanup-design.md`.
+- **Status:** complete
+
+### Phase V2: Default Workflow Cleanup
+- [x] Change root scripts so default dev/build/check target `apps/site`.
+- [x] Remove active site docs/config that assume multi-runtime deployment by default.
+- [x] Keep explicit internal commands for `apps/web` and `apps/studio`.
+- **Status:** complete
+
+### Phase V3: Vercel Deployment Prep
+- [x] Add/clarify Vercel project configuration for `apps/site`.
+- [x] Add a Vercel deployment guide.
+- [x] Minimize active production env examples to what `apps/site` actually needs.
+- **Status:** complete
+
+### Phase V4: Archive Old Deployment Path
+- [x] Mark ECS/Nginx/Docker/Supabase deploy docs as archived or future-use.
+- [x] Update root docs to stop presenting ECS as the active production target.
+- **Status:** complete
+
+### Phase V5: Verification
+- [x] Verify default root scripts work for `apps/site`.
+- [x] Run site-only checks/build for launch readiness.
+- **Status:** complete
+
+## Mobile Header Optimization Plan (2026-03-21)
+### Phase MH1: Design & Scope
+- [x] Confirm the mobile issue is the oversized floating header in phone mode.
+- [x] Confirm the approved direction is the compact bar + expandable panel pattern.
+- [x] Record the design in `docs/plans/2026-03-21-mobile-header-optimization-design.md`.
+- **Status:** complete
+
+### Phase MH2: Implementation + Verification
+- [x] Update `SiteHeader.astro` for mobile toggle/panel behavior.
+- [x] Update `global.css` so mobile keeps a compressed top bar instead of a stacked block.
+- [x] Run `npm run check`.
+- [x] Run `npm run build`.
+- **Status:** complete
+
+## Chinese Copy Localization Cleanup Plan (2026-03-21)
+### Phase ZH1: Design & Scope
+- [x] Confirm the issue is Chinese pages still exposing English fallback labels and small titles.
+- [x] Choose the comprehensive fix: page templates + Chinese content source cleanup.
+- [x] Record the design in `docs/plans/2026-03-21-zh-copy-localization-design.md`.
+- **Status:** complete
+
+### Phase ZH2: Implementation + Verification
+- [x] Update active `apps/site` page templates to localize hard-coded eyebrow labels.
+- [x] Update Chinese `site-content` records that still expose English small labels.
+- [x] Add locale-aware project wall group titles.
+- [x] Run `npm run check`.
+- [x] Run `npm run build`.
+- **Status:** complete
+
+## Theme Switch Plan (Legacy vs Cinematic)
+### Phase T1: Snapshot & Source
+- [x] Capture current cinematic UI into `apps/site/variants/cinematic`.
+- [x] Restore legacy UI into `apps/site/variants/legacy` from local source.
+- [x] Identify and copy the primary logo into `apps/site/public/brand`.
+- **Status:** complete
+
+### Phase T2: Switch Script & NPM Hooks
+- [x] Implement `scripts/switch-site-theme.mjs` with validation and backups.
+- [x] Add `npm run theme:legacy` / `npm run theme:cinematic`.
+- [x] Optional dev/build wrappers to auto-switch before running.
+- **Status:** complete
+
+### Phase T3: Docs & Verification
+- [x] Document theme switching in `apps/site/README.md`.
+- [x] Verify both themes build with `npm run build:site`.
+- **Status:** complete
+
+## Scroll Narrative Upgrade (Cinematic)
+### Phase S1: Markup + Script
+- [x] Add `data-chapter` / `data-stage` / `data-reveal` across cinematic pages and components.
+- [x] Add lightweight scroll narrative script for sticky stages and reveal pacing.
+- [x] Sync cinematic snapshot after changes.
+- **Status:** complete
+
+### Phase S2: QA + Verification
+- [x] Run `npm run build:site:cinematic`.
+- [ ] Scroll QA for desktop + mobile.
+- **Status:** in_progress
+
+## Project Wall White Gallery Redesign (2026-03-21)
+### Phase PW1: Design + Surface Treatment
+- [x] Confirm the approved direction is one unified white gallery slab.
+- [x] Save the approved design doc for the project wall redesign.
+- [x] Move the white treatment from per-logo tiles to the wall-level surface.
+- [x] Keep the current hover slowdown behavior intact.
+- **Status:** complete
+
+### Phase PW2: Sync + Verification
+- [x] Sync the cinematic variant snapshot after implementation.
+- [x] Run `npm run build:site`.
+- [ ] Visually verify that the wall reads as one white exhibit surface on desktop and mobile.
+- **Status:** in_progress
+
 ## Cinematic Rebuild v2 Plan (apps/site)
 ### Phase C1: Audit & Mapping
-- [ ] Inventory current `apps/site` pages, shared components, and global styles.
-- [ ] Map existing sections to new cinematic scene structure per design.
-- [ ] Confirm asset availability and identify gaps.
-- **Status:** pending
+- [x] Inventory current `apps/site` pages, shared components, and global styles.
+- [x] Map existing sections to new cinematic scene structure per design.
+- [x] Confirm asset availability and identify gaps.
+- **Status:** complete
 
 ### Phase C2: Visual System + Shell
-- [ ] Define new design tokens (color, typography, spacing, radii, shadows).
-- [ ] Update `BaseLayout`, header, footer, and shell scaffolding.
-- [ ] Add motion primitives with reduced-motion fallbacks.
-- **Status:** pending
+- [x] Define new design tokens (color, typography, spacing, radii, shadows).
+- [x] Update `BaseLayout`, header, footer, and shell scaffolding.
+- [x] Add motion primitives with reduced-motion fallbacks.
+- **Status:** complete
 
 ### Phase C3: Homepage Scenes
-- [ ] Implement cinematic opening stage with hero portrait + CTA focus.
-- [ ] Rebuild proof wall as exhibition-style layout.
-- [ ] Convert stats/method into narrative chapter modules.
-- [ ] Reframe services preview as invitation.
-- [ ] Build editorial atlas and closing invitation.
-- **Status:** pending
+- [x] Implement cinematic opening stage with hero portrait + CTA focus.
+- [x] Rebuild proof wall as exhibition-style layout.
+- [x] Convert stats/method into narrative chapter modules.
+- [x] Reframe services preview as invitation.
+- [x] Build editorial atlas and closing invitation.
+- **Status:** complete
 
 ### Phase C4: Inner Pages (Services/Insights/Links/Detail)
-- [ ] Services proposal-style flow.
-- [ ] Insights + Links editorial directory system.
-- [ ] Insight detail hero, reading rail, and related CTA.
-- **Status:** pending
+- [x] Services proposal-style flow.
+- [x] Insights + Links editorial directory system.
+- [x] Insight detail hero, reading rail, and related CTA.
+- **Status:** complete
 
 ### Phase C5: QA + Verification
 - [ ] Run `npm run build:site`.
@@ -103,6 +230,8 @@ Phase 3
 | Split `paid` and `fulfilled` states in the orders domain | Payment confirmation and product delivery are different operational steps |
 | Require authenticated order ownership for result/history pages | Prevents public leakage of purchase and payment records |
 | Split the repo into `apps/site` (Astro public site) and `apps/web` (Next functional app) | Best balance of performance, maintainability, and migration risk for a 2 core / 2 GB server |
+| Keep split runtimes but expose a single visible entrypoint | Solves the current two-site navigation problem without a high-risk framework migration |
+| Current production launch should ship only `apps/site` to Vercel | Fastest path to a clean launch while keeping future app/studio code available |
 
 ## Errors Encountered
 | Error | Attempt | Resolution |
@@ -139,8 +268,21 @@ Phase 3
   - `growth-pack`
   - `retainer`
 - The lightweight bridge between `apps/site` and `apps/web` now uses a shared session marker cookie (`iris_app_session`) to keep public CTA state and feature-app entry points aligned without turning the Astro site into a heavy authenticated app.
+- Single-entry integration is now the next routing phase:
+  - local users should only open `http://localhost:4321`
+  - public and functional paths should share one visible origin
+  - production `nginx` must stop proxying the entire site to `apps/web`
+- Single-entry integration is now implemented for local/proxy/deploy config:
+  - `apps/site` defaults to same-origin app links
+  - local `Astro` proxying to `apps/web` was added during the dual-runtime integration pass
+  - production compose now includes a `site` container and split `nginx` routing
+- The current release target has changed again:
+  - production deployment should now be `apps/site` only
+  - Vercel is the active target
+  - `apps/web`, `apps/studio`, and ECS infrastructure become retained but non-default paths
 - Approved auth/member redesign is documented in `docs/plans/2026-03-10-auth-identity-redesign-design.md`.
 - Approved project asset restoration is documented in `docs/plans/2026-03-10-project-asset-restoration-design.md`.
+- Approved white gallery redesign for the project wall is documented in `docs/plans/2026-03-21-project-wall-white-gallery-design.md`.
 - Auth UI direction is now `Apple Executive Identity`:
   - identity-led sign-in
   - premium callback state
@@ -155,3 +297,162 @@ Phase 3
   - `reconstructed` screenshot-backed project tiles from original Figma node `209:75`
   - `raw` pulled project exports from node `7:556`
   - raw Iris portrait for the hero image
+
+## Architecture Review Plan (2026-03-20)
+### Phase R1: Topology & Workspace Boundaries
+- [x] Inspect root workspace scripts and package layout.
+- [x] Inventory application/package folders and deploy/config surfaces.
+- **Status:** complete
+
+### Phase R2: Coupling & Extensibility Audit
+- [x] Review `apps/site`, `apps/web`, and shared packages for ownership boundaries and duplication.
+- [x] Identify hotspots that make new pages/features costly.
+- **Status:** complete
+
+### Phase R3: Maintainability Audit
+- [x] Review config, scripts, docs, and test coverage posture.
+- [x] Identify operational and developer-experience risks.
+- **Status:** complete
+
+### Phase R4: Reporting
+- [x] Summarize findings ordered by severity.
+- [x] Propose prioritized refactors with expected payoff.
+- **Status:** complete
+
+## Maintainability Hardening Plan (2026-03-20)
+### Phase H1: Scope & Design
+- [x] Choose a conservative maintenance-first scope that avoids in-progress UI files.
+- [x] Record the chosen approach in a design doc.
+- **Status:** complete
+
+### Phase H2: Validation & Script Hardening
+- [x] Add workspace-level checks for `apps/site`, `apps/web`, and `apps/studio`.
+- [x] Make theme switching safer so it does not silently overwrite dirty work.
+- **Status:** complete
+
+## Header Brand Presence Plan (2026-03-20)
+### Phase B1: Audit & Design
+- [x] Inspect the active header implementation and live rendering.
+- [x] Confirm the user wants a stronger brand-presence treatment rather than a minimal visibility fix.
+- [x] Save the approved design in `docs/plans/2026-03-20-header-logo-presence-design.md`.
+- **Status:** complete
+
+### Phase B2: Implementation & QA
+- [x] Strengthen the cinematic header badge and enlarge the logo in the active theme.
+- [x] Sync the cinematic theme snapshot with the active theme styles.
+- [x] Verify the built output and live `/zh` response include the updated header styles.
+- [ ] Capture reliable screenshot-based desktop/mobile visual QA in this environment.
+- **Status:** in_progress
+
+## Additional Decisions (2026-03-20)
+| Decision | Rationale |
+|----------|-----------|
+| Preserve the existing logo asset colors and solve visibility with a brighter badge treatment | Keeps the mark distinctive and avoids a flat generic white logo |
+| Increase rendered logo size before considering markup changes | The current problem is primarily scale plus contrast, not missing content |
+
+### Phase H3: Documentation Alignment
+- [x] Update repo docs to reflect the real runtime architecture and current content source-of-truth.
+- [x] Document theme switching as a guarded local workflow rather than the default edit path.
+- **Status:** complete
+
+### Phase H4: Verification
+- [x] Run targeted checks for the updated scripts and package manifests.
+- [x] Summarize residual risks and next recommended refactors.
+- **Status:** complete
+
+## Architecture Review Conclusions (2026-03-20)
+- Extensibility: medium.
+  - The app/site split is directionally correct and gives room to scale public marketing separately from authenticated flows.
+  - That benefit is currently reduced by duplicated content sources and snapshot-based theme management.
+- Maintainability: medium-low.
+  - The repo has useful docs and infrastructure scaffolding, but code/document drift and missing cross-workspace validation raise the cost of safe change.
+- Highest-priority structural risks:
+  - Sanity Studio exists, but production-facing marketing content is still hard-coded in `packages/site-content`.
+  - Theme switching copies whole source trees between `apps/site/src` and `apps/site/variants/*`, creating drift risk.
+  - `apps/site` concentrates visual behavior into a single large stylesheet and inline layout script, increasing blast radius for UI changes.
+
+## Console Error Remediation Plan (2026-03-21)
+### Phase E1: Root Cause Isolation
+- [x] Identify whether the extractor stack belongs to repo code or an injected extension script.
+- [x] Confirm the source of the separate `css2` timeout.
+- **Status:** complete
+
+### Phase E2: Approved Fix Selection
+- [x] Confirm whether to patch the local Chrome extension, the site font loading, or both.
+- [x] Record the chosen low-risk remediation scope.
+- **Status:** complete
+
+### Phase E3: Implementation
+- [x] Apply the approved defensive message parsing fix.
+- [x] Apply the approved font-loading mitigation if requested.
+- [x] Verify the errors no longer reproduce in the intended target.
+- **Status:** complete
+
+## Background Flow Plan (2026-03-21)
+### Phase G1: Design
+- [x] Inspect the current cinematic background layers and motion posture.
+- [x] Confirm the user wants the lightest "breathing drift" option instead of a stronger fluid or parallax effect.
+- [x] Save the approved design in `docs/plans/2026-03-21-background-flow-design.md`.
+- **Status:** complete
+
+### Phase G2: Implementation & Verification
+- [x] Add subtle transform/opacity drift to the existing shell glow and aura layers.
+- [x] Mirror the change to the cinematic theme snapshot stylesheet.
+- [x] Verify the site still passes `npm run check:site`.
+- **Status:** complete
+
+### Phase G3: Visibility Tuning
+- [x] Reassess motion after user feedback that the first pass was too subtle.
+- [x] Increase aura prominence and drift amplitude while keeping the same cinematic direction.
+- [x] Re-run `npm run check:site` after the stronger pass.
+- **Status:** complete
+
+## Logo-Led Blue-Green Palette Plan (2026-03-24)
+### Phase BP1: Design & Brand Rules
+- [x] Confirm that the logo asset itself must remain unchanged.
+- [x] Confirm that the site palette must be derived from the current logo colors rather than a generic blue-green system.
+- [x] Define approved color roles and component mapping for header, controls, links, and background atmosphere.
+- [x] Save the approved design in `docs/plans/2026-03-24-logo-led-blue-green-brand-palette-design.md`.
+- **Status:** complete
+
+### Phase BP2: Implementation & Verification
+- [ ] Replace warm gold cinematic tokens with the approved logo-led blue-green palette.
+- [ ] Update header badge/support surfaces so the unchanged logo sits inside a cool misted brand frame.
+- [ ] Update interactive accents, hover/focus states, and atmospheric glows to follow the approved palette rules.
+- [ ] Mirror the same palette changes to `apps/site/variants/cinematic`.
+- [ ] Run site checks/build and perform desktop/mobile visual QA.
+- **Status:** pending
+
+## Maintainability Hardening Results (2026-03-20)
+- Added root-level validation orchestration:
+  - `check:site`
+  - `check:web`
+  - `check:studio`
+  - `check`
+- Added package-local `typecheck` / `check` scripts for `apps/site` and `apps/studio`.
+- Installed `@astrojs/check` and local `typescript` into `@yipei/site` so Astro validation runs without prompting.
+- Excluded `apps/site/variants` from Astro type-checking because the snapshot trees are archival and intentionally depend on `src/lib`.
+- Hardened `scripts/switch-site-theme.mjs`:
+  - no-op if the requested theme is already active
+  - aborts on dirty `apps/site` theme files unless `--force` is supplied
+- Updated repo docs to reflect:
+  - route/runtime ownership
+  - current public content source-of-truth
+  - theme switching safety rules
+- Repointed local Figma asset helper scripts to `apps/site/public/figma-assets`.
+
+## Residual Risks
+- Public content is still runtime-hardcoded in `packages/site-content`; this pass only documented that truth.
+- Theme snapshots still duplicate entire source trees; the new guard reduces accidental overwrite but not long-term drift.
+- `apps/site` check currently passes with hints only:
+  - `AppBridge.astro` inline script hint
+  - `BaseLayout.astro` inline script hint
+  - unused `locale` prop in `SiteFooter.astro`
+
+## Errors Encountered
+| Error | Attempt | Resolution |
+|-------|---------|------------|
+| `sed` failed on paths containing `[locale]` because zsh treated brackets as globs during review | 13 | Re-ran commands with quoted literal paths |
+| Monolithic patching of `README.md` failed because the live file contents no longer matched the expected patch context | 14 | Re-ran as smaller patches and explicitly rewrote the affected README files |
+| `apps/site` validation initially stalled because `astro check` prompted for missing dependencies | 15 | Installed `@astrojs/check` and `typescript` into `@yipei/site` |
+| `apps/site` validation then failed because `apps/site/variants` snapshots are not standalone compilable trees | 16 | Excluded `variants` from Astro type-checking so `check:site` targets runtime source files only |

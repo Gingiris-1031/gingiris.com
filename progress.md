@@ -196,8 +196,456 @@
     - `components/home/cinematic-home.tsx`
     - `components/services/cinematic-services-page.tsx`
     - `components/services/hero-project-wall.tsx`
-    - `components/services/project-showcase.tsx`
-    - `components/services/brand-matrix.tsx`
+  - `components/services/project-showcase.tsx`
+  - `components/services/brand-matrix.tsx`
+
+## Session: 2026-03-11 (site theme switch)
+
+### Phase T1-T3: Theme Snapshots + Switcher
+- **Status:** in_progress
+- Actions taken:
+  - Copied primary logo `1197.png` to `apps/site/public/brand/logo-primary.png` and wired header to use the image.
+  - Populated `apps/site/variants/legacy` from initial git commit (`4d0ed32`).
+  - Refreshed `apps/site/variants/cinematic` from current `apps/site/src`.
+  - Added `scripts/switch-site-theme.mjs` and npm scripts for `theme:*`, `dev:site:*`, `build:site:*`.
+  - Added `apps/site/README.md` with switching instructions.
+- Tests:
+  - `npm run build:site:legacy` (pass)
+  - `npm run build:site:cinematic` (pass)
+
+## Session: 2026-03-11 (scroll narrative)
+
+### Phase S1: Markup + Script
+- **Status:** in_progress
+- Actions taken:
+
+## Session: 2026-03-21 (single-entry integration)
+
+### Phase U1: Design & Scope
+- **Status:** complete
+- **Started:** 2026-03-21 10:56 CST
+- Actions taken:
+  - Reproduced the reported “This site can’t be reached / localhost refused to connect” flow.
+  - Confirmed the active `apps/site/src` theme differs from preserved theme snapshots.
+  - Located the single-entry regressions:
+    - preserved theme snapshots still default functional links to `http://localhost:3000`
+    - local dev has no public proxy from `apps/site` to `apps/web`
+    - production `nginx` still sends all traffic to `apps/web`
+  - Compared implementation options and confirmed the user-approved direction:
+    - one visible entrypoint
+    - keep split runtimes
+    - no full framework merge
+  - Wrote design doc `docs/plans/2026-03-21-single-entry-site-design.md`.
+- Files created/modified:
+  - `docs/plans/2026-03-21-single-entry-site-design.md` (created)
+
+## Session: 2026-03-21 (mobile header optimization)
+
+### Phase MH1: Design & Scope
+- **Status:** complete
+- **Started:** 2026-03-21 11:40 CST
+- Actions taken:
+  - Reviewed the active `apps/site` header component and responsive header CSS.
+  - Confirmed the phone-mode issue is caused by stacked header breakpoints, not a broken link target.
+  - Reused the already approved design direction:
+    - compact floating mobile bar
+    - expandable nav/contact panel
+    - scroll-based condensed state
+  - Wrote the design doc `docs/plans/2026-03-21-mobile-header-optimization-design.md`.
+- Files created/modified:
+  - `docs/plans/2026-03-21-mobile-header-optimization-design.md` (created)
+  - `task_plan.md` (updated)
+  - `findings.md` (updated)
+  - `progress.md` (updated)
+
+### Phase MH2: Implementation + Verification
+- **Status:** complete
+- Actions taken:
+  - Scoped the implementation to `SiteHeader.astro` and `global.css`.
+  - Added a mobile-only menu toggle and expandable nav/contact panel to `SiteHeader.astro`.
+  - Added inline mobile header state logic for:
+    - open/close
+    - scroll-based condensed mode
+    - close on nav or locale click
+  - Updated `global.css` so phone widths override the old stacked header behavior and keep a compressed floating bar.
+  - Added mobile panel/button styles and tightened mobile logo/control sizing.
+- Files created/modified:
+  - `apps/site/src/components/SiteHeader.astro` (updated)
+  - `apps/site/src/styles/global.css` (updated)
+  - `task_plan.md` (updated)
+  - `findings.md` (updated)
+  - `progress.md` (updated)
+- Verification:
+  - `npm run check` (pass; existing Astro hints only, no errors)
+  - `npm run build` (pass)
+  - `curl -s http://127.0.0.1:4321/zh` confirmed the built page includes the new mobile header markup and CSS asset reference.
+- Notes:
+  - Attempted live mobile screenshot verification, but local headless Chrome capture against `http://127.0.0.1` was not reliable in this environment.
+
+## Session: 2026-03-21 (Chinese copy localization cleanup)
+
+### Phase ZH1: Design & Scope
+- **Status:** complete
+- **Started:** 2026-03-21 15:05 CST
+- Actions taken:
+  - Audited the active site templates and shared content sources for English fallback labels on the Chinese site.
+  - Confirmed the issue is not limited to page templates; Chinese data records also contain visible English small labels.
+  - Compared a template-only fix against a template + content-source fix and confirmed the broader cleanup direction with the user.
+  - Wrote the design doc `docs/plans/2026-03-21-zh-copy-localization-design.md`.
+- Files created/modified:
+  - `docs/plans/2026-03-21-zh-copy-localization-design.md` (created)
+  - `task_plan.md` (updated)
+  - `findings.md` (updated)
+  - `progress.md` (updated)
+
+### Phase ZH2: Implementation + Verification
+- **Status:** complete
+- Actions taken:
+  - Identified the active implementation files for the copy cleanup pass across `apps/site` and `packages/site-content`.
+  - Localized active Chinese page eyebrow labels in:
+    - `apps/site/src/pages/[locale]/index.astro`
+    - `apps/site/src/pages/[locale]/services.astro`
+    - `apps/site/src/pages/[locale]/links.astro`
+    - `apps/site/src/pages/[locale]/insights.astro`
+  - Cleaned up Chinese content records in:
+    - `packages/site-content/src/home.ts`
+    - `packages/site-content/src/services.ts`
+    - `packages/site-content/src/editorial.ts`
+  - Added locale-aware project wall group titles in:
+    - `packages/site-content/src/projects.ts`
+    - `apps/site/src/components/ProjectWall.astro`
+  - Rechecked the built Chinese output for the previously reported English fallback labels.
+- Files created/modified:
+  - `apps/site/src/pages/[locale]/index.astro` (updated)
+  - `apps/site/src/pages/[locale]/services.astro` (updated)
+  - `apps/site/src/pages/[locale]/links.astro` (updated)
+  - `apps/site/src/pages/[locale]/insights.astro` (updated)
+  - `apps/site/src/components/ProjectWall.astro` (updated)
+  - `packages/site-content/src/home.ts` (updated)
+  - `packages/site-content/src/services.ts` (updated)
+  - `packages/site-content/src/editorial.ts` (updated)
+  - `packages/site-content/src/projects.ts` (updated)
+  - `task_plan.md` (updated)
+  - `findings.md` (updated)
+  - `progress.md` (updated)
+- Verification:
+  - `npm run check` (pass; existing Astro hints only, no errors)
+  - `npm run build` (pass)
+  - `rg -n 'Operating Range|Proof Wall|Resource Atlas|Editorial Surface|Invitation|Engagement|Start Here|How It Starts|Flow|Proof|FAQ|Next|Boutique Advisory|Global Launch|Open-source Ops|Founder Positioning|Research|Launch|Conversion|Global Growth|OpenSource Launch|Startup Coach|Product Hunt Coach' apps/site/dist/zh` (no matches)
+  - `task_plan.md` (updated)
+  - `findings.md` (updated)
+  - `progress.md` (updated)
+
+### Phase U2-U4: Implementation + Verification
+- **Status:** complete
+- Actions taken:
+  - Updated `apps/site/src/lib/app.ts` so functional links default to same-origin paths unless an explicit app origin is provided.
+  - Updated `AppBridge` implementations to build absolute URLs safely for both relative and absolute app targets.
+  - Removed `http://localhost:3000` default fallbacks from preserved `legacy` and `cinematic` theme snapshots.
+  - Added local `Astro` proxy coverage for:
+    - `/{locale}/auth`
+    - `/{locale}/checkout`
+    - `/{locale}/payment`
+    - `/{locale}/me`
+    - `/api`
+    - `/_next`
+  - Added `infrastructure/docker/site.Dockerfile` and wired a `site` service into ECS compose.
+  - Split production `nginx` routing so public routes go to `site`, while functional routes and `/_next` stay on `web`.
+  - Aligned local-visible `SITE_URL` defaults/docs from `3000` to `4321`.
+  - Verified the local unified entrypoint while `npm run dev` was running:
+    - `HEAD /api/health` through `http://127.0.0.1:4321` -> `200`
+    - `HEAD /zh/auth` through `http://127.0.0.1:4321` -> `200`
+  - Ran validation commands:
+    - `npm run check:site`
+    - `npm run typecheck:web`
+- Files created/modified:
+  - `apps/site/astro.config.mjs`
+  - `apps/site/src/lib/app.ts`
+  - `apps/site/src/components/AppBridge.astro`
+  - `apps/site/variants/cinematic/components/AppBridge.astro`
+  - `apps/site/variants/legacy/components/AppBridge.astro`
+  - `apps/site/variants/cinematic/layouts/BaseLayout.astro`
+  - `apps/site/variants/legacy/layouts/BaseLayout.astro`
+  - `apps/site/variants/cinematic/pages/[locale]/index.astro`
+  - `apps/site/variants/cinematic/pages/[locale]/services.astro`
+  - `apps/site/variants/legacy/pages/[locale]/index.astro`
+  - `apps/site/variants/legacy/pages/[locale]/services.astro`
+  - `apps/web/src/lib/public-site.ts`
+  - `apps/web/src/lib/env/server.ts`
+  - `apps/web/.env.example`
+  - `apps/web/.env.local`
+  - `infrastructure/docker/site.Dockerfile`
+  - `infrastructure/docker/docker-compose.ecs.yml`
+  - `infrastructure/nginx/default.conf`
+  - `README.md`
+  - `apps/site/README.md`
+  - `docs/ops/supabase-auth-deploy.md`
+
+## Session: 2026-03-21 (Vercel site-only cleanup)
+
+### Phase V1: Design & Scope
+- **Status:** complete
+- Actions taken:
+  - Confirmed that only `apps/site` should be prepared for current production launch.
+  - Confirmed `apps/web` and `apps/studio` should remain in the repo but outside the default deployment path.
+  - Researched official Vercel/Astro monorepo deployment constraints for a site-only Vercel setup.
+  - Wrote design doc `docs/plans/2026-03-21-vercel-site-only-cleanup-design.md`.
+- Files created/modified:
+  - `docs/plans/2026-03-21-vercel-site-only-cleanup-design.md` (created)
+  - `task_plan.md` (updated)
+  - `findings.md` (updated)
+  - `progress.md` (updated)
+
+### Phase V2-V5: Cleanup + Verification
+- **Status:** complete
+- Actions taken:
+  - Changed root defaults so `npm run dev`, `npm run build`, and `npm run check` now target `apps/site`.
+  - Added `apps/site/vercel.json` and a dedicated Vercel deploy guide at `docs/ops/vercel-site-deploy.md`.
+  - Rewrote `README.md` and `apps/site/README.md` so current production clearly means `apps/site` on Vercel.
+  - Downgraded ECS/Supabase deploy guidance to archived status instead of active production guidance.
+  - Simplified `apps/site/astro.config.mjs` back to a static-site-first config so the active shipped site no longer treats `apps/web` proxying as the default posture.
+  - Minimized root production/staging env examples to the current site-only reality.
+  - Ran verification with the new defaults:
+    - `npm run check`
+    - `npm run build`
+    - `npm run dev`
+  - Confirmed the new default `npm run dev` launches only `apps/site` and serves on `http://localhost:4321/` when the old sessions are stopped.
+- Files created/modified:
+  - `package.json`
+  - `README.md`
+  - `apps/site/README.md`
+  - `apps/site/astro.config.mjs`
+  - `apps/site/vercel.json`
+  - `docs/ops/vercel-site-deploy.md`
+  - `docs/ops/environments.md`
+  - `docs/ops/supabase-auth-deploy.md`
+  - `.env.production.example`
+  - `.env.staging.example`
+  - `.gitignore`
+
+## Session: 2026-03-21 (console error investigation)
+
+### Phase: Root Cause Analysis
+- **Status:** complete
+- **Started:** 2026-03-21
+- Actions taken:
+  - Searched the repo for the reported hashed bundle names and extractor log strings.
+  - Confirmed the `yipei` source tree does not contain the reported extractor bundle or injected API script.
+  - Located the exact files under Chrome extensions:
+    - unpacked `文章同步助手 / Wechatsync` 2.0.4 and 2.0.6
+    - installed extension `hchobocdmclopcbnibdnoafilagadion` 2.0.6
+  - Inspected the bundled extractor content script and identified the failing code path:
+    - global `message` listener
+    - unconditional `JSON.parse(event.data)` for string payloads
+    - noisy logged catch block on malformed payloads
+  - Inspected the site layout and confirmed the separate `css2` timeout comes from a remote Google Fonts stylesheet in `apps/site/src/layouts/BaseLayout.astro`.
+- Files created/modified:
+  - `findings.md` (updated)
+  - `progress.md` (updated)
+
+### Phase: Remediation
+- **Status:** complete
+- Actions taken:
+  - Patched the Wechatsync 2.0.6 unpacked extractor bundle.
+  - Patched the Wechatsync 2.0.6 installed extractor bundle.
+  - Patched the Wechatsync 2.0.4 unpacked extractor bundle.
+  - Removed remote Google Fonts stylesheet links from the active `apps/site` layout and the cinematic snapshot layout.
+  - Ran `npm run check:site`; it passed with 0 errors, 0 warnings, and 3 existing hints.
+- Files created/modified:
+  - `/Users/hw/Library/Application Support/Google/Chrome/Default/UnpackedExtensions/wechatsync-2.0.6_pcMsy2/assets/extractor.ts-Cl_jilX_.js`
+  - `/Users/hw/Library/Application Support/Google/Chrome/Default/Extensions/hchobocdmclopcbnibdnoafilagadion/2.0.6_0/assets/extractor.ts-Cl_jilX_.js`
+  - `/Users/hw/Library/Application Support/Google/Chrome/Default/UnpackedExtensions/wechatsync-2.0.4_ydyTTb/assets/extractor.ts-NasmuukF.js`
+  - `apps/site/src/layouts/BaseLayout.astro`
+  - `apps/site/variants/cinematic/layouts/BaseLayout.astro`
+
+## New Error Log
+| Timestamp | Error | Attempt | Resolution |
+|-----------|-------|---------|------------|
+| 2026-03-21 | `[Extractor] Error handling editor message: SyntaxError: Unexpected end of JSON input` | 1 | Traced to Chrome extension `Wechatsync`; patched local 2.0.4/2.0.6 bundles to ignore malformed or irrelevant message payloads |
+| 2026-03-21 | `css2:1 Failed to load resource: net::ERR_CONNECTION_TIMED_OUT` | 1 | Traced to remote Google Fonts stylesheet in `apps/site`; removed the remote font links so CSS fallbacks are used locally |
+
+## Session: 2026-03-21 (background flow polish)
+
+### Phase: Design + Implementation
+- **Status:** complete
+- Actions taken:
+  - Reviewed the active cinematic background layers in `apps/site/src/styles/global.css`.
+  - Presented three motion approaches and got approval for the lightest CSS-only drift option.
+  - Wrote `docs/plans/2026-03-21-background-flow-design.md`.
+  - Added slow breathing/drift keyframes for `.page-shell::before`, `.page-aura-left`, and `.page-aura-right`.
+  - Mirrored the animation changes into the cinematic theme snapshot stylesheet.
+  - Ran `npm run check:site`; it passed with 0 errors, 0 warnings, and 3 pre-existing hints.
+- Files created/modified:
+  - `docs/plans/2026-03-21-background-flow-design.md`
+  - `apps/site/src/styles/global.css`
+  - `apps/site/variants/cinematic/styles/global.css`
+
+### Phase: Visibility Tuning
+- **Status:** complete
+- Actions taken:
+  - Reviewed the first-pass motion values after user feedback that the effect was not perceptible enough.
+  - Updated the design doc to reflect the stronger, still CSS-only drift target.
+  - Shortened animation durations, increased transform/opacity range, and moved both aura layers further into the viewport.
+  - Re-ran `npm run check:site`; it still passed with 0 errors, 0 warnings, and 3 pre-existing hints.
+- Files created/modified:
+  - `docs/plans/2026-03-21-background-flow-design.md`
+  - `apps/site/src/styles/global.css`
+  - `apps/site/variants/cinematic/styles/global.css`
+
+## Session: 2026-03-20 (header brand presence)
+
+### Phase B1: Audit & Design
+- **Status:** complete
+- Actions taken:
+  - Inspected the active `apps/site` header component and cinematic global styles.
+  - Confirmed the active theme is `cinematic` and the logo is rendered at `30px` tall inside a dark pill badge.
+  - Started the local Astro site with escalated port binding and visually checked `/zh/` in a browser screenshot.
+  - Proposed options, got approval for the "brand badge strengthening" approach, and saved the design doc.
+- Files created/modified:
+  - `docs/plans/2026-03-20-header-logo-presence-design.md` (created)
+  - `task_plan.md` (updated)
+  - `findings.md` (updated)
+  - `progress.md` (updated)
+
+### Phase B2: Implementation & QA
+- **Status:** in_progress
+- Actions taken:
+  - Updated `apps/site/src/styles/global.css` to turn the header logo pill into a brighter premium badge and enlarge the logo.
+  - Synced the same brand-badge changes into `apps/site/variants/cinematic/styles/global.css`.
+  - Ran `npm run build` in `apps/site` successfully.
+  - Started the local Astro dev server on port `4321` and confirmed `GET /zh` returned `200` with the updated `.site-brand` and `.site-brand-logo` CSS in the live response.
+  - Attempted screenshot-based QA through both `file://` build output and headless Chrome against the local server.
+  - `file://` preview was not trustworthy because Astro emits absolute asset paths, and the direct headless Chrome capture did not complete reliably in this environment.
+- Files created/modified:
+  - `apps/site/src/styles/global.css` (updated)
+  - `apps/site/variants/cinematic/styles/global.css` (updated)
+  - `task_plan.md` (updated)
+  - `findings.md` (updated)
+  - `progress.md` (updated)
+- Tests:
+  - `npm run build` in `apps/site` (pass)
+  - `curl -i http://127.0.0.1:4321/zh` (pass; updated CSS present in response)
+
+## Session: 2026-03-20 (architecture review)
+
+### Phase R1: Topology & Workspace Boundaries
+- **Status:** complete
+- **Started:** 2026-03-20 21:xx CST
+- Actions taken:
+  - Reviewed existing planning files to avoid clobbering prior context.
+  - Inspected root `package.json`, `README.md`, workspace manifests, and repo file inventory.
+  - Confirmed active multi-app split across Astro marketing site, Next.js app, and Sanity Studio.
+  - Confirmed root scripts/build checks are not yet uniformly enforced across all workspaces.
+- Files created/modified:
+  - `task_plan.md` (updated)
+  - `findings.md` (updated)
+  - `progress.md` (updated)
+
+### Phase R2: Coupling & Extensibility Audit
+- **Status:** in_progress
+- Actions taken:
+  - Began targeted review of `apps/site`, `apps/web`, and shared packages to identify coupling and duplication hotspots.
+
+### Phase R2-R4: Findings, Maintainability Audit, and Reporting
+- **Status:** complete
+- Actions taken:
+  - Verified public marketing routes in `apps/web` are redirects and actual public content lives in `apps/site`.
+  - Confirmed `apps/site` consumes hard-coded locale content from `packages/site-content`.
+  - Confirmed `apps/studio` still defines Sanity schemas, but current runtime review found no active `apps/web/src/modules/content` directory despite README claims.
+  - Reviewed snapshot-based theme switching and identified whole-tree copy behavior as a major drift risk.
+  - Measured styling concentration: `apps/site/src/styles/global.css` is `1110` lines and `apps/web/src/app/globals.css` is `1006` lines.
+  - Searched for repo test/spec files and found none under `apps/` or `packages/`.
+  - Collected line-referenced evidence for final architecture assessment.
+- Files created/modified:
+  - `task_plan.md` (updated)
+  - `findings.md` (updated)
+  - `progress.md` (updated)
+
+## Session: 2026-03-20 (maintainability hardening)
+
+### Phase H1: Scope & Design
+- **Status:** complete
+- Actions taken:
+  - Chose a conservative hardening pass to avoid conflicting with in-progress UI work.
+  - Reviewed root/package manifests, current theme-switch script, and local site docs.
+  - Confirmed the initial implementation batch should focus on checks, docs, and switch-script safety rather than CMS/runtime refactors.
+- Files created/modified:
+  - `task_plan.md` (updated)
+  - `findings.md` (updated)
+  - `progress.md` (updated)
+
+### Phase H2-H4: Hardening, Docs, and Verification
+- **Status:** complete
+- Actions taken:
+  - Added root `check:site`, `check:web`, `check:studio`, and `check` orchestration.
+  - Added `typecheck` / `check` scripts to `apps/site` and `apps/studio`.
+  - Installed `@astrojs/check` and local `typescript` into `@yipei/site`.
+  - Updated `apps/site/tsconfig.json` to exclude `variants/` from Astro validation because the snapshot trees are archival rather than standalone compile targets.
+  - Hardened `scripts/switch-site-theme.mjs` to no-op on the active theme and abort on dirty theme files unless `--force` is supplied.
+  - Rewrote `README.md` and `apps/site/README.md` to match the real runtime architecture and current content source of truth.
+  - Repointed Figma asset helper scripts to `apps/site/public/figma-assets`.
+  - Verified the theme-switch guard by attempting a dirty-tree switch to `legacy` and observing the expected refusal.
+- Files created/modified:
+  - `docs/plans/2026-03-20-maintainability-hardening-design.md` (created)
+  - `package.json` (updated)
+  - `package-lock.json` (updated by dependency install)
+  - `apps/site/package.json` (updated)
+  - `apps/site/tsconfig.json` (updated)
+  - `apps/studio/package.json` (updated)
+  - `scripts/switch-site-theme.mjs` (updated)
+  - `scripts/download-figma-manifest-assets.py` (updated)
+  - `scripts/extract-figma-assets.py` (updated)
+  - `README.md` (updated)
+  - `apps/site/README.md` (created)
+  - `task_plan.md` (updated)
+  - `findings.md` (updated)
+  - `progress.md` (updated)
+- Tests:
+  - `npm run check:web` (pass)
+  - `npm run check:studio` (pass)
+  - `npm run check:site` (pass with hints only)
+  - `npm run check` (pass with site hints only)
+  - `python3 -m py_compile scripts/download-figma-manifest-assets.py scripts/extract-figma-assets.py` (pass)
+  - `node scripts/switch-site-theme.mjs legacy` (expected guarded failure on dirty theme files)
+  - `node scripts/switch-site-theme.mjs cinematic` (pass; no-op)
+
+## Session: 2026-03-20 (local runtime bring-up)
+
+### Runtime Verification
+- **Status:** complete
+- **Started:** 2026-03-20 21:12 CST
+- Actions taken:
+  - Re-read monorepo startup scripts and workspace package manifests.
+  - Confirmed local env presence via `apps/web/.env.local` without exposing secret values.
+  - Attempted root startup with `npm run dev`; sandbox blocked port binding on `3000` and `4321` with `listen EPERM`.
+  - Re-ran the same command with escalated permissions and confirmed both dev servers started successfully.
+- Runtime status:
+  - Marketing site: `http://localhost:4321/`
+  - Functional app: `http://localhost:3000/`
+- Notes:
+  - Root `npm run dev` starts `@yipei/site` and `@yipei/web` together.
+  - `apps/studio` was not started in this session.
+
+## Session: 2026-03-20 (single-site demo conversion)
+
+### Phase 3: Implementation
+- **Status:** complete
+- Actions taken:
+  - Removed active-site dependency on the separate app bridge in `apps/site/src/layouts/BaseLayout.astro`.
+  - Reworked header CTA and footer contact anchor so the marketing site functions as a standalone demo.
+  - Replaced homepage and services page account / checkout actions with internal anchors and standalone browsing flows.
+  - Updated services copy to describe single-site browse-and-contact behavior instead of account / payment / orders flows.
+
+### Phase 4: Testing & Verification
+- **Status:** complete
+- Actions taken:
+  - Ran `npm run build --workspace @yipei/site` successfully.
+  - Verified local HTML for `/zh` and `/zh/services` no longer contains `localhost:3000`, auth routes, or checkout links in active-site output.
+  - Added `data-chapter` / `data-stage` / `data-reveal` across cinematic pages and shared components.
+  - Added inline scroll narrative script in `apps/site/src/layouts/BaseLayout.astro`.
+  - Synced cinematic snapshot from `apps/site/src` to `apps/site/variants/cinematic`.
+- Tests:
+  - `npm run build:site:cinematic` (pass)
     - `components/services/brand-case-grid.tsx`
     - `components/services/figma-proof-collage.tsx`
     - `components/ui/legacy-page-shell.tsx`
@@ -1021,6 +1469,23 @@
     - `imgAiEditor1-dc4b5ba9-b32f-4339-885d-09e986172ae3.png`
     - `imgPapergen-bf20b426-acb6-4aa1-9eac-dc30feab3eb9.svg`
 
+## Session: 2026-03-10 (cinematic rebuild v2 implementation)
+
+### Implementation
+- **Status:** in_progress
+- Actions taken:
+  - Added cinematic scene structure classes across home/services/insights/links/detail pages.
+  - Rebuilt `ProjectWall` into a static exhibition layout.
+  - Added closing invitation sections for home and services.
+  - Updated `BaseLayout` with cinematic font stack + theme color.
+  - Rebuilt `apps/site/src/styles/global.css` for the dark cinematic system.
+
+### Verification
+- **Status:** pending
+- Planned:
+  - `npm run build:site`
+  - Visual QA on desktop + mobile
+
 ## Session: 2026-03-10 (cinematic rebuild v2 planning)
 
 ### Planning
@@ -1031,3 +1496,93 @@
   - Logged success priorities: brand prestige, service conversion, reading depth.
   - Saved design doc at `docs/plans/2026-03-10-cinematic-rebuild-v2-design.md`.
   - Initialized a dedicated implementation plan in `task_plan.md`.
+
+## Session: 2026-03-11 (theme switch planning)
+
+### Planning
+- **Status:** complete
+- Actions taken:
+  - Confirmed build-time theme switching with snapshot strategy.
+  - Captured primary logo source path.
+  - Saved design doc at `docs/plans/2026-03-11-site-theme-switch-design.md`.
+  - Added theme-switch phases to `task_plan.md`.
+
+## Session: 2026-03-21 (project wall white gallery redesign)
+
+### Planning
+- **Status:** complete
+- Actions taken:
+  - Confirmed the approved direction is one unified white gallery slab rather than per-logo white tiles.
+  - Chose the `White Gallery Slab` approach over per-row white rails and full-section white conversion.
+  - Saved the approved design doc at `docs/plans/2026-03-21-project-wall-white-gallery-design.md`.
+  - Added implementation and verification tracking for the redesign to `task_plan.md`.
+
+### Implementation
+- **Status:** complete
+- Actions taken:
+  - Reworked `ProjectWall` so the active source and the cinematic variant now share the same marquee structure and hover-rate behavior.
+  - Raised the white treatment from each logo tile to the full wall surface with a unified bright slab, subtle row rails, and transparent logo cells.
+  - Removed the per-logo white backing stage and replaced it with restrained shadows and hover polish.
+  - Tuned marquee hover slowdown from `0.2` to `0.42` so interaction feels slowed rather than nearly frozen.
+
+### Verification
+- **Status:** partial
+- Actions taken:
+  - Ran `npm run build:site` (pass).
+- Refined the approved white-wall treatment into a `Porcelain Fade` variant:
+  - softened the outer wall into the surrounding dark scene with broad radial transparency and bloom
+  - converted hard divider lines into feathered gradient separators
+  - changed each marquee rail into a shallow inset groove with edge fades instead of a hard pill
+  - reduced hover emphasis from border contrast to local illumination
+  - re-ran `npm run build:site` (pass)
+  - launched local preview and captured desktop screenshots from `http://localhost:4322/zh/` to visually confirm the proof wall reads as a softer integrated exhibit
+- Refined the outer integration again into an `Atmosphere Merge` variant:
+  - made `project-section` carry a broad ambient glow behind the wall
+  - removed the object-like wall shadow and inner framed slab treatment
+  - shifted the wall itself toward a soft central light field with transparent falloff
+  - re-ran `npm run build:site` (pass)
+  - launched local preview and captured a fresh desktop screenshot from `http://localhost:4322/zh/` to confirm the wall reads less like a placed panel
+- Reworked the proof wall into a `Scene-Level Merge` variant:
+  - lifted the full `scene-proof` chapter into a cooler gray-white luminance field
+  - aligned heading, spacing, and wall treatment into the same chapter-level atmosphere
+  - reduced the wall back to a brighter center lane and softened rail contrast
+  - re-ran `npm run build:site` (pass)
+  - launched local preview and captured a fresh desktop screenshot from `http://localhost:4322/zh/` to confirm the section no longer reads as a single bright insert
+- Continued into a `Continuous White Field` variant:
+  - removed rail backgrounds, borders, and inset shading from each marquee row
+  - kept only transparent motion containers with edge fading for the infinite-scroll splice
+  - preserved logo hover polish so separation comes from the marks themselves, not row chrome
+  - re-ran `npm run build:site` (pass)
+  - launched local preview and captured a desktop screenshot from `http://localhost:4322/zh/` to confirm the project wall no longer reads as stacked white rails
+
+## Session: 2026-03-21 (services hero Start Here fix)
+
+### Implementation
+- **Status:** complete
+- Actions taken:
+  - Widened the right column of the services hero so the `Start Here` card has enough width to read like a real guide block.
+  - Promoted the `Start Here` block into a more deliberate lead card with stronger padding, calmer line length, and clearer chip spacing.
+  - Tightened the pillar-card density so the right-side stack reads as one system instead of a cramped note plus three micro-cards.
+
+### Verification
+- **Status:** complete
+- Actions taken:
+  - Ran `npm run build:site` (pass).
+  - Captured the live services page from `http://localhost:4321/zh/services/` and confirmed the `Start Here` block now renders with stable width and hierarchy.
+- Remaining:
+  - Mobile visual QA for final presentation tuning.
+
+## Session: 2026-03-24 (logo-led blue-green palette planning)
+
+### Planning
+- **Status:** complete
+- Actions taken:
+  - Audited the active marketing site header and cinematic stylesheet to confirm the live palette still leans warm gold.
+  - Inspected the primary logo asset and confirmed the logo already establishes the desired blue-green language.
+  - Confirmed the approved constraint set with the user:
+    - keep the logo asset unchanged
+    - derive the whole site palette from the current logo colors
+    - remove warm gold accents from the active cinematic theme
+  - Defined approved color roles for header, badge support surfaces, buttons, links, active states, and atmospheric glows.
+  - Saved the approved design doc at `docs/plans/2026-03-24-logo-led-blue-green-brand-palette-design.md`.
+  - Added implementation and verification tracking for the palette shift to `task_plan.md`.

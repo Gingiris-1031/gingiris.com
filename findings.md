@@ -184,7 +184,20 @@
 - `global.css` includes dense styling for services pricing grids, editorial cards, resource grids, and responsive breakpoints that will need a coherent cinematic rework.
 - Began updating `apps/site` markup for cinematic scenes and a new closing invitation section on the home page.
 - Inspected `services.astro` pricing and delivery blocks to prepare reordering and scene-class updates.
-  - services page meta chips
+- Rebuilt `apps/site/src/styles/global.css` with the cinematic dark system (deep ink base + metallic accent styling).
+
+## Theme Switch (2026-03-11)
+- Requirement confirmed: keep legacy (warm premium) UI + cinematic UI, and enable build-time local script switching.
+- Approved approach: snapshot-based switcher under `apps/site/variants/{legacy,cinematic}`.
+- Primary logo source path provided: `/Users/hw/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/wxid_gqud2wact5ta12_80ce/msg/file/2026-03/Gingiris logos`
+- Design doc saved at `docs/plans/2026-03-11-site-theme-switch-design.md`.
+- Legacy snapshot source: initial git commit (`4d0ed32`) exported into `apps/site/variants/legacy`.
+- Primary logo picked: `1197.png` copied to `apps/site/public/brand/logo-primary.png`.
+
+## Scroll Narrative (2026-03-11)
+- Cinematic-only scroll narrative added via `data-chapter` / `data-stage` / `data-reveal`.
+- Inline script in `BaseLayout` drives sticky stages + reveal transforms (no third-party deps).
+- Stage sizing handled via `stage-tall`, `stage-medium`, `stage-compact` classes.
 - This reduces the remaining amount of placeholder/text-only iconography in the redesigned UI.
 - Final polish layer added:
   - reveal-section animation rhythm for key homepage/services sections
@@ -194,6 +207,256 @@
   - extra hero depth through layered overlays, drift glow, floating avatar treatment, and stronger visual-card perspective
   - more explicit hover/active feedback on anchor nav, asset cards, proof collage, brand matrix groups/cells, and service brand tiles
   - `prefers-reduced-motion` fallback so the richer motion system degrades safely
+
+## Local Runtime Bring-up (2026-03-20)
+- Root workspace command `npm run dev` starts both:
+  - `@yipei/site` on `http://localhost:4321/`
+  - `@yipei/web` on `http://localhost:3000/`
+- `apps/web/.env.local` is present locally with all key app/runtime variables populated.
+- In this Codex environment, port binding for local dev servers is blocked inside the sandbox and must be re-run with escalated permissions.
+
+## Single-Site Demo Conversion (2026-03-20)
+- Active marketing site (`apps/site/src`) no longer depends on the separate functional app for login, checkout, or orders.
+- Header CTA now routes to an on-page contact anchor instead of account state.
+
+## Mobile Header Optimization (2026-03-21)
+- The current phone-mode header problem is caused by responsive stacking rules in `apps/site/src/styles/global.css`:
+  - `@media (max-width: 1120px)` turns `.site-header`, `.site-header-main`, and `.site-app-rail` into vertical stacks
+  - `@media (max-width: 560px)` stretches header controls to full width
+- In combination, those rules make the floating header too tall and visually block the page opening on mobile.
+- Approved direction:
+  - mobile keeps a compressed floating bar
+  - visible bar items are logo + locale switch + menu button
+  - nav links and contact CTA move into an expandable mobile panel
+  - a small scroll threshold triggers a condensed state on mobile
+- Active implementation scope is limited to:
+  - `apps/site/src/components/SiteHeader.astro`
+  - `apps/site/src/styles/global.css`
+- Implemented mobile header shape:
+  - top bar keeps only logo + locale switch + menu button
+  - nav links and contact CTA now render inside `.site-mobile-panel`
+  - header state is driven by `data-open` and `data-condensed`
+- Verification findings:
+  - `npm run check` passed with existing non-blocking Astro hints only
+  - `npm run build` passed for `apps/site`
+  - SSR output for `/zh` confirms the new mobile header markup is present and the built CSS asset is linked
+- Environment limitation:
+  - headless Chrome succeeded for `file://` capture but that path does not load built assets correctly
+  - direct live mobile screenshot against local `http://127.0.0.1` was not reliable in this Codex environment, so visual verification is still best done in a normal browser session
+
+## Chinese Copy Localization Cleanup (2026-03-21)
+- The current Chinese adaptation issue is split across two layers:
+  - hard-coded English eyebrow labels in active page templates
+  - English leftovers inside Chinese `site-content` records
+- Confirmed active page-level English fallback labels include:
+  - `Operating Range`
+  - `Proof Wall`
+  - `Resource Atlas`
+  - `Editorial`
+  - `Start Here`
+  - `Flow`
+  - `Proof`
+  - `FAQ`
+  - `Next`
+  - `Invitation`
+  - `Engagement`
+- Confirmed Chinese content-source leftovers include:
+  - `home.ts` values like `Startup Coach`
+  - `services.ts` values like `Boutique Advisory`, `Global Launch`, `Founder Positioning`
+  - `editorial.ts` categories like `Research`, `Launch`, `Conversion`, `Global Growth`
+  - `projects.ts` shared group titles like `OpenSource Launch` and `Startup Coach`
+- Approved fix scope:
+  - update active `apps/site/src/pages/[locale]` templates
+  - update Chinese records in `packages/site-content`
+  - make project wall group titles locale-aware
+- Implemented source cleanup:
+  - page templates now use Chinese eyebrow labels for the active `zh` pages
+  - Chinese `home.ts`, `services.ts`, and `editorial.ts` records no longer expose the main leftover English small labels
+  - `projects.ts` now supports locale-aware group titles so the project wall stops rendering shared English labels on Chinese pages
+- Verification findings:
+  - `npm run check` passed with the same existing non-blocking Astro hints only
+  - `npm run build` passed
+  - direct grep against `apps/site/dist/zh` no longer finds the previously reported English fallback labels such as `Operating Range`, `Proof Wall`, `Resource Atlas`, `Start Here`, or `FAQ`
+
+## Single-Entry Integration Findings (2026-03-21)
+- The desired “one site” outcome was clarified as:
+  - one visible entrypoint
+  - keep `Astro` + `Next.js` split internally
+  - avoid a full app merge
+- Current breakpoints in the existing implementation:
+  - preserved `apps/site/variants/*` layouts and pages still default `PUBLIC_APP_ORIGIN` to `http://localhost:3000`
+  - local development exposes both `4321` and `3000` as visible entrypoints
+  - production `infrastructure/nginx/default.conf` still proxies all traffic to `apps/web`
+  - production compose has no `site` service yet, so public-site cutover cannot happen
+- Current safe direction:
+  - make same-origin app paths the default in `apps/site`
+  - keep explicit origin override support for advanced cases
+  - proxy functional routes locally through `apps/site`
+  - add a dedicated production `site` container and route split
+- Local config mismatch found:
+  - `apps/web/.env.local` currently sets `SITE_URL=http://localhost:3000`
+  - `NEXT_PUBLIC_MARKETING_SITE_URL` is already `http://localhost:4321`
+  - under a single-entry setup, externally visible callbacks and generated URLs should use the shared public origin
+- Implementation result:
+  - `apps/site` now defaults to same-origin functional paths when `PUBLIC_APP_ORIGIN` is unset
+  - `apps/site/astro.config.mjs` was temporarily updated to proxy functional routes plus `/_next` to `http://127.0.0.1:3000` for local dev/preview
+  - production topology now includes a dedicated `site` container and route split in `nginx`
+  - `apps/web` external URL defaults/docs were aligned to `http://localhost:4321` for local single-entry behavior
+- Verification result:
+  - `npm run check:site` passed
+  - `npm run typecheck:web` passed
+  - `curl -I http://127.0.0.1:4321/api/health` returned `HTTP/1.1 200 OK`
+  - `curl -I http://127.0.0.1:4321/zh/auth` returned `HTTP/1.1 200 OK`
+- Historical note:
+  - this dual-runtime path has since been superseded by the Vercel site-only cleanup
+  - the active shipped `apps/site` config no longer treats `apps/web` proxying as the default release posture
+
+## Vercel Site-Only Cleanup Findings (2026-03-21)
+- Launch target changed from multi-service deploy to:
+  - Vercel
+  - `apps/site` only
+  - `apps/web` and `apps/studio` retained in-repo but not deployed
+- Official deployment constraints confirmed:
+  - Astro static sites deploy directly on Vercel
+  - Vercel supports monorepos by configuring a project Root Directory
+- For the current goal, the cleanest deploy contract is:
+  - Vercel project Root Directory: `apps/site`
+  - Build Command: `npm run build`
+  - Output Directory: `dist`
+- Repository cleanup implications:
+  - root default scripts should become site-only
+  - ECS/Nginx/Docker docs should be archived instead of presented as current production
+  - `apps/site` should no longer describe `apps/web` proxying as the primary deployment story
+
+## Console Error Investigation (2026-03-21)
+- The reported `[Extractor] Error handling editor message` stack is not emitted by the `yipei` repo.
+- The exact hashed files in the console belong to the Chrome extension `文章同步助手 / Wechatsync`:
+  - `/Users/hw/Library/Application Support/Google/Chrome/Default/UnpackedExtensions/wechatsync-2.0.6_pcMsy2/assets/extractor.ts-Cl_jilX_.js`
+  - `/Users/hw/Library/Application Support/Google/Chrome/Default/UnpackedExtensions/wechatsync-2.0.4_ydyTTb/assets/extractor.ts-NasmuukF.js`
+  - `/Users/hw/Library/Application Support/Google/Chrome/Default/Extensions/hchobocdmclopcbnibdnoafilagadion/2.0.6_0/assets/extractor.ts-Cl_jilX_.js`
+- Root cause in the extension bundle:
+  - it injects an extractor content script on all `http://*/*` and `https://*/*` pages
+  - it registers a global `window.addEventListener("message", ...)`
+  - it blindly runs `JSON.parse(event.data)` for any string payload
+  - empty or truncated message strings therefore throw `SyntaxError: Unexpected end of JSON input`
+- The extension currently catches the parse error but still logs it via `logger-CvfM-6aa.js`, which is why the page console is noisy.
+- The separate `css2:1 Failed to load resource: net::ERR_CONNECTION_TIMED_OUT` error is from the marketing site's remote Google Fonts stylesheet:
+  - `apps/site/src/layouts/BaseLayout.astro`
+  - `apps/site/variants/cinematic/layouts/BaseLayout.astro`
+- The site relies on remote font families:
+  - display: `Fraunces`, `Noto Serif SC`
+  - body: `Manrope`, `Noto Sans SC`
+  - with local fallbacks already declared in CSS
+- Applied fix:
+  - added a defensive message parser to each affected Wechatsync extractor bundle so empty, truncated, or unrelated `window.message` payloads are ignored instead of reaching the logged `JSON.parse` failure path
+  - removed the remote Google Fonts `<link>` tags from the active and cinematic `BaseLayout.astro` files so the site now uses the existing CSS fallback stacks without a `css2` network dependency
+- Verification:
+  - `npm run check:site` passed with 0 errors and only pre-existing Astro hints
+  - `rg` confirms the active site layouts no longer reference `fonts.googleapis.com`
+- Operational note:
+  - Chrome will need an extension reload or browser restart before the patched extension bundles are used by active tabs
+
+## Background Flow Polish (2026-03-21)
+- Requirement confirmed: keep the cinematic dark background but make it feel slightly more alive.
+- Approved direction: the lightest version, using only CSS drift on existing background layers.
+- Design doc saved at:
+  - `docs/plans/2026-03-21-background-flow-design.md`
+- Implemented approach:
+  - animate `.page-shell::before` with a slow breathing transform/opacity cycle
+  - animate `.page-aura-left` and `.page-aura-right` with separate long-duration drift keyframes
+  - preserve the existing `prefers-reduced-motion` blanket disable behavior
+  - mirror the same change into `apps/site/src/styles/global.css` and `apps/site/variants/cinematic/styles/global.css`
+- Verification:
+  - `npm run check:site` passed with 0 errors and only the same existing Astro hints
+- Follow-up iteration:
+  - the first pass was too subtle to read in normal viewing
+  - the approved second pass increased visibility by:
+    - shortening durations to roughly `18s` to `22s`
+    - increasing drift amplitudes
+    - moving the aura blobs further into the viewport
+    - widening opacity swing slightly
+  - verification still passed after the stronger motion pass
+
+- Homepage and services page CTAs now resolve to:
+  - internal service anchors
+  - internal resource pages
+  - footer contact anchor
+- Services copy now describes a browse-first, contact-later demo flow instead of account / payment / order-center behavior.
+- `npm run build --workspace @yipei/site` passes after the single-site conversion.
+
+## Header Brand Presence (2026-03-20)
+- Active site theme is `cinematic` (`apps/site/.active-theme`).
+- Both the active header and the cinematic snapshot header use the same `/brand/logo-primary.png` asset.
+- The logo asset is a large transparent PNG (`14022x3654`) but the current header styling renders it at only `30px` tall.
+- Live preview of `http://127.0.0.1:4321/zh/` confirms the current badge reads as too small and too dark relative to the rest of the premium header.
+- The user approved a stronger brand-presence direction:
+  - larger logo
+  - brighter premium badge
+  - keep existing logo colors
+  - keep interaction subtle
+- Implemented treatment:
+  - `.site-brand` now uses a warm light gradient badge with stronger border/highlight/shadow separation
+  - `.site-brand-logo` now renders at `42px` desktop, `38px` below `860px`, and `36px` below `560px`
+- `apps/site/src/styles/global.css` and `apps/site/variants/cinematic/styles/global.css` were updated together so theme switching will preserve the adjustment.
+- `file://` screenshot QA is not representative for this Astro build because the generated page uses absolute asset paths.
+- Runtime verification fallback succeeded: local `/zh` HTML response includes the updated `.site-brand` and `.site-brand-logo` CSS blocks.
+
+## Architecture Review Kickoff (2026-03-20)
+- The repo is a workspace monorepo with three active apps:
+  - `apps/site` for the marketing site (Astro)
+  - `apps/web` for functional flows (Next.js)
+  - `apps/studio` for content authoring (Sanity)
+- Shared code is currently light:
+  - `packages/site-content`
+  - `packages/shared-types`
+- Root scripts favor local developer convenience, but most validation is centered on `@yipei/web`; there is no equivalent root lint/typecheck/test orchestration for all workspaces.
+- The repository contains persistent planning and design docs, which helps long-term maintainability, but the worktree is currently dirty, so current architecture conclusions must distinguish committed design from in-progress edits.
+
+## Architecture Review Findings (2026-03-20)
+- Strong architectural direction:
+  - Splitting public marketing (`apps/site`) from authenticated/payment flows (`apps/web`) is a sound scalability choice.
+  - Infra and ops docs are present, which lowers future deployment ambiguity.
+- Main scalability blockers:
+  - Marketing content is still hard-coded in `packages/site-content`, while `apps/studio` defines a richer CMS model that is not visibly consumed by runtime code.
+  - Theme switching is implemented by copying full source directories between snapshots, so every visual fix risks variant drift.
+- Main maintainability blockers:
+  - `apps/site` relies on a single very large stylesheet (`1110` lines) plus a large inline behavior script in `BaseLayout.astro`.
+  - There are no repo test/spec files, and root `check` only validates `@yipei/web`.
+  - `README.md` still documents an `apps/web/src/modules/content` layer that is no longer present, showing doc/code drift.
+- Shared tooling maturity is incomplete:
+  - `packages/eslint-config` and `packages/tsconfig` are placeholders only.
+  - `@yipei/shared-types` exists but has little visible adoption in the code currently under review.
+
+## Maintainability Hardening Scope (2026-03-20)
+- Chosen approach: conservative hardening only.
+- Explicitly in scope:
+  - workspace validation scripts
+  - safer theme-switch behavior
+  - README / local docs alignment
+- Explicitly out of scope for this pass:
+  - wiring `apps/site` to Sanity
+  - redesigning page markup
+  - refactoring large CSS files or motion behavior
+- Reasoning:
+  - current worktree already contains extensive in-progress UI edits in `apps/site`
+  - low-risk maintenance fixes should avoid colliding with those page/style changes
+
+## Maintainability Hardening Outcomes (2026-03-20)
+- Root validation now covers all active workspaces instead of only `@yipei/web`.
+- `apps/site` now has a real `astro check` path, backed by installed `@astrojs/check`.
+- `apps/site/variants` had to be excluded from Astro validation because the snapshot trees intentionally omit `src/lib` and are not standalone compile targets.
+- Theme switching now has two critical safety behaviors:
+  - switching to the already active theme is a no-op
+  - switching to another theme aborts on dirty theme-related paths unless `--force` is used
+- `README.md` and `apps/site/README.md` now match the real architecture:
+  - public routes live in `apps/site`
+  - functional routes live in `apps/web`
+  - `packages/site-content` is the current public content source of truth
+- Local Figma asset helper scripts were still pointing at `apps/web/public/figma-assets`; they now target `apps/site/public/figma-assets`, which matches the current repo layout.
+- Verification status:
+  - `npm run check` passes
+  - Python asset scripts compile successfully
+  - theme switch guard/no-op behavior works as intended
 
 ## Auth Framework Findings (2026-03-10)
 - Existing auth routes were only visual placeholders and had no working Supabase sign-in flow.
@@ -545,3 +808,32 @@
 - The correct short-term fix is to stop presenting screenshot crops as if they were successfully pulled original assets.
 - The homepage project wall is now cleaner because it only shows projects with verified raw assets.
 - Remaining unresolved project visuals are not being claimed as pulled anymore; if needed later, they should be re-added only after matching raw assets are confirmed.
+
+## Project Wall White Gallery Findings (2026-03-21)
+- The visual mismatch was no longer the logos themselves; it was that each logo carried its own white backing plate inside an already stylized cinematic section.
+- The more coherent solution is to move the white surface up one level:
+  - one deliberate white exhibit slab for the whole wall
+  - subtle row organization inside that slab
+  - nearly transparent individual logo cells
+- Preserving hover slowdown is important because a hard stop makes the wall feel broken once the overall treatment becomes calmer and more gallery-like.
+
+## Logo-Led Blue-Green Palette Findings (2026-03-24)
+- The current primary logo already contains the approved brand direction:
+  - leaf green around `#C0D696`
+  - wave blue around `#A8D2DE`
+  - ink navy around `#11252E`
+- The current mismatch is not the logo itself; it is the surrounding cinematic palette, which still leans warm gold and warm cream.
+- The approved direction is:
+  - keep the logo asset unchanged
+  - derive the site palette from the logo colors
+  - remove warm gold accents from header, controls, highlights, and atmospheric glows
+- The approved role split is:
+  - green carries brand warmth and active emphasis
+  - blue carries structure, links, borders, focus, and navigation signals
+- The approved header direction is:
+  - no warm cream/gold logo badge
+  - use a cool misted support surface so the existing logo colors read naturally
+- The approved site-wide guardrails are:
+  - no gold, amber, orange, or purple accents in the active cinematic theme
+  - no high-saturation cyan/green drift beyond the softness of the logo itself
+  - no gradients, glow, or recolor applied directly to the logo graphic
