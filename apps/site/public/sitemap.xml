@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+>
+  <url>
+    <loc>https://gingiris.com/zh</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gingiris.com/zh" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gingiris.com/en" />
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://gingiris.com/en</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gingiris.com/zh" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gingiris.com/en" />
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://gingiris.com/zh/services</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gingiris.com/zh/services" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gingiris.com/en/services" />
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://gingiris.com/en/services</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gingiris.com/zh/services" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gingiris.com/en/services" />
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://gingiris.com/zh/links</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gingiris.com/zh/links" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gingiris.com/en/links" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gingiris.com/en/links</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gingiris.com/zh/links" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gingiris.com/en/links" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://gingiris.com/zh/insights</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gingiris.com/zh/insights" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gingiris.com/en/insights" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gingiris.com/en/insights</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gingiris.com/zh/insights" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gingiris.com/en/insights" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://gingiris.com/zh/insights/product-hunt-launch</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gingiris.com/zh/insights/product-hunt-launch" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gingiris.com/en/insights/product-hunt-launch" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gingiris.com/en/insights/product-hunt-launch</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gingiris.com/zh/insights/product-hunt-launch" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gingiris.com/en/insights/product-hunt-launch" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://gingiris.com/zh/insights/competitor-research-framework</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gingiris.com/zh/insights/competitor-research-framework" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gingiris.com/en/insights/competitor-research-framework" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gingiris.com/en/insights/competitor-research-framework</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gingiris.com/zh/insights/competitor-research-framework" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gingiris.com/en/insights/competitor-research-framework" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://gingiris.com/zh/insights/open-source-ops</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gingiris.com/zh/insights/open-source-ops" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gingiris.com/en/insights/open-source-ops" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gingiris.com/en/insights/open-source-ops</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gingiris.com/zh/insights/open-source-ops" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gingiris.com/en/insights/open-source-ops" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://gingiris.com/zh/insights/open-source-launch-retro</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gingiris.com/zh/insights/open-source-launch-retro" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gingiris.com/en/insights/open-source-launch-retro" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gingiris.com/en/insights/open-source-launch-retro</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gingiris.com/zh/insights/open-source-launch-retro" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gingiris.com/en/insights/open-source-launch-retro" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://gingiris.com/zh/insights/conversion-retro</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gingiris.com/zh/insights/conversion-retro" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gingiris.com/en/insights/conversion-retro" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gingiris.com/en/insights/conversion-retro</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gingiris.com/zh/insights/conversion-retro" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gingiris.com/en/insights/conversion-retro" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://gingiris.com/zh/insights/global-zero-to-one</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gingiris.com/zh/insights/global-zero-to-one" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gingiris.com/en/insights/global-zero-to-one" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gingiris.com/en/insights/global-zero-to-one</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gingiris.com/zh/insights/global-zero-to-one" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gingiris.com/en/insights/global-zero-to-one" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

@@ -6,22 +6,43 @@ interface Props {
 }
 
 const { groups } = Astro.props;
+const isExternalHref = (href?: string) => Boolean(href && /^https?:\/\//.test(href));
 ---
 
 <div class="resource-groups">
   {groups.map((group) => (
-    <section class="resource-group">
+    <section class="resource-group" data-reveal>
       <header class="resource-group-head">
         <h3>{group.title}</h3>
       </header>
       <div class="resource-grid">
-        {group.items.map((item) => (
-          <a class:list={["resource-card", item.highlighted && "is-highlighted"]} href={item.href}>
-            <span class="resource-icon">{item.icon}</span>
-            <strong>{item.title}</strong>
-            {item.subtitle ? <p>{item.subtitle}</p> : null}
-          </a>
-        ))}
+        {group.items.map((item) => {
+          const isExternal = isExternalHref(item.href);
+
+          if (!item.href) {
+            return (
+              <article class:list={["resource-card", "is-static", item.highlighted && "is-highlighted"]} data-reveal>
+                <span class="resource-icon">{item.icon}</span>
+                <strong>{item.title}</strong>
+                {item.subtitle ? <p>{item.subtitle}</p> : null}
+              </article>
+            );
+          }
+
+          return (
+            <a
+              class:list={["resource-card", item.highlighted && "is-highlighted"]}
+              href={item.href}
+              target={isExternal ? "_blank" : undefined}
+              rel={isExternal ? "noreferrer" : undefined}
+              data-reveal
+            >
+              <span class="resource-icon">{item.icon}</span>
+              <strong>{item.title}</strong>
+              {item.subtitle ? <p>{item.subtitle}</p> : null}
+            </a>
+          );
+        })}
       </div>
     </section>
   ))}

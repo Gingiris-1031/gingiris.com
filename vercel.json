@@ -1,0 +1,12 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/zh",
+      "permanent": true
+    }
+  ],
+  "buildCommand": "npm run build:site",
+  "outputDirectory": "apps/site/dist"
+}

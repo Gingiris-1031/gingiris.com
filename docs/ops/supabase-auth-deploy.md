@@ -1,4 +1,6 @@
-# Supabase Auth + ECS Deployment
+# Archived: Supabase Auth + ECS Deployment
+
+This document describes the retained `apps/web` + ECS deployment path. It is not part of the current production release target, which now ships only `apps/site` to Vercel.
 
 ## Required External Inputs
 - Supabase project URL
@@ -13,7 +15,7 @@
    - Magic Link
    - Email OTP
 3. Add redirect URLs:
-   - local: `http://localhost:3000/zh/auth/callback`
+   - local: `http://localhost:4321/zh/auth/callback`
    - production: `https://<your-domain>/zh/auth/callback`
    - if English is live too: `https://<your-domain>/en/auth/callback`
 4. Keep Phone auth disabled until SMS provider setup is complete.
@@ -81,6 +83,7 @@ Or use the helper:
 ## Current Launch Behavior
 - Phone login UI is visible but disabled.
 - Email login is live.
+- `SITE_URL` should always point at the public single entrypoint, not the internal `apps/web` container port.
 - To enable phone login later:
   - configure Supabase Phone Auth and SMS provider
   - set `NEXT_PUBLIC_PHONE_AUTH_ENABLED=true`

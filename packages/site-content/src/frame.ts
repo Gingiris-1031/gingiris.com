@@ -12,6 +12,7 @@ export type SiteFrameContent = {
   footer: {
     title: string;
     subtitle: string;
+    contact?: string;
   };
 };
 
@@ -28,6 +29,7 @@ export const siteFrameByLocale: Record<SiteLocale, SiteFrameContent> = {
     footer: {
       title: "感谢来访",
       subtitle: "长期关注出海、开源增长、创始人叙事与运营系统。",
+      contact: "公众号: 云宝的桃花坞",
     },
   },
   en: {
@@ -42,6 +44,7 @@ export const siteFrameByLocale: Record<SiteLocale, SiteFrameContent> = {
     footer: {
       title: "Thanks for stopping by",
       subtitle: "Focused on global growth, open-source operations, founder narrative, and operating systems.",
+      contact: "WeChat: 云宝的桃花坞",
     },
   },
 };

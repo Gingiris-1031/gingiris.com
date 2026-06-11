@@ -1,0 +1,54 @@
+---
+import {
+  editorialContentByLocale,
+  isSiteLocale,
+  linkCollectionsByLocale,
+  supportedLocales,
+  type SiteLocale,
+} from "@yipei/site-content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export function getStaticPaths() {
+  return supportedLocales.map((locale) => ({ params: { locale } }));
+}
+
+const localeParam = Astro.params.locale;
+if (!localeParam || !isSiteLocale(localeParam)) {
+  throw new Error("Invalid locale");
+}
+
+const locale = localeParam as SiteLocale;
+const copy = editorialContentByLocale[locale];
+const collections = linkCollectionsByLocale[locale];
+const pageEyebrow = locale === "zh" ? "资源索引" : "Resource Atlas";
+---
+
+<BaseLayout locale={locale} title={copy.linksTitle} description={copy.linksSubtitle}>
+  <section class="scene scene-hero" data-chapter>
+    <div class="page-hero stage-compact" data-stage>
+      <div class="page-hero-copy">
+      <p class="eyebrow">{pageEyebrow}</p>
+      <h1>{copy.linksTitle}</h1>
+      <p>{copy.linksSubtitle}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene scene-atlas resource-groups" data-chapter>
+    {collections.map((collection) => (
+    <section class="resource-group" data-reveal>
+        <header class="resource-group-head">
+          <h2>{collection.title}</h2>
+        </header>
+        <div class="resource-grid">
+          {collection.items.map((item) => (
+          <a class="resource-card" href={item.href} data-reveal>
+              <strong>{item.title}</strong>
+              {item.description ? <p>{item.description}</p> : null}
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+  </section>
+</BaseLayout>

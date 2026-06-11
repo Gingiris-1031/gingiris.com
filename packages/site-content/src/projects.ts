@@ -1,3 +1,5 @@
+import type { SiteLocale } from "./locales";
+
 export type ProjectLogo = {
   id: string;
   name: string;
@@ -9,6 +11,7 @@ export type ProjectLogo = {
 export type ProjectGroup = {
   id: string;
   title: string;
+  titleByLocale?: Partial<Record<SiteLocale, string>>;
   logos: ProjectLogo[];
 };
 
@@ -16,6 +19,10 @@ export const projectGroups: ProjectGroup[] = [
   {
     id: "open-source-launch",
     title: "OpenSource Launch",
+    titleByLocale: {
+      zh: "开源发布",
+      en: "OpenSource Launch",
+    },
     logos: [
       {
         id: "second-me",
@@ -70,6 +77,10 @@ export const projectGroups: ProjectGroup[] = [
   {
     id: "startup-coach",
     title: "Startup Coach",
+    titleByLocale: {
+      zh: "创业陪跑",
+      en: "Startup Coach",
+    },
     logos: [
       {
         id: "bonjour",
@@ -124,6 +135,10 @@ export const projectGroups: ProjectGroup[] = [
   {
     id: "product-hunt-coach",
     title: "Product Hunt Coach",
+    titleByLocale: {
+      zh: "Product Hunt 辅导",
+      en: "Product Hunt Coach",
+    },
     logos: [
       {
         id: "wegic",

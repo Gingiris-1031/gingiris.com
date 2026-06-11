@@ -1,37 +1,149 @@
 ---
-import type { ProjectGroup } from "@yipei/site-content";
+import type { ProjectGroup, SiteLocale } from "@yipei/site-content";
 
 interface Props {
   groups: ProjectGroup[];
+  locale?: SiteLocale;
 }
 
-const { groups } = Astro.props;
+const { groups, locale = "en" } = Astro.props;
+const wallAriaLabel = locale === "zh" ? "辅导项目案例" : "Coached projects";
 ---
 
-<div class="project-wall" aria-label="Coached projects">
-  {groups.map((group, groupIndex) => (
-    <section class="project-wall-group">
-      <header class="project-wall-head">
-        <span class="project-wall-dot" aria-hidden="true"></span>
-        <h3>{group.title}</h3>
-      </header>
-      <div class={`project-exhibit ${groupIndex % 2 === 1 ? "is-alternate" : ""}`}>
-        {group.logos.map((logo) => (
-          <figure class:list={["project-card", logo.sourceKind === "reconstructed" && "is-reconstructed", logo.sourceKind === "raw" && "is-raw"]}>
-            <img
-              alt={logo.name}
-              class:list={[
-                "project-logo",
-                logo.fit === "cover" ? "is-cover" : "is-contain",
-                logo.sourceKind === "reconstructed" && "is-reconstructed",
-                logo.sourceKind === "raw" && "is-raw",
-              ]}
-              src={logo.src}
-              loading="lazy"
-            />
-          </figure>
-        ))}
-      </div>
-    </section>
-  ))}
+<div class="project-wall" aria-label={wallAriaLabel}>
+  {groups.map((group, groupIndex) => {
+    const marqueeDuration = Math.max(24, group.logos.length * 4);
+    const groupTitle = group.titleByLocale?.[locale] ?? group.title;
+
+    return (
+      <section class="project-wall-group" data-reveal>
+        <header class="project-wall-head">
+          <span class="project-wall-dot" aria-hidden="true"></span>
+          <h3>{groupTitle}</h3>
+        </header>
+        <div
+          class={`project-exhibit ${groupIndex % 2 === 1 ? "is-alternate" : ""} is-marquee`}
+          style={`--marquee-duration: ${marqueeDuration}s`}
+        >
+          <div class="project-marquee">
+            <div class="project-marquee-track">
+              {group.logos.map((logo) => (
+                <figure
+                  class:list={[
+                    "project-card",
+                    logo.sourceKind === "reconstructed" && "is-reconstructed",
+                    logo.sourceKind === "raw" && "is-raw",
+                  ]}
+                >
+                  <div class="project-logo-stage">
+                    <img
+                      alt={logo.name}
+                      class:list={[
+                        "project-logo",
+                        logo.fit === "cover" ? "is-cover" : "is-contain",
+                        logo.sourceKind === "reconstructed" && "is-reconstructed",
+                        logo.sourceKind === "raw" && "is-raw",
+                      ]}
+                      src={logo.src}
+                      loading="lazy"
+                    />
+                  </div>
+                </figure>
+              ))}
+            </div>
+            <div class="project-marquee-track" aria-hidden="true">
+              {group.logos.map((logo) => (
+                <figure
+                  class:list={[
+                    "project-card",
+                    logo.sourceKind === "reconstructed" && "is-reconstructed",
+                    logo.sourceKind === "raw" && "is-raw",
+                  ]}
+                >
+                  <div class="project-logo-stage">
+                    <img
+                      alt={logo.name}
+                      class:list={[
+                        "project-logo",
+                        logo.fit === "cover" ? "is-cover" : "is-contain",
+                        logo.sourceKind === "reconstructed" && "is-reconstructed",
+                        logo.sourceKind === "raw" && "is-raw",
+                      ]}
+                      src={logo.src}
+                      loading="lazy"
+                    />
+                  </div>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  })}
 </div>
+
+<script is:inline>
+  const prefersReducedMarqueeMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!prefersReducedMarqueeMotion && "getAnimations" in Element.prototype) {
+    const marqueeExhibits = Array.from(document.querySelectorAll(".project-exhibit.is-marquee"));
+
+    marqueeExhibits.forEach((exhibit) => {
+      if (!(exhibit instanceof HTMLElement) || exhibit.dataset.marqueeReady === "true") {
+        return;
+      }
+
+      exhibit.dataset.marqueeReady = "true";
+
+      const marquee = exhibit.querySelector(".project-marquee");
+      if (!(marquee instanceof HTMLElement)) {
+        return;
+      }
+
+      window.requestAnimationFrame(() => {
+        const animation = marquee
+          .getAnimations()
+          .find((candidate) => "animationName" in candidate && candidate.animationName === "project-marquee");
+
+        if (!(animation instanceof Animation)) {
+          return;
+        }
+
+        const hoverRate = 0.42;
+        let targetRate = 1;
+        let tick = 0;
+
+        const step = () => {
+          const nextRate = animation.playbackRate + (targetRate - animation.playbackRate) * 0.18;
+
+          if (Math.abs(targetRate - nextRate) < 0.02) {
+            animation.playbackRate = targetRate;
+            tick = 0;
+            return;
+          }
+
+          animation.playbackRate = nextRate;
+          tick = window.requestAnimationFrame(step);
+        };
+
+        const setRate = (nextRate) => {
+          targetRate = nextRate;
+          if (!tick) {
+            tick = window.requestAnimationFrame(step);
+          }
+        };
+
+        exhibit.addEventListener("mouseenter", () => setRate(hoverRate));
+        exhibit.addEventListener("mouseleave", () => setRate(1));
+        exhibit.addEventListener("focusin", () => setRate(hoverRate));
+        exhibit.addEventListener("focusout", (event) => {
+          const relatedTarget = event.relatedTarget;
+          if (!(relatedTarget instanceof Node) || !exhibit.contains(relatedTarget)) {
+            setRate(1);
+          }
+        });
+      });
+    });
+  }
+</script>

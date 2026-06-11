@@ -1,0 +1,50 @@
+---
+import {
+  editorialContentByLocale,
+  insightItemsByLocale,
+  isSiteLocale,
+  supportedLocales,
+  type SiteLocale,
+} from "@yipei/site-content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export function getStaticPaths() {
+  return supportedLocales.map((locale) => ({ params: { locale } }));
+}
+
+const localeParam = Astro.params.locale;
+if (!localeParam || !isSiteLocale(localeParam)) {
+  throw new Error("Invalid locale");
+}
+
+const locale = localeParam as SiteLocale;
+const copy = editorialContentByLocale[locale];
+const items = insightItemsByLocale[locale];
+const pageEyebrow = locale === "zh" ? "文章内容" : "Editorial";
+---
+
+<BaseLayout locale={locale} title={copy.insightsTitle} description={copy.insightsSubtitle}>
+  <section class="scene scene-hero" data-chapter>
+    <div class="page-hero stage-compact" data-stage>
+      <div class="page-hero-copy">
+      <p class="eyebrow">{pageEyebrow}</p>
+      <h1>{copy.insightsTitle}</h1>
+      <p>{copy.insightsSubtitle}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene scene-editorial editorial-grid" data-chapter>
+    {items.map((item) => (
+      <article class="editorial-card" data-reveal>
+        <p class="editorial-card-kicker">{item.category}</p>
+        <h2><a href={`/${locale}/insights/${item.slug}`}>{item.title}</a></h2>
+        <p>{item.excerpt}</p>
+        <div class="editorial-card-meta">
+          <span>{item.publishedAt}</span>
+          <a href={`/${locale}/insights/${item.slug}`}>{locale === "zh" ? "阅读详情" : "Read more"}</a>
+        </div>
+      </article>
+    ))}
+  </section>
+</BaseLayout>

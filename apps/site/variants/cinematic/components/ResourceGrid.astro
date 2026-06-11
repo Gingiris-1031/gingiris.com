@@ -1,0 +1,28 @@
+---
+import type { HomeSectionGroup } from "@yipei/site-content";
+
+interface Props {
+  groups: HomeSectionGroup[];
+}
+
+const { groups } = Astro.props;
+---
+
+<div class="resource-groups">
+  {groups.map((group) => (
+    <section class="resource-group" data-reveal>
+      <header class="resource-group-head">
+        <h3>{group.title}</h3>
+      </header>
+      <div class="resource-grid">
+        {group.items.map((item) => (
+          <a class:list={["resource-card", item.highlighted && "is-highlighted"]} href={item.href} data-reveal>
+            <span class="resource-icon">{item.icon}</span>
+            <strong>{item.title}</strong>
+            {item.subtitle ? <p>{item.subtitle}</p> : null}
+          </a>
+        ))}
+      </div>
+    </section>
+  ))}
+</div>

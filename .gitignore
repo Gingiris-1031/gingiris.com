@@ -9,3 +9,7 @@ coverage
 !.env.staging.example
 !.env.example
 .sanity
+.vercel
+.env*.local
+__pycache__/
+*.pyc

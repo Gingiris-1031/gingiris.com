@@ -1,0 +1,64 @@
+---
+import {
+  editorialContentByLocale,
+  insightItemsByLocale,
+  isSiteLocale,
+  supportedLocales,
+  type SiteLocale,
+} from "@yipei/site-content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+export function getStaticPaths() {
+  return supportedLocales.flatMap((locale) =>
+    insightItemsByLocale[locale].map((item) => ({
+      params: { locale, slug: item.slug },
+      props: { item },
+    })),
+  );
+}
+
+const localeParam = Astro.params.locale;
+if (!localeParam || !isSiteLocale(localeParam)) {
+  throw new Error("Invalid locale");
+}
+
+const locale = localeParam as SiteLocale;
+const item = Astro.props.item ?? insightItemsByLocale[locale].find((entry) => entry.slug === Astro.params.slug);
+
+if (!item) {
+  throw new Error("Insight not found");
+}
+
+const copy = editorialContentByLocale[locale];
+---
+
+<BaseLayout locale={locale} title={item.title} description={item.excerpt}>
+  <section class="page-hero">
+    <div class="page-hero-copy">
+      <p class="eyebrow">{item.category}</p>
+      <h1>{item.title}</h1>
+      <p>{item.excerpt}</p>
+    </div>
+  </section>
+
+  <section class="article-layout">
+    <article class="article-card">
+      <p class="article-date">{item.publishedAt}</p>
+      <p>
+        {locale === "zh"
+          ? "这篇内容保留为克制的阅读界面，重点放在观点本身，而不是额外噪音。"
+          : "This article surface stays intentionally restrained so the focus remains on the idea itself."}
+      </p>
+      <p>
+        {locale === "zh"
+          ? "后续补充的延伸笔记、图表和链接，也会继续沿用同样安静、清晰的阅读节奏。"
+          : "Any later notes, charts, or references can extend from the same quiet and legible reading rhythm."}
+      </p>
+    </article>
+    <aside class="article-aside-card">
+      <p class="editorial-card-kicker">{locale === "zh" ? "继续阅读" : "Continue"}</p>
+      <h2>{copy.insightsTitle}</h2>
+      <a href={`/${locale}/insights`}>{locale === "zh" ? "返回文章列表" : "Back to insights"}</a>
+    </aside>
+  </section>
+</BaseLayout>

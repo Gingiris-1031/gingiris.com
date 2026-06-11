@@ -1,0 +1,45 @@
+---
+import type { SiteFrameContent, SiteLocale } from "@yipei/site-content";
+import { buildAppHref, buildAuthHref } from "../lib/app";
+
+interface Props {
+  locale: SiteLocale;
+  frame: SiteFrameContent;
+  appOrigin: string;
+}
+
+const { locale, frame, appOrigin } = Astro.props;
+---
+
+<header class="site-header">
+  <div class="site-header-main">
+    <a class="site-brand" href={`/${locale}`}>
+      <span class="site-brand-mark">I</span>
+      <span>{frame.brand}</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href={`/${locale}`}>{frame.nav.home}</a>
+      <a href={`/${locale}/services`}>{frame.nav.services}</a>
+      <a href={`/${locale}/insights`}>{frame.nav.insights}</a>
+      <a href={`/${locale}/links`}>{frame.nav.links}</a>
+    </nav>
+  </div>
+  <div class="site-app-rail">
+    <span class="site-app-status" data-app-status>
+      {locale === "zh" ? "登录后继续预约与订单" : "Sign in to continue"}
+    </span>
+    <a
+      class="ghost-button"
+      data-app-link
+      data-app-action="orders"
+      data-auth-visible="signed-in"
+      hidden
+      href={buildAppHref(appOrigin, locale, "orders")}
+    >
+      <span data-orders-label>{locale === "zh" ? "查看订单" : "View orders"}</span>
+    </a>
+    <a class="site-auth-link" data-app-link data-app-action="account" href={buildAuthHref(appOrigin, locale)}>
+      {frame.nav.auth}
+    </a>
+  </div>
+</header>

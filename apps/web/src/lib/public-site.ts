@@ -7,7 +7,7 @@ function trimTrailingSlash(value: string) {
 }
 
 export function getPublicSiteOrigin() {
-  return trimTrailingSlash(process.env.NEXT_PUBLIC_MARKETING_SITE_URL ?? DEFAULT_PUBLIC_SITE_ORIGIN);
+  return trimTrailingSlash(process.env.NEXT_PUBLIC_MARKETING_SITE_URL ?? process.env.SITE_URL ?? DEFAULT_PUBLIC_SITE_ORIGIN);
 }
 
 export function getPublicSiteHref(path: string) {

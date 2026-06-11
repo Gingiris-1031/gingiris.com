@@ -1,0 +1,71 @@
+---
+import { supportedLocales, type SiteFrameContent, type SiteLocale } from "@yipei/site-content";
+import { buildAppHref, buildAuthHref } from "../lib/app";
+
+interface Props {
+  locale: SiteLocale;
+  frame: SiteFrameContent;
+  appOrigin: string;
+  currentPath: string;
+}
+
+const { locale, frame, appOrigin, currentPath } = Astro.props;
+const alternateLocale = supportedLocales.find((candidate) => candidate !== locale) ?? locale;
+const currentLocalePattern = new RegExp(`^/${locale}(?=/|$)`);
+const localeSwitchHref = currentLocalePattern.test(currentPath)
+  ? currentPath.replace(currentLocalePattern, `/${alternateLocale}`)
+  : `/${alternateLocale}`;
+const localeSwitchTargetLang = alternateLocale === "zh" ? "zh-CN" : "en";
+const localeSwitchAriaLabel = alternateLocale === "zh" ? "切换到中文" : "Switch to English";
+---
+
+<header class="site-header">
+  <div class="site-header-main">
+    <a class="site-brand" href={`/${locale}`} aria-label={frame.brand}>
+      <img
+        class="site-brand-logo"
+        src="/brand/logo-primary.webp"
+        alt={frame.brand}
+        width="160"
+        height="42"
+        loading="eager"
+        decoding="async"
+      />
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href={`/${locale}`}>{frame.nav.home}</a>
+      <a href={`/${locale}/services`}>{frame.nav.services}</a>
+      <a href={`/${locale}/insights`}>{frame.nav.insights}</a>
+      <a href={`/${locale}/links`}>{frame.nav.links}</a>
+    </nav>
+  </div>
+  <div class="site-app-rail">
+    <a
+      class="site-locale-switch"
+      href={localeSwitchHref}
+      hreflang={localeSwitchTargetLang}
+      lang={localeSwitchTargetLang}
+      aria-label={localeSwitchAriaLabel}
+    >
+      <span class:list={["site-locale-option", locale === "zh" && "is-active"]}>中文</span>
+      <span class="site-locale-divider" aria-hidden="true">/</span>
+      <span class:list={["site-locale-option", locale === "en" && "is-active"]}>EN</span>
+    </a>
+    <span class="site-app-status" data-app-status>
+      {locale === "zh" ? "登录后继续预约与订单" : "Sign in to continue"}
+    </span>
+    <a
+      class="ghost-button"
+      data-app-link
+      data-app-action="orders"
+      data-auth-visible="signed-in"
+      hidden
+      href={buildAppHref(appOrigin, locale, "orders")}
+    >
+      <span data-orders-label>{locale === "zh" ? "查看订单" : "View orders"}</span>
+    </a>
+    <a class="site-auth-link" data-app-link data-app-action="account" href={buildAuthHref(appOrigin, locale)}>
+      {frame.nav.auth}
+    </a>
+  </div>
+</header>

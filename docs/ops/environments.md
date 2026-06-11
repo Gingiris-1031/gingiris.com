@@ -1,32 +1,26 @@
 # Environment Conventions
 
 ## Environments
-- `production`: live traffic
-- `staging`: preview validation before prod release
+- `production`: live traffic for the shipped site
+- `preview`: Vercel preview deployments used before promoting changes
+- `staging`: optional future environment, not part of the current default deploy path
 
 ## Domain Convention
 - Production: `example.com`
-- Staging: `staging.example.com`
+- Preview: Vercel preview URL or connected preview domain
+- Staging: `staging.example.com` if reintroduced later
 
 ## Environment Variables
-- Shared keys keep same names across envs.
-- Values differ by `.env.production` vs `.env.staging`.
-- `APP_ENV` must be `production` or `staging`.
+- The current `apps/site` Vercel deployment does not require runtime environment variables.
+- If future work reactivates `apps/web` or `apps/studio`, keep their env keys isolated from the shipped site workflow.
 
-## Sanity Separation
-- One project, two datasets:
-  - `production`
-  - `staging`
-- Studio points to dataset by env:
-  - `SANITY_STUDIO_DATASET`
-
-## Supabase Separation
-- Two projects recommended:
-  - `supabase-prod`
-  - `supabase-staging`
-- Never mix prod/staging anon or service-role keys.
+## Current Deploy Surface
+- Current production deploy target: `apps/site`
+- Current production host class: `Vercel`
+- `apps/web` and `apps/studio` are retained but not part of the default production workflow
 
 ## Release Rule
-1. Merge to `main` deploys staging first.
-2. Staging verification passes.
-3. Promote image tag to production.
+1. Merge to `main`.
+2. Vercel builds a preview deployment.
+3. Verify the preview deployment.
+4. Promote the successful deployment to production.

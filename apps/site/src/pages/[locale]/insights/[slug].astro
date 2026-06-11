@@ -30,35 +30,66 @@ if (!item) {
 }
 
 const copy = editorialContentByLocale[locale];
+const pageCopy =
+  locale === "zh"
+    ? {
+        highlightsTitle: "快速要点",
+        originalKicker: "原文入口",
+        originalLead: "站内保留的是快速摘要版，继续深读请直接打开原始内容。",
+        openOriginal: "打开原文",
+        browseLinks: "查看链接归档",
+        backToInsights: "返回文章列表",
+      }
+    : {
+        highlightsTitle: "Key takeaways",
+        originalKicker: "Original source",
+        originalLead: "This page keeps a concise summary. Open the original source for the full material.",
+        openOriginal: "Open original",
+        browseLinks: "Browse link archive",
+        backToInsights: "Back to insights",
+      };
 ---
 
 <BaseLayout locale={locale} title={item.title} description={item.excerpt}>
-  <section class="page-hero">
-    <div class="page-hero-copy">
-      <p class="eyebrow">{item.category}</p>
-      <h1>{item.title}</h1>
-      <p>{item.excerpt}</p>
+  <section class="scene scene-hero" data-chapter>
+    <div class="page-hero stage-compact" data-stage>
+      <div class="page-hero-copy">
+        <p class="eyebrow">{item.category}</p>
+        <h1>{item.title}</h1>
+        <p>{item.excerpt}</p>
+      </div>
     </div>
   </section>
 
-  <section class="article-layout">
-    <article class="article-card">
-      <p class="article-date">{item.publishedAt}</p>
-      <p>
-        {locale === "zh"
-          ? "这篇内容保留为克制的阅读界面，重点放在观点本身，而不是额外噪音。"
-          : "This article surface stays intentionally restrained so the focus remains on the idea itself."}
-      </p>
-      <p>
-        {locale === "zh"
-          ? "后续补充的延伸笔记、图表和链接，也会继续沿用同样安静、清晰的阅读节奏。"
-          : "Any later notes, charts, or references can extend from the same quiet and legible reading rhythm."}
-      </p>
+  <section class="scene scene-article article-layout article-layout-insight" data-chapter>
+    <article class="article-card article-card-rich insight-article-card" data-reveal>
+      <div class="insight-article-head">
+        <p class="article-date insight-article-date">{item.publishedAt}</p>
+        <p class="insight-source-pill">{item.sourceLabel}</p>
+      </div>
+      <p class="insight-article-lead">{item.summary}</p>
+      <div class="article-actions insight-article-actions">
+        <a class="primary-button" href={item.sourceHref} target="_blank" rel="noreferrer">{pageCopy.openOriginal}</a>
+        <a class="ghost-button" href={`/${locale}/links#strategy-docs`}>{pageCopy.browseLinks}</a>
+      </div>
+      <section class="article-points insight-article-points">
+        <h2>{pageCopy.highlightsTitle}</h2>
+        <ul class="article-point-list">
+          {item.highlights.map((highlight) => (
+            <li>{highlight}</li>
+          ))}
+        </ul>
+      </section>
     </article>
-    <aside class="article-aside-card">
-      <p class="editorial-card-kicker">{locale === "zh" ? "继续阅读" : "Continue"}</p>
-      <h2>{copy.insightsTitle}</h2>
-      <a href={`/${locale}/insights`}>{locale === "zh" ? "返回文章列表" : "Back to insights"}</a>
+    <aside class="article-aside-card insight-article-aside" data-reveal>
+      <p class="editorial-card-kicker">{pageCopy.originalKicker}</p>
+      <h2>{item.sourceLabel}</h2>
+      <p class="insight-aside-copy">{pageCopy.originalLead}</p>
+      <div class="article-aside-actions insight-article-aside-actions">
+        <a class="primary-button" href={item.sourceHref} target="_blank" rel="noreferrer">{pageCopy.openOriginal}</a>
+        <a class="insight-inline-link" href={`/${locale}/insights`}>{pageCopy.backToInsights}</a>
+      </div>
+      <p class="article-aside-note">{copy.insightsTitle}</p>
     </aside>
   </section>
 </BaseLayout>

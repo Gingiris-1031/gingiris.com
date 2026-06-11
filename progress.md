@@ -219,6 +219,7 @@
 - **Status:** in_progress
 - Actions taken:
 
+
 ## Session: 2026-03-21 (single-entry integration)
 
 ### Phase U1: Design & Scope
@@ -1586,3 +1587,51 @@
   - Defined approved color roles for header, badge support surfaces, buttons, links, active states, and atmospheric glows.
   - Saved the approved design doc at `docs/plans/2026-03-24-logo-led-blue-green-brand-palette-design.md`.
   - Added implementation and verification tracking for the palette shift to `task_plan.md`.
+
+### Implementation
+- **Status:** complete
+- Actions taken:
+  - Reworked `apps/site/src/styles/global.css` from the previous warm-gold cinematic palette to a logo-led system built from leaf green, wave blue, ink navy, and mist white.
+  - Updated global tokens, page atmosphere, scene surfaces, header shell, logo badge support surface, navigation underline, locale active state, and primary button styling.
+  - Re-tinted featured service/pricing cards and service-side support panels so emphasis now comes from the logo-derived green/blue relationship rather than brown-gold emphasis blocks.
+  - Shifted control surfaces and deep card backgrounds toward ink-navy/blue-black so the unchanged logo reads as the source of the whole interface palette.
+  - Mirrored the final stylesheet into `apps/site/variants/cinematic/styles/global.css` so theme switching preserves the same approved palette.
+
+### Verification
+- **Status:** complete
+- Actions taken:
+  - Ran `npm run check:site` (pass; existing Astro hints only).
+  - Ran `npm run build:site` (pass).
+  - Confirmed warm-gold literal cleanup with a stylesheet scan over `apps/site/src/styles/global.css` and `apps/site/variants/cinematic/styles/global.css`.
+  - Served the built site from `apps/site/dist` with `python3 -m http.server 4324 --bind 127.0.0.1`.
+  - Verified `http://127.0.0.1:4324/zh/` returns `200 OK`.
+  - Captured a headless Chrome screenshot of `/zh/` and confirmed:
+    - the logo itself stayed unchanged
+    - the brand badge now reads as a cool misted support surface
+    - the homepage no longer carries the previous warm-gold palette
+  - Captured an additional narrow-screen homepage screenshot and confirmed the compact header still preserves the same logo-led blue-green relationship on mobile.
+
+## Session: 2026-03-24 (light logo editorial redesign)
+
+### Planning
+- **Status:** complete
+- Actions taken:
+  - Re-checked the actual logo image colors and confirmed the real primary fills are `#C0D696` and `#B0D5DF`.
+  - Confirmed the user no longer wants any dark-theme posture.
+  - Chose and documented the approved `misted editorial light-theme` redesign in `docs/plans/2026-03-24-light-logo-editorial-redesign-design.md`.
+
+### Implementation
+- **Status:** complete
+- Actions taken:
+  - Reworked the active site stylesheet from dark surfaces to pale white, blue-white, and green-white surfaces.
+  - Updated root tokens, page background, ambient glow layers, scene shells, header shell, brand support surface, buttons, hero portrait frame, signal strip, project/proof wall treatment, services scenes, pricing cards, FAQ cards, and mobile header states.
+  - Kept the logo asset itself unchanged.
+  - Synced the final stylesheet into `apps/site/variants/cinematic/styles/global.css`.
+
+### Verification
+- **Status:** complete
+- Actions taken:
+  - Confirmed the local dev site returns `200 OK` on `http://127.0.0.1:4321/zh/`.
+  - Ran `npm run check:site` (pass; same pre-existing Astro hints only).
+  - Ran `npm run build:site` (pass).
+  - Captured fresh headless Chrome screenshots for desktop and narrow mobile widths from the live local site and confirmed the homepage now reads as a light premium brand surface rather than a dark cinematic shell.

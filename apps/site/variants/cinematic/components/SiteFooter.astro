@@ -1,0 +1,21 @@
+---
+import type { SiteFrameContent, SiteLocale } from "@yipei/site-content";
+
+interface Props {
+  locale: SiteLocale;
+  frame: SiteFrameContent;
+}
+
+const { locale, frame } = Astro.props;
+---
+
+<footer class="site-footer">
+  <div class="site-footer-main">
+    <p class="site-footer-kicker">{frame.brand}</p>
+    <h2>{frame.footer.title}</h2>
+  </div>
+  <div class="site-footer-meta">
+    <p>{frame.footer.subtitle}</p>
+    {frame.footer.contact ? <p class="site-footer-contact">{frame.footer.contact}</p> : null}
+  </div>
+</footer>

@@ -8,7 +8,6 @@ import {
 } from "@yipei/site-content";
 import ProjectWall from "../../components/ProjectWall.astro";
 import ResourceGrid from "../../components/ResourceGrid.astro";
-import { buildAuthHref, buildCheckoutHref, buildCheckoutPath } from "../../lib/app";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 export function getStaticPaths() {
@@ -22,7 +21,6 @@ if (!localeParam || !isSiteLocale(localeParam)) {
 
 const locale = localeParam as SiteLocale;
 const content = homeContentByLocale[locale];
-const appOrigin = (import.meta.env.PUBLIC_APP_ORIGIN ?? "http://localhost:3000").replace(/\/$/, "");
 const featuredPlan = content.consultItems[1] ?? content.consultItems[0];
 const heroSignalIndexes = [0, 2, 3];
 const heroSignals = heroSignalIndexes
@@ -32,15 +30,65 @@ const extendedStats = content.stats.filter((_stat, index) => !heroSignalIndexes.
 const heroLead = content.introLines[0] ?? "";
 const heroSupport = content.introLines.slice(1).join(" ");
 const heroRole = content.roleStrong.replace(/^\|\s*/, "");
+const homeStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Iris Jiang",
+  alternateName: "生姜 Iris",
+  url: "https://gingiris.com",
+  jobTitle: "Growth Advisor",
+  description:
+    "Ex-AFFiNE Co-founder & COO. Growth advisor focused on Product Hunt launch, open-source marketing, startup growth, and global expansion.",
+  knowsAbout: ["Product Hunt Launch", "Open Source Marketing", "Startup Growth", "Global Expansion"],
+  sameAs: [
+    "https://github.com/toeverything/AFFiNE",
+    "https://www.xiaoyuzhoufm.com/podcast/6774f7f51e823e72d366a543",
+  ],
+};
+const pageCopy =
+  locale === "zh"
+    ? {
+        exploreCta: "查看合作方案",
+        contactCta: "联系咨询",
+        rangeEyebrow: "覆盖议题",
+        rangeTitle: "增长、融资、开源与陪跑，覆盖的是完整经营问题",
+        proofEyebrow: "项目案例",
+        engagementEyebrow: "合作方式",
+        detailCta: "查看详情",
+        editorialEyebrow: "内容与资源",
+        editorialTitle: "内容、资源与精选入口",
+        invitationEyebrow: "开始合作",
+        invitationTitle: "用一次深度对话开启合作",
+        invitationBody: "从定位、增长到融资策略，把关键问题一次讲清楚。",
+        servicesCta: "查看服务方案",
+      }
+    : {
+        exploreCta: "Explore engagements",
+        contactCta: "Get in touch",
+        rangeEyebrow: "Operating Range",
+        rangeTitle: "Growth, fundraising, open source, and coaching in one operating surface",
+        proofEyebrow: "Proof Wall",
+        engagementEyebrow: "Engagement",
+        detailCta: "See details",
+        editorialEyebrow: "Editorial Surface",
+        editorialTitle: "Content, resources, and curated entry points",
+        invitationEyebrow: "Invitation",
+        invitationTitle: "Start with a single, focused conversation",
+        invitationBody: "Clarify positioning, growth, and fundraising in one deliberate session.",
+        servicesCta: "View services",
+      };
 ---
 
 <BaseLayout
   locale={locale}
   title={`${content.name} | ${content.rolePrefix}`}
   description={content.introLines.join(" ")}
+  enableScrollNarrative={true}
+  structuredData={homeStructuredData}
 >
-  <section class="scene scene-hero hero-section hero-stage">
-    <div class="hero-copy hero-stage-copy">
+  <section class="scene scene-hero hero-section" data-chapter>
+    <div class="hero-stage stage-tall" data-stage>
+      <div class="hero-copy hero-stage-copy">
       <p class="eyebrow">{content.rolePrefix}</p>
       <h1>{content.name}</h1>
       <p class="hero-role">{heroRole}</p>
@@ -56,53 +104,50 @@ const heroRole = content.roleStrong.replace(/^\|\s*/, "");
       <div class="hero-actions">
         <a
           class="primary-button"
-          data-app-link
-          data-app-action="checkout"
-          data-plan-code={featuredPlan.checkoutPlanCode}
-          data-channel={featuredPlan.preferredChannel ?? undefined}
-          href={buildAuthHref(appOrigin, locale, {
-            nextPath: buildCheckoutPath(locale, {
-              planCode: featuredPlan.checkoutPlanCode,
-              channel: featuredPlan.preferredChannel,
-            }),
-          })}
+          href={`/${locale}/services#${featuredPlan.id}`}
         >
-          {locale === "zh" ? "预约 60 分钟咨询" : "Book the 60-min session"}
+          {pageCopy.exploreCta}
         </a>
-        <a class="ghost-button" href={`/${locale}/services`}>
-          {content.consultTitle}
+        <a class="ghost-button" href="#site-contact">
+          {pageCopy.contactCta}
         </a>
       </div>
     </div>
-    <div class="hero-stage-visual">
-      <div class="hero-portrait">
-        <img
-          alt={content.name}
-          src="/figma-assets/raw/imgImageIrisProfile-b4e11b0c-2af6-4051-9143-545b963e13fc.jpg"
-        />
+      <div class="hero-stage-visual">
+        <div class="hero-portrait">
+          <img
+            alt={content.name}
+            src="/figma-assets/raw/iris-profile.webp"
+            width="1066"
+            height="1600"
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
+          />
+        </div>
       </div>
+      <aside class="hero-signal-strip">
+        {heroSignals.map((stat) => (
+          <article class="hero-signal-item" data-reveal>
+            <strong>{stat.value}</strong>
+            <div>
+              <h2>{stat.title}</h2>
+              <p>{stat.subtitle}</p>
+            </div>
+          </article>
+        ))}
+      </aside>
     </div>
-    <aside class="hero-signal-strip">
-      {heroSignals.map((stat) => (
-        <article class="hero-signal-item">
-          <strong>{stat.value}</strong>
-          <div>
-            <h2>{stat.title}</h2>
-            <p>{stat.subtitle}</p>
-          </div>
-        </article>
-      ))}
-    </aside>
   </section>
 
-  <section class="scene scene-range stats-section stats-collection">
-    <div class="section-heading">
-      <p class="eyebrow">{locale === "zh" ? "Operating Range" : "Operating Range"}</p>
-      <h2>{locale === "zh" ? "增长、融资、开源与陪跑，覆盖的是完整经营问题" : "Growth, fundraising, open source, and coaching in one operating surface"}</h2>
+  <section class="scene scene-range stats-section stats-collection" data-chapter>
+    <div class="section-heading" data-reveal>
+      <p class="eyebrow">{pageCopy.rangeEyebrow}</p>
+      <h2>{pageCopy.rangeTitle}</h2>
     </div>
     <div class="stats-waterfall">
       {extendedStats.map((stat, index) => (
-        <article class:list={["stat-card", index % 3 === 0 && "stat-card-wide"]}>
+        <article class:list={["stat-card", index % 3 === 0 && "stat-card-wide"]} data-reveal>
           <strong>{stat.value}</strong>
           <h3>{stat.title}</h3>
           <p>{stat.subtitle}</p>
@@ -111,23 +156,26 @@ const heroRole = content.roleStrong.replace(/^\|\s*/, "");
     </div>
   </section>
 
-  <section class="scene scene-proof project-section">
-    <div class="section-heading">
-      <p class="eyebrow">{locale === "zh" ? "Proof Wall" : "Proof Wall"}</p>
-      <h2>{content.projectTitle}</h2>
+  <section class="scene scene-proof" data-chapter>
+    <div class="project-section stage-extended" data-stage>
+      <div class="section-heading" data-reveal>
+        <p class="eyebrow">{pageCopy.proofEyebrow}</p>
+        <h2>{content.projectTitle}</h2>
+      </div>
+      <ProjectWall groups={projectGroups} locale={locale} />
     </div>
-    <ProjectWall groups={projectGroups} />
   </section>
 
-  <section class="scene scene-invitation pricing-section service-preview-section">
-    <div class="section-heading">
-      <p class="eyebrow">{locale === "zh" ? "Engagement" : "Engagement"}</p>
+  <section class="scene scene-invitation" data-chapter>
+    <div class="pricing-section service-preview-section stage-medium" data-stage>
+    <div class="section-heading" data-reveal>
+      <p class="eyebrow">{pageCopy.engagementEyebrow}</p>
       <h2>{content.consultTitle}</h2>
       <p>{content.consultHint}</p>
     </div>
     <div class="service-preview-grid">
       {content.consultItems.map((item, index) => (
-        <article class:list={["service-preview-card", index === 1 && "is-featured"]}>
+        <article class:list={["service-preview-card", item.id === "growth-pack" && "is-featured"]} data-reveal>
           <div class="service-preview-copy">
             <span class="service-preview-index">{String(index + 1).padStart(2, "0")}</span>
             <h3>{item.title}</h3>
@@ -135,61 +183,43 @@ const heroRole = content.roleStrong.replace(/^\|\s*/, "");
           </div>
           <div class="service-preview-meta">
             <strong>{item.price}</strong>
-            <a
-              class="inline-link"
-              data-app-link
-              data-app-action="checkout"
-              data-plan-code={item.checkoutPlanCode}
-              data-channel={item.preferredChannel ?? undefined}
-              href={buildCheckoutHref(appOrigin, locale, {
-                planCode: item.checkoutPlanCode,
-                channel: item.preferredChannel,
-              })}
-            >
-              {locale === "zh" ? "进入支付" : "Open checkout"}
+            <a class="inline-link" href={`${item.href}#${item.id}`}>
+              {pageCopy.detailCta}
             </a>
           </div>
         </article>
       ))}
     </div>
+    </div>
   </section>
 
-  <section class="scene scene-atlas resource-section">
-    <div class="section-heading">
-      <p class="eyebrow">{locale === "zh" ? "Editorial Surface" : "Editorial Surface"}</p>
-      <h2>{locale === "zh" ? "内容、资源与精选入口" : "Content, resources, and curated entry points"}</h2>
+  <section class="scene scene-atlas" data-chapter>
+    <div class="resource-section stage-medium" data-stage>
+      <div class="section-heading" data-reveal>
+      <p class="eyebrow">{pageCopy.editorialEyebrow}</p>
+      <h2>{pageCopy.editorialTitle}</h2>
     </div>
-    <ResourceGrid groups={content.sections} />
+      <ResourceGrid groups={content.sections} />
+    </div>
   </section>
-  <section class="scene scene-closing closing-invitation">
-    <div class="closing-copy">
-      <p class="eyebrow">{locale === "zh" ? "Invitation" : "Invitation"}</p>
-      <h2>{locale === "zh" ? "用一次深度对话开启合作" : "Start with a single, focused conversation"}</h2>
-      <p>
-        {locale === "zh"
-          ? "从定位、增长到融资策略，把关键问题一次讲清楚。"
-          : "Clarify positioning, growth, and fundraising in one deliberate session."}
-      </p>
+  <section class="scene scene-closing" data-chapter>
+    <div class="closing-invitation stage-compact" data-stage>
+      <div class="closing-copy">
+      <p class="eyebrow">{pageCopy.invitationEyebrow}</p>
+      <h2>{pageCopy.invitationTitle}</h2>
+      <p>{pageCopy.invitationBody}</p>
     </div>
-    <div class="closing-actions">
+      <div class="closing-actions">
       <a
         class="primary-button"
-        data-app-link
-        data-app-action="checkout"
-        data-plan-code={featuredPlan.checkoutPlanCode}
-        data-channel={featuredPlan.preferredChannel}
-        href={buildAuthHref(appOrigin, locale, {
-          nextPath: buildCheckoutPath(locale, {
-            planCode: featuredPlan.checkoutPlanCode,
-            channel: featuredPlan.preferredChannel,
-          }),
-        })}
+        href="#site-contact"
       >
-        {locale === "zh" ? "预约咨询" : "Book a session"}
+        {pageCopy.contactCta}
       </a>
-      <a class="ghost-button" href={`/${locale}/services`}>
-        {locale === "zh" ? "查看服务方案" : "View services"}
+      <a class="ghost-button" href={`/${locale}/services#${featuredPlan.id}`}>
+        {pageCopy.servicesCta}
       </a>
+      </div>
     </div>
   </section>
 </BaseLayout>

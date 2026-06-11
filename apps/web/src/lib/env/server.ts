@@ -2,7 +2,7 @@ import { z } from "zod";
 
 const envSchema = z.object({
   APP_ENV: z.enum(["staging", "production"]).default("staging"),
-  SITE_URL: z.string().url().default("http://localhost:3000"),
+  SITE_URL: z.string().url().default("http://localhost:4321"),
   SANITY_PROJECT_ID: z.string().min(1).default("replace-me"),
   SANITY_DATASET: z.string().min(1).default("staging"),
   SANITY_API_VERSION: z.string().default("2025-01-01"),

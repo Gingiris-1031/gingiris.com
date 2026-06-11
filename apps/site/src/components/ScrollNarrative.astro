@@ -1,0 +1,135 @@
+<script type="module">
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const largeInteractiveViewport = window.matchMedia("(min-width: 1100px) and (hover: hover) and (pointer: fine)").matches;
+  const lowPowerDevice = navigator.hardwareConcurrency > 0 && navigator.hardwareConcurrency <= 4;
+  const shouldRunNarrative =
+    !reduceMotion &&
+    !lowPowerDevice &&
+    largeInteractiveViewport &&
+    document.body.classList.contains("cinematic");
+
+  if (!shouldRunNarrative) {
+    document.body.dataset.scrollNarrative = "off";
+  } else {
+    const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
+    const chapters = Array.from(document.querySelectorAll("[data-chapter]"));
+
+    if (!chapters.length) {
+      document.body.dataset.scrollNarrative = "off";
+    } else {
+      const reveals = Array.from(document.querySelectorAll("[data-reveal]"));
+      const stageMap = new Map();
+
+      chapters.forEach((chapter) => {
+        const stage = chapter.matches("[data-stage]") ? chapter : chapter.querySelector("[data-stage]");
+        if (stage) {
+          stageMap.set(chapter, stage);
+          stage.style.position = "sticky";
+          stage.style.top = "clamp(12px, 6vh, 56px)";
+          stage.style.zIndex = "5";
+
+          if (stage.classList.contains("stage-tall")) {
+            stage.style.minHeight = "min(92vh, 980px)";
+          } else if (stage.classList.contains("stage-extended")) {
+            stage.style.minHeight = "min(110vh, 1120px)";
+          } else if (stage.classList.contains("stage-medium")) {
+            stage.style.minHeight = "min(78vh, 860px)";
+          } else if (stage.classList.contains("stage-compact")) {
+            stage.style.minHeight = "min(64vh, 720px)";
+          }
+        }
+
+        chapter.style.transition = "transform 0.2s ease";
+      });
+
+      reveals.forEach((reveal) => {
+        reveal.style.transition = "opacity 0.35s ease, transform 0.35s ease";
+      });
+
+      document.body.dataset.scrollNarrative = "on";
+
+      const activeChapters = new Set();
+      const activeReveals = new Set();
+      let ticking = false;
+
+      const update = () => {
+        const viewport = window.innerHeight || 1;
+
+        activeChapters.forEach((chapter) => {
+          const rect = chapter.getBoundingClientRect();
+          const progress = clamp((viewport * 0.9 - rect.top) / (rect.height + viewport * 0.8));
+          const stage = stageMap.get(chapter);
+
+          chapter.style.transform = stage ? "translate3d(0, 0, 0)" : `translate3d(0, ${(1 - progress) * 18}px, 0)`;
+
+          if (stage) {
+            const stageRect = stage.getBoundingClientRect();
+            const stageProgress = clamp((viewport * 0.7 - stageRect.top) / (viewport * 0.6));
+            stage.style.setProperty("--stage-progress", stageProgress.toFixed(3));
+          }
+        });
+
+        activeReveals.forEach((reveal) => {
+          const rect = reveal.getBoundingClientRect();
+          const progress = clamp((viewport * 0.85 - rect.top) / (viewport * 0.7));
+          reveal.style.opacity = String(0.15 + 0.85 * progress);
+          reveal.style.transform = `translate3d(0, ${(1 - progress) * 24}px, 0)`;
+        });
+
+        ticking = false;
+      };
+
+      const requestUpdate = () => {
+        if (ticking) return;
+        ticking = true;
+        window.requestAnimationFrame(update);
+      };
+
+      const chapterObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting || entry.intersectionRatio > 0) {
+              activeChapters.add(entry.target);
+            } else {
+              activeChapters.delete(entry.target);
+            }
+          });
+          requestUpdate();
+        },
+        { rootMargin: "35% 0px 35% 0px", threshold: [0, 0.15, 0.5, 0.85, 1] },
+      );
+
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting || entry.intersectionRatio > 0) {
+              activeReveals.add(entry.target);
+            } else {
+              activeReveals.delete(entry.target);
+            }
+          });
+          requestUpdate();
+        },
+        { rootMargin: "20% 0px -10% 0px", threshold: [0, 0.2, 0.6, 1] },
+      );
+
+      chapters.forEach((chapter) => chapterObserver.observe(chapter));
+      reveals.forEach((reveal) => revealObserver.observe(reveal));
+
+      window.addEventListener("scroll", requestUpdate, { passive: true });
+      window.addEventListener("resize", requestUpdate, { passive: true });
+      window.addEventListener(
+        "pagehide",
+        () => {
+          chapterObserver.disconnect();
+          revealObserver.disconnect();
+          window.removeEventListener("scroll", requestUpdate);
+          window.removeEventListener("resize", requestUpdate);
+        },
+        { once: true },
+      );
+
+      requestUpdate();
+    }
+  }
+</script>

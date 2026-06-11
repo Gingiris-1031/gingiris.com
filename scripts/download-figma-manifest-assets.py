@@ -12,8 +12,8 @@ import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-MANIFEST = ROOT / "apps" / "web" / "public" / "figma-assets" / "asset-manifest.json"
-OUT_DIR = ROOT / "apps" / "web" / "public" / "figma-assets" / "raw"
+MANIFEST = ROOT / "apps" / "site" / "public" / "figma-assets" / "asset-manifest.json"
+OUT_DIR = ROOT / "apps" / "site" / "public" / "figma-assets" / "raw"
 
 
 def build_request(url: str) -> urllib.request.Request:

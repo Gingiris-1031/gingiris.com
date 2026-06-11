@@ -8,6 +8,7 @@ from pathlib import Path
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_SITE_DIR = ROOT / "apps" / "site"
 
 
 def expected_size(scale: int) -> tuple[int, int]:
@@ -38,8 +39,8 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Crop Figma project-wall tiles from a node render.")
     parser.add_argument(
         "--base-dir",
-        default=str(ROOT),
-        help="Base directory that contains public/figma-assets (default: repo root).",
+        default=str(DEFAULT_SITE_DIR),
+        help="Base directory that contains public/figma-assets (default: apps/site).",
     )
     parser.add_argument("--source", default="", help="Source PNG path (default: node-209-75.png).")
     parser.add_argument("--out-dir", default="", help="Output tiles directory.")

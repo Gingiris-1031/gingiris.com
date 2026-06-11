@@ -219,6 +219,7 @@
 - Active marketing site (`apps/site/src`) no longer depends on the separate functional app for login, checkout, or orders.
 - Header CTA now routes to an on-page contact anchor instead of account state.
 
+
 ## Mobile Header Optimization (2026-03-21)
 - The current phone-mode header problem is caused by responsive stacking rules in `apps/site/src/styles/global.css`:
   - `@media (max-width: 1120px)` turns `.site-header`, `.site-header-main`, and `.site-app-rail` into vertical stacks
@@ -837,3 +838,36 @@
   - no gold, amber, orange, or purple accents in the active cinematic theme
   - no high-saturation cyan/green drift beyond the softness of the logo itself
   - no gradients, glow, or recolor applied directly to the logo graphic
+- Implementation result:
+  - the active cinematic stylesheet now uses the logo-led blue-green palette in both `apps/site/src/styles/global.css` and `apps/site/variants/cinematic/styles/global.css`
+  - header badge support surfaces were shifted from warm cream/gold to cool misted blue-white
+  - primary buttons now use a restrained wave-blue to leaf-green gradient
+  - warm gold accent literals were fully removed from both active and cinematic snapshot stylesheets
+- Verification result:
+  - `npm run check:site` passed with pre-existing Astro hints only
+  - `npm run build:site` passed
+  - static visual QA via `python3 -m http.server` + headless Chrome screenshots of `/zh/` at desktop and narrow-screen widths confirmed the homepage now reads as logo-led blue-green rather than gold-accented
+
+## Light Logo Editorial Redesign Findings (2026-03-24)
+- The user rejected the remaining dark-site posture and requested a true redesign, not just a palette swap.
+- The approved primary colors are the logo's actual fill colors:
+  - green `#C0D696`
+  - blue `#B0D5DF`
+- The approved site direction is:
+  - light theme
+  - misted editorial presentation
+  - premium spacing and typography
+  - black/ink used only for text and structure, not as the main background
+- The approved color role split is:
+  - green for CTA and emphasis
+  - blue for structure, borders, and atmospheric surfaces
+  - neutrals must occupy most of the page
+- Implementation result:
+  - the site now reads as a light, high-key brand surface instead of a recolored dark theme
+  - header, hero, stat strip, service scenes, pricing cards, and proof/project sections now use pale white, blue-white, and green-white surfaces
+  - the unchanged logo now fits the site more naturally because the page no longer fights it with dark visual mass
+- Verification result:
+  - `http://127.0.0.1:4321/zh/` returns `200 OK`
+  - `npm run check:site` passed with the same pre-existing Astro hints only
+  - `npm run build:site` passed
+  - desktop and narrow-screen screenshots confirmed the homepage now reads as a light premium site led by `#C0D696` and `#B0D5DF`

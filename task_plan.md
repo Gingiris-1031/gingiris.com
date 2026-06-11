@@ -416,12 +416,26 @@ Phase 3
 - **Status:** complete
 
 ### Phase BP2: Implementation & Verification
-- [ ] Replace warm gold cinematic tokens with the approved logo-led blue-green palette.
-- [ ] Update header badge/support surfaces so the unchanged logo sits inside a cool misted brand frame.
-- [ ] Update interactive accents, hover/focus states, and atmospheric glows to follow the approved palette rules.
-- [ ] Mirror the same palette changes to `apps/site/variants/cinematic`.
-- [ ] Run site checks/build and perform desktop/mobile visual QA.
-- **Status:** pending
+- [x] Replace warm gold cinematic tokens with the approved logo-led blue-green palette.
+- [x] Update header badge/support surfaces so the unchanged logo sits inside a cool misted brand frame.
+- [x] Update interactive accents, hover/focus states, and atmospheric glows to follow the approved palette rules.
+- [x] Mirror the same palette changes to `apps/site/variants/cinematic`.
+- [x] Run site checks/build and perform desktop/mobile visual QA.
+- **Status:** complete
+
+## Light Logo Editorial Redesign Plan (2026-03-24)
+### Phase LR1: Design & Scope
+- [x] Confirm that the dark theme must be removed rather than merely recolored.
+- [x] Confirm that `#C0D696` and `#B0D5DF` should act as the site's true primary brand colors.
+- [x] Approve the `misted editorial light-theme` direction and document it in `docs/plans/2026-03-24-light-logo-editorial-redesign-design.md`.
+- **Status:** complete
+
+### Phase LR2: Implementation & Verification
+- [x] Rework shared site tokens and shells from dark surfaces to light editorial surfaces.
+- [x] Update header, hero, cards, service sections, and CTA treatment to follow the new light palette rules.
+- [x] Sync the same stylesheet to `apps/site/variants/cinematic/styles/global.css`.
+- [x] Run site checks/build and verify the redesign with desktop/mobile screenshots.
+- **Status:** complete
 
 ## Maintainability Hardening Results (2026-03-20)
 - Added root-level validation orchestration:

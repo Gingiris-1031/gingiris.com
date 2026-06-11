@@ -1,5 +1,6 @@
 ---
 import {
+  externalResourceHrefs,
   isSiteLocale,
   projectGroups,
   servicesContentByLocale,
@@ -7,7 +8,6 @@ import {
   type SiteLocale,
 } from "@yipei/site-content";
 import ProjectWall from "../../components/ProjectWall.astro";
-import { buildAppHref, buildAuthHref, buildCheckoutHref } from "../../lib/app";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 export function getStaticPaths() {
@@ -21,92 +21,136 @@ if (!localeParam || !isSiteLocale(localeParam)) {
 
 const locale = localeParam as SiteLocale;
 const content = servicesContentByLocale[locale];
-const appOrigin = (import.meta.env.PUBLIC_APP_ORIGIN ?? "http://localhost:3000").replace(/\/$/, "");
-const featuredPlan = content.plans[1] ?? content.plans[0];
+const paymentLinks = {
+  wechat: externalResourceHrefs.wechatShop,
+  xiaohongshu: externalResourceHrefs.xiaohongshuShop,
+} as const;
+const pageCopy =
+  locale === "zh"
+    ? {
+        viewEngagementsCta: "查看合作方式",
+        contactCta: "联系咨询",
+        protocolTags: ["方向诊断", "合作路径", "长期陪跑"],
+        startEyebrow: "从这里开始",
+        startTitle: "先确认最适合你的合作入口",
+        serviceChips: ["单次咨询", "资料包", "企业陪跑"],
+        engagementEyebrow: "合作方式",
+        engagementTitle: "四种正式合作入口",
+        howItStartsEyebrow: "如何开始",
+        howItStartsTitle: "先用一次明确问题，也可以直接进入长期合作。",
+        howItStartsCopy: "每种合作都会先对齐目标、交付与节奏，再进入正式推进。",
+        flowEyebrow: "合作流程",
+        paymentWechat: "微信店铺",
+        paymentXiaohongshu: "小红书店铺",
+        proofEyebrow: "案例项目",
+        proofTitle: "辅导过的项目案例",
+        faqEyebrow: "问题答疑",
+        faqTitle: "常见问题",
+        nextEyebrow: "下一步",
+        nextTitle: "用一个正式的合作入口开始",
+        nextBody: "根据你的阶段选择最合适的合作方式，后续节奏由你主导。",
+        payCta: "选择支付",
+        linksCta: "查看资源链接",
+      }
+    : {
+        viewEngagementsCta: "View engagements",
+        contactCta: "Get in touch",
+        protocolTags: ["Direction audit", "Engagement path", "Long-term support"],
+        startEyebrow: "Start Here",
+        startTitle: "Start with the engagement that matches your stage",
+        serviceChips: ["One-off sessions", "Playbook", "Retainer"],
+        engagementEyebrow: "Engagement",
+        engagementTitle: "Four formal ways to start working together",
+        howItStartsEyebrow: "How It Starts",
+        howItStartsTitle: "Start with one focused session or move directly into a longer partnership.",
+        howItStartsCopy: "Each engagement starts by aligning goals, deliverables, and pace before the work moves forward.",
+        flowEyebrow: "Flow",
+        paymentWechat: "WeChat Store",
+        paymentXiaohongshu: "Xiaohongshu Store",
+        proofEyebrow: "Proof",
+        proofTitle: "Selected coached projects",
+        faqEyebrow: "FAQ",
+        faqTitle: "Frequently asked questions",
+        nextEyebrow: "Next",
+        nextTitle: "Choose a formal way to start",
+        nextBody: "Pick the engagement that matches your stage, then set the pace.",
+        payCta: "Choose payment",
+        linksCta: "Browse links",
+      };
 ---
 
 <BaseLayout locale={locale} title={content.title} description={content.intro}>
-  <section class="page-hero services-page-hero">
-    <div class="page-hero-copy">
+  <section class="scene scene-hero services-hero-scene" data-chapter>
+    <div class="page-hero services-page-hero services-hero-stage stage-tall" data-stage>
+      <div class="page-hero-copy service-hero-copy">
       <p class="eyebrow">{content.eyebrow}</p>
       <h1>{content.title}</h1>
       <p>{content.intro}</p>
       <div class="hero-actions">
-        <a
-          class="primary-button"
-          data-app-link
-          data-app-action="checkout"
-          data-plan-code={featuredPlan.checkoutPlanCode}
-          data-channel={featuredPlan.preferredChannel ?? undefined}
-          href={buildCheckoutHref(appOrigin, locale, {
-            planCode: featuredPlan.checkoutPlanCode,
-            channel: featuredPlan.preferredChannel,
-          })}
-        >
-          {locale === "zh" ? "继续支付" : "Continue to checkout"}
+        <a class="primary-button" href="#plans">
+          {pageCopy.viewEngagementsCta}
         </a>
-        <a class="ghost-button" data-app-link data-app-action="orders" href={buildAppHref(appOrigin, locale, "orders")}>
-          <span data-orders-label>{locale === "zh" ? "查看订单" : "View orders"}</span>
-        </a>
-        <a class="ghost-button" data-app-link data-app-action="account" href={buildAuthHref(appOrigin, locale)}>
-          {locale === "zh" ? "登录" : "Sign in"}
+        <a class="ghost-button" href="#site-contact">
+          {pageCopy.contactCta}
         </a>
       </div>
+      <div class="service-hero-protocol" data-reveal>
+        {pageCopy.protocolTags.map((tag) => <span>{tag}</span>)}
+      </div>
     </div>
-    <div class="service-hero-aside">
-      <div class="service-app-status-card">
-        <span class="eyebrow">{locale === "zh" ? "Account" : "Account"}</span>
-        <p class="service-app-status" data-app-status>
-          {locale === "zh" ? "登录后继续预约与订单" : "Sign in to continue"}
-        </p>
-        <div class="service-app-chip-row">
-          <span class="bridge-chip">{locale === "zh" ? "微信支付" : "WeChat Pay"}</span>
-          <span class="bridge-chip">{locale === "zh" ? "支付宝" : "Alipay"}</span>
-          <span class="bridge-chip">{locale === "zh" ? "订单中心" : "Orders center"}</span>
+      <div class="service-hero-aside">
+        <div class="service-app-status-card" data-reveal>
+          <div class="service-app-status-head">
+            <span class="eyebrow">{pageCopy.startEyebrow}</span>
+          </div>
+          <div class="service-app-status-body">
+            <strong class="service-app-status-title">{pageCopy.startTitle}</strong>
+            <p class="service-app-status">
+              {locale === "zh"
+                ? "所有付费内容统一导流到微信店铺或小红书店铺，由用户自行选择支付。"
+                : "All paid entries route to WeChat Store or Xiaohongshu Store so users can choose payment there."}
+            </p>
+          </div>
+          <div class="service-app-chip-row">
+            {pageCopy.serviceChips.map((chip) => <span class="bridge-chip">{chip}</span>)}
+          </div>
+        </div>
+        <div class="service-pillar-grid service-hero-pillar-grid">
+          {content.pillars.map((pillar) => (
+            <article class="service-pillar-card" data-reveal>
+              <strong>{pillar.title}</strong>
+              <p>{pillar.body}</p>
+            </article>
+          ))}
         </div>
       </div>
-      <div class="service-pillar-grid">
-        {content.pillars.map((pillar) => (
-          <article class="service-pillar-card">
-            <strong>{pillar.title}</strong>
-            <p>{pillar.body}</p>
-          </article>
-        ))}
+    </div>
+  </section>
+
+  <section class="scene scene-plans services-plans-scene" data-chapter id="plans">
+    <div class="pricing-section premium-pricing-section services-pricing-stage stage-medium" data-stage>
+    <div class="services-plans-head">
+      <div class="section-heading" data-reveal>
+        <p class="eyebrow">{pageCopy.engagementEyebrow}</p>
+        <h2>{pageCopy.engagementTitle}</h2>
       </div>
-    </div>
-  </section>
-
-  <section class="app-entry-section">
-    <div class="section-heading">
-      <p class="eyebrow">{locale === "zh" ? "Account Access" : "Account Access"}</p>
-      <h2>{locale === "zh" ? "预约、支付与订单都从同一个账户继续" : "Bookings, payments, and orders continue from one account"}</h2>
-    </div>
-    <div class="app-entry-grid">
-      {content.entries.map((entry) => (
-        <article class="app-entry-card">
-          <h3>{entry.title}</h3>
-          <p>{entry.body}</p>
-          <a
-            class="inline-link"
-            data-app-link
-            data-app-action={entry.action}
-            href={entry.action === "orders" ? buildAppHref(appOrigin, locale, "orders") : entry.action === "app" ? buildAppHref(appOrigin, locale, "app") : buildAuthHref(appOrigin, locale)}
-          >
-            {entry.ctaLabel}
-          </a>
-        </article>
-      ))}
-    </div>
-  </section>
-
-  <section class="pricing-section premium-pricing-section">
-    <div class="section-heading">
-      <p class="eyebrow">{locale === "zh" ? "Engagement" : "Engagement"}</p>
-      <h2>{locale === "zh" ? "四种正式合作入口" : "Four formal ways to start working together"}</h2>
+      <aside class="services-plans-note" data-reveal>
+        <span class="eyebrow">{pageCopy.howItStartsEyebrow}</span>
+        <p class="services-plans-note-title">{pageCopy.howItStartsTitle}</p>
+        <p class="services-plans-note-copy">{pageCopy.howItStartsCopy}</p>
+      </aside>
     </div>
     <div class="premium-pricing-grid">
       {content.plans.map((plan, index) => (
-        <article class:list={["premium-pricing-card", index === 1 && "is-featured", index === 3 && "is-wide"]}>
+        <article
+          id={plan.id}
+          class:list={[
+            "premium-pricing-card",
+            plan.id === "growth-pack" && "is-featured",
+            plan.id === "retainer" && "is-wide",
+          ]}
+          data-reveal
+        >
           <div class="premium-pricing-topline">
             <span class="service-preview-index">{String(index + 1).padStart(2, "0")}</span>
             <strong>{plan.price}</strong>
@@ -118,69 +162,79 @@ const featuredPlan = content.plans[1] ?? content.plans[0];
           </div>
           <div class="premium-pricing-footer">
             <p>{plan.deliveryNote}</p>
-            <a
-              class="inline-link"
-              data-app-link
-              data-app-action="checkout"
-              data-plan-code={plan.checkoutPlanCode}
-              data-channel={plan.preferredChannel ?? undefined}
-              href={buildCheckoutHref(appOrigin, locale, {
-                planCode: plan.checkoutPlanCode,
-                channel: plan.preferredChannel,
-              })}
-            >
+            <a class="inline-link" href="#payment-options">
               {plan.ctaLabel}
             </a>
           </div>
         </article>
       ))}
     </div>
+    </div>
   </section>
 
-  <section class="payment-architecture-section">
-    <div class="section-heading">
-      <p class="eyebrow">{locale === "zh" ? "Flow" : "Flow"}</p>
+  <section class="scene scene-flow payment-architecture-section" data-chapter id="payment-options">
+    <div class="section-heading" data-reveal>
+      <p class="eyebrow">{pageCopy.flowEyebrow}</p>
       <h2>{content.paymentHeading}</h2>
       <p>{content.paymentIntro}</p>
     </div>
-    <div class="payment-step-grid">
-      {content.paymentSteps.map((step) => (
-        <article class="payment-step-card">
-          <h3>{step.title}</h3>
-          <p>{step.body}</p>
-        </article>
-      ))}
+    <div class="payment-channel-actions" data-reveal>
+      <a class="primary-button" href={paymentLinks.wechat} target="_blank" rel="noreferrer">
+        {pageCopy.paymentWechat}
+      </a>
+      <a class="ghost-button" href={paymentLinks.xiaohongshu} target="_blank" rel="noreferrer">
+        {pageCopy.paymentXiaohongshu}
+      </a>
     </div>
   </section>
 
-  <section class="project-section">
-    <div class="section-heading">
-      <p class="eyebrow">{locale === "zh" ? "Proof" : "Proof"}</p>
-      <h2>{locale === "zh" ? "辅导过的成功项目" : "Selected coached projects"}</h2>
+  <section class="scene scene-proof" data-chapter>
+    <div class="project-section stage-extended" data-stage>
+      <div class="section-heading" data-reveal>
+      <p class="eyebrow">{pageCopy.proofEyebrow}</p>
+      <h2>{pageCopy.proofTitle}</h2>
     </div>
-    <ProjectWall groups={projectGroups} />
+      <ProjectWall groups={projectGroups} locale={locale} />
+    </div>
   </section>
 
-  <section class="notes-grid premium-notes-grid">
+  <section class="scene scene-notes notes-grid premium-notes-grid" data-chapter>
     {content.notes.map((note) => (
-      <article class="note-card">
+      <article class="note-card" data-reveal>
         <p>{note}</p>
       </article>
     ))}
   </section>
 
-  <section class="faq-section">
-    <div class="section-heading">
-      <p class="eyebrow">FAQ</p>
-      <h2>{locale === "zh" ? "常见问题" : "Frequently asked questions"}</h2>
+  <section class="scene scene-faq faq-section" data-chapter>
+    <div class="section-heading" data-reveal>
+      <p class="eyebrow">{pageCopy.faqEyebrow}</p>
+      <h2>{pageCopy.faqTitle}</h2>
     </div>
     <div class="faq-list">
       {content.faq.map((item) => (
-        <details>
+      <details data-reveal>
           <summary>{item.question}</summary>
           <p>{item.answer}</p>
         </details>
       ))}
+    </div>
+  </section>
+  <section class="scene scene-closing" data-chapter>
+    <div class="closing-invitation stage-compact" data-stage>
+      <div class="closing-copy">
+      <p class="eyebrow">{pageCopy.nextEyebrow}</p>
+      <h2>{pageCopy.nextTitle}</h2>
+      <p>{pageCopy.nextBody}</p>
+    </div>
+      <div class="closing-actions">
+      <a class="primary-button" href="#payment-options">
+        {pageCopy.payCta}
+      </a>
+      <a class="ghost-button" href={`/${locale}/links`}>
+        {pageCopy.linksCta}
+      </a>
+      </div>
     </div>
   </section>
 </BaseLayout>

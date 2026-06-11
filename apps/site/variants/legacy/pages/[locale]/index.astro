@@ -1,0 +1,195 @@
+---
+import {
+  homeContentByLocale,
+  isSiteLocale,
+  projectGroups,
+  supportedLocales,
+  type SiteLocale,
+} from "@yipei/site-content";
+import ProjectWall from "../../components/ProjectWall.astro";
+import ResourceGrid from "../../components/ResourceGrid.astro";
+import { buildAuthHref, buildCheckoutHref, buildCheckoutPath } from "../../lib/app";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export function getStaticPaths() {
+  return supportedLocales.map((locale) => ({ params: { locale } }));
+}
+
+const localeParam = Astro.params.locale;
+if (!localeParam || !isSiteLocale(localeParam)) {
+  throw new Error("Invalid locale");
+}
+
+const locale = localeParam as SiteLocale;
+const content = homeContentByLocale[locale];
+const appOrigin = (import.meta.env.PUBLIC_APP_ORIGIN ?? "").replace(/\/$/, "");
+const featuredPlan = content.consultItems[1] ?? content.consultItems[0];
+const heroSignalIndexes = [0, 2, 3];
+const heroSignals = heroSignalIndexes
+  .map((index) => content.stats[index])
+  .filter(Boolean);
+const extendedStats = content.stats.filter((_stat, index) => !heroSignalIndexes.includes(index));
+const heroLead = content.introLines[0] ?? "";
+const heroSupport = content.introLines.slice(1).join(" ");
+const heroRole = content.roleStrong.replace(/^\|\s*/, "");
+---
+
+<BaseLayout
+  locale={locale}
+  title={`${content.name} | ${content.rolePrefix}`}
+  description={content.introLines.join(" ")}
+>
+  <section class="scene scene-hero hero-section hero-stage">
+    <div class="hero-copy hero-stage-copy">
+      <p class="eyebrow">{content.rolePrefix}</p>
+      <h1>{content.name}</h1>
+      <p class="hero-role">{heroRole}</p>
+      <p class="hero-meta-line">
+        <span>{content.baseTag}</span>
+        <span aria-hidden="true">•</span>
+        <span>{content.focusTag}</span>
+      </p>
+      <div class="hero-essay">
+        <p>{heroLead}</p>
+        {heroSupport ? <p>{heroSupport}</p> : null}
+      </div>
+      <div class="hero-actions">
+        <a
+          class="primary-button"
+          data-app-link
+          data-app-action="checkout"
+          data-plan-code={featuredPlan.checkoutPlanCode}
+          data-channel={featuredPlan.preferredChannel ?? undefined}
+          href={buildAuthHref(appOrigin, locale, {
+            nextPath: buildCheckoutPath(locale, {
+              planCode: featuredPlan.checkoutPlanCode,
+              channel: featuredPlan.preferredChannel,
+            }),
+          })}
+        >
+          {locale === "zh" ? "预约 60 分钟咨询" : "Book the 60-min session"}
+        </a>
+        <a class="ghost-button" href={`/${locale}/services`}>
+          {content.consultTitle}
+        </a>
+      </div>
+    </div>
+    <div class="hero-stage-visual">
+      <div class="hero-portrait">
+        <img
+          alt={content.name}
+          src="/figma-assets/raw/imgImageIrisProfile-b4e11b0c-2af6-4051-9143-545b963e13fc.jpg"
+        />
+      </div>
+    </div>
+    <aside class="hero-signal-strip">
+      {heroSignals.map((stat) => (
+        <article class="hero-signal-item">
+          <strong>{stat.value}</strong>
+          <div>
+            <h2>{stat.title}</h2>
+            <p>{stat.subtitle}</p>
+          </div>
+        </article>
+      ))}
+    </aside>
+  </section>
+
+  <section class="scene scene-range stats-section stats-collection">
+    <div class="section-heading">
+      <p class="eyebrow">{locale === "zh" ? "Operating Range" : "Operating Range"}</p>
+      <h2>{locale === "zh" ? "增长、融资、开源与陪跑，覆盖的是完整经营问题" : "Growth, fundraising, open source, and coaching in one operating surface"}</h2>
+    </div>
+    <div class="stats-waterfall">
+      {extendedStats.map((stat, index) => (
+        <article class:list={["stat-card", index % 3 === 0 && "stat-card-wide"]}>
+          <strong>{stat.value}</strong>
+          <h3>{stat.title}</h3>
+          <p>{stat.subtitle}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="scene scene-proof project-section">
+    <div class="section-heading">
+      <p class="eyebrow">{locale === "zh" ? "Proof Wall" : "Proof Wall"}</p>
+      <h2>{content.projectTitle}</h2>
+    </div>
+    <ProjectWall groups={projectGroups} />
+  </section>
+
+  <section class="scene scene-invitation pricing-section service-preview-section">
+    <div class="section-heading">
+      <p class="eyebrow">{locale === "zh" ? "Engagement" : "Engagement"}</p>
+      <h2>{content.consultTitle}</h2>
+      <p>{content.consultHint}</p>
+    </div>
+    <div class="service-preview-grid">
+      {content.consultItems.map((item, index) => (
+        <article class:list={["service-preview-card", index === 1 && "is-featured"]}>
+          <div class="service-preview-copy">
+            <span class="service-preview-index">{String(index + 1).padStart(2, "0")}</span>
+            <h3>{item.title}</h3>
+            {item.subtitle ? <p>{item.subtitle}</p> : null}
+          </div>
+          <div class="service-preview-meta">
+            <strong>{item.price}</strong>
+            <a
+              class="inline-link"
+              data-app-link
+              data-app-action="checkout"
+              data-plan-code={item.checkoutPlanCode}
+              data-channel={item.preferredChannel ?? undefined}
+              href={buildCheckoutHref(appOrigin, locale, {
+                planCode: item.checkoutPlanCode,
+                channel: item.preferredChannel,
+              })}
+            >
+              {locale === "zh" ? "进入支付" : "Open checkout"}
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="scene scene-atlas resource-section">
+    <div class="section-heading">
+      <p class="eyebrow">{locale === "zh" ? "Editorial Surface" : "Editorial Surface"}</p>
+      <h2>{locale === "zh" ? "内容、资源与精选入口" : "Content, resources, and curated entry points"}</h2>
+    </div>
+    <ResourceGrid groups={content.sections} />
+  </section>
+  <section class="scene scene-closing closing-invitation">
+    <div class="closing-copy">
+      <p class="eyebrow">{locale === "zh" ? "Invitation" : "Invitation"}</p>
+      <h2>{locale === "zh" ? "用一次深度对话开启合作" : "Start with a single, focused conversation"}</h2>
+      <p>
+        {locale === "zh"
+          ? "从定位、增长到融资策略，把关键问题一次讲清楚。"
+          : "Clarify positioning, growth, and fundraising in one deliberate session."}
+      </p>
+    </div>
+    <div class="closing-actions">
+      <a
+        class="primary-button"
+        data-app-link
+        data-app-action="checkout"
+        data-plan-code={featuredPlan.checkoutPlanCode}
+        data-channel={featuredPlan.preferredChannel}
+        href={buildAuthHref(appOrigin, locale, {
+          nextPath: buildCheckoutPath(locale, {
+            planCode: featuredPlan.checkoutPlanCode,
+            channel: featuredPlan.preferredChannel,
+          }),
+        })}
+      >
+        {locale === "zh" ? "预约咨询" : "Book a session"}
+      </a>
+      <a class="ghost-button" href={`/${locale}/services`}>
+        {locale === "zh" ? "查看服务方案" : "View services"}
+      </a>
+    </div>
+  </section>
+</BaseLayout>

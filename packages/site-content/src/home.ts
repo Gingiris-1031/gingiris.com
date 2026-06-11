@@ -1,4 +1,5 @@
 import type { SiteLocale } from "./locales";
+import { externalResourceHrefs } from "./editorial";
 import type { PaymentChannelHint } from "./services";
 
 export type HomeStatCard = {
@@ -10,7 +11,7 @@ export type HomeStatCard = {
 export type HomeLinkItem = {
   title: string;
   subtitle?: string;
-  href: string;
+  href?: string;
   icon: "github" | "tool" | "article" | "podcast" | "video" | "heart" | "download";
   highlighted?: boolean;
 };
@@ -51,12 +52,12 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
   zh: {
     name: "生姜 Iris",
     rolePrefix: "增长顾问",
-    roleStrong: "| Startup Coach｜ Ex-AFFiNE Co-founder & COO",
-    baseTag: "Base 昆山",
+    roleStrong: "| 创业陪跑｜前 AFFiNE 联合创始人兼 COO",
+    baseTag: "常驻昆山",
     focusTag: "出海 / 开源 / 运营咨询",
     introLines: [
       "AFFiNE 联合创始人，带团队穿过从冷启动、融资到全球增长的关键阶段。",
-      "从爱丁堡大学 PhD 退学创业后，持续在开源、出海与创始人运营一线工作。",
+      "从爱丁堡大学博士阶段退学创业后，持续在开源、出海与创始人运营一线工作。",
       "现在主要做开源增长、全球发布、创始人叙事与运营系统咨询。",
     ],
     stats: [
@@ -65,25 +66,31 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
       { value: "U30", title: "福布斯亚洲", subtitle: "30U30" },
       { value: "40+", title: "辅导项目", subtitle: "累计辅导项目数" },
       { value: "30+", title: "PH 日榜第一", subtitle: "辅导过的项目" },
-      { value: "6K+", title: "首周 Stars", subtitle: "开源项目冷启动成绩" },
+      { value: "6K+", title: "首周 GitHub 星标", subtitle: "开源项目冷启动成绩" },
       { value: "10+", title: "日常辅导项目数", subtitle: "出海/开源运营" },
       { value: "100+", title: "国家/地区", subtitle: "触达过用户所在" },
     ],
     projectTitle: "辅导过的项目",
     sections: [
       {
-        title: "了解我 & 我的项目",
+        title: "了解我与我的项目",
         items: [
           {
-            title: "AFFiNE Github",
-            subtitle: "The Next-Gen Knowledge Base",
-            href: "https://github.com/toeverything/AFFiNE",
+            title: "AFFiNE GitHub",
+            subtitle: "下一代知识库",
+            href: externalResourceHrefs.affineGithub,
             icon: "github",
           },
           {
             title: "了解自己的小工具",
             subtitle: "VipaLabs AI",
-            href: "/zh/links",
+            href: externalResourceHrefs.vipaLabs,
+            icon: "tool",
+          },
+          {
+            title: "Openclaw 开源 Skills",
+            subtitle: "查看 3 个开源 Skills",
+            href: "/zh/links#tools-and-skills",
             icon: "tool",
           },
         ],
@@ -91,16 +98,16 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
       {
         title: "出海 & 运营干货",
         items: [
-          { title: "Product Hunt打榜经验分享", href: "/zh/insights/product-hunt-launch", icon: "article" },
+          { title: "Product Hunt 打榜经验分享", href: "/zh/insights/product-hunt-launch", icon: "article" },
           { title: "竞品调研框架文档", href: "/zh/insights/competitor-research-framework", icon: "article" },
           { title: "开源出海运营经验分享", href: "/zh/insights/open-source-ops", icon: "article" },
-          { title: "开源launch的相关复盘", href: "/zh/insights/open-source-launch-retro", icon: "article" },
+          { title: "开源发布相关复盘", href: "/zh/insights/open-source-launch-retro", icon: "article" },
           { title: "关于转化的相关复盘", href: "/zh/insights/conversion-retro", icon: "article" },
-          { title: "出海0-1的文字复盘", href: "/zh/insights/global-zero-to-one", icon: "article" },
+          { title: "出海 0-1 的文字复盘", href: "/zh/insights/global-zero-to-one", icon: "article" },
           {
             title: "软件出海0-1全球化增长实战",
-            subtitle: "付费资料领取",
-            href: "/zh/services",
+            subtitle: "99 RMB 资料包",
+            href: "/zh/services#payment-options",
             icon: "article",
             highlighted: true,
           },
@@ -109,18 +116,18 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
       {
         title: "播客访谈",
         items: [
-          { title: "Ep.1 出海运营/创业经历", href: "/zh/links", icon: "podcast" },
-          { title: "Ep.2 第一段创业踩过的坑", href: "/zh/links", icon: "podcast" },
-          { title: "Ep.3 出海产品冷启动运营指南", href: "/zh/links", icon: "podcast" },
-          { title: "Ep.4 开源产品发布方法论", href: "/zh/links", icon: "podcast" },
-          { title: "Ep.5 出海+运营+创业的tips", href: "/zh/links", icon: "podcast" },
-          { title: "Ep.6 大厂经历/超级个体", href: "/zh/links", icon: "podcast" },
-          { title: "Ep.7 投融资相关tips", href: "/zh/links", icon: "podcast" },
-          { title: "Ep.8 用户运营/商业化认知 (强推!)", href: "/zh/links", icon: "podcast", highlighted: true },
-          { title: "Ep.9 英国系统性压迫", href: "/zh/links", icon: "podcast" },
-          { title: "Ep.10 关于善良的“既得利益者”", href: "/zh/links", icon: "podcast" },
-          { title: "Ep.11 60min听完4年创业故事", href: "/zh/links", icon: "podcast" },
-          { title: "Ep.12 女性创业需要关注的困境和机会", href: "/zh/links", icon: "podcast" },
+          { title: "第 1 期 出海运营与创业经历", href: externalResourceHrefs.podcastOpsFounder, icon: "podcast" },
+          { title: "第 2 期 第一段创业踩过的坑", href: externalResourceHrefs.podcastFirstStartupMistakes, icon: "podcast" },
+          { title: "第 3 期 出海产品冷启动运营指南", href: externalResourceHrefs.podcastColdStartGuide, icon: "podcast" },
+          { title: "第 4 期 开源产品发布方法论", href: externalResourceHrefs.podcastOpenSourceLaunch, icon: "podcast" },
+          { title: "第 5 期 出海、运营与创业经验", href: externalResourceHrefs.podcastGrowthTips, icon: "podcast" },
+          { title: "第 6 期 大厂经历与超级个体", href: externalResourceHrefs.podcastBigTechSolo, icon: "podcast" },
+          { title: "第 7 期 投融资相关经验", href: externalResourceHrefs.podcastFundraisingTips, icon: "podcast" },
+          { title: "第 8 期 用户运营与商业化认知（强推）", href: externalResourceHrefs.podcastUserOpsMonetization, icon: "podcast", highlighted: true },
+          { title: "第 9 期 英国系统性压迫", href: externalResourceHrefs.podcastUkPressure, icon: "podcast" },
+          { title: "第 10 期 关于善良的“既得利益者”", href: externalResourceHrefs.podcastPrivilegeKindness, icon: "podcast" },
+          { title: "第 11 期 60 分钟听完 4 年创业故事", href: externalResourceHrefs.podcastFourYearFounderStory, icon: "podcast" },
+          { title: "第 12 期 女性创业需要关注的困境和机会", href: externalResourceHrefs.podcastWomenFounder, icon: "podcast" },
         ],
       },
       {
@@ -128,20 +135,20 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
         items: [
           {
             title: "互联网大厂裸辞，创业血泪史",
-            subtitle: "Bilibili 对谈生姜Iris",
-            href: "/zh/links",
+            subtitle: "Bilibili 对谈生姜 Iris",
+            href: externalResourceHrefs.videoBilibiliInterview,
             icon: "video",
           },
           {
-            title: "1000万美金融资经验SOP",
+            title: "1000 万美金融资经验 SOP",
             subtitle: "小红书",
-            href: "/zh/links",
+            href: externalResourceHrefs.videoXiaohongshuInterview,
             icon: "video",
           },
           {
-            title: "Iris软件出海实战分享",
+            title: "Iris 软件出海实战分享",
             subtitle: "百度网盘 (提取码: v75t)",
-            href: "/zh/links",
+            href: externalResourceHrefs.growthArchive,
             icon: "download",
           },
         ],
@@ -149,8 +156,8 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
       {
         title: "个人成长 & 亲密关系",
         items: [
-          { title: "你可以爱一个人，但仍然和ta说再见", href: "/zh/links", icon: "heart" },
-          { title: "个人成长 / 女性力量", href: "/zh/links", icon: "heart" },
+          { title: "你可以爱一个人，但仍然和ta说再见", href: externalResourceHrefs.relationshipLoveGoodbye, icon: "heart" },
+          { title: "个人成长 / 女性力量", href: externalResourceHrefs.relationshipGrowthWomenPower, icon: "heart" },
         ],
       },
     ],
@@ -159,7 +166,7 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
     consultItems: [
       {
         id: "session-30",
-        title: "单次咨询 (30分钟)",
+        title: "单次咨询（30 分钟）",
         price: "800 RMB",
         href: "/zh/services",
         checkoutPlanCode: "session-30",
@@ -167,7 +174,7 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
       },
       {
         id: "session-60",
-        title: "单次咨询 (60分钟)",
+        title: "单次咨询（60 分钟）",
         price: "1500 RMB",
         href: "/zh/services",
         checkoutPlanCode: "session-60",
@@ -175,7 +182,7 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
       },
       {
         id: "growth-pack",
-        title: "出海0-1资料包",
+        title: "出海 0-1 资料包",
         subtitle: "包含方法论和初始工具包",
         price: "99 RMB",
         href: "/zh/services",
@@ -185,7 +192,7 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
       {
         id: "retainer",
         title: "企业陪跑咨询",
-        subtitle: "每月累计咨询时长不超过5小时",
+        subtitle: "每月累计咨询时长不超过 5 小时",
         price: "7000 RMB/月",
         href: "/zh/services",
         checkoutPlanCode: "retainer",
@@ -224,13 +231,19 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
           {
             title: "AFFiNE Github",
             subtitle: "The Next-Gen Knowledge Base",
-            href: "https://github.com/toeverything/AFFiNE",
+            href: externalResourceHrefs.affineGithub,
             icon: "github",
           },
           {
             title: "Self-awareness Tool",
             subtitle: "VipaLabs AI",
-            href: "/en/links",
+            href: externalResourceHrefs.vipaLabs,
+            icon: "tool",
+          },
+          {
+            title: "Openclaw Open-Source Skills",
+            subtitle: "See the 3 public skills",
+            href: "/en/links#tools-and-skills",
             icon: "tool",
           },
         ],
@@ -246,8 +259,8 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
           { title: "0-1 global launch notes", href: "/en/insights/global-zero-to-one", icon: "article" },
           {
             title: "0-1 Global Growth Playbook",
-            subtitle: "Paid material",
-            href: "/en/services",
+            subtitle: "99 RMB pack",
+            href: "/en/services#payment-options",
             icon: "article",
             highlighted: true,
           },
@@ -256,33 +269,33 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
       {
         title: "Podcast Interviews",
         items: [
-          { title: "Ep.1 Global ops & founder story", href: "/en/links", icon: "podcast" },
-          { title: "Ep.2 Mistakes in my first startup", href: "/en/links", icon: "podcast" },
-          { title: "Ep.3 Cold-start guide for global products", href: "/en/links", icon: "podcast" },
-          { title: "Ep.4 OSS launch methodology", href: "/en/links", icon: "podcast" },
-          { title: "Ep.5 Startup + growth tips", href: "/en/links", icon: "podcast" },
-          { title: "Ep.6 Big-tech to solo path", href: "/en/links", icon: "podcast" },
-          { title: "Ep.7 Fundraising insights", href: "/en/links", icon: "podcast" },
-          { title: "Ep.8 User ops & monetization (Recommended)", href: "/en/links", icon: "podcast", highlighted: true },
-          { title: "Ep.9 Structural pressure in UK", href: "/en/links", icon: "podcast" },
-          { title: "Ep.10 Kindness & privilege", href: "/en/links", icon: "podcast" },
-          { title: "Ep.11 4-year startup story in 60 min", href: "/en/links", icon: "podcast" },
-          { title: "Ep.12 Women founder opportunities", href: "/en/links", icon: "podcast" },
+          { title: "Ep.1 Global ops & founder story", href: externalResourceHrefs.podcastOpsFounder, icon: "podcast" },
+          { title: "Ep.2 Mistakes in my first startup", href: externalResourceHrefs.podcastFirstStartupMistakes, icon: "podcast" },
+          { title: "Ep.3 Cold-start guide for global products", href: externalResourceHrefs.podcastColdStartGuide, icon: "podcast" },
+          { title: "Ep.4 OSS launch methodology", href: externalResourceHrefs.podcastOpenSourceLaunch, icon: "podcast" },
+          { title: "Ep.5 Startup + growth tips", href: externalResourceHrefs.podcastGrowthTips, icon: "podcast" },
+          { title: "Ep.6 Big-tech to solo path", href: externalResourceHrefs.podcastBigTechSolo, icon: "podcast" },
+          { title: "Ep.7 Fundraising insights", href: externalResourceHrefs.podcastFundraisingTips, icon: "podcast" },
+          { title: "Ep.8 User ops & monetization (Recommended)", href: externalResourceHrefs.podcastUserOpsMonetization, icon: "podcast", highlighted: true },
+          { title: "Ep.9 Structural pressure in UK", href: externalResourceHrefs.podcastUkPressure, icon: "podcast" },
+          { title: "Ep.10 Kindness & privilege", href: externalResourceHrefs.podcastPrivilegeKindness, icon: "podcast" },
+          { title: "Ep.11 4-year startup story in 60 min", href: externalResourceHrefs.podcastFourYearFounderStory, icon: "podcast" },
+          { title: "Ep.12 Women founder opportunities", href: externalResourceHrefs.podcastWomenFounder, icon: "podcast" },
         ],
       },
       {
         title: "Video & Resources",
         items: [
-          { title: "From big tech exit to startup", subtitle: "Bilibili interview", href: "/en/links", icon: "video" },
-          { title: "$10M fundraising SOP", subtitle: "Xiaohongshu", href: "/en/links", icon: "video" },
-          { title: "Global software growth playbook", subtitle: "Baidu Netdisk", href: "/en/links", icon: "download" },
+          { title: "From big tech exit to startup", subtitle: "Bilibili interview", href: externalResourceHrefs.videoBilibiliInterview, icon: "video" },
+          { title: "$10M fundraising SOP", subtitle: "Xiaohongshu", href: externalResourceHrefs.videoXiaohongshuInterview, icon: "video" },
+          { title: "Global software growth playbook", subtitle: "Baidu Netdisk", href: externalResourceHrefs.growthArchive, icon: "download" },
         ],
       },
       {
         title: "Personal Growth & Relationship",
         items: [
-          { title: "Love someone and still say goodbye", href: "/en/links", icon: "heart" },
-          { title: "Growth / Women power", href: "/en/links", icon: "heart" },
+          { title: "Love someone and still say goodbye", href: externalResourceHrefs.relationshipLoveGoodbye, icon: "heart" },
+          { title: "Growth / Women power", href: externalResourceHrefs.relationshipGrowthWomenPower, icon: "heart" },
         ],
       },
     ],

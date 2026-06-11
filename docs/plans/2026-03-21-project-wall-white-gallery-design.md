@@ -25,6 +25,27 @@ Recommended: Approach 1.
 - The existing hover slowdown script remains in place so interaction reduces speed instead of stopping motion.
 - Logo legibility is preserved with restrained drop shadows rather than hard backing plates.
 
+## Design Revision: Porcelain Fade
+- The white wall should not read as a hard-edged card. Its center stays solid, but the outer perimeter fades softly into the dark proof scene through warm-white transparency, bloom, and reduced border definition.
+- Each marquee rail becomes a shallow inset groove inside the wall rather than a separate pill. The rail edges fade back into the slab with soft left-right and top-bottom gradients.
+- Group separators should also avoid hard rules. Use feathered divider lines that disappear at both ends.
+- Hover polish should come from local illumination and gentle lift, not visible borders.
+
+## Design Revision: Atmosphere Merge
+- The proof wall should stop reading as a single placed object. Instead, the entire `project-section` becomes the stage that catches soft white illumination behind the wall.
+- The `.project-wall` surface itself should lose explicit frame signals such as object-like shadows and inner-rectangle definitions.
+- Edge integration should be created by broad environmental bloom, not by trying to soften a card border.
+
+## Design Revision: Scene-Level Merge
+- The white treatment must expand from the wall to the full proof chapter. `scene-proof`, heading area, spacing, and wall need to live inside the same cool gray-white luminance field.
+- `project-wall` should become only the brighter center lane within that chapter, not a standalone bright object.
+- Rail contrast should stay low so the chapter reads as one atmosphere first and a logo showcase second.
+
+## Design Revision: Continuous White Field
+- Individual marquee rails should stop reading as rows with their own surfaces. The wall becomes one continuous white field with only grouped labels and moving logos.
+- `.project-exhibit.is-marquee` should be visually transparent and exist only as an overflow/motion container.
+- Preserve only subtle edge fading for the infinite-scroll splice; remove rail background, border, and inset shading.
+
 ## Risks
 - Some white-on-transparent logos may lose contrast against the white slab. Mitigation: add a subtle drop shadow and keep row tracks slightly warmer than pure white.
 - A large bright panel can feel flat if shadows are too weak. Mitigation: use one strong container treatment and keep per-item styling minimal.

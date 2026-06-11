@@ -20,32 +20,129 @@ if (!localeParam || !isSiteLocale(localeParam)) {
 const locale = localeParam as SiteLocale;
 const copy = editorialContentByLocale[locale];
 const collections = linkCollectionsByLocale[locale];
+const pageEyebrow = locale === "zh" ? "资源索引" : "Resource Atlas";
+const totalItems = collections.reduce((sum, collection) => sum + collection.items.length, 0);
+const isExternalHref = (href?: string) => Boolean(href && /^https?:\/\//.test(href));
+const collectionCountLabel = (count: number) => (locale === "zh" ? `${count} 条内容` : `${count} items`);
+const pageCopy =
+  locale === "zh"
+    ? {
+        directoryEyebrow: "快速定位",
+        directoryTitle: "从这里跳到对应分组",
+        directorySubtitle: `当前共整理 ${totalItems} 条资源，已经按主题归档，可直接跳转到原始链接。`,
+        noteKicker: "附注",
+        noteLineOne: "公众号是「云宝的桃花坞」。",
+        noteLineTwo: "飞书和微信公众号内容会直接跳转到原平台；部分平台如果在 App 内打开异常，复制到浏览器更稳。",
+        insightsChip: "站内精选摘要",
+        insightsChipHint: "保留 6 篇干货摘要页",
+        externalHint: "打开 ↗",
+      }
+    : {
+        directoryEyebrow: "Quick jump",
+        directoryTitle: "Jump straight to the right cluster",
+        directorySubtitle: `${totalItems} resources are organized by topic here, each with a direct jump to the original destination.`,
+        noteKicker: "Notes",
+        noteLineOne: "The WeChat account name is “云宝的桃花坞”.",
+        noteLineTwo: "Feishu and WeChat links open on their source platforms. If an in-app browser behaves oddly, opening in a normal browser is more reliable.",
+        insightsChip: "On-site summaries",
+        insightsChipHint: "6 curated insight pages",
+        externalHint: "Open ↗",
+      };
 ---
 
 <BaseLayout locale={locale} title={copy.linksTitle} description={copy.linksSubtitle}>
-  <section class="page-hero">
-    <div class="page-hero-copy">
-      <p class="eyebrow">{locale === "zh" ? "Resource Atlas" : "Resource Atlas"}</p>
-      <h1>{copy.linksTitle}</h1>
-      <p>{copy.linksSubtitle}</p>
+  <section class="scene scene-hero" data-chapter>
+    <div class="page-hero stage-compact" data-stage>
+      <div class="page-hero-copy">
+        <p class="eyebrow">{pageEyebrow}</p>
+        <h1>{copy.linksTitle}</h1>
+        <p>{copy.linksSubtitle}</p>
+      </div>
     </div>
   </section>
 
-  <div class="resource-groups">
+  <section class="scene scene-proof links-directory-scene" data-chapter>
+    <div class="links-directory-head">
+      <div class="section-heading">
+        <p class="eyebrow">{pageCopy.directoryEyebrow}</p>
+        <h2>{pageCopy.directoryTitle}</h2>
+        <p>{pageCopy.directorySubtitle}</p>
+      </div>
+      <div class="links-note-card" data-reveal>
+        <p class="site-footer-kicker">{pageCopy.noteKicker}</p>
+        <p>{pageCopy.noteLineOne}</p>
+        <p>{pageCopy.noteLineTwo}</p>
+      </div>
+    </div>
+    <div class="links-directory-grid">
+      {collections.map((collection) => (
+        <a class="directory-chip" href={`#${collection.id}`} data-reveal>
+          <strong>{collection.title}</strong>
+          <span>{collectionCountLabel(collection.items.length)}</span>
+        </a>
+      ))}
+      <a class="directory-chip is-accent" href={`/${locale}/insights`} data-reveal>
+        <strong>{pageCopy.insightsChip}</strong>
+        <span>{pageCopy.insightsChipHint}</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="scene scene-atlas resource-groups resource-atlas" data-chapter>
     {collections.map((collection) => (
-      <section class="resource-group">
+      <section class="resource-group" id={collection.id} data-reveal>
         <header class="resource-group-head">
-          <h2>{collection.title}</h2>
+          <div class="resource-group-heading">
+            <p class="eyebrow">{collectionCountLabel(collection.items.length)}</p>
+            <h2>{collection.title}</h2>
+          </div>
+          {collection.description ? <p class="resource-group-description">{collection.description}</p> : null}
         </header>
         <div class="resource-grid">
-          {collection.items.map((item) => (
-            <a class="resource-card" href={item.href}>
-              <strong>{item.title}</strong>
-              {item.description ? <p>{item.description}</p> : null}
-            </a>
-          ))}
+          {collection.items.map((item) => {
+            const isExternal = isExternalHref(item.href);
+
+            if (!item.href) {
+              return (
+                <article class:list={["resource-card", "is-static", item.featured && "is-highlighted"]} data-reveal>
+                  {item.badge || item.meta ? (
+                    <div class="resource-card-topline">
+                      {item.badge ? <span class="resource-chip">{item.badge}</span> : null}
+                      {item.meta ? <span class="resource-card-meta-chip">{item.meta}</span> : null}
+                    </div>
+                  ) : null}
+                  <strong>{item.title}</strong>
+                  {item.description ? <p>{item.description}</p> : null}
+                  {item.note ? <p class="resource-note">{item.note}</p> : null}
+                </article>
+              );
+            }
+
+            return (
+              <a
+                class:list={["resource-card", item.featured && "is-highlighted"]}
+                href={item.href}
+                target={isExternal ? "_blank" : undefined}
+                rel={isExternal ? "noreferrer" : undefined}
+                data-reveal
+              >
+                {item.badge || item.meta ? (
+                  <div class="resource-card-topline">
+                    {item.badge ? <span class="resource-chip">{item.badge}</span> : null}
+                    {item.meta ? <span class="resource-card-meta-chip">{item.meta}</span> : null}
+                  </div>
+                ) : null}
+                <strong>{item.title}</strong>
+                {item.description ? <p>{item.description}</p> : null}
+                {item.note ? <p class="resource-note">{item.note}</p> : null}
+                <div class="resource-card-meta">
+                  <span>{pageCopy.externalHint}</span>
+                </div>
+              </a>
+            );
+          })}
         </div>
       </section>
     ))}
-  </div>
+  </section>
 </BaseLayout>

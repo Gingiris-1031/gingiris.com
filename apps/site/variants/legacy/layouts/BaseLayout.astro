@@ -1,0 +1,40 @@
+---
+import type { SiteLocale } from "@yipei/site-content";
+import { siteFrameByLocale } from "@yipei/site-content";
+import AppBridge from "../components/AppBridge.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import "../styles/global.css";
+
+interface Props {
+  locale: SiteLocale;
+  title: string;
+  description: string;
+}
+
+const { locale, title, description } = Astro.props;
+const frame = siteFrameByLocale[locale];
+const appOrigin = (import.meta.env.PUBLIC_APP_ORIGIN ?? "").replace(/\/$/, "");
+---
+
+<!doctype html>
+<html lang={locale === "zh" ? "zh-CN" : "en"}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <AppBridge locale={locale} appOrigin={appOrigin} />
+    <div class="page-shell">
+      <div class="page-aura page-aura-left" aria-hidden="true"></div>
+      <div class="page-aura page-aura-right" aria-hidden="true"></div>
+      <SiteHeader locale={locale} frame={frame} appOrigin={appOrigin} />
+      <main class="page-main">
+        <slot />
+      </main>
+      <SiteFooter locale={locale} frame={frame} />
+    </div>
+  </body>
+</html>

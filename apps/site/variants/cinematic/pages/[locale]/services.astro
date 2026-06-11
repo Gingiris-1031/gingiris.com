@@ -1,0 +1,248 @@
+---
+import {
+  isSiteLocale,
+  projectGroups,
+  servicesContentByLocale,
+  supportedLocales,
+  type SiteLocale,
+} from "@yipei/site-content";
+import ProjectWall from "../../components/ProjectWall.astro";
+import { buildAppHref, buildAuthHref, buildCheckoutHref } from "../../lib/app";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export function getStaticPaths() {
+  return supportedLocales.map((locale) => ({ params: { locale } }));
+}
+
+const localeParam = Astro.params.locale;
+if (!localeParam || !isSiteLocale(localeParam)) {
+  throw new Error("Invalid locale");
+}
+
+const locale = localeParam as SiteLocale;
+const content = servicesContentByLocale[locale];
+const appOrigin = (import.meta.env.PUBLIC_APP_ORIGIN ?? "").replace(/\/$/, "");
+const featuredPlan = content.plans[1] ?? content.plans[0];
+---
+
+<BaseLayout locale={locale} title={content.title} description={content.intro}>
+  <section class="scene scene-hero services-hero-scene" data-chapter>
+    <div class="page-hero services-page-hero services-hero-stage stage-tall" data-stage>
+      <div class="page-hero-copy service-hero-copy">
+      <p class="eyebrow">{content.eyebrow}</p>
+      <h1>{content.title}</h1>
+      <p>{content.intro}</p>
+      <div class="hero-actions">
+        <a
+          class="primary-button"
+          data-app-link
+          data-app-action="checkout"
+          data-plan-code={featuredPlan.checkoutPlanCode}
+          data-channel={featuredPlan.preferredChannel ?? undefined}
+          href={buildCheckoutHref(appOrigin, locale, {
+            planCode: featuredPlan.checkoutPlanCode,
+            channel: featuredPlan.preferredChannel,
+          })}
+        >
+          {locale === "zh" ? "继续支付" : "Continue to checkout"}
+        </a>
+        <a class="ghost-button" data-app-link data-app-action="orders" href={buildAppHref(appOrigin, locale, "orders")}>
+          <span data-orders-label>{locale === "zh" ? "查看订单" : "View orders"}</span>
+        </a>
+        <a class="ghost-button" data-app-link data-app-action="account" href={buildAuthHref(appOrigin, locale)}>
+          {locale === "zh" ? "登录" : "Sign in"}
+        </a>
+      </div>
+      <div class="service-hero-protocol" data-reveal>
+        <span>{locale === "zh" ? "方向诊断" : "Direction audit"}</span>
+        <span>{locale === "zh" ? "合作路径" : "Engagement path"}</span>
+        <span>{locale === "zh" ? "长期陪跑" : "Long-term support"}</span>
+      </div>
+    </div>
+      <div class="service-hero-aside">
+        <div class="service-app-status-card" data-reveal>
+          <div class="service-app-status-head">
+            <span class="eyebrow">{locale === "zh" ? "Account" : "Account"}</span>
+          </div>
+          <div class="service-app-status-body">
+            <strong class="service-app-status-title">
+              {locale === "zh" ? "登录后继续预约、支付与订单" : "Sign in to continue bookings, payments, and orders"}
+            </strong>
+            <p class="service-app-status" data-app-status>
+              {locale === "zh" ? "登录后继续预约与订单" : "Sign in to continue"}
+            </p>
+          </div>
+          <div class="service-app-chip-row">
+            <span class="bridge-chip">{locale === "zh" ? "微信支付" : "WeChat Pay"}</span>
+            <span class="bridge-chip">{locale === "zh" ? "支付宝" : "Alipay"}</span>
+            <span class="bridge-chip">{locale === "zh" ? "订单中心" : "Orders center"}</span>
+          </div>
+        </div>
+        <div class="service-pillar-grid service-hero-pillar-grid">
+          {content.pillars.map((pillar) => (
+            <article class="service-pillar-card" data-reveal>
+              <strong>{pillar.title}</strong>
+              <p>{pillar.body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene scene-delivery app-entry-section" data-chapter>
+    <div class="section-heading" data-reveal>
+      <p class="eyebrow">{locale === "zh" ? "Account Access" : "Account Access"}</p>
+      <h2>{locale === "zh" ? "预约、支付与订单都从同一个账户继续" : "Bookings, payments, and orders continue from one account"}</h2>
+    </div>
+    <div class="app-entry-grid">
+      {content.entries.map((entry) => (
+        <article class="app-entry-card" data-reveal>
+          <h3>{entry.title}</h3>
+          <p>{entry.body}</p>
+          <a
+            class="inline-link"
+            data-app-link
+            data-app-action={entry.action}
+            href={entry.action === "orders" ? buildAppHref(appOrigin, locale, "orders") : entry.action === "app" ? buildAppHref(appOrigin, locale, "app") : buildAuthHref(appOrigin, locale)}
+          >
+            {entry.ctaLabel}
+          </a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="scene scene-plans services-plans-scene" data-chapter>
+    <div class="pricing-section premium-pricing-section services-pricing-stage stage-medium" data-stage>
+    <div class="services-plans-head">
+      <div class="section-heading" data-reveal>
+        <p class="eyebrow">{locale === "zh" ? "Engagement" : "Engagement"}</p>
+        <h2>{locale === "zh" ? "四种正式合作入口" : "Four formal ways to start working together"}</h2>
+      </div>
+      <aside class="services-plans-note" data-reveal>
+        <span class="eyebrow">{locale === "zh" ? "How It Starts" : "How It Starts"}</span>
+        <p class="services-plans-note-title">
+          {locale === "zh" ? "先用一次明确问题，也可以直接进入长期合作。" : "Start with one focused session or move directly into a longer partnership."}
+        </p>
+        <p class="services-plans-note-copy">
+          {locale === "zh"
+            ? "每种合作都会先对齐目标、交付与节奏，再进入正式推进。"
+            : "Each engagement starts by aligning goals, deliverables, and pace before the work moves forward."}
+        </p>
+      </aside>
+    </div>
+    <div class="premium-pricing-grid">
+      {content.plans.map((plan, index) => (
+        <article class:list={["premium-pricing-card", index === 1 && "is-featured", index === 3 && "is-wide"]} data-reveal>
+          <div class="premium-pricing-topline">
+            <span class="service-preview-index">{String(index + 1).padStart(2, "0")}</span>
+            <strong>{plan.price}</strong>
+          </div>
+          <div class="premium-pricing-copy">
+            <h3>{plan.title}</h3>
+            {plan.subtitle ? <p>{plan.subtitle}</p> : null}
+            <p>{plan.detail}</p>
+          </div>
+          <div class="premium-pricing-footer">
+            <p>{plan.deliveryNote}</p>
+            <a
+              class="inline-link"
+              data-app-link
+              data-app-action="checkout"
+              data-plan-code={plan.checkoutPlanCode}
+              data-channel={plan.preferredChannel ?? undefined}
+              href={buildCheckoutHref(appOrigin, locale, {
+                planCode: plan.checkoutPlanCode,
+                channel: plan.preferredChannel,
+              })}
+            >
+              {plan.ctaLabel}
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+    </div>
+  </section>
+
+  <section class="scene scene-flow payment-architecture-section" data-chapter>
+    <div class="section-heading" data-reveal>
+      <p class="eyebrow">{locale === "zh" ? "Flow" : "Flow"}</p>
+      <h2>{content.paymentHeading}</h2>
+      <p>{content.paymentIntro}</p>
+    </div>
+    <div class="payment-step-grid">
+      {content.paymentSteps.map((step) => (
+        <article class="payment-step-card" data-reveal>
+          <h3>{step.title}</h3>
+          <p>{step.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="scene scene-proof" data-chapter>
+    <div class="project-section stage-extended" data-stage>
+      <div class="section-heading" data-reveal>
+      <p class="eyebrow">{locale === "zh" ? "Proof" : "Proof"}</p>
+      <h2>{locale === "zh" ? "辅导过的成功项目" : "Selected coached projects"}</h2>
+    </div>
+      <ProjectWall groups={projectGroups} />
+    </div>
+  </section>
+
+  <section class="scene scene-notes notes-grid premium-notes-grid" data-chapter>
+    {content.notes.map((note) => (
+      <article class="note-card" data-reveal>
+        <p>{note}</p>
+      </article>
+    ))}
+  </section>
+
+  <section class="scene scene-faq faq-section" data-chapter>
+    <div class="section-heading" data-reveal>
+      <p class="eyebrow">FAQ</p>
+      <h2>{locale === "zh" ? "常见问题" : "Frequently asked questions"}</h2>
+    </div>
+    <div class="faq-list">
+      {content.faq.map((item) => (
+      <details data-reveal>
+          <summary>{item.question}</summary>
+          <p>{item.answer}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+  <section class="scene scene-closing" data-chapter>
+    <div class="closing-invitation stage-compact" data-stage>
+      <div class="closing-copy">
+      <p class="eyebrow">{locale === "zh" ? "Next" : "Next"}</p>
+      <h2>{locale === "zh" ? "用一个正式的合作入口开始" : "Choose a formal way to start"}</h2>
+      <p>
+        {locale === "zh"
+          ? "根据你的阶段选择最合适的合作方式，后续节奏由你主导。"
+          : "Pick the engagement that matches your stage, then set the pace."}
+      </p>
+    </div>
+      <div class="closing-actions">
+      <a
+        class="primary-button"
+        data-app-link
+        data-app-action="checkout"
+        data-plan-code={featuredPlan.checkoutPlanCode}
+        data-channel={featuredPlan.preferredChannel}
+        href={buildCheckoutHref(appOrigin, locale, {
+          planCode: featuredPlan.checkoutPlanCode,
+          channel: featuredPlan.preferredChannel,
+        })}
+      >
+        {locale === "zh" ? "进入支付" : "Continue to checkout"}
+      </a>
+      <a class="ghost-button" data-app-link data-app-action="account" href={buildAuthHref(appOrigin, locale)}>
+        {locale === "zh" ? "登录账户" : "Sign in"}
+      </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

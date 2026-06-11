@@ -1,7 +1,7 @@
 ---
 import type { SiteLocale } from "@yipei/site-content";
 import { siteFrameByLocale } from "@yipei/site-content";
-import AppBridge from "../components/AppBridge.astro";
+import ScrollNarrative from "../components/ScrollNarrative.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import "../styles/global.css";
@@ -10,11 +10,18 @@ interface Props {
   locale: SiteLocale;
   title: string;
   description: string;
+  enableScrollNarrative?: boolean;
+  structuredData?: Record<string, unknown>;
 }
 
-const { locale, title, description } = Astro.props;
+const { locale, title, description, enableScrollNarrative = false, structuredData } = Astro.props;
 const frame = siteFrameByLocale[locale];
-const appOrigin = (import.meta.env.PUBLIC_APP_ORIGIN ?? "http://localhost:3000").replace(/\/$/, "");
+const currentPath = `${Astro.url.pathname}${Astro.url.search}`;
+const alternateLocale = locale === "zh" ? "en" : "zh";
+const currentLocalePattern = new RegExp(`^/${locale}(?=/|$)`);
+const prefetchedLocalePath = currentLocalePattern.test(currentPath)
+  ? currentPath.replace(currentLocalePattern, `/${alternateLocale}`)
+  : `/${alternateLocale}`;
 ---
 
 <!doctype html>
@@ -23,18 +30,72 @@ const appOrigin = (import.meta.env.PUBLIC_APP_ORIGIN ?? "http://localhost:3000")
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#0b0b0c" />
+    <link rel="prefetch" href={prefetchedLocalePath} as="document" />
+    {structuredData ? (
+      <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    ) : null}
+    <script is:inline>
+      (() => {
+        const storageKey = "site-locale-transition";
+
+        try {
+          const raw = window.sessionStorage.getItem(storageKey);
+          if (!raw) {
+            return;
+          }
+
+          const saved = JSON.parse(raw);
+          const currentPath = `${window.location.pathname}${window.location.search}`;
+          const isFresh = typeof saved?.startedAt === "number" && Date.now() - saved.startedAt < 4000;
+
+          if (!isFresh || saved?.targetPath !== currentPath) {
+            window.sessionStorage.removeItem(storageKey);
+            return;
+          }
+
+          document.documentElement.dataset.localeTransition = "in";
+          window.sessionStorage.removeItem(storageKey);
+        } catch {}
+      })();
+    </script>
     <title>{title}</title>
   </head>
-  <body>
-    <AppBridge locale={locale} appOrigin={appOrigin} />
+  <body class="cinematic" data-enable-scroll-narrative={enableScrollNarrative ? "true" : undefined}>
     <div class="page-shell">
       <div class="page-aura page-aura-left" aria-hidden="true"></div>
       <div class="page-aura page-aura-right" aria-hidden="true"></div>
-      <SiteHeader locale={locale} frame={frame} appOrigin={appOrigin} />
+      <SiteHeader locale={locale} frame={frame} currentPath={currentPath} />
       <main class="page-main">
         <slot />
       </main>
       <SiteFooter locale={locale} frame={frame} />
     </div>
+    {enableScrollNarrative ? <ScrollNarrative /> : null}
+    <script is:inline>
+      (() => {
+        if (document.documentElement.dataset.localeTransition !== "in") {
+          return;
+        }
+
+        const clearTransition = () => {
+          window.requestAnimationFrame(() => {
+            window.requestAnimationFrame(() => {
+              delete document.documentElement.dataset.localeTransition;
+            });
+          });
+        };
+
+        if (document.readyState === "complete") {
+          clearTransition();
+        } else {
+          window.addEventListener("load", clearTransition, { once: true });
+        }
+
+        window.setTimeout(() => {
+          delete document.documentElement.dataset.localeTransition;
+        }, 420);
+      })();
+    </script>
   </body>
 </html>

@@ -1,74 +1,72 @@
-# Yipei Website Monorepo (M0 -> M2)
+# Yipei Website Monorepo
 
-This repository now uses a workspace monorepo architecture for a maintainable, production-oriented personal website.
+This repository currently ships the public marketing site from `apps/site` to Vercel. The authenticated app (`apps/web`) and CMS workspace (`apps/studio`) remain in the repo for future use, but they are not part of the current production deployment path.
 
 ## Stack
-- Web: `Next.js App Router` (`apps/web`)
-- CMS: `Sanity Studio` (`apps/studio`)
-- Auth/Data: `Supabase` (`apps/web/src/lib/supabase`)
-- Deployment target: `Alibaba Cloud ECS` with `Docker Compose + Nginx`
+- Current production target: `Astro` (`apps/site`) on `Vercel`
+- Shared content source: `packages/site-content`
+- Retained but not currently deployed:
+  - `Next.js App Router` (`apps/web`)
+  - `Sanity Studio` (`apps/studio`)
 
 ## Workspace Commands
-- Run web: `npm run dev:web`
-- Run studio: `npm run dev:studio`
-- Run both: `npm run dev`
-- Build web: `npm run build:web`
-- Project checks: `npm run check`
+- Default local work on the shipped site:
+  - `npm run dev`
+  - `npm run build`
+  - `npm run check`
+  - `npm run preview`
+- Explicit site commands:
+  - `npm run dev:site`
+  - `npm run build:site`
+  - `npm run check:site`
+- Optional internal commands for retained workspaces:
+  - `npm run dev:full`
+  - `npm run dev:web`
+  - `npm run dev:studio`
+  - `npm run build:web`
+  - `npm run build:studio`
+  - `npm run check:web`
+  - `npm run check:studio`
 
-## Local Figma Asset Utilities
-- Crop current local showcase screenshot into logo tiles:
-  - `python3 scripts/extract-figma-assets.py`
-- Attempt to download raw assets from `apps/web/public/figma-assets/asset-manifest.json`:
-  - `FIGMA_COOKIE='figma.session=...' python3 scripts/download-figma-manifest-assets.py`
-- Notes:
-  - direct MCP asset URLs can return `404` without a valid authenticated Figma session cookie
-  - downloaded raw assets are written to `apps/web/public/figma-assets/raw`
-
-## Route Skeleton (implemented in M1)
-- `/{locale}`
-- `/{locale}/services`
-- `/{locale}/insights`
-- `/{locale}/insights/[slug]`
-- `/{locale}/links`
-- `/{locale}/auth`
-- `/{locale}/auth/callback`
-- `/{locale}/me`
-- `/{locale}/me/profile`
-- `/{locale}/me/orders`
-- `/{locale}/payment/result`
-
-## M2 Content Foundation
-- Sanity schema expanded with singleton + collection models:
-  - `siteSettings`, `homePage`, `servicesPage`
-  - `servicePlan`, `insightPost`, `linkItem`
-- Web content layer added under `apps/web/src/modules/content`:
-  - typed content models
-  - GROQ queries
-  - server-only fetchers with safe fallback when Sanity is not configured
-- Pages connected to content reads:
+## Current Production Surface
+- The Vercel deployment only serves `apps/site`.
+- Current live route set:
   - `/{locale}`
   - `/{locale}/services`
   - `/{locale}/insights`
   - `/{locale}/insights/[slug]`
   - `/{locale}/links`
+- `apps/web` auth/payment/member flows are retained in-repo but are not part of the current Vercel launch.
 
-## Webhook Baseline
-- `POST /api/webhooks/payment` now enforces:
-  - signature verification
-  - session-independent processing
-  - idempotency key handling
-  - raw payload logging/persistence entrypoint
+## Current Content Source Of Truth
+- Public marketing copy, navigation labels, project groups, and localized page content currently live in `packages/site-content`.
+- `apps/studio` contains Sanity schemas for future CMS work, but Studio is not yet the runtime content source for `apps/site`.
+- Treat `packages/site-content` as the current production source of truth.
+
+## Vercel Deployment
+- Deploy guide: [vercel-site-deploy.md](/Users/hw/Documents/yipei/docs/ops/vercel-site-deploy.md)
+- Vercel project deploy path: repository root
+- Build Command: `npm run build:site`
+- Output Directory: `apps/site/dist`
+- No required runtime environment variables are currently needed for the shipped marketing site.
+
+## Local Figma Asset Utilities
+- Crop the current local showcase screenshot into logo tiles:
+  - `python3 scripts/extract-figma-assets.py`
+- Attempt to download raw assets from `apps/site/public/figma-assets/asset-manifest.json`:
+  - `FIGMA_COOKIE='figma.session=...' python3 scripts/download-figma-manifest-assets.py`
+- Notes:
+  - direct MCP asset URLs can return `404` without a valid authenticated Figma session cookie
+  - downloaded raw assets are written to `apps/site/public/figma-assets/raw`
 
 ## Locale Priority
 `URL locale > persisted preference > Accept-Language > zh`
 
 ## Environment Baseline
 - staging/prod conventions: `docs/ops/environments.md`
-- security baseline: `docs/ops/security-baseline.md`
+- current site deployment: `docs/ops/vercel-site-deploy.md`
 
-## Deployment Baseline
-- Compose file: `infrastructure/docker/docker-compose.ecs.yml`
-- Nginx config: `infrastructure/nginx/default.conf`
-- Deploy script: `infrastructure/scripts/deploy-ecs.sh`
-- Env validation script: `infrastructure/scripts/validate-production-env.sh`
-- Supabase auth + deploy checklist: `docs/ops/supabase-auth-deploy.md`
+## Archived / Future Use
+- Retained app deploy notes: `docs/ops/supabase-auth-deploy.md`
+- Retained infrastructure: `infrastructure/docker`, `infrastructure/nginx`, `infrastructure/scripts`
+- `apps/web` and `apps/studio` are intentionally not part of the current Vercel release path

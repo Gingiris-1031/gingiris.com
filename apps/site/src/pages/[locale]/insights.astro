@@ -20,28 +20,43 @@ if (!localeParam || !isSiteLocale(localeParam)) {
 const locale = localeParam as SiteLocale;
 const copy = editorialContentByLocale[locale];
 const items = insightItemsByLocale[locale];
+const pageEyebrow = locale === "zh" ? "文章内容" : "Editorial";
+const sourceCtaLabel = locale === "zh" ? "查看原文" : "Original source";
+const summaryCtaLabel = locale === "zh" ? "阅读摘要" : "Read summary";
 ---
 
 <BaseLayout locale={locale} title={copy.insightsTitle} description={copy.insightsSubtitle}>
-  <section class="page-hero">
-    <div class="page-hero-copy">
-      <p class="eyebrow">{locale === "zh" ? "Editorial" : "Editorial"}</p>
+  <section class="scene scene-hero" data-chapter>
+    <div class="page-hero stage-compact" data-stage>
+      <div class="page-hero-copy">
+      <p class="eyebrow">{pageEyebrow}</p>
       <h1>{copy.insightsTitle}</h1>
       <p>{copy.insightsSubtitle}</p>
+      </div>
     </div>
   </section>
 
-  <section class="editorial-grid">
-    {items.map((item) => (
-      <article class="editorial-card">
-        <p class="editorial-card-kicker">{item.category}</p>
-        <h2><a href={`/${locale}/insights/${item.slug}`}>{item.title}</a></h2>
-        <p>{item.excerpt}</p>
-        <div class="editorial-card-meta">
-          <span>{item.publishedAt}</span>
-          <a href={`/${locale}/insights/${item.slug}`}>{locale === "zh" ? "阅读详情" : "Read more"}</a>
-        </div>
-      </article>
-    ))}
+  <section class="scene scene-editorial" data-chapter>
+    <div class="editorial-grid editorial-grid-insights">
+      {items.map((item) => (
+        <article class="editorial-card editorial-card-insight" data-reveal>
+          <div class="editorial-card-body">
+            <div class="editorial-card-head">
+              <p class="editorial-card-kicker">{item.category}</p>
+              <p class="insight-source-label">{item.sourceLabel}</p>
+            </div>
+            <h2><a href={`/${locale}/insights/${item.slug}`}>{item.title}</a></h2>
+            <p class="insight-card-excerpt">{item.excerpt}</p>
+          </div>
+          <div class="editorial-card-meta editorial-card-meta-insight">
+            <span>{item.publishedAt}</span>
+            <div class="editorial-card-actions editorial-card-actions-insight">
+              <a href={item.sourceHref} target="_blank" rel="noreferrer">{sourceCtaLabel}</a>
+              <a href={`/${locale}/insights/${item.slug}`}>{summaryCtaLabel}</a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
   </section>
 </BaseLayout>

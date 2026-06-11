@@ -31,8 +31,13 @@ export const appBridgeCopy = {
   }
 >;
 
-function sanitizeOrigin(appOrigin: string) {
-  return appOrigin.replace(/\/$/, "");
+function sanitizeOrigin(appOrigin?: string) {
+  return appOrigin ? appOrigin.replace(/\/$/, "") : "";
+}
+
+function joinAppPath(appOrigin: string | undefined, pathname: string) {
+  const origin = sanitizeOrigin(appOrigin);
+  return origin ? `${origin}${pathname}` : pathname;
 }
 
 export function buildCheckoutPath(
@@ -54,41 +59,38 @@ export function buildCheckoutPath(
   return `/${locale}/checkout${query ? `?${query}` : ""}`;
 }
 
-export function buildAppHref(appOrigin: string, locale: SiteLocale, action: Exclude<AppAction, "checkout">) {
-  const origin = sanitizeOrigin(appOrigin);
-
+export function buildAppHref(appOrigin: string | undefined, locale: SiteLocale, action: Exclude<AppAction, "checkout">) {
   switch (action) {
     case "auth":
-      return `${origin}/${locale}/auth`;
+      return joinAppPath(appOrigin, `/${locale}/auth`);
     case "orders":
-      return `${origin}/${locale}/me/orders`;
+      return joinAppPath(appOrigin, `/${locale}/me/orders`);
     case "app":
-      return `${origin}/${locale}/me`;
+      return joinAppPath(appOrigin, `/${locale}/me`);
   }
 }
 
 export function buildCheckoutHref(
-  appOrigin: string,
+  appOrigin: string | undefined,
   locale: SiteLocale,
   options?: {
     planCode?: string;
     channel?: AppPaymentChannel;
   },
 ) {
-  return `${sanitizeOrigin(appOrigin)}${buildCheckoutPath(locale, options)}`;
+  return joinAppPath(appOrigin, buildCheckoutPath(locale, options));
 }
 
 export function buildAuthHref(
-  appOrigin: string,
+  appOrigin: string | undefined,
   locale: SiteLocale,
   options?: {
     nextPath?: string;
   },
 ) {
-  const origin = sanitizeOrigin(appOrigin);
   if (!options?.nextPath) {
-    return `${origin}/${locale}/auth`;
+    return joinAppPath(appOrigin, `/${locale}/auth`);
   }
 
-  return `${origin}/${locale}/auth?next=${encodeURIComponent(options.nextPath)}`;
+  return joinAppPath(appOrigin, `/${locale}/auth?next=${encodeURIComponent(options.nextPath)}`);
 }
