@@ -678,7 +678,7 @@ export const linkCollectionsByLocale: Record<SiteLocale, LinkCollection[]> = {
       items: [
         {
           title: "Interview 1 | Leaving big tech, raising $10M, then burning it",
-          description: "Bilibili | A candid startup retrospective with Iris Jiang.",
+          description: "Bilibili | A candid startup retrospective with Iris Wei.",
           href: externalResourceHrefs.videoBilibiliInterview,
           meta: "Bilibili",
           featured: true,

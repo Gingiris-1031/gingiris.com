@@ -32,7 +32,7 @@ export const siteFrameByLocale: Record<SiteLocale, SiteFrameContent> = {
     },
   },
   en: {
-    brand: "Iris Jiang",
+    brand: "Iris Wei",
     nav: {
       home: "Home",
       services: "Services",

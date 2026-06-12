@@ -226,7 +226,7 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
     },
   },
   en: {
-    name: "Iris Jiang",
+    name: "Iris Wei",
     rolePrefix: "Growth Advisor",
     roleStrong: "| Startup Coach | Ex-AFFiNE Co-founder & COO",
     baseTag: "Base Kunshan",
@@ -363,7 +363,7 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
     courseSection: {
       eyebrow: "System Course",
       title: "Global Growth System Course",
-      description: "If you are scaling AI products or software globally, leading a growth team, or stepping into a CGO/CMO/COO role, this course is designed as your most valuable investment this year. It condenses Iris Jiang's hands-on experience coaching dozens of star startups in global growth, covering 0-to-1 cold start, scaling paid ads, user growth engines, and building cross-border teams.",
+      description: "If you are scaling AI products or software globally, leading a growth team, or stepping into a CGO/CMO/COO role, this course is designed as your most valuable investment this year. It condenses Iris Wei's hands-on experience coaching dozens of star startups in global growth, covering 0-to-1 cold start, scaling paid ads, user growth engines, and building cross-border teams.",
       benefits: [
         { title: "Battle-Tested", desc: "Derived from real-world growth coaching for top startups, offering actionable SOPs instead of dry theory." },
         { title: "Full Capability Map", desc: "Covering the complete growth career path and skillset from hands-on execution to strategic leadership." },
