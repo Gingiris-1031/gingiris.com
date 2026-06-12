@@ -31,6 +31,7 @@ const prefetchedLocalePath = currentLocalePattern.test(currentPath)
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
     <link rel="prefetch" href={prefetchedLocalePath} as="document" />
     {structuredData ? (
       <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />

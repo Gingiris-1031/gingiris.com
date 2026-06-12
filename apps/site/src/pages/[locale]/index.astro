@@ -82,7 +82,7 @@ const pageCopy =
 
 <BaseLayout
   locale={locale}
-  title={`${content.name} | ${content.rolePrefix}`}
+  title={locale === "zh" ? "Gingiris" : `${content.name} | ${content.rolePrefix}`}
   description={content.introLines.join(" ")}
   enableScrollNarrative={false}
   structuredData={homeStructuredData}
