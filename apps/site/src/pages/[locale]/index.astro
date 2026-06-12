@@ -21,7 +21,6 @@ if (!localeParam || !isSiteLocale(localeParam)) {
 
 const locale = localeParam as SiteLocale;
 const content = homeContentByLocale[locale];
-const featuredPlan = content.consultItems[1] ?? content.consultItems[0];
 const heroSignalIndexes = [0, 2, 3];
 const heroSignals = heroSignalIndexes
   .map((index) => content.stats[index])
@@ -30,6 +29,8 @@ const extendedStats = content.stats.filter((_stat, index) => !heroSignalIndexes.
 const heroLead = content.introLines[0] ?? "";
 const heroSupport = content.introLines.slice(1).join(" ");
 const heroRole = content.roleStrong.replace(/^\|\s*/, "");
+const heroRoleLead = locale === "zh" ? "创业陪跑｜前 AFFiNE" : "Startup Coach | Ex-AFFiNE";
+const heroRoleTail = locale === "zh" ? "联合创始人兼 COO" : "Co-founder & COO";
 const homeStructuredData = {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -83,7 +84,7 @@ const pageCopy =
   locale={locale}
   title={`${content.name} | ${content.rolePrefix}`}
   description={content.introLines.join(" ")}
-  enableScrollNarrative={true}
+  enableScrollNarrative={false}
   structuredData={homeStructuredData}
 >
   <section class="scene scene-hero hero-section" data-chapter>
@@ -91,7 +92,10 @@ const pageCopy =
       <div class="hero-copy hero-stage-copy">
       <p class="eyebrow">{content.rolePrefix}</p>
       <h1>{content.name}</h1>
-      <p class="hero-role">{heroRole}</p>
+      <p class="hero-role" aria-label={heroRole}>
+        <span>{heroRoleLead}</span>
+        <span class="hero-role-nowrap">{heroRoleTail}</span>
+      </p>
       <p class="hero-meta-line">
         <span>{content.baseTag}</span>
         <span aria-hidden="true">•</span>
@@ -104,11 +108,11 @@ const pageCopy =
       <div class="hero-actions">
         <a
           class="primary-button"
-          href={`/${locale}/services#${featuredPlan.id}`}
+          href="#services"
         >
           {pageCopy.exploreCta}
         </a>
-        <a class="ghost-button" href="#site-contact">
+        <a class="ghost-button" href="#cooperation">
           {pageCopy.contactCta}
         </a>
       </div>
@@ -124,6 +128,12 @@ const pageCopy =
             decoding="async"
             fetchpriority="high"
           />
+          <div class="hero-orbit-badge" aria-hidden="true">
+            <span>IRIS</span>
+            <span>GROWTH</span>
+          </div>
+          <span class="hero-spark hero-spark-left" aria-hidden="true">✦</span>
+          <span class="hero-spark hero-spark-right" aria-hidden="true">✦</span>
         </div>
       </div>
       <aside class="hero-signal-strip">
@@ -166,7 +176,7 @@ const pageCopy =
     </div>
   </section>
 
-  <section class="scene scene-invitation" data-chapter>
+  <section class="scene scene-invitation" id="services" data-chapter>
     <div class="pricing-section service-preview-section stage-medium" data-stage>
     <div class="section-heading" data-reveal>
       <p class="eyebrow">{pageCopy.engagementEyebrow}</p>
@@ -183,9 +193,6 @@ const pageCopy =
           </div>
           <div class="service-preview-meta">
             <strong>{item.price}</strong>
-            <a class="inline-link" href={`${item.href}#${item.id}`}>
-              {pageCopy.detailCta}
-            </a>
           </div>
         </article>
       ))}
@@ -202,24 +209,28 @@ const pageCopy =
       <ResourceGrid groups={content.sections} />
     </div>
   </section>
-  <section class="scene scene-closing" data-chapter>
+  <section class="scene scene-closing" id="cooperation" data-chapter>
     <div class="closing-invitation stage-compact" data-stage>
       <div class="closing-copy">
       <p class="eyebrow">{pageCopy.invitationEyebrow}</p>
       <h2>{pageCopy.invitationTitle}</h2>
       <p>{pageCopy.invitationBody}</p>
     </div>
-      <div class="closing-actions">
-      <a
-        class="primary-button"
-        href="#site-contact"
-      >
-        {pageCopy.contactCta}
-      </a>
-      <a class="ghost-button" href={`/${locale}/services#${featuredPlan.id}`}>
-        {pageCopy.servicesCta}
-      </a>
-      </div>
+      <figure class="contact-qr-card">
+        <div class="contact-qr-copy">
+          <span>{pageCopy.contactCta}</span>
+          <strong>{locale === "zh" ? "微信扫码联系" : "Scan on WeChat"}</strong>
+          <p>{locale === "zh" ? "添加时请简单备注你的项目与咨询方向。" : "Please include a short note about your project and inquiry."}</p>
+        </div>
+        <img
+          src="/qr/iris-wechat.png"
+          alt={locale === "zh" ? "微信联系二维码" : "WeChat contact QR code"}
+          width="962"
+          height="990"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
     </div>
   </section>
 </BaseLayout>

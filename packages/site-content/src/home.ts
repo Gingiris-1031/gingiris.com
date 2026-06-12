@@ -44,8 +44,6 @@ export type HomeLocaleContent = {
   consultTitle: string;
   consultHint: string;
   consultItems: HomePriceItem[];
-  footerTitle: string;
-  footerSubTitle: string;
 };
 
 export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
@@ -90,7 +88,7 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
           {
             title: "Openclaw 开源 Skills",
             subtitle: "查看 3 个开源 Skills",
-            href: "/zh/links#tools-and-skills",
+            href: externalResourceHrefs.gingirisLaunchRepo,
             icon: "tool",
           },
         ],
@@ -98,16 +96,16 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
       {
         title: "出海 & 运营干货",
         items: [
-          { title: "Product Hunt 打榜经验分享", href: "/zh/insights/product-hunt-launch", icon: "article" },
-          { title: "竞品调研框架文档", href: "/zh/insights/competitor-research-framework", icon: "article" },
-          { title: "开源出海运营经验分享", href: "/zh/insights/open-source-ops", icon: "article" },
-          { title: "开源发布相关复盘", href: "/zh/insights/open-source-launch-retro", icon: "article" },
-          { title: "关于转化的相关复盘", href: "/zh/insights/conversion-retro", icon: "article" },
-          { title: "出海 0-1 的文字复盘", href: "/zh/insights/global-zero-to-one", icon: "article" },
+          { title: "Product Hunt 打榜经验分享", href: externalResourceHrefs.productHuntLaunch, icon: "article" },
+          { title: "竞品调研框架文档", href: externalResourceHrefs.competitorResearchFramework, icon: "article" },
+          { title: "开源出海运营经验分享", href: externalResourceHrefs.openSourceOps, icon: "article" },
+          { title: "开源发布相关复盘", href: externalResourceHrefs.openSourceLaunchRetro, icon: "article" },
+          { title: "关于转化的相关复盘", href: externalResourceHrefs.conversionRetro, icon: "article" },
+          { title: "出海 0-1 的文字复盘", href: externalResourceHrefs.globalZeroToOne, icon: "article" },
           {
             title: "软件出海0-1全球化增长实战",
             subtitle: "99 RMB 资料包",
-            href: "/zh/services#payment-options",
+            href: externalResourceHrefs.wechatShop,
             icon: "article",
             highlighted: true,
           },
@@ -168,7 +166,7 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
         id: "session-30",
         title: "单次咨询（30 分钟）",
         price: "800 RMB",
-        href: "/zh/services",
+        href: "/zh#site-contact",
         checkoutPlanCode: "session-30",
         preferredChannel: "wechat",
       },
@@ -176,7 +174,7 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
         id: "session-60",
         title: "单次咨询（60 分钟）",
         price: "1500 RMB",
-        href: "/zh/services",
+        href: "/zh#site-contact",
         checkoutPlanCode: "session-60",
         preferredChannel: "wechat",
       },
@@ -185,7 +183,7 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
         title: "出海 0-1 资料包",
         subtitle: "包含方法论和初始工具包",
         price: "99 RMB",
-        href: "/zh/services",
+        href: "/zh#site-contact",
         checkoutPlanCode: "growth-pack",
         preferredChannel: "alipay",
       },
@@ -194,13 +192,11 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
         title: "企业陪跑咨询",
         subtitle: "每月累计咨询时长不超过 5 小时",
         price: "7000 RMB/月",
-        href: "/zh/services",
+        href: "/zh#site-contact",
         checkoutPlanCode: "retainer",
         preferredChannel: "wechat",
       },
     ],
-    footerTitle: "感谢来访",
-    footerSubTitle: "公众号: 云宝的桃花坞",
   },
   en: {
     name: "Iris Jiang",
@@ -243,7 +239,7 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
           {
             title: "Openclaw Open-Source Skills",
             subtitle: "See the 3 public skills",
-            href: "/en/links#tools-and-skills",
+            href: externalResourceHrefs.gingirisLaunchRepo,
             icon: "tool",
           },
         ],
@@ -251,16 +247,16 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
       {
         title: "Global Growth Insights",
         items: [
-          { title: "Product Hunt launch notes", href: "/en/insights/product-hunt-launch", icon: "article" },
-          { title: "Competitor research framework", href: "/en/insights/competitor-research-framework", icon: "article" },
-          { title: "Open-source global ops notes", href: "/en/insights/open-source-ops", icon: "article" },
-          { title: "Open-source launch retrospective", href: "/en/insights/open-source-launch-retro", icon: "article" },
-          { title: "Conversion-focused retrospectives", href: "/en/insights/conversion-retro", icon: "article" },
-          { title: "0-1 global launch notes", href: "/en/insights/global-zero-to-one", icon: "article" },
+          { title: "Product Hunt launch notes", href: externalResourceHrefs.productHuntLaunch, icon: "article" },
+          { title: "Competitor research framework", href: externalResourceHrefs.competitorResearchFramework, icon: "article" },
+          { title: "Open-source global ops notes", href: externalResourceHrefs.openSourceOps, icon: "article" },
+          { title: "Open-source launch retrospective", href: externalResourceHrefs.openSourceLaunchRetro, icon: "article" },
+          { title: "Conversion-focused retrospectives", href: externalResourceHrefs.conversionRetro, icon: "article" },
+          { title: "0-1 global launch notes", href: externalResourceHrefs.globalZeroToOne, icon: "article" },
           {
             title: "0-1 Global Growth Playbook",
             subtitle: "99 RMB pack",
-            href: "/en/services#payment-options",
+            href: externalResourceHrefs.wechatShop,
             icon: "article",
             highlighted: true,
           },
@@ -306,7 +302,7 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
         id: "session-30",
         title: "One-off consulting (30 min)",
         price: "800 RMB",
-        href: "/en/services",
+        href: "/en#site-contact",
         checkoutPlanCode: "session-30",
         preferredChannel: "wechat",
       },
@@ -314,7 +310,7 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
         id: "session-60",
         title: "One-off consulting (60 min)",
         price: "1500 RMB",
-        href: "/en/services",
+        href: "/en#site-contact",
         checkoutPlanCode: "session-60",
         preferredChannel: "wechat",
       },
@@ -323,7 +319,7 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
         title: "0-1 Global Launch Pack",
         subtitle: "Frameworks + starter toolkit",
         price: "99 RMB",
-        href: "/en/services",
+        href: "/en#site-contact",
         checkoutPlanCode: "growth-pack",
         preferredChannel: "alipay",
       },
@@ -332,12 +328,10 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
         title: "Company Coaching",
         subtitle: "Up to 5 consulting hours per month",
         price: "7000 RMB/mo",
-        href: "/en/services",
+        href: "/en#site-contact",
         checkoutPlanCode: "retainer",
         preferredChannel: "wechat",
       },
     ],
-    footerTitle: "Great to meet you",
-    footerSubTitle: "WeChat: 云宝的桃花坞",
   },
 };

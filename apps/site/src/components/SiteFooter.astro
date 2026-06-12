@@ -1,5 +1,5 @@
 ---
-import type { SiteFrameContent, SiteLocale } from "@yipei/site-content";
+import { externalResourceHrefs, type SiteFrameContent, type SiteLocale } from "@yipei/site-content";
 
 interface Props {
   locale: SiteLocale;
@@ -7,15 +7,73 @@ interface Props {
 }
 
 const { locale, frame } = Astro.props;
+const socialQrCodes = [
+  { src: "/qr/iris-jike-white.svg", label: locale === "zh" ? "即刻" : "Jike" },
+  { src: "/qr/iris-xiaohongshu-white.svg", label: locale === "zh" ? "小红书" : "Xiaohongshu" },
+];
+const communityQrCodes = [
+  { src: "/qr/iris-team-people-fit-latest.svg", label: "Gingiris Team People Fit" },
+  { src: "/qr/iris-pmf-ai-era-white.svg", label: "PMF for AI Era" },
+];
+const footerCopy =
+  locale === "zh"
+    ? { shop: "品牌文创与从0-1出海实战行动指南", social: "社交媒体", community: "社群", rights: "版权所有" }
+    : { shop: "Brand Goods & 0-1 Global Launch Guide", social: "Social Media", community: "Community", rights: "All rights reserved" };
+const shopLinks = [
+  { href: externalResourceHrefs.wechatShop, label: locale === "zh" ? "微信店铺" : "WeChat Shop" },
+  { href: externalResourceHrefs.xiaohongshuShop, label: locale === "zh" ? "小红书店铺" : "Xiaohongshu Shop" },
+];
 ---
 
 <footer class="site-footer" id="site-contact">
-  <div class="site-footer-main">
-    <p class="site-footer-kicker">{frame.brand}</p>
-    <h2>{frame.footer.title}</h2>
+  <section class="site-footer-identity">
+    <p class="site-footer-mission-text"><em>Help People Find People Mission Fit</em></p>
+  </section>
+
+  <div class="site-footer-grid">
+    <nav class="site-footer-column site-footer-shop" aria-label={footerCopy.shop}>
+      <p class="site-footer-column-title">{footerCopy.shop}</p>
+      {shopLinks.map((item) => (
+        <a href={item.href} target="_blank" rel="noreferrer">{item.label}</a>
+      ))}
+    </nav>
+
+    <section class="site-footer-qr-group" aria-label={footerCopy.social}>
+      <p class="site-footer-column-title">{footerCopy.social}</p>
+      <div class="footer-qr-grid">
+        {socialQrCodes.map((item) => (
+          <figure class="footer-qr-card">
+            <img
+              src={item.src}
+              alt={item.label + " QR code"}
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+        ))}
+      </div>
+    </section>
+
+    <section class="site-footer-qr-group" aria-label={footerCopy.community}>
+      <p class="site-footer-column-title">{footerCopy.community}</p>
+      <div class="footer-qr-grid">
+        {communityQrCodes.map((item) => (
+          <figure class="footer-qr-card">
+            <img
+              src={item.src}
+              alt={item.label + " QR code"}
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+        ))}
+      </div>
+    </section>
   </div>
-  <div class="site-footer-meta">
-    <p>{frame.footer.subtitle}</p>
-    {frame.footer.contact ? <p class="site-footer-contact">{frame.footer.contact}</p> : null}
+
+  <div class="site-footer-bottom">
+    <span>{frame.brand}</span>
+    <span>© 2026 Gingiris {footerCopy.rights}</span>
+    <span>{locale === "zh" ? "增长 · 开源 · 出海" : "Growth · Open Source · Global"}</span>
   </div>
 </footer>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_图层_2" data-name="图层 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 408.23 150.25">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+      }
+
+      .cls-4 {
+        fill: #fff;
+        opacity: .55;
+      }
+
+      .cls-5 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-6 {
+        clip-path: url(#clippath-3);
+      }
+
+      .cls-7 {
+        clip-path: url(#clippath-2);
+      }
+
+      .cls-8 {
+        clip-path: url(#clippath-7);
+      }
+
+      .cls-9 {
+        clip-path: url(#clippath-6);
+      }
+
+      .cls-10 {
+        clip-path: url(#clippath-8);
+      }
+
+      .cls-2 {
+        clip-rule: evenodd;
+      }
+
+      .cls-11 {
+        fill: #b6ca90;
+      }
+
+      .cls-12 {
+        opacity: .16;
+      }
+
+      .cls-13 {
+        fill: #3e3f43;
+        font-family: Helvetica, Helvetica;
+        font-size: 45.36px;
+      }
+
+      .cls-3 {
+        stroke: #e95d2a;
+        stroke-miterlimit: 10;
+        stroke-width: 1.11px;
+      }
+
+      .cls-14 {
+        fill: #e95d2a;
+      }
+
+      .cls-15 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-1" x="0" width="408.23" height="150.25"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect class="cls-1" x="-133.24" y="-100.64" width="2022.72" height="1498.26"/>
+    </clipPath>
+    <clipPath id="clippath-2">
+      <rect class="cls-1" x="0" width="408.23" height="150.25"/>
+    </clipPath>
+    <clipPath id="clippath-3">
+      <rect class="cls-1" x="-133.24" y="-100.64" width="2022.72" height="1498.26"/>
+    </clipPath>
+    <clipPath id="clippath-4">
+      <rect class="cls-1" x="0" width="408.23" height="150.25"/>
+    </clipPath>
+    <clipPath id="clippath-6">
+      <rect class="cls-1" x="48.19" y="31.18" width="104.89" height="89.3"/>
+    </clipPath>
+    <clipPath id="clippath-7">
+      <path class="cls-2" d="M66.48,73.42c26.52-5.54,52.96-23.08,62.87-31.16-10.06,15.7-10.29,48.86-9.14,63.48h-5.71c-13.72-16.62-35.43-25.39-44.58-27.7l-3.43-4.62Z"/>
+    </clipPath>
+    <clipPath id="clippath-8">
+      <rect class="cls-1" x="48.19" y="31.18" width="104.89" height="89.3"/>
+    </clipPath>
+  </defs>
+  <g id="_图层_1-2" data-name="图层 1">
+    <g class="cls-12">
+      <g class="cls-15">
+        <g class="cls-5">
+          <rect class="cls-4" x="-1.42" y="-1.42" width="411.06" height="153.09"/>
+        </g>
+      </g>
+      <g class="cls-7">
+        <g class="cls-6">
+          <rect class="cls-11" x="-1.42" y="-1.42" width="411.06" height="153.09"/>
+        </g>
+      </g>
+    </g>
+    <g class="cls-9">
+      <path class="cls-3" d="M110.36,59.88c11.04,7.08,19.74,15.44,24.9,23.19,2.58,3.88,4.25,7.55,4.91,10.8.66,3.24.3,5.98-1.04,8.13-1.35,2.14-3.65,3.63-6.84,4.41-3.19.78-7.2.82-11.77.1-9.14-1.43-20.33-5.83-31.37-12.91-11.04-7.08-19.74-15.44-24.9-23.19-2.58-3.88-4.25-7.55-4.91-10.8-.66-3.24-.3-5.98,1.04-8.12,1.35-2.14,3.65-3.63,6.84-4.41,3.19-.78,7.2-.82,11.77-.1,9.14,1.43,20.34,5.83,31.37,12.91Z"/>
+    </g>
+    <g class="cls-8">
+      <g class="cls-10">
+        <rect class="cls-14" x="65.06" y="40.85" width="65.7" height="66.31"/>
+      </g>
+    </g>
+    <text class="cls-13" transform="translate(153.09 93.55)"><tspan x="0" y="0">Spark Lab</tspan></text>
+  </g>
+</svg>

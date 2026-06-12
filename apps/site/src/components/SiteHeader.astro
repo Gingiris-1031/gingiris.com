@@ -15,36 +15,22 @@ const localeSwitchHref = currentLocalePattern.test(currentPath)
   : `/${alternateLocale}`;
 const localeSwitchTargetLang = alternateLocale === "zh" ? "zh-CN" : "en";
 const localeSwitchAriaLabel = alternateLocale === "zh" ? "切换到中文" : "Switch to English";
-const menuPanelId = `site-mobile-panel-${locale}`;
-const mobileMenuButtonLabel = locale === "zh" ? "打开导航菜单" : "Open navigation menu";
-const mobilePanelLabel = locale === "zh" ? "移动端导航" : "Mobile navigation";
 const contactLabel = locale === "zh" ? "联系咨询" : "Get in touch";
-const navLinks = [
-  { href: `/${locale}`, label: frame.nav.home },
-  { href: `/${locale}/services`, label: frame.nav.services },
-  { href: `/${locale}/insights`, label: frame.nav.insights },
-  { href: `/${locale}/links`, label: frame.nav.links },
-];
 ---
 
-<header class="site-header" data-mobile-header data-open="false" data-condensed="false">
+<header class="site-header">
   <div class="site-header-main">
     <a class="site-brand" href={`/${locale}`} aria-label={frame.brand}>
       <img
         class="site-brand-logo"
-        src="/brand/logo-primary.webp"
+        src="/brand/gingiris-logo.svg?v=2"
         alt={frame.brand}
-        width="160"
-        height="42"
+        width="230"
+        height="60"
         loading="eager"
         decoding="async"
       />
     </a>
-    <nav class="site-nav" aria-label="Primary">
-      {navLinks.map((link) => (
-        <a href={link.href}>{link.label}</a>
-      ))}
-    </nav>
   </div>
   <div class="site-app-rail">
     <a
@@ -53,198 +39,11 @@ const navLinks = [
       hreflang={localeSwitchTargetLang}
       lang={localeSwitchTargetLang}
       aria-label={localeSwitchAriaLabel}
-      data-locale-switch-link
-      data-mobile-menu-close
     >
       <span class:list={["site-locale-option", locale === "zh" && "is-active"]}>中文</span>
       <span class="site-locale-divider" aria-hidden="true">/</span>
       <span class:list={["site-locale-option", locale === "en" && "is-active"]}>EN</span>
     </a>
-    <a class="site-auth-link site-header-contact" href="#site-contact">
-      {contactLabel}
-    </a>
-    <button
-      class="site-menu-toggle"
-      type="button"
-      aria-controls={menuPanelId}
-      aria-expanded="false"
-      aria-label={mobileMenuButtonLabel}
-      data-mobile-menu-toggle
-    >
-      <span class="site-menu-toggle-box" aria-hidden="true">
-        <span class="site-menu-toggle-line"></span>
-        <span class="site-menu-toggle-line"></span>
-        <span class="site-menu-toggle-line"></span>
-      </span>
-    </button>
-  </div>
-  <div
-    class="site-mobile-panel"
-    id={menuPanelId}
-    aria-label={mobilePanelLabel}
-    aria-hidden="true"
-    data-mobile-panel
-  >
-    <nav class="site-mobile-nav" aria-label={mobilePanelLabel}>
-      {navLinks.map((link) => (
-        <a href={link.href} data-mobile-menu-close>
-          {link.label}
-        </a>
-      ))}
-    </nav>
-    <a class="site-auth-link site-mobile-contact" href="#site-contact" data-mobile-menu-close>
-      {contactLabel}
-    </a>
+    <a class="site-auth-link site-header-contact" href="#cooperation">{contactLabel}</a>
   </div>
 </header>
-
-<script is:inline>
-  const mobileHeaders = Array.from(document.querySelectorAll("[data-mobile-header]"));
-  const localeTransitionStorageKey = "site-locale-transition";
-
-  mobileHeaders.forEach((header) => {
-    if (!(header instanceof HTMLElement) || header.dataset.mobileHeaderReady === "true") {
-      return;
-    }
-
-    header.dataset.mobileHeaderReady = "true";
-
-    const mobileQuery = window.matchMedia("(max-width: 860px)");
-    const toggle = header.querySelector("[data-mobile-menu-toggle]");
-    const panel = header.querySelector("[data-mobile-panel]");
-    const closeTargets = Array.from(header.querySelectorAll("[data-mobile-menu-close]"));
-    const localeSwitch = header.querySelector("[data-locale-switch-link]");
-    const scrollThreshold = 28;
-
-    if (!(toggle instanceof HTMLButtonElement) || !(panel instanceof HTMLElement)) {
-      return;
-    }
-
-    const setOpen = (nextOpen) => {
-      const isOpen = mobileQuery.matches && nextOpen;
-      header.dataset.open = isOpen ? "true" : "false";
-      header.dataset.condensed =
-        mobileQuery.matches && !isOpen && window.scrollY > scrollThreshold ? "true" : "false";
-      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-      panel.setAttribute("aria-hidden", isOpen ? "false" : "true");
-    };
-
-    const syncState = () => {
-      if (!mobileQuery.matches) {
-        setOpen(false);
-        header.dataset.condensed = "false";
-        return;
-      }
-
-      if (header.dataset.open === "true") {
-        header.dataset.condensed = "false";
-        return;
-      }
-
-      header.dataset.condensed = window.scrollY > scrollThreshold ? "true" : "false";
-    };
-
-    const handleToggle = () => {
-      setOpen(header.dataset.open !== "true");
-    };
-
-    const handleOutsideClick = (event) => {
-      if (!mobileQuery.matches || header.dataset.open !== "true") {
-        return;
-      }
-
-      if (event.target instanceof Node && !header.contains(event.target)) {
-        setOpen(false);
-      }
-    };
-
-    const handleEscape = (event) => {
-      if (event.key === "Escape") {
-        setOpen(false);
-      }
-    };
-
-    const handleLocaleSwitch = (event) => {
-      if (!(localeSwitch instanceof HTMLAnchorElement)) {
-        return;
-      }
-
-      if (
-        event.defaultPrevented ||
-        event.button !== 0 ||
-        event.metaKey ||
-        event.ctrlKey ||
-        event.shiftKey ||
-        event.altKey
-      ) {
-        return;
-      }
-
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        return;
-      }
-
-      const targetUrl = new URL(localeSwitch.href, window.location.href);
-      const currentUrl = new URL(window.location.href);
-      const targetPath = `${targetUrl.pathname}${targetUrl.search}`;
-      const currentPath = `${currentUrl.pathname}${currentUrl.search}`;
-
-      if (targetPath === currentPath) {
-        return;
-      }
-
-      event.preventDefault();
-      setOpen(false);
-
-      try {
-        window.sessionStorage.setItem(
-          localeTransitionStorageKey,
-          JSON.stringify({
-            targetPath,
-            startedAt: Date.now(),
-          }),
-        );
-      } catch {}
-
-      document.documentElement.dataset.localeTransition = "out";
-      window.setTimeout(() => {
-        window.location.assign(targetUrl.toString());
-      }, 140);
-    };
-
-    toggle.addEventListener("click", handleToggle);
-    closeTargets.forEach((target) => {
-      target.addEventListener("click", () => setOpen(false));
-    });
-    localeSwitch?.addEventListener("click", handleLocaleSwitch);
-    document.addEventListener("click", handleOutsideClick);
-    document.addEventListener("keydown", handleEscape);
-    window.addEventListener("scroll", syncState, { passive: true });
-
-    if ("addEventListener" in mobileQuery) {
-      mobileQuery.addEventListener("change", syncState);
-    } else if ("addListener" in mobileQuery) {
-      mobileQuery.addListener(syncState);
-    }
-
-    window.addEventListener(
-      "pagehide",
-      () => {
-        toggle.removeEventListener("click", handleToggle);
-        localeSwitch?.removeEventListener("click", handleLocaleSwitch);
-        document.removeEventListener("click", handleOutsideClick);
-        document.removeEventListener("keydown", handleEscape);
-        window.removeEventListener("scroll", syncState);
-
-        if ("removeEventListener" in mobileQuery) {
-          mobileQuery.removeEventListener("change", syncState);
-        } else if ("removeListener" in mobileQuery) {
-          mobileQuery.removeListener(syncState);
-        }
-      },
-      { once: true },
-    );
-
-    syncState();
-  });
-</script>

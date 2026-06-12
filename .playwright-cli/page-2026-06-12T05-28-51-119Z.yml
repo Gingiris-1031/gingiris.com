@@ -1,0 +1,367 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - link "Iris 生姜" [ref=e5] [cursor=pointer]:
+      - /url: /zh
+      - img "Iris 生姜" [ref=e6]
+    - generic [ref=e7]:
+      - link "Switch to English" [ref=e8] [cursor=pointer]:
+        - /url: /en
+        - generic [ref=e9]: 中文
+        - generic [ref=e10]: /
+        - generic [ref=e11]: EN
+      - button "打开导航菜单" [ref=e12] [cursor=pointer]
+  - main [ref=e17]:
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - paragraph [ref=e21]: 增长顾问
+        - heading "生姜 Iris" [level=1] [ref=e22]
+        - paragraph [ref=e23]: 创业陪跑｜前 AFFiNE 联合创始人兼 COO
+        - paragraph [ref=e24]:
+          - generic [ref=e25]: 常驻昆山
+          - generic [ref=e26]: •
+          - generic [ref=e27]: 出海 / 开源 / 运营咨询
+        - generic [ref=e28]:
+          - paragraph [ref=e29]: AFFiNE 联合创始人，带团队穿过从冷启动、融资到全球增长的关键阶段。
+          - paragraph [ref=e30]: 从爱丁堡大学博士阶段退学创业后，持续在开源、出海与创始人运营一线工作。 现在主要做开源增长、全球发布、创始人叙事与运营系统咨询。
+        - generic [ref=e31]:
+          - link "查看合作方案" [ref=e32] [cursor=pointer]:
+            - /url: /zh/services#session-60
+          - link "联系咨询" [ref=e33] [cursor=pointer]:
+            - /url: "#site-contact"
+      - generic [ref=e35]:
+        - img "生姜 Iris" [ref=e36]
+        - generic [ref=e37]:
+          - generic [ref=e38]: IRIS
+          - generic [ref=e39]: GROWTH
+          - text: ✦
+        - generic [ref=e40]: ✦
+        - generic [ref=e41]: ✦
+      - complementary [ref=e42]:
+        - article [ref=e43]:
+          - strong [ref=e44]: $10M+
+          - generic [ref=e45]:
+            - heading "累计融资" [level=2] [ref=e46]
+            - paragraph [ref=e47]: AFFiNE
+        - article [ref=e48]:
+          - strong [ref=e49]: U30
+          - generic [ref=e50]:
+            - heading "福布斯亚洲" [level=2] [ref=e51]
+            - paragraph [ref=e52]: 30U30
+        - article [ref=e53]:
+          - strong [ref=e54]: 40+
+          - generic [ref=e55]:
+            - heading "辅导项目" [level=2] [ref=e56]
+            - paragraph [ref=e57]: 累计辅导项目数
+    - generic [ref=e58]:
+      - generic [ref=e59]:
+        - paragraph [ref=e60]: 覆盖议题
+        - heading "增长、融资、开源与陪跑，覆盖的是完整经营问题" [level=2] [ref=e61]
+      - generic [ref=e62]:
+        - article [ref=e63]:
+          - strong [ref=e64]: 4年
+          - heading "创业历程" [level=3] [ref=e65]
+          - paragraph [ref=e66]: 从种子轮到 Pre-A
+        - article [ref=e67]:
+          - strong [ref=e68]: 30+
+          - heading "PH 日榜第一" [level=3] [ref=e69]
+          - paragraph [ref=e70]: 辅导过的项目
+        - article [ref=e71]:
+          - strong [ref=e72]: 6K+
+          - heading "首周 GitHub 星标" [level=3] [ref=e73]
+          - paragraph [ref=e74]: 开源项目冷启动成绩
+        - article [ref=e75]:
+          - strong [ref=e76]: 10+
+          - heading "日常辅导项目数" [level=3] [ref=e77]
+          - paragraph [ref=e78]: 出海/开源运营
+        - article [ref=e79]:
+          - strong [ref=e80]: 100+
+          - heading "国家/地区" [level=3] [ref=e81]
+          - paragraph [ref=e82]: 触达过用户所在
+    - generic [ref=e84]:
+      - generic [ref=e85]:
+        - paragraph [ref=e86]: 项目案例
+        - heading "辅导过的项目" [level=2] [ref=e87]
+      - generic "辅导项目案例" [ref=e88]:
+        - generic [ref=e89]:
+          - heading "开源发布" [level=3] [ref=e92]
+          - generic [ref=e94]:
+            - generic [ref=e95]:
+              - figure [ref=e96]:
+                - img "Second Me" [ref=e98]
+              - figure [ref=e99]:
+                - img "memu" [ref=e101]
+              - figure [ref=e102]:
+                - img "OpenAgents" [ref=e104]
+              - figure [ref=e105]:
+                - img "Datastrato" [ref=e107]
+              - figure [ref=e108]:
+                - img "TEN-framework" [ref=e110]
+              - figure [ref=e111]:
+                - img "BUDDIE" [ref=e113]
+              - figure [ref=e114]:
+                - generic [ref=e115]:
+                  - img "ACEMusic"
+              - figure [ref=e116]:
+                - generic [ref=e117]:
+                  - img "Acontext"
+            - generic [ref=e118]:
+              - figure [ref=e119]:
+                - img [ref=e121]
+              - figure [ref=e122]:
+                - img [ref=e124]
+              - figure [ref=e125]:
+                - img [ref=e127]
+              - figure [ref=e128]:
+                - img [ref=e130]
+              - figure [ref=e131]:
+                - img [ref=e133]
+              - figure [ref=e134]:
+                - img [ref=e136]
+              - figure [ref=e137]
+              - figure [ref=e139]
+        - generic [ref=e141]:
+          - heading "创业陪跑" [level=3] [ref=e144]
+          - generic [ref=e146]:
+            - generic [ref=e147]:
+              - figure [ref=e148]:
+                - generic [ref=e149]:
+                  - img "Bonjour!"
+              - figure [ref=e150]:
+                - generic [ref=e151]:
+                  - img "Spark Lab"
+              - figure [ref=e152]:
+                - generic [ref=e153]:
+                  - img "万物时"
+              - figure [ref=e154]:
+                - generic [ref=e155]:
+                  - img "KIGLAND KIGURUMI"
+              - figure [ref=e156]:
+                - generic [ref=e157]:
+                  - img "KUSA"
+              - figure [ref=e158]:
+                - generic [ref=e159]:
+                  - img "EEZYCOLLAB"
+              - figure [ref=e160]:
+                - generic [ref=e161]:
+                  - img "Nomofly"
+              - figure [ref=e162]:
+                - generic [ref=e163]:
+                  - img "PaperGen"
+            - generic [ref=e164]:
+              - figure [ref=e165]
+              - figure [ref=e167]
+              - figure [ref=e169]
+              - figure [ref=e171]
+              - figure [ref=e173]
+              - figure [ref=e175]
+              - figure [ref=e177]
+              - figure [ref=e179]
+        - generic [ref=e181]:
+          - heading "Product Hunt 辅导" [level=3] [ref=e184]
+          - generic [ref=e186]:
+            - generic [ref=e187]:
+              - figure [ref=e188]:
+                - img "Wegic" [ref=e190]
+              - figure [ref=e191]:
+                - img "AI Editor" [ref=e193]
+              - figure [ref=e194]:
+                - img "Teable" [ref=e196]
+            - generic [ref=e197]:
+              - figure [ref=e198]:
+                - img [ref=e200]
+              - figure [ref=e201]:
+                - img [ref=e203]
+              - figure [ref=e204]:
+                - img [ref=e206]
+    - generic [ref=e208]:
+      - generic [ref=e209]:
+        - paragraph [ref=e210]: 合作方式
+        - heading "咨询服务" [level=2] [ref=e211]
+        - paragraph [ref=e212]: 精力有限，不提供免费咨询，敬请谅解。
+      - generic [ref=e213]:
+        - article [ref=e214]:
+          - generic [ref=e215]:
+            - generic [ref=e216]: "01"
+            - heading "单次咨询（30 分钟）" [level=3] [ref=e217]
+          - generic [ref=e218]:
+            - strong [ref=e219]: 800 RMB
+            - link "查看详情 →" [ref=e220] [cursor=pointer]:
+              - /url: /zh/services#session-30
+        - article [ref=e221]:
+          - generic [ref=e222]:
+            - generic [ref=e223]: "02"
+            - heading "单次咨询（60 分钟）" [level=3] [ref=e224]
+          - generic [ref=e225]:
+            - strong [ref=e226]: 1500 RMB
+            - link "查看详情 →" [ref=e227] [cursor=pointer]:
+              - /url: /zh/services#session-60
+        - article [ref=e228]:
+          - generic [ref=e229]:
+            - generic [ref=e230]: "03"
+            - heading "出海 0-1 资料包" [level=3] [ref=e231]
+            - paragraph [ref=e232]: 包含方法论和初始工具包
+          - generic [ref=e233]:
+            - strong [ref=e234]: 99 RMB
+            - link "查看详情 →" [ref=e235] [cursor=pointer]:
+              - /url: /zh/services#growth-pack
+        - article [ref=e236]:
+          - generic [ref=e237]:
+            - generic [ref=e238]: "04"
+            - heading "企业陪跑咨询" [level=3] [ref=e239]
+            - paragraph [ref=e240]: 每月累计咨询时长不超过 5 小时
+          - generic [ref=e241]:
+            - strong [ref=e242]: 7000 RMB/月
+            - link "查看详情 →" [ref=e243] [cursor=pointer]:
+              - /url: /zh/services#retainer
+    - generic [ref=e245]:
+      - generic [ref=e246]:
+        - paragraph [ref=e247]: 内容与资源
+        - heading "内容、资源与精选入口" [level=2] [ref=e248]
+      - generic [ref=e249]:
+        - generic [ref=e250]:
+          - heading "了解我与我的项目" [level=3] [ref=e252]
+          - generic [ref=e253]:
+            - link "github AFFiNE GitHub 下一代知识库" [ref=e254] [cursor=pointer]:
+              - /url: https://github.com/toeverything/AFFiNE
+              - generic [ref=e255]: github
+              - strong [ref=e256]: AFFiNE GitHub
+              - paragraph [ref=e257]: 下一代知识库
+            - link "tool 了解自己的小工具 VipaLabs AI" [ref=e258] [cursor=pointer]:
+              - /url: https://vipalabs.ai/
+              - generic [ref=e259]: tool
+              - strong [ref=e260]: 了解自己的小工具
+              - paragraph [ref=e261]: VipaLabs AI
+            - link "tool Openclaw 开源 Skills 查看 3 个开源 Skills" [ref=e262] [cursor=pointer]:
+              - /url: /zh/links#tools-and-skills
+              - generic [ref=e263]: tool
+              - strong [ref=e264]: Openclaw 开源 Skills
+              - paragraph [ref=e265]: 查看 3 个开源 Skills
+        - generic [ref=e266]:
+          - heading "出海 & 运营干货" [level=3] [ref=e268]
+          - generic [ref=e269]:
+            - link "article Product Hunt 打榜经验分享" [ref=e270] [cursor=pointer]:
+              - /url: /zh/insights/product-hunt-launch
+              - generic [ref=e271]: article
+              - strong [ref=e272]: Product Hunt 打榜经验分享
+            - link "article 竞品调研框架文档" [ref=e273] [cursor=pointer]:
+              - /url: /zh/insights/competitor-research-framework
+              - generic [ref=e274]: article
+              - strong [ref=e275]: 竞品调研框架文档
+            - link "article 开源出海运营经验分享" [ref=e276] [cursor=pointer]:
+              - /url: /zh/insights/open-source-ops
+              - generic [ref=e277]: article
+              - strong [ref=e278]: 开源出海运营经验分享
+            - link "article 开源发布相关复盘" [ref=e279] [cursor=pointer]:
+              - /url: /zh/insights/open-source-launch-retro
+              - generic [ref=e280]: article
+              - strong [ref=e281]: 开源发布相关复盘
+            - link "article 关于转化的相关复盘" [ref=e282] [cursor=pointer]:
+              - /url: /zh/insights/conversion-retro
+              - generic [ref=e283]: article
+              - strong [ref=e284]: 关于转化的相关复盘
+            - link "article 出海 0-1 的文字复盘" [ref=e285] [cursor=pointer]:
+              - /url: /zh/insights/global-zero-to-one
+              - generic [ref=e286]: article
+              - strong [ref=e287]: 出海 0-1 的文字复盘
+            - link "article 软件出海0-1全球化增长实战 99 RMB 资料包" [ref=e288] [cursor=pointer]:
+              - /url: /zh/services#payment-options
+              - generic [ref=e289]: article
+              - strong [ref=e290]: 软件出海0-1全球化增长实战
+              - paragraph [ref=e291]: 99 RMB 资料包
+        - generic [ref=e292]:
+          - heading "播客访谈" [level=3] [ref=e294]
+          - generic [ref=e295]:
+            - link "podcast 第 1 期 出海运营与创业经历" [ref=e296] [cursor=pointer]:
+              - /url: https://www.xiaoyuzhoufm.com/episode/6774f7f51e823e72d366a543
+              - generic [ref=e297]: podcast
+              - strong [ref=e298]: 第 1 期 出海运营与创业经历
+            - link "podcast 第 2 期 第一段创业踩过的坑" [ref=e299] [cursor=pointer]:
+              - /url: https://www.xiaoyuzhoufm.com/episode/670d07570d2f24f2890a1410
+              - generic [ref=e300]: podcast
+              - strong [ref=e301]: 第 2 期 第一段创业踩过的坑
+            - link "podcast 第 3 期 出海产品冷启动运营指南" [ref=e302] [cursor=pointer]:
+              - /url: https://www.xiaoyuzhoufm.com/episode/6703a38081cdab3a933cdfec
+              - generic [ref=e303]: podcast
+              - strong [ref=e304]: 第 3 期 出海产品冷启动运营指南
+            - link "podcast 第 4 期 开源产品发布方法论" [ref=e305] [cursor=pointer]:
+              - /url: https://www.xiaoyuzhoufm.com/episode/64d4a09be490c5dee51060f2
+              - generic [ref=e306]: podcast
+              - strong [ref=e307]: 第 4 期 开源产品发布方法论
+            - link "podcast 第 5 期 出海、运营与创业经验" [ref=e308] [cursor=pointer]:
+              - /url: https://www.xiaoyuzhoufm.com/episode/6825c4f15ccf03732b0626e3
+              - generic [ref=e309]: podcast
+              - strong [ref=e310]: 第 5 期 出海、运营与创业经验
+            - link "podcast 第 6 期 大厂经历与超级个体" [ref=e311] [cursor=pointer]:
+              - /url: https://www.xiaoyuzhoufm.com/episode/68b56f9e97178f08eeb96cf5
+              - generic [ref=e312]: podcast
+              - strong [ref=e313]: 第 6 期 大厂经历与超级个体
+            - link "podcast 第 7 期 投融资相关经验" [ref=e314] [cursor=pointer]:
+              - /url: https://www.xiaoyuzhoufm.com/episode/6814589f6970cc7b4d576d19
+              - generic [ref=e315]: podcast
+              - strong [ref=e316]: 第 7 期 投融资相关经验
+            - link "podcast 第 8 期 用户运营与商业化认知（强推）" [ref=e317] [cursor=pointer]:
+              - /url: https://www.xiaoyuzhoufm.com/episode/68add1e2293471fed49b8944
+              - generic [ref=e318]: podcast
+              - strong [ref=e319]: 第 8 期 用户运营与商业化认知（强推）
+            - link "podcast 第 9 期 英国系统性压迫" [ref=e320] [cursor=pointer]:
+              - /url: https://www.xiaoyuzhoufm.com/episode/68bd76de5faf36865974c78f
+              - generic [ref=e321]: podcast
+              - strong [ref=e322]: 第 9 期 英国系统性压迫
+            - link "podcast 第 10 期 关于善良的“既得利益者”" [ref=e323] [cursor=pointer]:
+              - /url: https://www.xiaoyuzhoufm.com/episode/68f4a70622654730203106c2
+              - generic [ref=e324]: podcast
+              - strong [ref=e325]: 第 10 期 关于善良的“既得利益者”
+            - link "podcast 第 11 期 60 分钟听完 4 年创业故事" [ref=e326] [cursor=pointer]:
+              - /url: https://www.xiaoyuzhoufm.com/episode/69363e6f3fec3166cfd0ae43
+              - generic [ref=e327]: podcast
+              - strong [ref=e328]: 第 11 期 60 分钟听完 4 年创业故事
+            - link "podcast 第 12 期 女性创业需要关注的困境和机会" [ref=e329] [cursor=pointer]:
+              - /url: https://www.xiaoyuzhoufm.com/episode/695005d348b2027f30c36c19
+              - generic [ref=e330]: podcast
+              - strong [ref=e331]: 第 12 期 女性创业需要关注的困境和机会
+        - generic [ref=e332]:
+          - heading "视频分享 & 资源" [level=3] [ref=e334]
+          - generic [ref=e335]:
+            - link "video 互联网大厂裸辞，创业血泪史 Bilibili 对谈生姜 Iris" [ref=e336] [cursor=pointer]:
+              - /url: https://b23.tv/4uN5ski
+              - generic [ref=e337]: video
+              - strong [ref=e338]: 互联网大厂裸辞，创业血泪史
+              - paragraph [ref=e339]: Bilibili 对谈生姜 Iris
+            - link "video 1000 万美金融资经验 SOP 小红书" [ref=e340] [cursor=pointer]:
+              - /url: http://xhslink.com/o/7Dh9XMzdHZv
+              - generic [ref=e341]: video
+              - strong [ref=e342]: 1000 万美金融资经验 SOP
+              - paragraph [ref=e343]: 小红书
+            - 'link "download Iris 软件出海实战分享 百度网盘 (提取码: v75t)" [ref=e344] [cursor=pointer]':
+              - /url: https://pan.baidu.com/s/1s4U7XNKKtlcM5iCIuPf0Tg?pwd=v75t
+              - generic [ref=e345]: download
+              - strong [ref=e346]: Iris 软件出海实战分享
+              - paragraph [ref=e347]: "百度网盘 (提取码: v75t)"
+        - generic [ref=e348]:
+          - heading "个人成长 & 亲密关系" [level=3] [ref=e350]
+          - generic [ref=e351]:
+            - link "heart 你可以爱一个人，但仍然和ta说再见" [ref=e352] [cursor=pointer]:
+              - /url: https://www.xiaoyuzhoufm.com/episode/689d7b53759c1ff652de4e7c
+              - generic [ref=e353]: heart
+              - strong [ref=e354]: 你可以爱一个人，但仍然和ta说再见
+            - link "heart 个人成长 / 女性力量" [ref=e355] [cursor=pointer]:
+              - /url: https://www.xiaoyuzhoufm.com/episode/689e88fc51528e172ac1b9ac
+              - generic [ref=e356]: heart
+              - strong [ref=e357]: 个人成长 / 女性力量
+    - generic [ref=e359]:
+      - generic [ref=e360]:
+        - paragraph [ref=e361]: 开始合作
+        - heading "用一次深度对话开启合作" [level=2] [ref=e362]
+        - paragraph [ref=e363]: 从定位、增长到融资策略，把关键问题一次讲清楚。
+      - generic [ref=e364]:
+        - link "联系咨询" [ref=e365] [cursor=pointer]:
+          - /url: "#site-contact"
+        - link "查看服务方案" [ref=e366] [cursor=pointer]:
+          - /url: /zh/services#session-60
+  - contentinfo [ref=e367]:
+    - generic [ref=e368]:
+      - paragraph [ref=e369]: Iris 生姜
+      - heading "感谢来访" [level=2] [ref=e370]
+    - generic [ref=e371]:
+      - paragraph [ref=e372]: 长期关注出海、开源增长、创始人叙事与运营系统。
+      - paragraph [ref=e373]: "公众号: 云宝的桃花坞"
