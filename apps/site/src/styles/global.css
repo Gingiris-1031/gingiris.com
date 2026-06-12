@@ -4651,3 +4651,105 @@ h3 {
     margin: 0;
   }
 }
+
+/* Course Section Styling */
+.scene-course {
+  background: #c0d696;
+  border-color: #000000;
+}
+
+.course-layout {
+  display: grid;
+  gap: clamp(32px, 5vw, 76px);
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+}
+
+.course-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.course-copy h2 {
+  font-size: clamp(28px, 2.7vw, 38px);
+  line-height: 1.18;
+  margin: 0;
+  font-weight: 600;
+  color: #000000;
+}
+
+.course-desc {
+  color: #1e2a2d;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.course-actions {
+  display: flex;
+  margin-top: 4px;
+}
+
+.course-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  box-shadow: none;
+  background: #000000;
+  color: #ffffff;
+  border: 1px solid #000000;
+  text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.course-cta-btn:hover {
+  background: #222222;
+  transform: translateY(-2px);
+}
+
+.course-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.course-benefit-card {
+  background: #ffffff;
+  border: 1px solid #000000;
+  border-radius: var(--radius-md);
+  padding: 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.course-benefit-card:hover {
+  transform: translateY(-2px);
+  background: var(--surface-strong);
+}
+
+.course-benefit-card h3 {
+  font-size: 18px;
+  line-height: 24px;
+  margin: 0 0 8px 0;
+  font-weight: 600;
+  color: #000000;
+}
+
+.course-benefit-card p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+
+
+@media (max-width: 860px) {
+  .course-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}

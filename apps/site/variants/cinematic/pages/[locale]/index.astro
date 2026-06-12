@@ -129,6 +129,39 @@ const heroRole = content.roleStrong.replace(/^\|\s*/, "");
     </div>
   </section>
 
+  <section class="scene scene-course" data-chapter>
+    <div class="course-section stage-medium" data-stage>
+      <div class="course-layout">
+        <div class="course-copy" data-reveal>
+          <p class="eyebrow">{content.courseSection.eyebrow}</p>
+          <h2>{content.courseSection.title}</h2>
+          <p class="course-desc">{content.courseSection.description}</p>
+          
+          <div class="course-actions">
+            <a
+              class="primary-button course-cta-btn"
+              href="https://xiaobot.net/p/Gingiris?refer=75f4fe93-4e3f-42aa-94c4-c43286c5c12d"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {locale === "zh" ? "立即订阅课程" : "Subscribe to Course"}
+            </a>
+          </div>
+
+        </div>
+        
+        <div class="course-benefits" data-reveal>
+          {content.courseSection.benefits.map((benefit) => (
+            <div class="course-benefit-card">
+              <h3>{benefit.title}</h3>
+              <p>{benefit.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="scene scene-invitation" data-chapter>
     <div class="pricing-section service-preview-section stage-medium" data-stage>
     <div class="section-heading" data-reveal>

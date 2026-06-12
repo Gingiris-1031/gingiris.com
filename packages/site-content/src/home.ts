@@ -31,6 +31,20 @@ export type HomeSectionGroup = {
   items: HomeLinkItem[];
 };
 
+export type HomeCourseBenefit = {
+  title: string;
+  desc: string;
+};
+
+export type HomeCourseSection = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  benefits: HomeCourseBenefit[];
+  ctaLabel: string;
+  wechatId: string;
+};
+
 export type HomeLocaleContent = {
   name: string;
   rolePrefix: string;
@@ -41,6 +55,7 @@ export type HomeLocaleContent = {
   stats: HomeStatCard[];
   projectTitle: string;
   sections: HomeSectionGroup[];
+  courseSection: HomeCourseSection;
   consultTitle: string;
   consultHint: string;
   consultItems: HomePriceItem[];
@@ -197,6 +212,18 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
         preferredChannel: "wechat",
       },
     ],
+    courseSection: {
+      eyebrow: "系统课程",
+      title: "出海增长系统课",
+      description: "如果你正在做 AI 产品或软件出海，或者刚接手增长团队、甚至刚被任命为 CGO/CMO/COO，这门课将是你今年最值得花时间投入的实战指南。这门课程凝聚了生姜 Iris 陪跑数十家明星初创出海增长的一线实战经验，涵盖 0 到 1 的冷启动、规模化投放、用户增长飞轮与跨国团队搭建。",
+      benefits: [
+        { title: "实战经验萃取", desc: "沉淀自数十家明星出海项目，拒绝空洞理论，只提供能落地的增长 SOP。" },
+        { title: "全栈知识图谱", desc: "完整覆盖从「增长实习生」到「增长一号位」的技能模型与核心认知。" },
+        { title: "出海情报社群", desc: "订阅后可加入「出海增长情报群」，与一线出海决策者实时探讨最新案例与复盘。订阅后联系微信号：staywildgrow，拉你入群。" }
+      ],
+      ctaLabel: "立即订阅课程",
+      wechatId: "staywildgrow"
+    },
   },
   en: {
     name: "Iris Jiang",
@@ -333,5 +360,17 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
         preferredChannel: "wechat",
       },
     ],
+    courseSection: {
+      eyebrow: "System Course",
+      title: "Global Growth System Course",
+      description: "If you are scaling AI products or software globally, leading a growth team, or stepping into a CGO/CMO/COO role, this course is designed as your most valuable investment this year. It condenses Iris Jiang's hands-on experience coaching dozens of star startups in global growth, covering 0-to-1 cold start, scaling paid ads, user growth engines, and building cross-border teams.",
+      benefits: [
+        { title: "Battle-Tested", desc: "Derived from real-world growth coaching for top startups, offering actionable SOPs instead of dry theory." },
+        { title: "Full Capability Map", desc: "Covering the complete growth career path and skillset from hands-on execution to strategic leadership." },
+        { title: "Intelligence Group", desc: "Subscribe to join the Global Growth Intelligence Group, exchange real-world teardowns with active builders, and add WeChat ID: staywildgrow to join." }
+      ],
+      ctaLabel: "Subscribe to Course",
+      wechatId: "staywildgrow"
+    },
   },
 };
