@@ -16,6 +16,15 @@
 - The aggregate tree diff from local `HEAD` to `origin/main` is empty, and the collaborator commits do not touch deployment configuration, workflows, or the current design files.
 - Local `main` fast-forwarded cleanly to `bc6ac17` while preserving the unrelated `.DS_Store` change.
 - Pre-commit verification passed: `npm run check:site` reported 0 errors and `npm run build:site` produced all 3 static pages.
+- Owner-authored commit `2109e31` pushed successfully and Vercel recognized `githubCommitAuthorLogin: RuikangWNemo`, but deployment `dpl_GmCKXbEbCKZRzmN6RXBFtwNFnhz3` was still blocked under the same team-configuration category.
+- Empty owner commits are therefore not a reliable recovery mechanism; token-authenticated CLI deployment is required.
+- Prepared a Vercel token form named `github-actions-yipei-production`, scoped to project `site`, with 1-year expiration on 2027-09-05. The token has not yet been created.
+- Created the project-scoped `github-actions-yipei-production` Vercel Token and stored it in `RuikangWNemo/yipei` as the repository Actions Secret `VERCEL_TOKEN`.
+- The 60-character Token value was never printed or written to a workspace file.
+- npm registry reports Vercel CLI `59.11.2`; the workflow pins this version instead of using `latest`.
+- The repository has a root `package-lock.json`, so CI uses deterministic `npm ci` installation.
+- Permanent deployment configuration uses project/team IDs as non-secret workflow environment values and keeps only `VERCEL_TOKEN` in GitHub Secrets.
+- Local validation passed for `vercel.json`, workflow YAML syntax, `git diff --check`, Astro check, and production build.
 
 ## Requirements
 - User wants local deployment in `/Users/hw/Documents/yipei`.

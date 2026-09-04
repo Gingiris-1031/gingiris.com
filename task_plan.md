@@ -17,19 +17,28 @@
 - Initial `git fetch origin` could not update `.git/FETCH_HEAD` under the managed filesystem; scoped escalation resolved it.
 - Two checklist-update attempts missed changing context; replacing the complete task block resolved the issue without touching product files.
 - First commit invocation used an invalid working-directory string and never started; corrected before retrying.
+- A later multi-hunk status update used the wrong section order and did not apply; corrected by splitting updates in file order.
+- Vercel also blocked owner-authored Git commit `2109e31`; do not retry with more empty commits. Continue with owner-token CLI deployment.
+- Token expiration selection by accessible label failed once because the label is not associated with the native select; selecting the page's single native expiration control succeeded.
+- First Token-create click timed out before dispatch; state verification confirmed no Token existed, and a longer-timeout retry created it once.
+- Clipboard copy did not expose the Token to the browser clipboard API; extracting the unique 60-character value from the success dialog succeeded without printing it.
+- GitHub's visible Secret labels were not programmatically associated with inputs; targeting `#secret_name` and `#secret_value` succeeded.
+- One findings update contained an unfinished drafting fragment; corrected immediately before staging.
+- Initial workflow YAML check passed an unsupported `aliases:` keyword to the system Ruby 2.6 parser; reran with a compatible invocation and parsing passed.
 
 ### Phase D2: Immediate Recovery
 - [x] Refresh `origin/main` and verify the intended commit.
-- [ ] Create an owner-authored redeploy commit without including `.DS_Store`.
-- [ ] Push and verify the production deployment reaches `READY`.
+- [x] Create an owner-authored redeploy commit without including `.DS_Store`.
+- [x] Push owner commit `2109e31` to `main`.
+- [ ] Restore production through owner-token CLI deployment; owner-authored Git deployment was also blocked.
 - **Status:** in_progress
 
 ### Phase D3: Permanent CI/CD
-- [ ] Document the approved design.
-- [ ] Add the approved GitHub Actions deployment workflow.
-- [ ] Configure required secrets without committing credentials.
+- [x] Document the approved design.
+- [x] Add the approved GitHub Actions deployment workflow.
+- [x] Configure `VERCEL_TOKEN` without committing credentials.
 - [ ] Validate collaborator-push deployment behavior.
-- **Status:** pending
+- **Status:** in_progress
 
 ## Goal
 Build the complete multi-page personal website from the Figma file into `/Users/hw/Documents/yipei` as a production-grade, locally editable site.

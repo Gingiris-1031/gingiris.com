@@ -23,6 +23,19 @@
 - Fast-forwarded local `main` to collaborator merge commit `bc6ac17`.
 - Ran `npm run check:site` successfully (0 errors; 3 existing hints).
 - Ran `npm run build:site` successfully (3 static pages generated).
+- Created and pushed owner-authored commit `2109e31`; `.DS_Store` remained uncommitted.
+- Vercel recognized the owner identity but still blocked the Git-sourced deployment. Switched recovery path to an owner-token CLI deployment instead of generating more commits.
+- Prepared the least-privilege Vercel token form for project `site` with a one-year lifetime; creation awaits the required action-time confirmation.
+- Recovered from one expiration-control locator mismatch by targeting the single native select; no token was created during the failed attempt.
+- Created the project-scoped Vercel Token after confirming the first click had not dispatched.
+- Clipboard access did not return the generated Token; extracted the unique value from the success dialog without printing it.
+- Added `VERCEL_TOKEN` to the GitHub repository Actions Secrets and verified it appears in the list.
+- Added a production GitHub Actions workflow pinned to Vercel CLI `59.11.2`.
+- Configured root `vercel.json` with `git.deploymentEnabled: false` to stop identity-blocked native Git deployments.
+- Verified `vercel.json` JSON syntax and workflow YAML syntax.
+- Ran `npm run check:site` successfully (0 errors; 3 existing hints).
+- Ran `npm run build:site` successfully (3 static pages generated).
+- Replaced an unsupported Ruby YAML parser option with a compatible invocation; the corrected YAML check passed.
 
 ## Session: 2026-03-09
 
