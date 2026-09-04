@@ -1,5 +1,29 @@
 # Progress Log
 
+## Session: 2026-09-04 (Vercel deployment identity)
+
+### Phase D1: Discovery and Design
+- **Status:** complete
+- Confirmed the production outage is a Vercel collaboration/identity block, not an Astro runtime failure.
+- Confirmed the latest blocked commit was authored by collaborator `willziheng`.
+- Inspected local Git identity, remote, recent commits, working tree, and existing workflow files.
+- Preserved the user's unrelated `.DS_Store` modification.
+- Verified root Vercel build/output configuration.
+- Logged blocked `git fetch` and invalid GitHub CLI authentication; no retry was attempted without changing the approach.
+- Verified the supported Vercel configuration for disabling automatic Git deployments while retaining CLI-based CI deployments.
+- User approved the recommended GitHub Actions + owner Vercel token design.
+- Added the approved design document.
+- Fetched `origin/main` successfully after scoped Git escalation.
+- Verified the remote collaborator commits do not conflict with deployment/design files.
+- Two planning checklist updates initially missed changing context; replacing the complete task block resolved it without affecting product files.
+- First `git commit` invocation did not start because of an invalid workdir argument; no repository state changed.
+
+### Phase D2: Immediate Recovery
+- **Status:** in_progress
+- Fast-forwarded local `main` to collaborator merge commit `bc6ac17`.
+- Ran `npm run check:site` successfully (0 errors; 3 existing hints).
+- Ran `npm run build:site` successfully (3 static pages generated).
+
 ## Session: 2026-03-09
 
 ### Phase 1: Requirements & Discovery

@@ -1,5 +1,36 @@
 # Task Plan: Full Personal Website from Figma MCP
 
+## Vercel Owner-Authenticated Deployment Plan (2026-09-04)
+
+### Phase D1: Discovery and Design
+- [x] Confirm Vercel blocked the latest production deployment before build.
+- [x] Confirm collaborator commit author `willziheng` is not linked to Vercel.
+- [x] Inspect repository identity, status, and existing CI workflows.
+- [x] Confirm the preferred permanent deployment model.
+- [x] Compare approaches and obtain design approval.
+- [x] Save the approved design to `docs/plans/2026-09-04-owner-authenticated-vercel-deploy-design.md`.
+- **Status:** complete
+
+#### D1 constraints and errors
+- Root production build is `npm run build:site`; Vercel output is `apps/site/dist`.
+- `gh auth status` reports the saved `RuikangWNemo` token is invalid.
+- Initial `git fetch origin` could not update `.git/FETCH_HEAD` under the managed filesystem; scoped escalation resolved it.
+- Two checklist-update attempts missed changing context; replacing the complete task block resolved the issue without touching product files.
+- First commit invocation used an invalid working-directory string and never started; corrected before retrying.
+
+### Phase D2: Immediate Recovery
+- [x] Refresh `origin/main` and verify the intended commit.
+- [ ] Create an owner-authored redeploy commit without including `.DS_Store`.
+- [ ] Push and verify the production deployment reaches `READY`.
+- **Status:** in_progress
+
+### Phase D3: Permanent CI/CD
+- [ ] Document the approved design.
+- [ ] Add the approved GitHub Actions deployment workflow.
+- [ ] Configure required secrets without committing credentials.
+- [ ] Validate collaborator-push deployment behavior.
+- **Status:** pending
+
 ## Goal
 Build the complete multi-page personal website from the Figma file into `/Users/hw/Documents/yipei` as a production-grade, locally editable site.
 
@@ -236,6 +267,8 @@ Phase 3
 ## Errors Encountered
 | Error | Attempt | Resolution |
 |-------|---------|------------|
+| `git fetch origin` could not open `.git/FETCH_HEAD` | 1 | Request scoped escalation when the approved design reaches implementation. |
+| GitHub CLI token for `RuikangWNemo` is invalid | 1 | Use the authenticated browser or re-authenticate CLI before configuring repository secrets. |
 | Figma MCP quota exceeded while requesting file root metadata | 1 | Blocked; request user action (quota upgrade/reset or alternate access) |
 | Figma MCP still limited after re-login (account seat `View`, tier `starter`) | 2 | Requires higher seat/tier account or alternate authorized path |
 | Root metadata request with node `0:0` failed | 3 | Use node `0:1` entrypoint for file structure extraction |

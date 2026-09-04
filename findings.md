@@ -1,5 +1,22 @@
 # Findings & Decisions
 
+## Vercel Deployment Identity Findings (2026-09-04)
+- Vercel project `site` is not live because deployment `dpl_7QdZK8gU5b849U7MFHnW4T4kUnqa` was blocked before build.
+- Vercel's exact reason: GitHub commit author `willziheng` has no Vercel account linked to that GitHub identity.
+- Repository remote is `https://github.com/RuikangWNemo/yipei.git` on branch `main`.
+- Local Git identity is `RuikangWNemo <rw293ruikangwang@gmail.com>`.
+- The only current working-tree change is `.DS_Store`; it must not be included in deployment commits.
+- No `.github/workflows` file was found.
+- Preferred direction under evaluation: preserve collaborators' real authorship and deploy through GitHub Actions using a Vercel token owned by `ruikangwnemo`, instead of fabricating owner-authored commits.
+- Root `vercel.json` builds with `npm run build:site` and publishes `apps/site/dist`.
+- GitHub CLI has a stale/invalid token for `RuikangWNemo`; browser-based GitHub configuration may be needed.
+- The managed workspace permits project-file edits but not `.git` writes without escalation.
+- Vercel officially supports disabling Git-triggered deployments with root `vercel.json` setting `git.deploymentEnabled: false`; CLI/API deployments continue to work.
+- After fetch, `origin/main` is at blocked merge commit `bc6ac17`, two commits ahead of local `e742956`.
+- The aggregate tree diff from local `HEAD` to `origin/main` is empty, and the collaborator commits do not touch deployment configuration, workflows, or the current design files.
+- Local `main` fast-forwarded cleanly to `bc6ac17` while preserving the unrelated `.DS_Store` change.
+- Pre-commit verification passed: `npm run check:site` reported 0 errors and `npm run build:site` produced all 3 static pages.
+
 ## Requirements
 - User wants local deployment in `/Users/hw/Documents/yipei`.
 - User wants to use Figma MCP for a specific Figma design URL.
