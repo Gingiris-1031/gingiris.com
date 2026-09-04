@@ -41,6 +41,24 @@
 - Run 1 failed only at `Pull Vercel production configuration` with `Could not retrieve Project Settings`; subsequent build/deploy steps were skipped.
 - Updated official GitHub Actions references from `@v4` to Node 24-compatible `@v7`.
 - Added explicit Vercel team scope and project flags to every CLI command for run 2.
+- Observed run 2 fail at the same pull step with `User not found. (404)`.
+- Determined a team-projects Token is required; no third run will reuse the known-incompatible project-only Token.
+- Browser control reset after a wait exceeded its 30-second limit; reconnected without affecting external state.
+- Verified the previous READY Vercel deployment still serves the expected site with HTTP 200.
+- Confirmed the formal domain outage is caused by invalid Namecheap DNS records, not the static build.
+- Read Vercel's required apex record: `A @ 216.198.79.1`.
+- Opened Namecheap Advanced DNS in both connected browser surfaces; both redirected to login.
+- Paused before credential entry and preserved the Chrome login page for user handoff.
+- Public RDAP and authoritative DNS checks confirmed the domain expired at Namecheap on 2026-09-02 and was moved to a registrar parking zone.
+- Verified `https://site-psi-liart-72.vercel.app/` remains a working HTTP 200 fallback while Namecheap access is unavailable.
+- Resumed Phase D3 at the user's request: finish owner-token GitHub Actions deployment so `willziheng` can push normally without deployment blocks.
+- Created one new 1-year Vercel Token scoped to `ruikangwnemo's projects / All Projects`; its value was captured only in temporary browser memory and never printed or written to disk.
+- Started replacing GitHub Actions Secret `VERCEL_TOKEN`, but GitHub paused the save behind an account verification-code dialog; handed that dialog to the user without exposing the Token.
+- GitHub verification completed and the replacement repository Secret was saved.
+- Triggered workflow run `33892814895`; it passed the previously failing Vercel pull step, completed the Vercel build, and deployed production successfully in 2m 8s.
+- Verified production deployment `dpl_DuRNtG9dLXTN2QfdoMNmQkL2GQfi` is `READY`, both Vercel URLs return HTTP 200, and the one-hour runtime error scan is clean.
+- Confirmed `willziheng` remains a direct GitHub collaborator and the workflow has no actor-specific condition.
+- Cleared the generated Token and related snapshots from temporary browser memory after successful deployment verification.
 
 ## Session: 2026-03-09
 

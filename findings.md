@@ -29,6 +29,25 @@
 - GitHub Actions run `33881000326` received the masked Token but failed during `vercel pull` with `Could not retrieve Project Settings`; build and deploy did not run.
 - Current official releases are `actions/checkout@v7.0.1` and `actions/setup-node@v7.0.0`; workflow references major `@v7`.
 - Retry strategy explicitly sets `--scope=ruikangwnemos-projects` and `--project=site` on pull, build, and deploy.
+- Run 2 (`33881692129`) still failed at `vercel pull`, now reporting `User not found. (404)`; project-only Token scope is incompatible with the CLI's required user lookup.
+- Next credential scope should be `ruikangwnemo's projects / All Projects`, not the broader `Full Account` option.
+- The last READY deployment `dpl_F9xpCpPLT1Vig2iLKYNtLjkM7h2j` returns HTTP 200 and contains the expected current site content.
+- `gingiris.com` and `www.gingiris.com` both show `Invalid Configuration` in Vercel.
+- Current apex DNS resolves to `2.59.170.20` and `104.219.250.37`; Vercel requires Namecheap record `A @ 216.198.79.1`.
+- The production outage is a DNS routing problem independent of the blocked Git/CI deployments.
+- No Namecheap API/connector is available, and neither connected browser session is authenticated to Namecheap.
+- The user must complete Namecheap credentials/2FA before DNS can be changed.
+- Namecheap RDAP reports registrar expiration at `2026-09-02T17:46:21Z`; Verisign's 2027 registry date is consistent with the registry auto-renew grace window and does not prove the registrar renewal was paid.
+- The live zone now answers from `ns1.lander.d.parity.domains` / `ns2.lander.d.parity.domains`; both apex and `www` resolve to parking addresses `2.59.170.20` and `104.219.250.37`.
+- The evidence is most consistent with automatic expiry parking rather than a Vercel build failure; Namecheap access or support-assisted recovery is required to restore `gingiris.com`.
+- While Namecheap access is unavailable, the stable Vercel project URL `https://site-psi-liart-72.vercel.app/` returns HTTP 200 with the expected current site.
+- The user has reprioritized the permanent GitHub Actions path so future `willziheng` pushes deploy without Vercel's commit-author gate.
+- GitHub accepted the replacement `VERCEL_TOKEN` after the owner completed its step-up verification; the repository Secret showed an immediate updated timestamp.
+- Manual workflow run `33892814895` succeeded in 2m 8s: Vercel pull, build, and prebuilt production deploy all passed with the team-projects Token.
+- Latest production deployment `dpl_DuRNtG9dLXTN2QfdoMNmQkL2GQfi` is `READY` at `https://site-2yzk102ha-ruikangwnemos-projects.vercel.app/`.
+- Both the immutable deployment URL and stable project URL `https://site-psi-liart-72.vercel.app/` return HTTP 200 with the expected site; Vercel reports no runtime errors in the last hour.
+- GitHub access settings confirm `willziheng` is still a direct collaborator. The workflow triggers on every same-repository push to `main`, has no actor condition, and uses the repository owner Token, so deployment authorization is independent of commit authorship.
+- The original project-only Token `github-actions-yipei-production` is no longer used but remains active pending explicit revocation approval.
 
 ## Requirements
 - User wants local deployment in `/Users/hw/Documents/yipei`.
