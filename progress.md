@@ -36,6 +36,11 @@
 - Ran `npm run check:site` successfully (0 errors; 3 existing hints).
 - Ran `npm run build:site` successfully (3 static pages generated).
 - Replaced an unsupported Ruby YAML parser option with a compatible invocation; the corrected YAML check passed.
+- Pushed CI commit `9e01478` and observed GitHub Actions run `33881000326`.
+- Confirmed native Vercel Git deployment was suppressed for the CI commit.
+- Run 1 failed only at `Pull Vercel production configuration` with `Could not retrieve Project Settings`; subsequent build/deploy steps were skipped.
+- Updated official GitHub Actions references from `@v4` to Node 24-compatible `@v7`.
+- Added explicit Vercel team scope and project flags to every CLI command for run 2.
 
 ## Session: 2026-03-09
 

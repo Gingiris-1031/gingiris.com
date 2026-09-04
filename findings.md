@@ -25,6 +25,10 @@
 - The repository has a root `package-lock.json`, so CI uses deterministic `npm ci` installation.
 - Permanent deployment configuration uses project/team IDs as non-secret workflow environment values and keeps only `VERCEL_TOKEN` in GitHub Secrets.
 - Local validation passed for `vercel.json`, workflow YAML syntax, `git diff --check`, Astro check, and production build.
+- Push `9e01478` created no native Vercel Git deployment, confirming `git.deploymentEnabled: false` works.
+- GitHub Actions run `33881000326` received the masked Token but failed during `vercel pull` with `Could not retrieve Project Settings`; build and deploy did not run.
+- Current official releases are `actions/checkout@v7.0.1` and `actions/setup-node@v7.0.0`; workflow references major `@v7`.
+- Retry strategy explicitly sets `--scope=ruikangwnemos-projects` and `--project=site` on pull, build, and deploy.
 
 ## Requirements
 - User wants local deployment in `/Users/hw/Documents/yipei`.

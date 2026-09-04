@@ -25,6 +25,10 @@
 - GitHub's visible Secret labels were not programmatically associated with inputs; targeting `#secret_name` and `#secret_value` succeeded.
 - One findings update contained an unfinished drafting fragment; corrected immediately before staging.
 - Initial workflow YAML check passed an unsupported `aliases:` keyword to the system Ruby 2.6 parser; reran with a compatible invocation and parsing passed.
+- GitHub connector cannot read workflow runs/logs for this private repository (404); authenticated browser inspection is the fallback.
+- Workflow run `33881000326` failed at `vercel pull` with `Could not retrieve Project Settings`; second iteration passes explicit scope/project flags.
+- Browser page evaluation does not expose `fetch`; the attempted read-only Token API probe never sent a request.
+- One incomplete patch targeted a nonexistent workflow path and made no changes; replaced with a complete patch.
 
 ### Phase D2: Immediate Recovery
 - [x] Refresh `origin/main` and verify the intended commit.
