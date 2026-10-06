@@ -3703,7 +3703,8 @@ body {
 .site-nav { align-items: center; flex-direction: row; flex-wrap: wrap; font-size: 0.76rem; gap: 20px; }
 .site-nav a { border: 0; padding: 8px 0; }
 .site-app-rail { flex: 0 0 auto; gap: 8px; }
-.site-locale-switch, .site-header-contact { font-size: 0.76rem; padding: 9px 13px; }
+.site-locale-switch, .site-header-contact, .site-header-skills { font-size: 0.76rem; padding: 9px 13px; }
+.site-header-skills { white-space: nowrap; width: auto; }
 
 .scene-hero { min-height: auto; }
 .hero-stage {
@@ -3799,6 +3800,7 @@ h3 {
 
 .site-locale-switch,
 .site-header-contact,
+.site-header-skills,
 .primary-button,
 .ghost-button,
 .inline-link,
