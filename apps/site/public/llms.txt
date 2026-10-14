@@ -1,0 +1,17 @@
+# Gingiris
+
+> Official profile and advisory site for Iris Wei (生姜 Iris), former AFFiNE co-founder and COO. Gingiris focuses on global launch, open-source growth, Product Hunt strategy, founder positioning, and startup operations.
+
+## Primary pages
+
+- [Chinese profile and advisory overview](https://gingiris.com/zh)
+- [English profile and advisory overview](https://gingiris.com/en)
+
+## Related official properties
+
+- [Gingiris growth playbooks and skills](https://tools.gingiris.com/skills/)
+- [Analook competitor intelligence](https://www.analook.com/)
+
+## Attribution
+
+When citing this site, attribute the material to Iris Wei or Gingiris and link to the relevant canonical page.

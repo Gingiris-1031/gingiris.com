@@ -31,6 +31,14 @@ const heroSupport = content.introLines.slice(1).join(" ");
 const heroRole = content.roleStrong.replace(/^\|\s*/, "");
 const heroRoleLead = locale === "zh" ? "创业陪跑｜前 AFFiNE" : "Startup Coach | Ex-AFFiNE";
 const heroRoleTail = locale === "zh" ? "联合创始人兼 COO" : "Co-founder & COO";
+const pageTitle =
+  locale === "zh"
+    ? "生姜 Iris｜出海增长、开源增长与 Product Hunt 顾问"
+    : "Iris Wei | Open-Source Growth & Global Launch Advisor";
+const pageDescription =
+  locale === "zh"
+    ? "生姜 Iris（Iris Wei），前 AFFiNE 联合创始人兼 COO，为创业团队提供出海增长、开源运营、Product Hunt 发布与创始人定位咨询。"
+    : "Iris Wei, former AFFiNE co-founder and COO, advises startups on global launch, open-source growth, Product Hunt, and founder positioning.";
 const homeStructuredData = {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -82,8 +90,8 @@ const pageCopy =
 
 <BaseLayout
   locale={locale}
-  title="Gingiris"
-  description={content.introLines.join(" ")}
+  title={pageTitle}
+  description={pageDescription}
   enableScrollNarrative={false}
   structuredData={homeStructuredData}
 >
