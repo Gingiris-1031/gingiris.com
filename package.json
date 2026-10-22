@@ -45,6 +45,6 @@
     "concurrently": "^9.1.2"
   },
   "engines": {
-    "node": ">=20.0.0"
+    "node": "24.22.x"
   }
 }
