@@ -18,10 +18,16 @@ const wallNote =
 <div class="project-wall" aria-label={wallAriaLabel}>
   <p class="project-wall-note">{wallNote}</p>
   <div class="project-logo-grid">
-    {logos.map((logo) => (
-      <figure class="project-card">
-        <img alt={logo.name} class="project-logo" src={logo.src} loading="lazy" />
-      </figure>
-    ))}
+    {logos.map((logo) =>
+      logo.href ? (
+        <a class="project-card" href={logo.href} target="_blank" rel="noopener noreferrer">
+          <img alt={logo.name} class="project-logo" src={logo.src} loading="lazy" />
+        </a>
+      ) : (
+        <figure class="project-card">
+          <img alt={logo.name} class="project-logo" src={logo.src} loading="lazy" />
+        </figure>
+      ),
+    )}
   </div>
 </div>
