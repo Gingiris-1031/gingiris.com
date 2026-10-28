@@ -66,7 +66,7 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
     name: "生姜 Iris",
     rolePrefix: "增长顾问",
     roleStrong: "| 创业陪跑｜前 AFFiNE 联合创始人兼 COO",
-    baseTag: "常驻昆山",
+    baseTag: "常驻浙江",
     focusTag: "出海 / 开源 / 运营咨询",
     introLines: [
       "AFFiNE 联合创始人，带团队穿过从冷启动、融资到全球增长的关键阶段。",
