@@ -70,6 +70,7 @@ const clientLogos: Array<Pick<ProjectLogo, "name" | "href"> & { number: number }
   { number: 53, name: "昆山杜克大学创新创业中心", href: "https://ine.dukekunshan.edu.cn/" },
   { number: 54, name: "TraceRoot", href: "https://traceroot.ai/" },
   { number: 55, name: "Actionbook", href: "https://actionbook.app/" },
+  { number: 56, name: "万象有灵", href: "https://noonwake.com/#wanxiang" },
 ];
 
 export const projectGroups: ProjectGroup[] = [
