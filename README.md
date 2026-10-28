@@ -44,10 +44,10 @@ This repository currently ships the public marketing site from `apps/site` to Ve
 - Treat `packages/site-content` as the current production source of truth.
 
 ## Vercel Deployment
-- Deploy guide: [vercel-site-deploy.md](/Users/hw/Documents/yipei/docs/ops/vercel-site-deploy.md)
-- Vercel project deploy path: repository root
-- Build Command: `npm run build:site`
-- Output Directory: `apps/site/dist`
+- Deploy guide: [vercel-site-deploy.md](docs/ops/vercel-site-deploy.md)
+- Vercel project: `gingiris-com` on the `gingiris-projects` team, connected through the Vercel GitHub integration
+- Pushes to `main` deploy to production; pull requests get preview deployments
+- Vercel project Root Directory: `apps/site` (build settings come from `apps/site/vercel.json`)
 - No required runtime environment variables are currently needed for the shipped marketing site.
 
 ## Local Figma Asset Utilities

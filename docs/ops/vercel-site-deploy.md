@@ -6,10 +6,13 @@
 - Output: static site
 
 ## Vercel Project Settings
-- Root Directory: repository root
-- Build Command: `npm run build:site`
-- Output Directory: `apps/site/dist`
+- Team / Project: `gingiris-projects` / `gingiris-com`
+- Root Directory: `apps/site`
+- Build settings come from `apps/site/vercel.json`:
+  - Build Command: `npm run build`
+  - Output Directory: `dist`
 - Install Command: leave default
+- The root `vercel.json` is not read while the Root Directory is `apps/site`.
 
 ## Environment Variables
 - No runtime environment variables are currently required for the shipped marketing site.
@@ -22,14 +25,11 @@ npm run check
 npm run build
 ```
 
-## Deploy Steps
-1. Create a new Vercel project from this repository.
-2. Keep the project's Root Directory at the repository root so workspace packages remain available during install.
-3. Keep the build settings aligned with [vercel.json](/Users/hw/Documents/yipei/vercel.json):
-   - Build Command: `npm run build:site`
-   - Output Directory: `apps/site/dist`
-4. Trigger a deployment from `main`.
-5. Attach the production domain after the first successful build.
+## How Deploys Run
+- The Vercel project is connected to this repository through the Vercel GitHub integration.
+- Every push to `main` creates a production deployment for `gingiris.com`.
+- Every pull request gets a preview deployment; the Vercel bot comments the preview URL on the PR.
+- There is no GitHub Actions deploy workflow and no `VERCEL_TOKEN` secret to maintain.
 
 ## Post-Deploy Checks
 1. Open `/<locale>` on the production domain.
