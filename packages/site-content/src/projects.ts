@@ -73,6 +73,7 @@ const clientLogos: Array<Pick<ProjectLogo, "name" | "href"> & { number: number }
   { number: 56, name: "万象有灵", href: "https://noonwake.com/#wanxiang" },
   { number: 57, name: "Questflow", href: "https://questflow.ai/" },
   { number: 58, name: "Astorie", href: "https://astorie.ai/" },
+  { number: 59, name: "Eigent", href: "https://www.eigent.ai/" },
 ];
 
 export const projectGroups: ProjectGroup[] = [
