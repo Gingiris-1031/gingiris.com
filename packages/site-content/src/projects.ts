@@ -77,6 +77,8 @@ const clientLogos: Array<Pick<ProjectLogo, "name" | "href"> & { number: number }
   { number: 60, name: "ListenHub", href: "https://listenhub.ai/" },
   { number: 61, name: "Narya.ai", href: "https://narya.ai/" },
   { number: 62, name: "Mizzen AI", href: "https://mizzen.top/" },
+  { number: 63, name: "Einsia", href: "https://einsia.ai/" },
+  { number: 64, name: "Verdent", href: "https://www.verdent.ai/" },
 ];
 
 export const projectGroups: ProjectGroup[] = [
