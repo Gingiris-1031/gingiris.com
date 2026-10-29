@@ -16,7 +16,8 @@ export type ProjectGroup = {
   logos: ProjectLogo[];
 };
 
-const clientLogos: Array<Pick<ProjectLogo, "name" | "href"> & { number: number }> = [
+// sortKey gives Chinese names a pinyin spelling so the wall sorts by product initial.
+const clientLogos: Array<Pick<ProjectLogo, "name" | "href"> & { number: number; sortKey?: string }> = [
   { number: 1, name: "Spark Lab", href: "https://www.sparklab.city/" },
   { number: 3, name: "Bonjour!", href: "https://bonjour.bio/" },
   { number: 4, name: "Nomofly", href: "https://nomofly.com/" },
@@ -35,7 +36,7 @@ const clientLogos: Array<Pick<ProjectLogo, "name" | "href"> & { number: number }
   { number: 18, name: "BoomCut", href: "https://boomcutai.com/" },
   { number: 19, name: "Wegic", href: "https://wegic.ai/" },
   { number: 20, name: "KUSE", href: "https://www.kuse.ai/" },
-  { number: 21, name: "观猹", href: "https://watcha.cn/" },
+  { number: 21, name: "观猹", sortKey: "guancha", href: "https://watcha.cn/" },
   { number: 22, name: "Medeo", href: "https://www.medeo.app/" },
   { number: 23, name: "memU", href: "https://memu.pro/" },
   { number: 24, name: "CAMEL-AI", href: "https://www.camel-ai.org/" },
@@ -46,10 +47,10 @@ const clientLogos: Array<Pick<ProjectLogo, "name" | "href"> & { number: number }
   { number: 29, name: "ACE STUDIO", href: "https://acestudio.ai/" },
   { number: 30, name: "InsForge", href: "https://insforge.dev/" },
   { number: 31, name: "OpenAgents", href: "https://openagents.org/" },
-  { number: 32, name: "商汤小浣熊", href: "https://xiaohuanxiong.com/" },
+  { number: 32, name: "商汤小浣熊", sortKey: "shangtang xiaohuanxiong", href: "https://xiaohuanxiong.com/" },
   { number: 33, name: "Acontext", href: "https://acontext.io/" },
   { number: 34, name: "TinyFish", href: "https://www.tinyfish.ai/" },
-  { number: 35, name: "商汤科技", href: "https://www.sensetime.com/cn/" },
+  { number: 35, name: "商汤科技", sortKey: "shangtang keji", href: "https://www.sensetime.com/cn/" },
   { number: 36, name: "ring2.ai", href: "https://www.ring2.ai/" },
   { number: 37, name: "Datastrato", href: "https://datastrato.ai/" },
   { number: 38, name: "TestSprite", href: "https://www.testsprite.com/" },
@@ -67,10 +68,10 @@ const clientLogos: Array<Pick<ProjectLogo, "name" | "href"> & { number: number }
   { number: 50, name: "Creatly", href: "https://creatly.ai/" },
   { number: 51, name: "Hypit", href: "https://hypit.ai/" },
   { number: 52, name: "Synapuff" },
-  { number: 53, name: "昆山杜克大学创新创业中心", href: "https://ine.dukekunshan.edu.cn/" },
+  { number: 53, name: "昆山杜克大学创新创业中心", sortKey: "kunshan duke", href: "https://ine.dukekunshan.edu.cn/" },
   { number: 54, name: "TraceRoot", href: "https://traceroot.ai/" },
   { number: 55, name: "Actionbook", href: "https://actionbook.app/" },
-  { number: 56, name: "万象有灵", href: "https://noonwake.com/#wanxiang" },
+  { number: 56, name: "万象有灵", sortKey: "wanxiang youling", href: "https://noonwake.com/#wanxiang" },
   { number: 57, name: "Questflow", href: "https://questflow.ai/" },
   { number: 58, name: "Astorie", href: "https://astorie.ai/" },
   { number: 59, name: "Eigent", href: "https://www.eigent.ai/" },
@@ -80,7 +81,8 @@ const clientLogos: Array<Pick<ProjectLogo, "name" | "href"> & { number: number }
   { number: 63, name: "Einsia", href: "https://einsia.ai/" },
   { number: 64, name: "Verdent", href: "https://www.verdent.ai/" },
   { number: 65, name: "ClackyAI", href: "https://clacky.ai/" },
-  { number: 66, name: "Clipto", href: "https://clipto.ai/" },];
+  { number: 66, name: "Clipto", href: "https://clipto.ai/" },
+];
 
 export const projectGroups: ProjectGroup[] = [
   {
@@ -90,12 +92,16 @@ export const projectGroups: ProjectGroup[] = [
       zh: "部分服务企业名单",
       en: "Selected Clients",
     },
-    logos: clientLogos.map(({ number, name, href }) => ({
-      id: `client-${number}`,
-      name,
-      href,
-      src: `/projects/clients/client-${number}.svg`,
-      sourceKind: "raw",
-    })),
+    logos: [...clientLogos]
+      .sort((a, b) =>
+        (a.sortKey ?? a.name).localeCompare(b.sortKey ?? b.name, "en", { sensitivity: "base" }),
+      )
+      .map(({ number, name, href }) => ({
+        id: `client-${number}`,
+        name,
+        href,
+        src: `/projects/clients/client-${number}.svg`,
+        sourceKind: "raw",
+      })),
   },
 ];
