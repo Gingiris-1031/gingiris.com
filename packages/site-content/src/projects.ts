@@ -80,9 +80,7 @@ const clientLogos: Array<Pick<ProjectLogo, "name" | "href"> & { number: number }
   { number: 63, name: "Einsia", href: "https://einsia.ai/" },
   { number: 64, name: "Verdent", href: "https://www.verdent.ai/" },
   { number: 65, name: "ClackyAI", href: "https://clacky.ai/" },
-  { number: 66, name: "Clipto", href: "https://clipto.ai/" },
-  { number: 67, name: "PaperGuru", href: "https://paperguru.ai/" },
-];
+  { number: 66, name: "Clipto", href: "https://clipto.ai/" },];
 
 export const projectGroups: ProjectGroup[] = [
   {
