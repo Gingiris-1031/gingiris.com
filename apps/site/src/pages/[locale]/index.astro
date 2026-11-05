@@ -66,6 +66,7 @@ const pageCopy =
         detailCta: "查看详情",
         editorialEyebrow: "内容与资源",
         editorialTitle: "内容、资源与精选入口",
+        insightsCta: "阅读全部文章",
         invitationEyebrow: "开始合作",
         invitationTitle: "用一次深度对话开启合作",
         invitationBody: "从定位、增长到融资策略，把关键问题一次讲清楚。",
@@ -81,6 +82,7 @@ const pageCopy =
         detailCta: "See details",
         editorialEyebrow: "Editorial Surface",
         editorialTitle: "Content, resources, and curated entry points",
+        insightsCta: "Read all insights",
         invitationEyebrow: "Invitation",
         invitationTitle: "Start with a single, focused conversation",
         invitationBody: "Clarify positioning, growth, and fundraising in one deliberate session.",
@@ -238,6 +240,9 @@ const pageCopy =
         </article>
       ))}
     </div>
+    <div class="section-action" data-reveal>
+      <a class="ghost-button" href={`/${locale}/services`}>{pageCopy.servicesCta}</a>
+    </div>
     </div>
   </section>
 
@@ -248,6 +253,9 @@ const pageCopy =
       <h2>{pageCopy.editorialTitle}</h2>
     </div>
       <ResourceGrid groups={content.sections} />
+      <div class="section-action" data-reveal>
+        <a class="ghost-button" href={`/${locale}/insights`}>{pageCopy.insightsCta}</a>
+      </div>
     </div>
   </section>
   <section class="scene scene-closing" id="cooperation" data-chapter>

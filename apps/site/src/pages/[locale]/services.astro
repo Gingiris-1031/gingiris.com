@@ -1,0 +1,135 @@
+---
+import {
+  isSiteLocale,
+  servicesContentByLocale,
+  supportedLocales,
+  type SiteLocale,
+} from "@yipei/site-content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export function getStaticPaths() {
+  return supportedLocales.map((locale) => ({ params: { locale } }));
+}
+
+const localeParam = Astro.params.locale;
+if (!localeParam || !isSiteLocale(localeParam)) {
+  throw new Error("Invalid locale");
+}
+
+const locale = localeParam as SiteLocale;
+const content = servicesContentByLocale[locale];
+const pageTitle = locale === "zh" ? "出海增长顾问服务｜生姜 Iris" : "Global Growth Advisory Services | Iris Wei";
+const pageDescription = locale === "zh"
+  ? "面向创业团队的出海增长、开源运营、Product Hunt 发布与创始人定位咨询。先明确问题、交付与边界，再决定合作方式。"
+  : "Advisory services for global launch, open-source growth, Product Hunt, and founder positioning. Clarify the decision, scope, and deliverable before starting.";
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      name: pageTitle,
+      description: pageDescription,
+      provider: { "@type": "Person", name: "Iris Wei", url: "https://gingiris.com" },
+      areaServed: "Worldwide",
+      url: `https://gingiris.com/${locale}/services`,
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: locale === "zh" ? "主页" : "Home", item: `https://gingiris.com/${locale}` },
+        { "@type": "ListItem", position: 2, name: locale === "zh" ? "服务" : "Services", item: `https://gingiris.com/${locale}/services` },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: content.faq.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.answer,
+        },
+      })),
+    },
+  ],
+};
+---
+
+<BaseLayout locale={locale} title={pageTitle} description={pageDescription} structuredData={serviceSchema}>
+  <section class="scene scene-hero" data-chapter>
+    <div class="page-hero stage-compact" data-stage>
+      <div class="page-hero-copy">
+        <p class="eyebrow">{content.eyebrow}</p>
+        <h1>{content.title}</h1>
+        <p>{content.intro}</p>
+        <div class="hero-actions">
+          <a class="primary-button" href="#engagements">{locale === "zh" ? "查看合作方式" : "View engagements"}</a>
+          <a class="ghost-button" href="#contact">{locale === "zh" ? "联系 Iris" : "Contact Iris"}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene" data-chapter>
+    <div class="section-heading" data-reveal>
+      <p class="eyebrow">{locale === "zh" ? "适用问题" : "Focus areas"}</p>
+      <h2>{locale === "zh" ? "先判断问题，再选择服务" : "Diagnose the decision before choosing a service"}</h2>
+    </div>
+    <div class="service-pillar-grid">
+      {content.pillars.map((pillar) => (
+        <article class="service-pillar-card" data-reveal>
+          <h3>{pillar.title}</h3>
+          <p>{pillar.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="scene" id="engagements" data-chapter>
+    <div class="section-heading" data-reveal>
+      <p class="eyebrow">{locale === "zh" ? "合作入口" : "Engagements"}</p>
+      <h2>{locale === "zh" ? "四种清晰的合作方式" : "Four clear ways to work together"}</h2>
+      <p>{locale === "zh" ? "价格为当前公开入口；正式合作前仍会确认问题、范围和交付。" : "Published prices are entry points. Scope and deliverables are confirmed before work begins."}</p>
+    </div>
+    <div class="premium-pricing-grid">
+      {content.plans.map((plan, index) => (
+        <article class:list={["premium-pricing-card", index === 1 && "is-featured", index === 3 && "is-wide"]} data-reveal>
+          <span class="service-preview-index">{String(index + 1).padStart(2, "0")}</span>
+          <h3>{plan.title}</h3>
+          {plan.subtitle ? <p>{plan.subtitle}</p> : null}
+          <strong>{plan.price}</strong>
+          <p>{plan.detail}</p>
+          <p class="service-delivery-note">{plan.deliveryNote}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="scene scene-faq faq-section" data-chapter>
+    <div class="section-heading" data-reveal>
+      <p class="eyebrow">FAQ</p>
+      <h2>{locale === "zh" ? "合作前常见问题" : "Questions before working together"}</h2>
+    </div>
+    <div class="faq-list">
+      {content.faq.map((item) => (
+        <details data-reveal>
+          <summary>{item.question}</summary>
+          <p>{item.answer}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <section class="scene scene-closing" id="contact" data-chapter>
+    <div class="closing-invitation stage-compact" data-stage>
+      <div class="closing-copy">
+        <p class="eyebrow">{locale === "zh" ? "联系 Iris" : "Contact Iris"}</p>
+        <h2>{locale === "zh" ? "从一个明确问题开始" : "Start with one clear question"}</h2>
+        <p>{locale === "zh" ? "微信添加 staywildgrow，备注「咨询」并简单说明项目与当前问题。" : "Add staywildgrow on WeChat and include a short note about your project and current decision."}</p>
+      </div>
+      <figure class="contact-qr-card">
+        <img src="/qr/iris-wechat.png" alt={locale === "zh" ? "Iris 微信二维码" : "Iris WeChat QR code"} width="962" height="990" loading="lazy" decoding="async" />
+      </figure>
+    </div>
+  </section>
+</BaseLayout>

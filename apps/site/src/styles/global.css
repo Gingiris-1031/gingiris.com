@@ -3555,6 +3555,105 @@ body {
   content: none;
 }
 
+.insight-direct-answer {
+  background: rgba(192, 214, 150, 0.16);
+  border-left: 4px solid rgba(116, 151, 73, 0.8);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  color: var(--text);
+  font-size: 1.08rem;
+  line-height: 1.8;
+  margin: 0;
+  padding: 20px 22px;
+}
+
+.insight-evidence-note {
+  background: rgba(176, 213, 223, 0.12);
+  border: 1px solid rgba(176, 213, 223, 0.3);
+  border-radius: var(--radius-md);
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  padding: 16px 18px;
+}
+
+.insight-prose {
+  color: var(--muted);
+  display: grid;
+  font-size: 1rem;
+  gap: 8px;
+  line-height: 1.82;
+}
+
+.insight-prose h2 {
+  color: var(--text);
+  font-size: clamp(1.45rem, 1.4vw + 1rem, 2rem);
+  letter-spacing: -0.035em;
+  line-height: 1.16;
+  margin: 30px 0 8px;
+}
+
+.insight-prose h3 {
+  color: var(--text);
+  font-size: 1.18rem;
+  margin: 22px 0 4px;
+}
+
+.insight-prose p,
+.insight-prose ul,
+.insight-prose ol,
+.insight-prose table {
+  margin: 0 0 14px;
+}
+
+.insight-prose a {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: rgba(116, 151, 73, 0.55);
+  text-underline-offset: 4px;
+}
+
+.insight-prose table {
+  border-collapse: collapse;
+  display: block;
+  overflow-x: auto;
+  width: 100%;
+}
+
+.insight-prose th,
+.insight-prose td {
+  border-bottom: 1px solid var(--line);
+  padding: 12px 14px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.insight-prose th {
+  color: var(--text);
+}
+
+.insight-faq {
+  display: grid;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.insight-faq details {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+}
+
+.insight-faq summary {
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.service-delivery-note {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
 .insight-article-card {
   background:
     radial-gradient(128% 100% at 14% 10%, rgba(192, 214, 150, 0.16) 0%, rgba(255, 255, 255, 0) 48%),
@@ -4765,4 +4864,10 @@ h3 {
     grid-template-columns: 1fr;
     gap: 40px;
   }
+}
+
+.section-action {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
 }

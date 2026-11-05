@@ -1,0 +1,104 @@
+---
+import { getCollection } from "astro:content";
+import {
+  editorialContentByLocale,
+  insightItemsByLocale,
+  isSiteLocale,
+  supportedLocales,
+  type SiteLocale,
+} from "@yipei/site-content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export function getStaticPaths() {
+  return supportedLocales.map((locale) => ({ params: { locale } }));
+}
+
+const localeParam = Astro.params.locale;
+if (!localeParam || !isSiteLocale(localeParam)) {
+  throw new Error("Invalid locale");
+}
+
+const locale = localeParam as SiteLocale;
+const copy = editorialContentByLocale[locale];
+const articles = (await getCollection("insights"))
+  .filter((entry) => entry.data.locale === locale)
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+const resources = insightItemsByLocale[locale];
+const pageTitle = locale === "zh" ? "出海增长洞察与实战复盘｜生姜 Iris" : "Global Growth Insights and Field Notes | Iris Wei";
+const pageDescription = locale === "zh"
+  ? "关于一人公司、顾问定价、出海增长、开源运营与 Product Hunt 的第一方实战内容与资料索引。"
+  : "First-hand essays and curated resources on solo consulting, global growth, open-source operations, and Product Hunt.";
+const collectionSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      name: pageTitle,
+      description: pageDescription,
+      url: `https://gingiris.com/${locale}/insights`,
+      hasPart: articles.map((entry) => ({ "@type": "Article", headline: entry.data.title, url: `https://gingiris.com/${locale}/insights/${entry.data.slug}` })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: locale === "zh" ? "主页" : "Home", item: `https://gingiris.com/${locale}` },
+        { "@type": "ListItem", position: 2, name: copy.insightsTitle, item: `https://gingiris.com/${locale}/insights` },
+      ],
+    },
+  ],
+};
+---
+
+<BaseLayout locale={locale} title={pageTitle} description={pageDescription} structuredData={collectionSchema}>
+  <section class="scene scene-hero" data-chapter>
+    <div class="page-hero stage-compact" data-stage>
+      <div class="page-hero-copy">
+        <p class="eyebrow">{locale === "zh" ? "第一方实战内容" : "First-hand field notes"}</p>
+        <h1>{copy.insightsTitle}</h1>
+        <p>{pageDescription}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene" data-chapter>
+    <div class="section-heading" data-reveal>
+      <p class="eyebrow">{locale === "zh" ? "最新文章" : "Latest articles"}</p>
+      <h2>{locale === "zh" ? "完整方法、真实口径、可执行下一步" : "Complete methods, explicit evidence, practical next steps"}</h2>
+    </div>
+    <div class="editorial-grid editorial-grid-insights">
+      {articles.map((entry) => (
+        <article class="editorial-card editorial-card-insight" data-reveal>
+          <div class="editorial-card-body">
+            <p class="editorial-card-kicker">{entry.data.category}</p>
+            <h3><a href={`/${locale}/insights/${entry.data.slug}`}>{entry.data.title}</a></h3>
+            <p class="insight-card-excerpt">{entry.data.description}</p>
+          </div>
+          <div class="editorial-card-meta editorial-card-meta-insight">
+            <span>{entry.data.publishedAt.toISOString().slice(0, 10)}</span>
+            <div class="editorial-card-actions-insight">
+              <a href={`/${locale}/insights/${entry.data.slug}`}>{locale === "zh" ? "阅读完整文章" : "Read the full article"}</a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="scene" data-chapter>
+    <div class="section-heading" data-reveal>
+      <p class="eyebrow">{locale === "zh" ? "精选资料" : "Curated resources"}</p>
+      <h2>{locale === "zh" ? "原始文档、播客与复盘入口" : "Original documents, podcasts, and retrospectives"}</h2>
+      <p>{locale === "zh" ? "这些条目直接链接到原始来源，不创建内容薄弱的站内详情页。" : "These cards link to the original source instead of creating thin on-site detail pages."}</p>
+    </div>
+    <div class="editorial-grid editorial-grid-insights">
+      {resources.map((item) => (
+        <article class="editorial-card editorial-card-insight" data-reveal>
+          <p class="editorial-card-kicker">{item.category}</p>
+          <h3>{item.title}</h3>
+          <p class="insight-card-excerpt">{item.excerpt}</p>
+          <a class="insight-inline-link" href={item.sourceHref} target="_blank" rel="noopener noreferrer">{locale === "zh" ? `查看${item.sourceLabel}` : `Open ${item.sourceLabel}`}</a>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

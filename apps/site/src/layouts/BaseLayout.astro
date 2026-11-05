@@ -12,9 +12,10 @@ interface Props {
   description: string;
   enableScrollNarrative?: boolean;
   structuredData?: Record<string, unknown>;
+  alternateUrlOverride?: string;
 }
 
-const { locale, title, description, enableScrollNarrative = false, structuredData } = Astro.props;
+const { locale, title, description, enableScrollNarrative = false, structuredData, alternateUrlOverride } = Astro.props;
 const frame = siteFrameByLocale[locale];
 const currentPath = Astro.url.pathname === "/" ? "/" : Astro.url.pathname.replace(/\/$/, "");
 const alternateLocale = locale === "zh" ? "en" : "zh";
@@ -24,7 +25,7 @@ const prefetchedLocalePath = currentLocalePattern.test(currentPath)
   : `/${alternateLocale}`;
 const siteOrigin = "https://gingiris.com";
 const canonicalUrl = new URL(currentPath, siteOrigin).toString();
-const alternateUrl = new URL(prefetchedLocalePath, siteOrigin).toString();
+const alternateUrl = alternateUrlOverride ?? new URL(prefetchedLocalePath, siteOrigin).toString();
 const zhUrl = locale === "zh" ? canonicalUrl : alternateUrl;
 const enUrl = locale === "en" ? canonicalUrl : alternateUrl;
 const socialImageUrl = new URL("/brand/logo-primary.png", siteOrigin).toString();
