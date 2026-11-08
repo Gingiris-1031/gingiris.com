@@ -258,6 +258,34 @@ const pageCopy =
       </div>
     </div>
   </section>
+  <section class="scene scene-media-kit" id="media-kit" data-chapter>
+    <div class="media-kit-row stage-compact" data-stage>
+      <div class="media-kit-copy" data-reveal>
+        <p class="eyebrow">{content.mediaKit.eyebrow}</p>
+        <h2>{content.mediaKit.title}</h2>
+        <ul class="media-kit-prices">
+          <li><span>{content.mediaKit.packageLabel}</span><strong>{content.mediaKit.packagePrice}</strong></li>
+          <li><span>{content.mediaKit.singleLabel}</span><strong>{content.mediaKit.singlePrice}</strong></li>
+        </ul>
+        <p>{content.mediaKit.description}</p>
+        {content.mediaKit.audience ? <p class="media-kit-audience">{content.mediaKit.audience}</p> : null}
+      </div>
+      <div class="media-kit-actions" data-reveal>
+        <a class="primary-button media-kit-button" href={content.mediaKit.ctaHref} target="_blank" rel="noopener noreferrer">{content.mediaKit.ctaLabel}</a>
+        <dl class="media-kit-contact">
+          <div>
+            <dt>{content.mediaKit.wechatLabel}</dt>
+            <dd>{content.mediaKit.wechatId}</dd>
+          </div>
+          <div>
+            <dt>{content.mediaKit.emailLabel}</dt>
+            <dd><a href={`mailto:${content.mediaKit.email}`}>{content.mediaKit.email}</a></dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
   <section class="scene scene-closing" id="cooperation" data-chapter>
     <div class="closing-invitation stage-compact" data-stage>
       <div class="closing-copy">
@@ -282,4 +310,5 @@ const pageCopy =
       </figure>
     </div>
   </section>
+
 </BaseLayout>

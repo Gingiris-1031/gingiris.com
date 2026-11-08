@@ -66,6 +66,7 @@ export const externalResourceHrefs = {
   growthArchive: "https://pan.baidu.com/s/1s4U7XNKKtlcM5iCIuPf0Tg?pwd=v75t",
   relationshipLoveGoodbye: "https://www.xiaoyuzhoufm.com/episode/689d7b53759c1ff652de4e7c",
   relationshipGrowthWomenPower: "https://www.xiaoyuzhoufm.com/episode/689e88fc51528e172ac1b9ac",
+  mediaKitDoc: "https://ua2hss9chad.feishu.cn/docx/JsZodVcHEobr1Yx9dUMcrLsSnf4",
   gingirisLaunchRepo: "https://tools.gingiris.com/skills/",
   gingirisB2bGrowthRepo: "https://tools.gingiris.com/skills/",
   gingirisOpensourceRepo: "https://tools.gingiris.com/skills/",
