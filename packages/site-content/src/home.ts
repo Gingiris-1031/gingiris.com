@@ -45,6 +45,23 @@ export type HomeCourseSection = {
   wechatId: string;
 };
 
+export type HomeMediaKit = {
+  eyebrow: string;
+  title: string;
+  packageLabel: string;
+  packagePrice: string;
+  singleLabel: string;
+  singlePrice: string;
+  description: string;
+  audience: string;
+  ctaLabel: string;
+  ctaHref: string;
+  wechatLabel: string;
+  wechatId: string;
+  emailLabel: string;
+  email: string;
+};
+
 export type HomeLocaleContent = {
   name: string;
   rolePrefix: string;
@@ -59,6 +76,7 @@ export type HomeLocaleContent = {
   consultTitle: string;
   consultHint: string;
   consultItems: HomePriceItem[];
+  mediaKit: HomeMediaKit;
 };
 
 export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
@@ -212,6 +230,22 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
         preferredChannel: "wechat",
       },
     ],
+    mediaKit: {
+      eyebrow: "品牌投放刊例",
+      title: "全渠道打包或单渠道投放",
+      packageLabel: "出海增长全渠道包",
+      packagePrice: "¥8,000（含税）",
+      singleLabel: "单渠道投放",
+      singlePrice: "¥800 起（含税）",
+      description: "7 个渠道可打包可单投，精准触达中文出海圈，完整报价见刊例。",
+      audience: "",
+      ctaLabel: "查看完整刊例",
+      ctaHref: externalResourceHrefs.mediaKitDoc,
+      wechatLabel: "微信",
+      wechatId: "Ww_Ziheng（备注「投放合作」）",
+      emailLabel: "邮箱",
+      email: "ziheng.will@outlook.com",
+    },
     courseSection: {
       eyebrow: "系统课程",
       title: "出海增长系统课",
@@ -360,6 +394,22 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
         preferredChannel: "wechat",
       },
     ],
+    mediaKit: {
+      eyebrow: "Media Kit",
+      title: "Bundle all channels or book a single one",
+      packageLabel: "Global growth bundle",
+      packagePrice: "¥8,000 (tax incl.)",
+      singleLabel: "Single channel",
+      singlePrice: "From ¥800 (tax incl.)",
+      description: "Seven channels, bundled or booked individually. Full pricing in the media kit.",
+      audience: "",
+      ctaLabel: "View full media kit",
+      ctaHref: externalResourceHrefs.mediaKitDoc,
+      wechatLabel: "WeChat",
+      wechatId: "Ww_Ziheng (note: media partnership)",
+      emailLabel: "Email",
+      email: "ziheng.will@outlook.com",
+    },
     courseSection: {
       eyebrow: "System Course",
       title: "Global Growth System Course",

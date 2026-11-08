@@ -221,10 +221,15 @@ const pageCopy =
 
   <section class="scene scene-invitation" id="services" data-chapter>
     <div class="pricing-section service-preview-section stage-medium" data-stage>
+    <div class="section-heading-row">
     <div class="section-heading" data-reveal>
       <p class="eyebrow">{pageCopy.engagementEyebrow}</p>
       <h2>{content.consultTitle}</h2>
       <p>{content.consultHint}</p>
+    </div>
+    <div class="section-action" data-reveal>
+      <a class="ghost-button" href={`/${locale}/services`}>{pageCopy.servicesCta}</a>
+    </div>
     </div>
     <div class="service-preview-grid">
       {content.consultItems.map((item, index) => (
@@ -240,24 +245,51 @@ const pageCopy =
         </article>
       ))}
     </div>
-    <div class="section-action" data-reveal>
-      <a class="ghost-button" href={`/${locale}/services`}>{pageCopy.servicesCta}</a>
-    </div>
     </div>
   </section>
 
   <section class="scene scene-atlas" data-chapter>
     <div class="resource-section stage-medium" data-stage>
+      <div class="section-heading-row">
       <div class="section-heading" data-reveal>
       <p class="eyebrow">{pageCopy.editorialEyebrow}</p>
       <h2>{pageCopy.editorialTitle}</h2>
     </div>
-      <ResourceGrid groups={content.sections} />
       <div class="section-action" data-reveal>
         <a class="ghost-button" href={`/${locale}/insights`}>{pageCopy.insightsCta}</a>
       </div>
+      </div>
+      <ResourceGrid groups={content.sections} />
     </div>
   </section>
+  <section class="scene scene-media-kit" id="media-kit" data-chapter>
+    <div class="media-kit-row stage-compact" data-stage>
+      <div class="media-kit-copy" data-reveal>
+        <p class="eyebrow">{content.mediaKit.eyebrow}</p>
+        <h2>{content.mediaKit.title}</h2>
+        <ul class="media-kit-prices">
+          <li><span>{content.mediaKit.packageLabel}</span><strong>{content.mediaKit.packagePrice}</strong></li>
+          <li><span>{content.mediaKit.singleLabel}</span><strong>{content.mediaKit.singlePrice}</strong></li>
+        </ul>
+        <p>{content.mediaKit.description}</p>
+        {content.mediaKit.audience ? <p class="media-kit-audience">{content.mediaKit.audience}</p> : null}
+      </div>
+      <div class="media-kit-actions" data-reveal>
+        <a class="primary-button media-kit-button" href={content.mediaKit.ctaHref} target="_blank" rel="noopener noreferrer">{content.mediaKit.ctaLabel}</a>
+        <dl class="media-kit-contact">
+          <div>
+            <dt>{content.mediaKit.wechatLabel}</dt>
+            <dd>{content.mediaKit.wechatId}</dd>
+          </div>
+          <div>
+            <dt>{content.mediaKit.emailLabel}</dt>
+            <dd><a href={`mailto:${content.mediaKit.email}`}>{content.mediaKit.email}</a></dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
   <section class="scene scene-closing" id="cooperation" data-chapter>
     <div class="closing-invitation stage-compact" data-stage>
       <div class="closing-copy">
@@ -282,4 +314,5 @@ const pageCopy =
       </figure>
     </div>
   </section>
+
 </BaseLayout>
