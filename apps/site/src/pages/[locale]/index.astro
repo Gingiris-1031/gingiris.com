@@ -221,10 +221,15 @@ const pageCopy =
 
   <section class="scene scene-invitation" id="services" data-chapter>
     <div class="pricing-section service-preview-section stage-medium" data-stage>
+    <div class="section-heading-row">
     <div class="section-heading" data-reveal>
       <p class="eyebrow">{pageCopy.engagementEyebrow}</p>
       <h2>{content.consultTitle}</h2>
       <p>{content.consultHint}</p>
+    </div>
+    <div class="section-action" data-reveal>
+      <a class="ghost-button" href={`/${locale}/services`}>{pageCopy.servicesCta}</a>
+    </div>
     </div>
     <div class="service-preview-grid">
       {content.consultItems.map((item, index) => (
@@ -240,22 +245,21 @@ const pageCopy =
         </article>
       ))}
     </div>
-    <div class="section-action" data-reveal>
-      <a class="ghost-button" href={`/${locale}/services`}>{pageCopy.servicesCta}</a>
-    </div>
     </div>
   </section>
 
   <section class="scene scene-atlas" data-chapter>
     <div class="resource-section stage-medium" data-stage>
+      <div class="section-heading-row">
       <div class="section-heading" data-reveal>
       <p class="eyebrow">{pageCopy.editorialEyebrow}</p>
       <h2>{pageCopy.editorialTitle}</h2>
     </div>
-      <ResourceGrid groups={content.sections} />
       <div class="section-action" data-reveal>
         <a class="ghost-button" href={`/${locale}/insights`}>{pageCopy.insightsCta}</a>
       </div>
+      </div>
+      <ResourceGrid groups={content.sections} />
     </div>
   </section>
   <section class="scene scene-media-kit" id="media-kit" data-chapter>
