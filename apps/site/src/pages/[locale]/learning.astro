@@ -1,0 +1,388 @@
+---
+import {
+  getLearningCatalog,
+  learningPageContentByLocale,
+  supportedLocales,
+  type SiteLocale,
+} from "@yipei/site-content";
+import WechatDialog from "../../components/WechatDialog.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export function getStaticPaths() {
+  return supportedLocales.map((locale) => ({ params: { locale } }));
+}
+
+const locale: SiteLocale = Astro.params.locale === "en" ? "en" : "zh";
+const pageContent = learningPageContentByLocale[locale];
+const catalog = getLearningCatalog(locale);
+const packCards = pageContent.packs.cards.map((card, index) => {
+  const pack = catalog.taskPacks[index];
+  return {
+    ...card,
+    title: pack.title,
+    price: `¥${pack.price}`,
+    count: card.countLabel,
+    dialogDescription: pack.desc,
+    dialogCount: String(pack.ids.length),
+    open: `pack-${index}`,
+  };
+});
+const opcPack = catalog.taskPacks[3];
+const learningSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      name: pageContent.title,
+      description: pageContent.description,
+      url: `https://gingiris.com/${locale}/learning`,
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: pageContent.faq.items.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: { "@type": "Answer", text: item.answer },
+      })),
+    },
+  ],
+};
+---
+
+<BaseLayout
+  locale={locale}
+  title={pageContent.title}
+  description={pageContent.description}
+  structuredData={learningSchema}
+>
+  <div class="learning-page">
+    <section class="scene learning-hero">
+      <div class="learning-hero-inner">
+        <div class="learning-hero-copy">
+          <p class="eyebrow">{pageContent.hero.eyebrow}</p>
+          <h1>{pageContent.hero.title[0]}<br />{pageContent.hero.title[1]}</h1>
+          <p>{pageContent.hero.intro}</p>
+          <div class="learning-hero-actions">
+            <a class="primary-button" href="#bundle">{pageContent.hero.actionLabel}</a>
+          </div>
+        </div>
+        <div class="learning-book-art" aria-hidden="true">
+          <div class="learning-art-orbit"></div>
+          <div class="learning-book">
+            <small>{pageContent.hero.bookLabel}</small>
+            <strong>{pageContent.hero.bookTitle[0]}<br />{pageContent.hero.bookTitle[1]}</strong>
+            <span>{pageContent.hero.bookFooter[0]}<br />{pageContent.hero.bookFooter[1]}<br />{pageContent.hero.bookFooter[2]}</span>
+          </div>
+          <div class="learning-sheet">
+            <small>{pageContent.hero.sheetLabel}</small>
+            <strong>{pageContent.hero.sheetTitle[0]}<br />{pageContent.hero.sheetTitle[1]}</strong>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene learning-section" id="bundle" aria-labelledby="bundle-heading">
+      <div class="learning-section-inner">
+        <div class="section-heading">
+          <p class="eyebrow">{pageContent.bundle.eyebrow}</p>
+          <h2 id="bundle-heading">{pageContent.bundle.title}</h2>
+          <p>{pageContent.bundle.subtitle}</p>
+        </div>
+        <div class="learning-full-grid">
+          <article class="learning-full-copy">
+            <p>{pageContent.bundle.description}</p>
+            <div class="learning-stat-row">
+              <span><strong>{pageContent.bundle.documentCount}</strong>{pageContent.bundle.documentLabel}</span>
+              <span><strong>{pageContent.bundle.characterCount}</strong>{pageContent.bundle.characterLabel}</span>
+            </div>
+            <p class="learning-inclusion">{pageContent.bundle.inclusion}</p>
+            <p class="learning-price">{pageContent.bundle.price}</p>
+            <div class="learning-full-actions">
+              <button
+                class="primary-button"
+                type="button"
+                data-open="bundle"
+                data-catalog-title={pageContent.bundle.catalogTitle}
+                data-catalog-eyebrow={pageContent.bundle.catalogEyebrow}
+                data-catalog-intro={pageContent.bundle.catalogIntro}
+              >{pageContent.bundle.catalogActionLabel}</button>
+              <button class="ghost-button" type="button" data-open="contact">{pageContent.bundle.contactActionLabel}</button>
+            </div>
+          </article>
+          <aside class="learning-membership-card">
+            <p class="eyebrow">{pageContent.bundle.membershipEyebrow}</p>
+            <div class="learning-membership-list">
+              {pageContent.bundle.benefits.map((benefit) => (
+                <article>
+                  <h4>{benefit.title}</h4>
+                  <p>{benefit.description}</p>
+                </article>
+              ))}
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene learning-section" id="packs" aria-labelledby="packs-heading">
+      <div class="learning-section-inner">
+        <div class="section-heading">
+          <p class="eyebrow">{pageContent.packs.eyebrow}</p>
+          <h2 id="packs-heading">{pageContent.packs.title}</h2>
+          <p>{pageContent.packs.description}</p>
+        </div>
+        <div class="learning-pack-grid">
+          {packCards.map((pack) => (
+            <article class="learning-pack-card">
+              <p class="eyebrow">{pageContent.packs.cardEyebrow}</p>
+              <h3>{pack.title}</h3>
+              <p class="learning-price">{pack.price}</p>
+              <p class="learning-pack-count">{pack.count}</p>
+              <h4>{pack.question}</h4>
+              <p class="learning-pack-description">{pack.description}</p>
+              <ul>
+                {pack.tags.map((tag) => <li>{tag}</li>)}
+              </ul>
+              <p class="learning-pack-source">{pageContent.packs.sourceLabel}</p>
+              <div class="learning-card-actions">
+                <button
+                  class="ghost-button"
+                  type="button"
+                  data-open={pack.open}
+                  data-pack-title={pack.title}
+                  data-pack-price={pack.price.replace("¥", "")}
+                  data-pack-count={pack.dialogCount}
+                  data-pack-description={pack.dialogDescription}
+                >{pageContent.packs.catalogActionLabel}</button>
+                <button class="ghost-button" type="button" data-open="contact">{pageContent.packs.contactActionLabel}</button>
+              </div>
+            </article>
+          ))}
+          <article class="learning-opc-card">
+            <div>
+              <p class="eyebrow">{pageContent.packs.opcEyebrow}</p>
+              <h3>{opcPack.title}</h3>
+              <p>{pageContent.packs.opcDescription}</p>
+            </div>
+            <div class="learning-card-actions">
+              <strong class="learning-price">{pageContent.packs.opcPrice}</strong>
+              <button
+                class="ghost-button"
+                type="button"
+                data-open="pack-3"
+                data-pack-title={opcPack.title}
+                data-pack-price={opcPack.price}
+                data-pack-count={opcPack.ids.length}
+                data-pack-description={opcPack.desc}
+              >{pageContent.packs.opcCatalogActionLabel}</button>
+            </div>
+          </article>
+        </div>
+        <p class="learning-page-note">{pageContent.packs.note}</p>
+      </div>
+    </section>
+
+    <section class="scene learning-course-section" id="course" aria-labelledby="course-heading">
+      <div class="learning-section-inner">
+        <article class="learning-course-card">
+          <div class="learning-course-card-copy">
+            <p class="eyebrow">{pageContent.course.eyebrow}</p>
+            <h2 id="course-heading">{pageContent.course.title}</h2>
+            <h3>{pageContent.course.subtitle}</h3>
+            <p>{pageContent.course.description}</p>
+            <p class="learning-price">{pageContent.course.price}</p>
+            <div class="learning-card-actions">
+              <a
+                class="ghost-button"
+                href={pageContent.course.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >{pageContent.course.actionLabel}</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="scene learning-section" aria-labelledby="learning-faq-heading">
+      <div class="learning-section-inner">
+        <div class="section-heading">
+          <p class="eyebrow">{pageContent.faq.eyebrow}</p>
+          <h2 id="learning-faq-heading">{pageContent.faq.title}</h2>
+        </div>
+        <div class="faq-list learning-faq-list">
+          {pageContent.faq.items.map((item) => (
+            <details>
+              <summary>{item.question}</summary>
+              <p>{item.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="scene learning-cta-band">
+      <div class="learning-cta-inner">
+        <div class="learning-cta-copy">
+          <p class="eyebrow">{pageContent.cta.eyebrow}</p>
+          <h2>{pageContent.cta.title}</h2>
+          <p>{pageContent.cta.description}</p>
+        </div>
+        <button class="primary-button" type="button" data-open="contact">{pageContent.cta.actionLabel}</button>
+      </div>
+      <p class="learning-footer-note">{pageContent.cta.footnote}</p>
+    </section>
+  </div>
+
+  <dialog
+    class="learning-catalog-dialog"
+    id="learning-catalog-dialog"
+    aria-labelledby="learning-catalog-title"
+    data-pack-eyebrow={pageContent.catalog.packEyebrow}
+    data-pack-intro-singular={pageContent.catalog.packIntroTemplate.singular}
+    data-pack-intro-plural={pageContent.catalog.packIntroTemplate.plural}
+  >
+    <div class="learning-catalog-head">
+      <div>
+        <p class="eyebrow" data-catalog-eyebrow>{pageContent.bundle.catalogEyebrow}</p>
+        <h2 id="learning-catalog-title" data-catalog-title>{pageContent.bundle.catalogTitle}</h2>
+      </div>
+      <button class="learning-catalog-close" type="button" aria-label={pageContent.catalog.closeAriaLabel} data-close-catalog>×</button>
+    </div>
+    <div class="learning-catalog-body">
+      <p data-catalog-intro>{pageContent.bundle.catalogIntro}</p>
+      <p data-catalog-description hidden></p>
+      <div class="learning-catalog-groups">
+        {catalog.catalogGroups.map((group, groupIndex) => (
+          <details class="learning-catalog-group" data-catalog-group={groupIndex}>
+            <summary aria-label={pageContent.catalog.groupToggleAriaLabel.replace("{title}", group.title)}>
+              <strong>{group.title}</strong>
+              <span>
+                {(group.ids.length === 1
+                  ? pageContent.catalog.groupCountTemplate.singular
+                  : pageContent.catalog.groupCountTemplate.plural
+                ).replace("{count}", String(group.ids.length))}
+              </span>
+            </summary>
+            <div class="learning-catalog-documents">
+              {group.ids.map((docId) => {
+                const entry = catalog.docs[docId];
+                return entry ? (
+                  <details class="learning-catalog-document">
+                    <summary aria-label={pageContent.catalog.documentToggleAriaLabel.replace("{title}", entry.title)}>
+                      <span>{entry.title}</span>
+                      <small>{entry.meta}</small>
+                    </summary>
+                    <ol>
+                      {entry.lines.map((line) => (
+                        <li style={`--line-level: ${line.level};`}>{line.text}</li>
+                      ))}
+                    </ol>
+                  </details>
+                ) : null;
+              })}
+            </div>
+          </details>
+        ))}
+      </div>
+      <div class="learning-card-actions">
+        <button class="primary-button" type="button" data-open="contact">{pageContent.catalog.contactActionLabel}</button>
+      </div>
+    </div>
+  </dialog>
+  <WechatDialog locale={locale} />
+
+  <script>
+    const catalogDialog = document.querySelector<HTMLDialogElement>("#learning-catalog-dialog");
+    const catalogTitle = catalogDialog?.querySelector<HTMLElement>("[data-catalog-title]");
+    const catalogEyebrow = catalogDialog?.querySelector<HTMLElement>("[data-catalog-eyebrow]");
+    const catalogIntro = catalogDialog?.querySelector<HTMLElement>("[data-catalog-intro]");
+    const catalogDescription = catalogDialog?.querySelector<HTMLElement>("[data-catalog-description]");
+    const packEyebrow = catalogDialog?.dataset.packEyebrow ?? "";
+    const packIntroSingular = catalogDialog?.dataset.packIntroSingular ?? "";
+    const packIntroPlural = catalogDialog?.dataset.packIntroPlural ?? "";
+    let previousFocus: HTMLElement | null = null;
+    let bodyOverflow = "";
+
+    function openCatalog(trigger: HTMLElement) {
+      if (!catalogDialog || catalogDialog.open) {
+        return;
+      }
+
+      const type = trigger.dataset.open ?? "";
+      const isBundle = type === "bundle";
+      const packTitle = trigger.dataset.packTitle ?? "";
+      const packPrice = trigger.dataset.packPrice ?? "";
+      const packCount = trigger.dataset.packCount ?? "";
+      const packDescription = trigger.dataset.packDescription ?? "";
+
+      if (catalogTitle) {
+        catalogTitle.textContent = isBundle ? trigger.dataset.catalogTitle ?? "" : packTitle;
+      }
+      if (catalogEyebrow) {
+        catalogEyebrow.textContent = isBundle ? trigger.dataset.catalogEyebrow ?? "" : packEyebrow;
+      }
+      if (catalogIntro) {
+        catalogIntro.textContent = isBundle
+          ? trigger.dataset.catalogIntro ?? ""
+          : (Number(packCount) === 1 ? packIntroSingular : packIntroPlural)
+            .replace("{price}", packPrice)
+            .replace("{count}", packCount);
+      }
+      if (catalogDescription) {
+        catalogDescription.textContent = isBundle ? "" : packDescription;
+        catalogDescription.hidden = isBundle;
+      }
+
+      const selectedPackIndex = isBundle ? null : Number(type.slice("pack-".length));
+      catalogDialog.querySelectorAll<HTMLDetailsElement>("[data-catalog-group]").forEach((group, index) => {
+        const isSelectedGroup = selectedPackIndex === index;
+        const groupSummary = group.querySelector<HTMLElement>(":scope > summary");
+        if (groupSummary) {
+          groupSummary.hidden = !isBundle;
+        }
+        group.hidden = !isBundle && !isSelectedGroup;
+        group.open = isBundle ? false : isSelectedGroup;
+      });
+
+      previousFocus = trigger;
+      bodyOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      catalogDialog.showModal();
+      catalogDialog.scrollTop = 0;
+    }
+
+    document.addEventListener("click", (event) => {
+      const target = event.target instanceof Element ? event.target : null;
+      const catalogTrigger = target?.closest<HTMLElement>('[data-open="bundle"], [data-open^="pack-"]');
+
+      if (catalogTrigger) {
+        openCatalog(catalogTrigger);
+        return;
+      }
+
+      const contactTrigger = target?.closest<HTMLElement>('[data-open="contact"]');
+      if (contactTrigger?.closest("#learning-catalog-dialog") && catalogDialog?.open) {
+        catalogDialog.close();
+        window.setTimeout(() => {
+          document.dispatchEvent(new CustomEvent("wechat:open", { detail: contactTrigger }));
+        }, 0);
+      }
+    });
+
+    catalogDialog?.addEventListener("click", (event) => {
+      if (event.target === catalogDialog || (event.target instanceof Element && event.target.closest("[data-close-catalog]"))) {
+        catalogDialog.close();
+      }
+    });
+
+    catalogDialog?.addEventListener("close", () => {
+      document.body.style.overflow = bodyOverflow;
+      if (previousFocus?.isConnected) {
+        previousFocus.focus();
+      }
+    });
+  </script>
+</BaseLayout>

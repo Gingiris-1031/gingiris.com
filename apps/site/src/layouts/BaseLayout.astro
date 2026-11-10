@@ -15,7 +15,14 @@ interface Props {
   alternateUrlOverride?: string;
 }
 
-const { locale, title, description, enableScrollNarrative = false, structuredData, alternateUrlOverride } = Astro.props;
+const {
+  locale,
+  title,
+  description,
+  enableScrollNarrative = false,
+  structuredData,
+  alternateUrlOverride,
+} = Astro.props;
 const frame = siteFrameByLocale[locale];
 const currentPath = Astro.url.pathname === "/" ? "/" : Astro.url.pathname.replace(/\/$/, "");
 const alternateLocale = locale === "zh" ? "en" : "zh";

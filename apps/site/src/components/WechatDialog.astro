@@ -1,0 +1,122 @@
+---
+import type { SiteLocale } from "@yipei/site-content";
+
+interface Props {
+  locale: SiteLocale;
+}
+
+const { locale } = Astro.props;
+const copy =
+  locale === "zh"
+    ? {
+        title: "添加微信咨询购买",
+        intro: "添加微信，了解知识库、出海社群或公众号内容。",
+        copy: "复制微信号",
+        copied: "已复制微信号：staywildgrow",
+        manual: "请手动复制微信号：staywildgrow",
+      }
+    : {
+        title: "Add WeChat for inquiries",
+        intro: "Add WeChat to learn about the knowledge base, global growth community, or official account.",
+        copy: "Copy WeChat ID",
+        copied: "WeChat ID copied: staywildgrow",
+        manual: "Please copy the WeChat ID manually: staywildgrow",
+      };
+---
+
+<dialog
+  class="wechat-dialog"
+  id="wechat-dialog"
+  aria-labelledby="wechat-dialog-title"
+  data-copied-message={copy.copied}
+  data-manual-message={copy.manual}
+>
+  <div class="wechat-dialog-head">
+    <h2 id="wechat-dialog-title">{copy.title}</h2>
+    <button class="wechat-dialog-close" type="button" aria-label={locale === "zh" ? "关闭" : "Close"} data-close-wechat>
+      ×
+    </button>
+  </div>
+  <div class="wechat-dialog-body">
+    <p>{copy.intro}</p>
+    <p class="wechat-dialog-id">staywildgrow</p>
+    <button class="primary-button" type="button" data-copy-wechat>{copy.copy}</button>
+    <p class="wechat-dialog-toast" role="status" aria-live="polite" data-wechat-toast></p>
+  </div>
+</dialog>
+
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>("#wechat-dialog");
+  const toast = dialog?.querySelector<HTMLElement>("[data-wechat-toast]");
+  let previousFocus: HTMLElement | null = null;
+  let bodyOverflow = "";
+
+  function openWechatDialog(trigger: HTMLElement | null) {
+    if (!dialog || dialog.open) {
+      return;
+    }
+
+    previousFocus = trigger ?? (document.activeElement instanceof HTMLElement ? document.activeElement : null);
+    bodyOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    dialog.showModal();
+  }
+
+  document.addEventListener("click", (event) => {
+    const target = event.target instanceof Element ? event.target.closest<HTMLElement>('[data-open="contact"]') : null;
+    if (!target || target.closest("#learning-catalog-dialog")) {
+      return;
+    }
+
+    openWechatDialog(target);
+  });
+
+  document.addEventListener("wechat:open", (event) => {
+    const trigger = (event as CustomEvent<HTMLElement | null>).detail;
+    openWechatDialog(trigger ?? null);
+  });
+
+  dialog?.addEventListener("click", (event) => {
+    if (event.target === dialog || (event.target instanceof Element && event.target.closest("[data-close-wechat]"))) {
+      dialog.close();
+    }
+  });
+
+  dialog?.addEventListener("close", () => {
+    document.body.style.overflow = bodyOverflow;
+    if (previousFocus?.isConnected) {
+      previousFocus.focus();
+    }
+  });
+
+  dialog?.querySelector("[data-copy-wechat]")?.addEventListener("click", async () => {
+    let copied = false;
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText("staywildgrow");
+        copied = true;
+      }
+    } catch {
+      copied = false;
+    }
+
+    if (!copied) {
+      const field = document.createElement("textarea");
+      field.value = "staywildgrow";
+      field.setAttribute("readonly", "");
+      field.style.position = "fixed";
+      field.style.opacity = "0";
+      document.body.append(field);
+      field.select();
+      copied = document.execCommand("copy");
+      field.remove();
+    }
+
+    if (toast) {
+      toast.textContent = copied
+        ? dialog?.dataset.copiedMessage ?? "已复制微信号：staywildgrow"
+        : dialog?.dataset.manualMessage ?? "请手动复制微信号：staywildgrow";
+    }
+  });
+</script>

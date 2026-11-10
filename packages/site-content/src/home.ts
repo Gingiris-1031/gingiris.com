@@ -31,18 +31,23 @@ export type HomeSectionGroup = {
   items: HomeLinkItem[];
 };
 
-export type HomeCourseBenefit = {
+export type HomeLearningItem = {
   title: string;
-  desc: string;
+  edition?: string;
+  lines: string[];
+  price: string;
+  href: string;
+  external: boolean;
 };
 
-export type HomeCourseSection = {
+export type HomeLearningSection = {
   eyebrow: string;
   title: string;
-  description: string;
-  benefits: HomeCourseBenefit[];
-  ctaLabel: string;
-  wechatId: string;
+  hint: string;
+  introCtaLabel: string;
+  introHref: string;
+  consultCtaLabel: string;
+  items: HomeLearningItem[];
 };
 
 export type HomeMediaKit = {
@@ -72,7 +77,7 @@ export type HomeLocaleContent = {
   stats: HomeStatCard[];
   projectTitle: string;
   sections: HomeSectionGroup[];
-  courseSection: HomeCourseSection;
+  learningSection: HomeLearningSection;
   consultTitle: string;
   consultHint: string;
   consultItems: HomePriceItem[];
@@ -212,15 +217,6 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
         preferredChannel: "wechat",
       },
       {
-        id: "growth-pack",
-        title: "出海 0-1 资料包",
-        subtitle: "包含方法论和初始工具包",
-        price: "99 RMB",
-        href: "/zh#site-contact",
-        checkoutPlanCode: "growth-pack",
-        preferredChannel: "alipay",
-      },
-      {
         id: "retainer",
         title: "企业陪跑咨询",
         subtitle: "每月累计咨询时长不超过 5 小时",
@@ -246,17 +242,38 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
       emailLabel: "邮箱",
       email: "ziheng.will@outlook.com",
     },
-    courseSection: {
-      eyebrow: "系统课程",
-      title: "出海增长系统课",
-      description: "如果你正在做 AI 产品或软件出海，或者刚接手增长团队、甚至刚被任命为 CGO/CMO/COO，这门课将是你今年最值得花时间投入的实战指南。这门课程凝聚了生姜 Iris 陪跑数十家明星初创出海增长的一线实战经验，涵盖 0 到 1 的冷启动、规模化投放、用户增长飞轮与跨国团队搭建。",
-      benefits: [
-        { title: "实战经验萃取", desc: "沉淀自数十家明星出海项目，拒绝空洞理论，只提供能落地的增长 SOP。" },
-        { title: "全栈知识图谱", desc: "完整覆盖从「增长实习生」到「增长一号位」的技能模型与核心认知。" },
-        { title: "出海情报社群", desc: "订阅后可加入「出海增长情报群」，与一线出海决策者实时探讨最新案例与复盘。订阅后联系微信号：staywildgrow，拉你入群。" }
+    learningSection: {
+      eyebrow: "学习资源",
+      title: "出海增长学习资源",
+      hint: "查阅一线增长方法与项目模板，也可以从系统课程开始了解出海增长。",
+      introCtaLabel: "查看完整介绍 ↗",
+      introHref: "/zh/learning",
+      consultCtaLabel: "咨询购买 ↗",
+      items: [
+        {
+          title: "出海实战指南",
+          edition: "全套知识库",
+          lines: ["22 份文档，获取完整步骤、模板与案例。", "永久更新 · VIP 同行群 · 专属闭门分享"],
+          price: "¥599",
+          href: "/zh/learning#bundle",
+          external: false,
+        },
+        {
+          title: "出海实战指南",
+          edition: "按需资料包",
+          lines: ["精选自完整知识库，可单独购买。", "按需求验证、发布获客、企业成交选购。"],
+          price: "¥49 起",
+          href: "/zh/learning#packs",
+          external: false,
+        },
+        {
+          title: "出海增长系统课",
+          lines: ["小报童独立合作课程，共 21 节。", "配套文稿、音频与课后作业。"],
+          price: "¥299",
+          href: "https://xiaobot.net/p/Gingiris?refer=29043fdd-91ec-42c2-a88d-cb47d1718826",
+          external: true,
+        },
       ],
-      ctaLabel: "立即订阅课程",
-      wechatId: "staywildgrow"
     },
   },
   en: {
@@ -376,15 +393,6 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
         preferredChannel: "wechat",
       },
       {
-        id: "growth-pack",
-        title: "0-1 Global Launch Pack",
-        subtitle: "Frameworks + starter toolkit",
-        price: "99 RMB",
-        href: "/en#site-contact",
-        checkoutPlanCode: "growth-pack",
-        preferredChannel: "alipay",
-      },
-      {
         id: "retainer",
         title: "Company Coaching",
         subtitle: "Up to 5 consulting hours per month",
@@ -410,17 +418,38 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
       emailLabel: "Email",
       email: "ziheng.will@outlook.com",
     },
-    courseSection: {
-      eyebrow: "System Course",
-      title: "Global Growth System Course",
-      description: "If you are scaling AI products or software globally, leading a growth team, or stepping into a CGO/CMO/COO role, this course is designed as your most valuable investment this year. It condenses Iris Wei's hands-on experience coaching dozens of star startups in global growth, covering 0-to-1 cold start, scaling paid ads, user growth engines, and building cross-border teams.",
-      benefits: [
-        { title: "Battle-Tested", desc: "Derived from real-world growth coaching for top startups, offering actionable SOPs instead of dry theory." },
-        { title: "Full Capability Map", desc: "Covering the complete growth career path and skillset from hands-on execution to strategic leadership." },
-        { title: "Intelligence Group", desc: "Subscribe to join the Global Growth Intelligence Group, exchange real-world teardowns with active builders, and add WeChat ID: staywildgrow to join." }
+    learningSection: {
+      eyebrow: "Learning Resources",
+      title: "Global Growth Learning Resources",
+      hint: "Explore first-hand growth methods and project templates, or start with a structured course.",
+      introCtaLabel: "View full introduction ↗",
+      introHref: "/en/learning",
+      consultCtaLabel: "Ask about purchasing ↗",
+      items: [
+        {
+          title: "Global Growth Playbook",
+          edition: "Complete Knowledge Base",
+          lines: ["22 documents with complete steps, templates, and cases.", "Lifetime updates · VIP peer group · Private member sessions"],
+          price: "¥599",
+          href: "/en/learning#bundle",
+          external: false,
+        },
+        {
+          title: "Global Growth Playbook",
+          edition: "Task-Based Packs",
+          lines: ["Selected from the complete knowledge base, available individually.", "Choose from demand validation, launch and acquisition, or B2B sales."],
+          price: "From ¥49",
+          href: "/en/learning#packs",
+          external: false,
+        },
+        {
+          title: "Global Growth System Course",
+          lines: ["An independent Xiaobot course with 21 lessons.", "Includes course notes, audio, and exercises."],
+          price: "¥299",
+          href: "https://xiaobot.net/p/Gingiris?refer=29043fdd-91ec-42c2-a88d-cb47d1718826",
+          external: true,
+        },
       ],
-      ctaLabel: "Subscribe to Course",
-      wechatId: "staywildgrow"
     },
   },
 };
