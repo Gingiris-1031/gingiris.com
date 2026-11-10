@@ -13,9 +13,18 @@ interface Props {
   enableScrollNarrative?: boolean;
   structuredData?: Record<string, unknown>;
   alternateUrlOverride?: string;
+  showLocaleAlternates?: boolean;
 }
 
-const { locale, title, description, enableScrollNarrative = false, structuredData, alternateUrlOverride } = Astro.props;
+const {
+  locale,
+  title,
+  description,
+  enableScrollNarrative = false,
+  structuredData,
+  alternateUrlOverride,
+  showLocaleAlternates = true,
+} = Astro.props;
 const frame = siteFrameByLocale[locale];
 const currentPath = Astro.url.pathname === "/" ? "/" : Astro.url.pathname.replace(/\/$/, "");
 const alternateLocale = locale === "zh" ? "en" : "zh";
@@ -41,10 +50,14 @@ const socialImageUrl = new URL("/brand/logo-primary.png", siteOrigin).toString()
     <meta name="theme-color" content="#ffffff" />
     <link rel="icon" href="/favicon.png" type="image/png" />
     <link rel="canonical" href={canonicalUrl} />
-    <link rel="alternate" hreflang="zh-CN" href={zhUrl} />
-    <link rel="alternate" hreflang="en" href={enUrl} />
-    <link rel="alternate" hreflang="x-default" href={enUrl} />
-    <link rel="prefetch" href={prefetchedLocalePath} as="document" />
+    {showLocaleAlternates ? (
+      <>
+        <link rel="alternate" hreflang="zh-CN" href={zhUrl} />
+        <link rel="alternate" hreflang="en" href={enUrl} />
+        <link rel="alternate" hreflang="x-default" href={enUrl} />
+        <link rel="prefetch" href={prefetchedLocalePath} as="document" />
+      </>
+    ) : null}
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Gingiris" />
     <meta property="og:locale" content={locale === "zh" ? "zh_CN" : "en_US"} />

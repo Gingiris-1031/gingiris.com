@@ -16,6 +16,8 @@ const localeSwitchHref = currentLocalePattern.test(currentPath)
 const localeSwitchTargetLang = alternateLocale === "zh" ? "zh-CN" : "en";
 const localeSwitchAriaLabel = alternateLocale === "zh" ? "切换到中文" : "Switch to English";
 const contactLabel = locale === "zh" ? "联系咨询" : "Get in touch";
+const isZhOnlyPage = currentPath === `/${locale}/learning`;
+const switchHref = isZhOnlyPage ? `/${alternateLocale}` : localeSwitchHref;
 ---
 
 <header class="site-header">
@@ -38,7 +40,7 @@ const contactLabel = locale === "zh" ? "联系咨询" : "Get in touch";
     <a class="site-auth-link site-header-skills" href="https://tools.gingiris.com/">Skills</a>
     <a
       class="site-locale-switch"
-      href={localeSwitchHref}
+      href={switchHref}
       hreflang={localeSwitchTargetLang}
       lang={localeSwitchTargetLang}
       aria-label={localeSwitchAriaLabel}
