@@ -216,8 +216,15 @@ const pageCopy =
             <div class="service-preview-copy">
               <span class="service-preview-index">{String(index + 1).padStart(2, "0")}</span>
               <h3>{item.title}</h3>
-              {item.edition ? <p>{item.edition}</p> : null}
-              {item.lines.map((line) => <p>{line}</p>)}
+              {item.edition ? <p class="learning-preview-edition">{item.edition}</p> : null}
+              <p class="learning-preview-desc">
+                {item.lines.map((line, lineIndex) => (
+                  <>
+                    {lineIndex > 0 && <br />}
+                    {line}
+                  </>
+                ))}
+              </p>
             </div>
             <div class="service-preview-meta">
               <strong>{item.price}</strong>
