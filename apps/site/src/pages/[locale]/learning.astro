@@ -95,8 +95,8 @@ const learningSchema = {
       <div class="learning-hero-inner">
         <div class="learning-hero-copy">
           <p class="eyebrow">THE GROWTH FIELD GUIDE / 出海增长指南</p>
-          <h1>出海增长从这里开始</h1>
-          <p>从产品发布到获客，每一步都有实战参考。生姜与 Iris 辅导 80+ 家公司的实战积累，整理成你做项目时用得上的步骤、模板与案例。</p>
+          <h1>从产品发布到获客，<br />每一步都有实战参考。</h1>
+          <p>生姜与 Iris 辅导 80+ 家公司的实战积累，整理成你做项目时用得上的步骤、模板与案例。</p>
           <div class="learning-hero-actions">
             <a class="primary-button" href="#bundle">了解出海增长知识库 ↓</a>
           </div>
@@ -104,13 +104,13 @@ const learningSchema = {
         <div class="learning-book-art" aria-hidden="true">
           <div class="learning-art-orbit"></div>
           <div class="learning-book">
-            <small>THE PLAYBOOK</small>
-            <strong>带着问题<br />找到方法</strong>
-            <span>GINGIRIS / 01</span>
+            <small>GINGIRIS / 01</small>
+            <strong>出海增长<br />从这里开始</strong>
+            <span>LEARN →<br />BUILD →<br />GROW</span>
           </div>
           <div class="learning-sheet">
-            <small>出海增长指南</small>
-            <strong>LEARN →<br />BUILD →<br />GROW</strong>
+            <small>THE PLAYBOOK</small>
+            <strong>带着问题<br />找到方法</strong>
             <span></span>
             <span></span>
           </div>
@@ -361,6 +361,10 @@ const learningSchema = {
       const selectedPackIndex = isBundle ? null : Number(type.slice("pack-".length));
       catalogDialog.querySelectorAll<HTMLDetailsElement>("[data-catalog-group]").forEach((group, index) => {
         const isSelectedGroup = selectedPackIndex === index;
+        const groupSummary = group.querySelector<HTMLElement>(":scope > summary");
+        if (groupSummary) {
+          groupSummary.hidden = !isBundle;
+        }
         group.hidden = !isBundle && !isSelectedGroup;
         group.open = isBundle ? false : isSelectedGroup;
       });

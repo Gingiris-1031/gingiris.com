@@ -5141,12 +5141,26 @@ h3 {
 }
 
 .learning-preview-section .section-action {
+  align-items: flex-start;
   flex-wrap: wrap;
   gap: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  justify-content: flex-start;
+  letter-spacing: -0.02em;
+  line-height: 19px;
 }
 
 .learning-preview-section .section-action button {
+  -webkit-appearance: none;
+  appearance: none;
   font: inherit;
+  line-height: inherit;
+}
+
+.learning-preview-section .section-action .primary-button,
+.learning-preview-section .section-action .ghost-button {
+  width: auto;
 }
 
 .learning-preview-grid,
@@ -5266,7 +5280,18 @@ h3 {
   border-radius: 999px;
   box-shadow: none;
   color: #ffffff;
-  font: inherit;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 19px;
+}
+
+.learning-page button.primary-button,
+.wechat-dialog button.primary-button,
+.learning-catalog-dialog button.primary-button {
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .learning-page .primary-button:hover,
@@ -5283,11 +5308,25 @@ h3 {
   border-radius: 999px;
   box-shadow: none;
   color: #000000;
-  font: inherit;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 19px;
 }
 
 .learning-catalog-dialog .ghost-button {
-  font: inherit;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 19px;
+}
+
+.learning-page button.ghost-button,
+.learning-catalog-dialog button.ghost-button {
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .learning-page .ghost-button:hover {
@@ -5329,7 +5368,7 @@ h3 {
 
 .learning-hero-copy h1 {
   color: #000000;
-  font-size: clamp(2.6rem, 5.2vw, 4.6rem);
+  font-size: clamp(2.5rem, 4.4vw, 4rem);
   font-weight: 500;
   letter-spacing: -0.045em;
   line-height: 1.08;
@@ -5920,6 +5959,10 @@ h3 {
   .learning-section-inner {
     padding-left: 20px;
     padding-right: 20px;
+  }
+
+  .learning-hero-copy h1 {
+    font-size: clamp(2rem, 8vw, 2.5rem);
   }
 
   .learning-book-art {
