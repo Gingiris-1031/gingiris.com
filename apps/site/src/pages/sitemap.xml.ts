@@ -16,21 +16,13 @@ function urlEntry(path: string, zhPath: string, enPath: string, priority: string
   </url>`;
 }
 
-function zhOnlyUrlEntry(path: string, priority: string, changefreq: string) {
-  return `  <url>
-    <loc>${origin}${path}</loc>
-    <changefreq>${changefreq}</changefreq>
-    <priority>${priority}</priority>
-  </url>`;
-}
-
 export async function GET() {
   const entries = await getCollection("insights");
   const articleSlugs = [...new Set(entries.map((entry) => entry.data.slug))].sort();
   const urls = [
     ...supportedLocales.map((locale) => urlEntry(`/${locale}`, "/zh", "/en", "1.0", "weekly")),
     ...supportedLocales.map((locale) => urlEntry(`/${locale}/services`, "/zh/services", "/en/services", "0.9", "monthly")),
-    zhOnlyUrlEntry("/zh/learning", "0.8", "monthly"),
+    ...supportedLocales.map((locale) => urlEntry(`/${locale}/learning`, "/zh/learning", "/en/learning", "0.8", "monthly")),
     ...supportedLocales.map((locale) => urlEntry(`/${locale}/insights`, "/zh/insights", "/en/insights", "0.9", "weekly")),
     ...articleSlugs.flatMap((slug) => supportedLocales.map((locale) =>
       urlEntry(`/${locale}/insights/${slug}`, `/zh/insights/${slug}`, `/en/insights/${slug}`, "0.8", "monthly"),

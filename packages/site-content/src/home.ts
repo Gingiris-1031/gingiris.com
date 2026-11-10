@@ -423,7 +423,7 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
       title: "Global Growth Learning Resources",
       hint: "Explore first-hand growth methods and project templates, or start with a structured course.",
       introCtaLabel: "View full introduction ↗",
-      introHref: "/zh/learning",
+      introHref: "/en/learning",
       consultCtaLabel: "Ask about purchasing ↗",
       items: [
         {
@@ -431,7 +431,7 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
           edition: "Complete Knowledge Base",
           lines: ["22 documents with complete steps, templates, and cases.", "Lifetime updates · VIP peer group · Private member sessions"],
           price: "¥599",
-          href: "/zh/learning#bundle",
+          href: "/en/learning#bundle",
           external: false,
         },
         {
@@ -439,7 +439,7 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
           edition: "Task-Based Packs",
           lines: ["Selected from the complete knowledge base, available individually.", "Choose from demand validation, launch and acquisition, or B2B sales."],
           price: "From ¥49",
-          href: "/zh/learning#packs",
+          href: "/en/learning#packs",
           external: false,
         },
         {

@@ -6,6 +6,7 @@ export type SiteFrameContent = {
     home: string;
     services: string;
     insights: string;
+    learning: string;
     links: string;
     auth: string;
   };
@@ -23,6 +24,7 @@ export const siteFrameByLocale: Record<SiteLocale, SiteFrameContent> = {
       home: "主页",
       services: "服务",
       insights: "干货",
+      learning: "知识库",
       links: "链接",
       auth: "登录",
     },
@@ -37,6 +39,7 @@ export const siteFrameByLocale: Record<SiteLocale, SiteFrameContent> = {
       home: "Home",
       services: "Services",
       insights: "Insights",
+      learning: "Knowledge Base",
       links: "Links",
       auth: "Sign in",
     },

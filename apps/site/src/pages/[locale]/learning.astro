@@ -1,79 +1,45 @@
 ---
 import {
-  CATALOG_GROUPS,
-  DATA,
-  TASK_PACKS,
+  getLearningCatalog,
+  learningPageContentByLocale,
+  supportedLocales,
+  type SiteLocale,
 } from "@yipei/site-content";
 import WechatDialog from "../../components/WechatDialog.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 export function getStaticPaths() {
-  return [{ params: { locale: "zh" } }];
+  return supportedLocales.map((locale) => ({ params: { locale } }));
 }
 
-const pageTitle = "出海实战指南｜Gingiris 学习资源";
-const pageDescription = "出海增长知识库与系统课程，提供产品发布、渠道获客、企业成交等一线增长方法、模板与案例。";
-const faqItems = [
-  {
-    question: "购买「出海实战指南 · 全套知识库」后，还需要购买按需资料包吗？",
-    answer:
-      "「出海实战指南 · 全套知识库」已包含「付费需求验证」「出海起号获客」「2B 生意起步」三个资料包及「OPC 起步指南」，无需重复购买。只需要其中一部分内容，可以单独选购对应资料包。",
-  },
-  {
-    question: "第一次做出海项目，应该选「出海实战指南」还是「出海增长系统课」？",
-    answer:
-      "已有项目，可以直接使用「出海实战指南」。只推进一项任务，选择对应资料包；需要多个阶段的完整方法，选择「出海实战指南 · 全套知识库」。希望先系统理解用户、产品与渠道等基础知识，可以选择小报童合作课程「出海增长系统课」。",
-  },
-  {
-    question: "「出海实战指南 · 全套知识库」包含小报童合作课程「出海增长系统课」吗？",
-    answer:
-      "不包含。「出海增长系统课」是通过小报童购买的独立合作课程，侧重基础知识与系统理解；「出海实战指南 · 全套知识库」提供执行步骤、框架、模板与案例，两者可根据需要分别购买。",
-  },
-];
-const packCards = [
-  {
-    title: TASK_PACKS[0].title,
-    price: "¥199",
-    count: "5 份文档",
-    dialogDescription: TASK_PACKS[0].desc,
-    question: "用户说想要，真的会付费吗？",
-    description: "把竞品研究、用户访谈、产品测试与定价验证串起来，为下一步投入找到依据。",
-    tags: ["竞品研究框架", "用户访谈与测试流程", "定价与商业化验证方法"],
-    open: "pack-0",
-  },
-  {
-    title: TASK_PACKS[1].title,
-    price: "¥329",
-    count: "11 份文档",
-    dialogDescription: TASK_PACKS[1].desc,
-    question: "产品准备好了，怎么发布并找到用户？",
-    description: "从发布筹备到渠道运营，查阅每个阶段的执行步骤、内容方法与复盘参考。",
-    tags: ["产品发布与 Launch 流程", "KOL、UGC、Reddit 运营方法", "内容分发、社区与增长复盘"],
-    open: "pack-1",
-  },
-  {
-    title: TASK_PACKS[2].title,
-    price: "¥199",
-    count: "5 份文档",
-    dialogDescription: TASK_PACKS[2].desc,
-    question: "有企业意向客户，怎么把沟通推进成订单？",
-    description: "围绕客户信任、需求确认、报价与交付，梳理企业业务从沟通到协作的完整过程。",
-    tags: ["2B 成交与交付 SOP", "报价、SOW 与合同核心条款模板", "品牌建设与团队协作方法"],
-    open: "pack-2",
-  },
-];
+const locale: SiteLocale = Astro.params.locale === "en" ? "en" : "zh";
+const pageContent = learningPageContentByLocale[locale];
+const catalog = getLearningCatalog(locale);
+const packCards = pageContent.packs.cards.map((card, index) => {
+  const pack = catalog.taskPacks[index];
+  return {
+    ...card,
+    title: pack.title,
+    price: `¥${pack.price}`,
+    count: card.countLabel,
+    dialogDescription: pack.desc,
+    dialogCount: String(pack.ids.length),
+    open: `pack-${index}`,
+  };
+});
+const opcPack = catalog.taskPacks[3];
 const learningSchema = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "WebPage",
-      name: pageTitle,
-      description: pageDescription,
-      url: "https://gingiris.com/zh/learning",
+      name: pageContent.title,
+      description: pageContent.description,
+      url: `https://gingiris.com/${locale}/learning`,
     },
     {
       "@type": "FAQPage",
-      mainEntity: faqItems.map((item) => ({
+      mainEntity: pageContent.faq.items.map((item) => ({
         "@type": "Question",
         name: item.question,
         acceptedAnswer: { "@type": "Answer", text: item.answer },
@@ -84,33 +50,32 @@ const learningSchema = {
 ---
 
 <BaseLayout
-  locale="zh"
-  title={pageTitle}
-  description={pageDescription}
+  locale={locale}
+  title={pageContent.title}
+  description={pageContent.description}
   structuredData={learningSchema}
-  showLocaleAlternates={false}
 >
   <div class="learning-page">
     <section class="scene learning-hero">
       <div class="learning-hero-inner">
         <div class="learning-hero-copy">
-          <p class="eyebrow">THE GROWTH FIELD GUIDE / 出海增长指南</p>
-          <h1>从产品发布到获客，<br />每一步都有实战参考。</h1>
-          <p>生姜与 Iris 辅导 80+ 家公司的实战积累，整理成你做项目时用得上的步骤、模板与案例。</p>
+          <p class="eyebrow">{pageContent.hero.eyebrow}</p>
+          <h1>{pageContent.hero.title[0]}<br />{pageContent.hero.title[1]}</h1>
+          <p>{pageContent.hero.intro}</p>
           <div class="learning-hero-actions">
-            <a class="primary-button" href="#bundle">了解出海增长知识库 ↓</a>
+            <a class="primary-button" href="#bundle">{pageContent.hero.actionLabel}</a>
           </div>
         </div>
         <div class="learning-book-art" aria-hidden="true">
           <div class="learning-art-orbit"></div>
           <div class="learning-book">
-            <small>GINGIRIS / 01</small>
-            <strong>出海增长<br />从这里开始</strong>
-            <span>LEARN →<br />BUILD →<br />GROW</span>
+            <small>{pageContent.hero.bookLabel}</small>
+            <strong>{pageContent.hero.bookTitle[0]}<br />{pageContent.hero.bookTitle[1]}</strong>
+            <span>{pageContent.hero.bookFooter[0]}<br />{pageContent.hero.bookFooter[1]}<br />{pageContent.hero.bookFooter[2]}</span>
           </div>
           <div class="learning-sheet">
-            <small>THE PLAYBOOK</small>
-            <strong>带着问题<br />找到方法</strong>
+            <small>{pageContent.hero.sheetLabel}</small>
+            <strong>{pageContent.hero.sheetTitle[0]}<br />{pageContent.hero.sheetTitle[1]}</strong>
             <span></span>
             <span></span>
           </div>
@@ -121,46 +86,40 @@ const learningSchema = {
     <section class="scene learning-section" id="bundle" aria-labelledby="bundle-heading">
       <div class="learning-section-inner">
         <div class="section-heading">
-          <p class="eyebrow">全套获取</p>
-          <h2 id="bundle-heading">出海实战指南 · 全套知识库</h2>
-          <p>从第一次出海，到持续推进项目</p>
+          <p class="eyebrow">{pageContent.bundle.eyebrow}</p>
+          <h2 id="bundle-heading">{pageContent.bundle.title}</h2>
+          <p>{pageContent.bundle.subtitle}</p>
         </div>
         <div class="learning-full-grid">
           <article class="learning-full-copy">
-            <p>需求验证、产品发布、渠道获客、企业成交与服务起步，按当前项目需要查阅。</p>
+            <p>{pageContent.bundle.description}</p>
             <div class="learning-stat-row">
-              <span><strong>22</strong>份文档</span>
-              <span><strong>28 万＋</strong>字符</span>
+              <span><strong>{pageContent.bundle.documentCount}</strong>{pageContent.bundle.documentLabel}</span>
+              <span><strong>{pageContent.bundle.characterCount}</strong>{pageContent.bundle.characterLabel}</span>
             </div>
-            <p class="learning-inclusion">包含下方三个资料包＋OPC 起步指南。</p>
-            <p class="learning-price">¥599</p>
+            <p class="learning-inclusion">{pageContent.bundle.inclusion}</p>
+            <p class="learning-price">{pageContent.bundle.price}</p>
             <div class="learning-full-actions">
               <button
                 class="primary-button"
                 type="button"
                 data-open="bundle"
-                data-catalog-title="出海实战指南 · 全套目录"
-                data-catalog-eyebrow="GINGIRIS / 完整目录"
-                data-catalog-intro="当前22份文档，按组合整理。以下为章节目录与PDF页码，不含付费正文。"
-              >查看详细目录 ↗</button>
-              <button class="ghost-button" type="button" data-open="contact">咨询购买 ↗</button>
+                data-catalog-title={pageContent.bundle.catalogTitle}
+                data-catalog-eyebrow={pageContent.bundle.catalogEyebrow}
+                data-catalog-intro={pageContent.bundle.catalogIntro}
+              >{pageContent.bundle.catalogActionLabel}</button>
+              <button class="ghost-button" type="button" data-open="contact">{pageContent.bundle.contactActionLabel}</button>
             </div>
           </article>
           <aside class="learning-membership-card">
-            <p class="eyebrow">购买全套，享三项会员权益</p>
+            <p class="eyebrow">{pageContent.bundle.membershipEyebrow}</p>
             <div class="learning-membership-list">
-              <article>
-                <h4>知识库永久更新</h4>
-                <p>一次购买，持续获取新增的方法、案例与模板。</p>
-              </article>
-              <article>
-                <h4>VIP 同行交流群</h4>
-                <p>链接创业者、产品与增长同行，交流经验，积累长期人脉。</p>
-              </article>
-              <article>
-                <h4>专属闭门分享</h4>
-                <p>与生姜 Iris 及受邀嘉宾深度交流，拓展实战思路。</p>
-              </article>
+              {pageContent.bundle.benefits.map((benefit) => (
+                <article>
+                  <h4>{benefit.title}</h4>
+                  <p>{benefit.description}</p>
+                </article>
+              ))}
             </div>
           </aside>
         </div>
@@ -170,14 +129,14 @@ const learningSchema = {
     <section class="scene learning-section" id="packs" aria-labelledby="packs-heading">
       <div class="learning-section-inner">
         <div class="section-heading">
-          <p class="eyebrow">知识库内容 · 按需选购</p>
-          <h2 id="packs-heading">实战资料，按需选购</h2>
-          <p>精选自完整知识库，¥49 起。已购全套，无需重复购买。</p>
+          <p class="eyebrow">{pageContent.packs.eyebrow}</p>
+          <h2 id="packs-heading">{pageContent.packs.title}</h2>
+          <p>{pageContent.packs.description}</p>
         </div>
         <div class="learning-pack-grid">
           {packCards.map((pack) => (
             <article class="learning-pack-card">
-              <p class="eyebrow">独立资料包 · 可单独购买</p>
+              <p class="eyebrow">{pageContent.packs.cardEyebrow}</p>
               <h3>{pack.title}</h3>
               <p class="learning-price">{pack.price}</p>
               <p class="learning-pack-count">{pack.count}</p>
@@ -186,7 +145,7 @@ const learningSchema = {
               <ul>
                 {pack.tags.map((tag) => <li>{tag}</li>)}
               </ul>
-              <p class="learning-pack-source">精选自完整出海增长知识库</p>
+              <p class="learning-pack-source">{pageContent.packs.sourceLabel}</p>
               <div class="learning-card-actions">
                 <button
                   class="ghost-button"
@@ -194,34 +153,34 @@ const learningSchema = {
                   data-open={pack.open}
                   data-pack-title={pack.title}
                   data-pack-price={pack.price.replace("¥", "")}
-                  data-pack-count={pack.count.replace(" 份文档", "")}
+                  data-pack-count={pack.dialogCount}
                   data-pack-description={pack.dialogDescription}
-                >查看内容与目录 ↗</button>
-                <button class="ghost-button" type="button" data-open="contact">咨询购买 ↗</button>
+                >{pageContent.packs.catalogActionLabel}</button>
+                <button class="ghost-button" type="button" data-open="contact">{pageContent.packs.contactActionLabel}</button>
               </div>
             </article>
           ))}
           <article class="learning-opc-card">
             <div>
-              <p class="eyebrow">服务起步 / 1 份指南</p>
-              <h3>OPC 起步指南</h3>
-              <p>把专业能力整理成可出售的服务。已包含在 ¥599 全套中，也可单独购买。</p>
+              <p class="eyebrow">{pageContent.packs.opcEyebrow}</p>
+              <h3>{opcPack.title}</h3>
+              <p>{pageContent.packs.opcDescription}</p>
             </div>
             <div class="learning-card-actions">
-              <strong class="learning-price">¥49</strong>
+              <strong class="learning-price">{pageContent.packs.opcPrice}</strong>
               <button
                 class="ghost-button"
                 type="button"
                 data-open="pack-3"
-                data-pack-title={TASK_PACKS[3].title}
-                data-pack-price={TASK_PACKS[3].price}
-                data-pack-count={TASK_PACKS[3].ids.length}
-                data-pack-description={TASK_PACKS[3].desc}
-              >查看目录 ↗</button>
+                data-pack-title={opcPack.title}
+                data-pack-price={opcPack.price}
+                data-pack-count={opcPack.ids.length}
+                data-pack-description={opcPack.desc}
+              >{pageContent.packs.opcCatalogActionLabel}</button>
             </div>
           </article>
         </div>
-        <p class="learning-page-note">组合包按内容范围购买；VIP 群、闭门分享及永久更新权益以上方全套说明为准。目录弹窗仅展示章节与页码，不含付费正文。</p>
+        <p class="learning-page-note">{pageContent.packs.note}</p>
       </div>
     </section>
 
@@ -229,18 +188,18 @@ const learningSchema = {
       <div class="learning-section-inner">
         <article class="learning-course-card">
           <div class="learning-course-card-copy">
-            <p class="eyebrow">独立合作课程 · 小报童</p>
-            <h2 id="course-heading">出海增长系统课</h2>
-            <h3>出海路上的教科书</h3>
-            <p>从用户研究、产品定位到渠道选择，系统理解出海增长的基础知识与工作逻辑。18 节主线课＋3 节专题课，配套文稿、音频与课后作业，含 VIP 同行交流群。</p>
-            <p class="learning-price">¥299</p>
+            <p class="eyebrow">{pageContent.course.eyebrow}</p>
+            <h2 id="course-heading">{pageContent.course.title}</h2>
+            <h3>{pageContent.course.subtitle}</h3>
+            <p>{pageContent.course.description}</p>
+            <p class="learning-price">{pageContent.course.price}</p>
             <div class="learning-card-actions">
               <a
                 class="ghost-button"
-                href="https://xiaobot.net/p/Gingiris?refer=29043fdd-91ec-42c2-a88d-cb47d1718826"
+                href={pageContent.course.href}
                 target="_blank"
                 rel="noopener noreferrer"
-              >前往小报童试读 ↗</a>
+              >{pageContent.course.actionLabel}</a>
             </div>
           </div>
         </article>
@@ -250,11 +209,11 @@ const learningSchema = {
     <section class="scene learning-section" aria-labelledby="learning-faq-heading">
       <div class="learning-section-inner">
         <div class="section-heading">
-          <p class="eyebrow">FAQ</p>
-          <h2 id="learning-faq-heading">常见问题</h2>
+          <p class="eyebrow">{pageContent.faq.eyebrow}</p>
+          <h2 id="learning-faq-heading">{pageContent.faq.title}</h2>
         </div>
         <div class="faq-list learning-faq-list">
-          {faqItems.map((item) => (
+          {pageContent.faq.items.map((item) => (
             <details>
               <summary>{item.question}</summary>
               <p>{item.answer}</p>
@@ -267,40 +226,52 @@ const learningSchema = {
     <section class="scene learning-cta-band">
       <div class="learning-cta-inner">
         <div class="learning-cta-copy">
-          <p class="eyebrow">GINGIRIS / LEARN & GROW</p>
-          <h2>想了解更多出海增长学习资源？</h2>
-          <p>内容介绍、选购建议与购买咨询，欢迎添加微信：staywildgrow</p>
+          <p class="eyebrow">{pageContent.cta.eyebrow}</p>
+          <h2>{pageContent.cta.title}</h2>
+          <p>{pageContent.cta.description}</p>
         </div>
-        <button class="primary-button" type="button" data-open="contact">添加微信咨询购买 ↗</button>
+        <button class="primary-button" type="button" data-open="contact">{pageContent.cta.actionLabel}</button>
       </div>
-      <p class="learning-footer-note">当前内容规模按本地版本提取统计，约 28.7 万字符，含中英文、模板与附录。内容持续更新。</p>
+      <p class="learning-footer-note">{pageContent.cta.footnote}</p>
     </section>
   </div>
 
-  <dialog class="learning-catalog-dialog" id="learning-catalog-dialog" aria-labelledby="learning-catalog-title">
+  <dialog
+    class="learning-catalog-dialog"
+    id="learning-catalog-dialog"
+    aria-labelledby="learning-catalog-title"
+    data-pack-eyebrow={pageContent.catalog.packEyebrow}
+    data-pack-intro-singular={pageContent.catalog.packIntroTemplate.singular}
+    data-pack-intro-plural={pageContent.catalog.packIntroTemplate.plural}
+  >
     <div class="learning-catalog-head">
       <div>
-        <p class="eyebrow" data-catalog-eyebrow>GINGIRIS / 完整目录</p>
-        <h2 id="learning-catalog-title" data-catalog-title>出海实战指南 · 全套目录</h2>
+        <p class="eyebrow" data-catalog-eyebrow>{pageContent.bundle.catalogEyebrow}</p>
+        <h2 id="learning-catalog-title" data-catalog-title>{pageContent.bundle.catalogTitle}</h2>
       </div>
-      <button class="learning-catalog-close" type="button" aria-label="关闭" data-close-catalog>×</button>
+      <button class="learning-catalog-close" type="button" aria-label={pageContent.catalog.closeAriaLabel} data-close-catalog>×</button>
     </div>
     <div class="learning-catalog-body">
-      <p data-catalog-intro>当前22份文档，按组合整理。以下为章节目录与PDF页码，不含付费正文。</p>
+      <p data-catalog-intro>{pageContent.bundle.catalogIntro}</p>
       <p data-catalog-description hidden></p>
       <div class="learning-catalog-groups">
-        {CATALOG_GROUPS.map((group, groupIndex) => (
+        {catalog.catalogGroups.map((group, groupIndex) => (
           <details class="learning-catalog-group" data-catalog-group={groupIndex}>
-            <summary>
+            <summary aria-label={pageContent.catalog.groupToggleAriaLabel.replace("{title}", group.title)}>
               <strong>{group.title}</strong>
-              <span>{group.ids.length} 份</span>
+              <span>
+                {(group.ids.length === 1
+                  ? pageContent.catalog.groupCountTemplate.singular
+                  : pageContent.catalog.groupCountTemplate.plural
+                ).replace("{count}", String(group.ids.length))}
+              </span>
             </summary>
             <div class="learning-catalog-documents">
               {group.ids.map((docId) => {
-                const entry = DATA.docs[docId];
+                const entry = catalog.docs[docId];
                 return entry ? (
                   <details class="learning-catalog-document">
-                    <summary>
+                    <summary aria-label={pageContent.catalog.documentToggleAriaLabel.replace("{title}", entry.title)}>
                       <span>{entry.title}</span>
                       <small>{entry.meta}</small>
                     </summary>
@@ -317,11 +288,11 @@ const learningSchema = {
         ))}
       </div>
       <div class="learning-card-actions">
-        <button class="primary-button" type="button" data-open="contact">添加微信咨询购买 ↗</button>
+        <button class="primary-button" type="button" data-open="contact">{pageContent.catalog.contactActionLabel}</button>
       </div>
     </div>
   </dialog>
-  <WechatDialog locale="zh" />
+  <WechatDialog locale={locale} />
 
   <script>
     const catalogDialog = document.querySelector<HTMLDialogElement>("#learning-catalog-dialog");
@@ -329,6 +300,9 @@ const learningSchema = {
     const catalogEyebrow = catalogDialog?.querySelector<HTMLElement>("[data-catalog-eyebrow]");
     const catalogIntro = catalogDialog?.querySelector<HTMLElement>("[data-catalog-intro]");
     const catalogDescription = catalogDialog?.querySelector<HTMLElement>("[data-catalog-description]");
+    const packEyebrow = catalogDialog?.dataset.packEyebrow ?? "";
+    const packIntroSingular = catalogDialog?.dataset.packIntroSingular ?? "";
+    const packIntroPlural = catalogDialog?.dataset.packIntroPlural ?? "";
     let previousFocus: HTMLElement | null = null;
     let bodyOverflow = "";
 
@@ -348,12 +322,14 @@ const learningSchema = {
         catalogTitle.textContent = isBundle ? trigger.dataset.catalogTitle ?? "" : packTitle;
       }
       if (catalogEyebrow) {
-        catalogEyebrow.textContent = isBundle ? trigger.dataset.catalogEyebrow ?? "" : "GINGIRIS / 任务组合";
+        catalogEyebrow.textContent = isBundle ? trigger.dataset.catalogEyebrow ?? "" : packEyebrow;
       }
       if (catalogIntro) {
         catalogIntro.textContent = isBundle
           ? trigger.dataset.catalogIntro ?? ""
-          : `¥${packPrice} · ${packCount} 份指南 · 当前试售价格`;
+          : (Number(packCount) === 1 ? packIntroSingular : packIntroPlural)
+            .replace("{price}", packPrice)
+            .replace("{count}", packCount);
       }
       if (catalogDescription) {
         catalogDescription.textContent = isBundle ? "" : packDescription;

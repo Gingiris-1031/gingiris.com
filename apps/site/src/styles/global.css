@@ -6157,3 +6157,38 @@ h3 {
     align-items: start;
   }
 }
+
+@media (max-width: 560px) {
+  .site-header {
+    row-gap: 6px;
+  }
+
+  .site-header-main,
+  .site-app-rail {
+    flex: 1 0 100%;
+    min-width: 0;
+  }
+
+  .site-app-rail {
+    gap: 4px;
+    justify-content: space-between;
+  }
+
+  .site-app-rail > .site-auth-link,
+  .site-app-rail > .site-locale-switch {
+    flex: 0 0 auto;
+    font-size: 11px;
+    line-height: 1;
+    padding: 7px 6px;
+    white-space: nowrap;
+    width: auto;
+  }
+
+  .site-locale-switch {
+    min-width: 0;
+  }
+
+  .site-locale-option.is-active {
+    padding: 3px 4px;
+  }
+}
