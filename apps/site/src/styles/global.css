@@ -5424,6 +5424,7 @@ h3 {
   position: relative;
   transform: rotate(-11deg) translate(-26px, 0);
   width: 154px;
+  z-index: 1;
 }
 
 .learning-book small,
