@@ -50,6 +50,10 @@ This repository currently ships the public marketing site from `apps/site` to Ve
 - Vercel project Root Directory: `apps/site` (build settings come from `apps/site/vercel.json`)
 - No required runtime environment variables are currently needed for the shipped marketing site.
 
+## Branch Cleanup
+- [Delete merged branch](.github/workflows/delete-merged-branch.yml) removes the source branch after a pull request from this repository is merged into `main`.
+- It skips unmerged pull requests, forks, default/protected branches, and branches whose tip has changed since the merge. Already-deleted branches are handled without error.
+
 ## Local Figma Asset Utilities
 - Crop the current local showcase screenshot into logo tiles:
   - `python3 scripts/extract-figma-assets.py`

@@ -1,0 +1,60 @@
+name: Delete merged branch
+
+on:
+  pull_request:
+    branches: [main]
+    types: [closed]
+
+permissions: {}
+
+jobs:
+  delete-branch:
+    if: >-
+      github.event.pull_request.merged == true &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Delete the merged source branch
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8.0.0
+        with:
+          script: |
+            const pullRequest = context.payload.pull_request;
+            const branch = pullRequest.head.ref;
+
+            if ([pullRequest.base.ref, context.payload.repository.default_branch].includes(branch)) {
+              core.info(`Keeping base/default branch ${branch}.`);
+              return;
+            }
+
+            let sourceBranch;
+            try {
+              const response = await github.rest.repos.getBranch({
+                ...context.repo,
+                branch,
+              });
+              sourceBranch = response.data;
+            } catch (error) {
+              if (error.status === 404) {
+                core.info(`Branch ${branch} is already deleted.`);
+                return;
+              }
+              throw error;
+            }
+
+            if (sourceBranch.protected) {
+              core.info(`Keeping protected branch ${branch}.`);
+              return;
+            }
+
+            if (sourceBranch.commit.sha !== pullRequest.head.sha) {
+              core.info(`Keeping ${branch}: its tip changed after the merge.`);
+              return;
+            }
+
+            await github.rest.git.deleteRef({
+              ...context.repo,
+              ref: `heads/${branch}`,
+            });
+            core.info(`Deleted merged branch ${branch}.`);
