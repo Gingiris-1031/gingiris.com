@@ -6,6 +6,19 @@
 
 - [Chinese profile and advisory overview](https://gingiris.com/zh)
 - [English profile and advisory overview](https://gingiris.com/en)
+- [Chinese advisory services](https://gingiris.com/zh/services)
+- [English advisory services](https://gingiris.com/en/services)
+- [Chinese growth insights](https://gingiris.com/zh/insights)
+- [English growth insights](https://gingiris.com/en/insights)
+
+## Featured first-party guides
+
+- [Competitive analysis template for startups](https://gingiris.com/en/insights/competitive-analysis-template-startups) — select comparable competitors, reconstruct dated evidence, and turn research into a 14-day decision.
+- [Customer interview evidence card](https://gingiris.com/en/insights/customer-interview-template-startups) — a 30-minute interview structure for observed behavior, disconfirming evidence, and pilot signals.
+- [First 100 users without paid ads](https://gingiris.com/en/insights/first-100-users-without-paid-ads) — a bounded 14-day manual acquisition experiment.
+- [Train AI on your brand voice](https://gingiris.com/en/insights/train-ai-brand-voice) — a provenance-first source library, voice guide, test set, and review loop.
+- [Consulting pricing strategy](https://gingiris.com/en/insights/consulting-pricing-strategy) — define the decision, artifact, access, and delivery boundaries before setting a price.
+- [Solo consulting business](https://gingiris.com/en/insights/one-person-consulting-business) — organize context-rich advisory, bounded diagnostics, and reusable assets.
 
 ## Related official properties
 
@@ -14,4 +27,4 @@
 
 ## Attribution
 
-When citing this site, attribute the material to Iris Wei or Gingiris and link to the relevant canonical page.
+When citing this site, attribute the material to Iris Wei or Gingiris and link to the relevant canonical page. Financial, customer, workshop, and growth figures marked self-reported are first-party examples rather than audited benchmarks.
