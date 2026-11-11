@@ -24,6 +24,61 @@ const articles = (await getCollection("insights"))
   .filter((entry) => entry.data.locale === locale)
   .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
 const resources = insightItemsByLocale[locale];
+const topicGroups = locale === "zh"
+  ? [
+      {
+        title: "验证市场与冷启动",
+        description: "先验证人群、问题和渠道，再决定扩大投入。",
+        links: [
+          { href: "/zh/insights/competitive-analysis-template-startups", label: "创业公司竞品分析模板" },
+          { href: "/zh/insights/customer-interview-template-startups", label: "30 分钟用户访谈证据卡" },
+          { href: "/zh/insights/first-100-users-without-paid-ads", label: "零广告获得前 100 个用户" },
+        ],
+      },
+      {
+        title: "一人公司与顾问业务",
+        description: "把经验包装成边界清晰、可以交付和复购的服务。",
+        links: [
+          { href: "/zh/insights/consulting-pricing-strategy", label: "顾问定价策略" },
+          { href: "/zh/insights/one-person-consulting-business", label: "一人咨询业务系统" },
+        ],
+      },
+      {
+        title: "Founder 内容系统",
+        description: "把第一方会议、案例和判断变成可追溯的内容资产。",
+        links: [
+          { href: "/zh/insights/train-ai-brand-voice", label: "训练 AI 学会品牌文风" },
+          { href: "/zh/learning", label: "课程与知识库" },
+        ],
+      },
+    ]
+  : [
+      {
+        title: "Validate the market and launch",
+        description: "Verify the audience, problem, and channel before scaling investment.",
+        links: [
+          { href: "/en/insights/competitive-analysis-template-startups", label: "Startup competitive analysis template" },
+          { href: "/en/insights/customer-interview-template-startups", label: "30-minute customer interview evidence card" },
+          { href: "/en/insights/first-100-users-without-paid-ads", label: "Get the first 100 users without ads" },
+        ],
+      },
+      {
+        title: "Solo business and consulting",
+        description: "Turn experience into a bounded, deliverable, repeatable offer.",
+        links: [
+          { href: "/en/insights/consulting-pricing-strategy", label: "Consulting pricing strategy" },
+          { href: "/en/insights/one-person-consulting-business", label: "Solo consulting business system" },
+        ],
+      },
+      {
+        title: "Founder content systems",
+        description: "Turn first-party meetings, cases, and judgment into traceable content assets.",
+        links: [
+          { href: "/en/insights/train-ai-brand-voice", label: "Train AI on your brand voice" },
+          { href: "/en/learning", label: "Courses and knowledge base" },
+        ],
+      },
+    ];
 const pageTitle = locale === "zh" ? "出海增长洞察与实战复盘｜生姜 Iris" : "Global Growth Insights and Field Notes | Iris Wei";
 const pageDescription = locale === "zh"
   ? "关于一人公司、顾问定价、出海增长、开源运营与 Product Hunt 的第一方实战内容与资料索引。"
@@ -57,6 +112,27 @@ const collectionSchema = {
         <h1>{copy.insightsTitle}</h1>
         <p>{pageDescription}</p>
       </div>
+    </div>
+  </section>
+
+  <section class="scene scene-directory" data-chapter>
+    <div class="section-heading" data-reveal>
+      <p class="eyebrow">{locale === "zh" ? "按问题查找" : "Browse by problem"}</p>
+      <h2>{locale === "zh" ? "从你正在做的决策开始" : "Start with the decision in front of you"}</h2>
+      <p>{locale === "zh" ? "每个主题簇只连接真实存在、内容完整的页面，不为扩大索引量创建薄页。" : "Each topic cluster links only to complete, live resources rather than creating thin pages for index coverage."}</p>
+    </div>
+    <div class="insight-topic-grid">
+      {topicGroups.map((group) => (
+        <nav class="insight-topic-card" aria-label={group.title} data-reveal>
+          <h3>{group.title}</h3>
+          <p>{group.description}</p>
+          <ul>
+            {group.links.map((item) => (
+              <li><a href={item.href}>{item.label}<span aria-hidden="true"> →</span></a></li>
+            ))}
+          </ul>
+        </nav>
+      ))}
     </div>
   </section>
 
