@@ -1,4 +1,5 @@
 ---
+import brandLogo from "../assets/brand/gingiris-logo.svg";
 import { supportedLocales, type SiteFrameContent, type SiteLocale } from "@yipei/site-content";
 
 interface Props {
@@ -23,7 +24,7 @@ const contactLabel = locale === "zh" ? "联系咨询" : "Get in touch";
     <a class="site-brand" href={`/${locale}`} aria-label={frame.brand}>
       <img
         class="site-brand-logo"
-        src="/brand/gingiris-logo.svg?v=2"
+        src={brandLogo.src}
         alt={frame.brand}
         width="230"
         height="60"

@@ -37,7 +37,7 @@ const zhUrl = locale === "zh" ? canonicalUrl : alternateUrl;
 const enUrl = locale === "en" ? canonicalUrl : alternateUrl;
 // integrations/subset-fonts.mjs swaps this URL for the hashed subset file at build time.
 const wenKaiFontFace = `@font-face{font-display:swap;font-family:"LXGW WenKai";font-style:normal;font-weight:400;src:url("/fonts/LXGWWenKai-Regular.woff2") format("woff2")}`;
-const socialImageUrl = new URL("/brand/logo-primary.png", siteOrigin).toString();
+const socialImageUrl = new URL("/og-image.png", siteOrigin).toString();
 ---
 
 <!doctype html>
@@ -48,7 +48,9 @@ const socialImageUrl = new URL("/brand/logo-primary.png", siteOrigin).toString()
     <meta name="description" content={description} />
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <meta name="theme-color" content="#ffffff" />
-    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="/favicon.png" type="image/png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <style is:inline set:html={wenKaiFontFace}></style>
     <link rel="canonical" href={canonicalUrl} />
     <link rel="alternate" hreflang="zh-CN" href={zhUrl} />
@@ -62,6 +64,8 @@ const socialImageUrl = new URL("/brand/logo-primary.png", siteOrigin).toString()
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={socialImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />

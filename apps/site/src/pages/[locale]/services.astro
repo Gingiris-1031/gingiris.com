@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import wechatQr from "../../assets/qr/iris-wechat.png";
 import {
   isSiteLocale,
   servicesContentByLocale,
@@ -128,7 +130,7 @@ const serviceSchema = {
         <p>{locale === "zh" ? "微信添加 staywildgrow，备注「咨询」并简单说明项目与当前问题。" : "Add staywildgrow on WeChat and include a short note about your project and current decision."}</p>
       </div>
       <figure class="contact-qr-card">
-        <img src="/qr/iris-wechat.png" alt={locale === "zh" ? "Iris 微信二维码" : "Iris WeChat QR code"} width="962" height="990" loading="lazy" decoding="async" />
+        <Image src={wechatQr} alt={locale === "zh" ? "Iris 微信二维码" : "Iris WeChat QR code"} width={480} loading="lazy" decoding="async" />
       </figure>
     </div>
   </section>
