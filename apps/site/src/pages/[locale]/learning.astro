@@ -101,14 +101,14 @@ const learningSchema = {
             <p class="learning-price">{pageContent.bundle.price}</p>
             <div class="learning-full-actions">
               <button
-                class="primary-button"
+                class="primary-button arrow-out"
                 type="button"
                 data-open="bundle"
                 data-catalog-title={pageContent.bundle.catalogTitle}
                 data-catalog-eyebrow={pageContent.bundle.catalogEyebrow}
                 data-catalog-intro={pageContent.bundle.catalogIntro}
               >{pageContent.bundle.catalogActionLabel}</button>
-              <button class="ghost-button" type="button" data-open="contact">{pageContent.bundle.contactActionLabel}</button>
+              <button class="ghost-button arrow-out" type="button" data-open="contact">{pageContent.bundle.contactActionLabel}</button>
             </div>
           </article>
           <aside class="learning-membership-card">
@@ -148,7 +148,7 @@ const learningSchema = {
               <p class="learning-pack-source">{pageContent.packs.sourceLabel}</p>
               <div class="learning-card-actions">
                 <button
-                  class="ghost-button"
+                  class="ghost-button arrow-out"
                   type="button"
                   data-open={pack.open}
                   data-pack-title={pack.title}
@@ -156,7 +156,7 @@ const learningSchema = {
                   data-pack-count={pack.dialogCount}
                   data-pack-description={pack.dialogDescription}
                 >{pageContent.packs.catalogActionLabel}</button>
-                <button class="ghost-button" type="button" data-open="contact">{pageContent.packs.contactActionLabel}</button>
+                <button class="ghost-button arrow-out" type="button" data-open="contact">{pageContent.packs.contactActionLabel}</button>
               </div>
             </article>
           ))}
@@ -169,7 +169,7 @@ const learningSchema = {
             <div class="learning-card-actions">
               <strong class="learning-price">{pageContent.packs.opcPrice}</strong>
               <button
-                class="ghost-button"
+                class="ghost-button arrow-out"
                 type="button"
                 data-open="pack-3"
                 data-pack-title={opcPack.title}
@@ -195,7 +195,7 @@ const learningSchema = {
             <p class="learning-price">{pageContent.course.price}</p>
             <div class="learning-card-actions">
               <a
-                class="ghost-button"
+                class="ghost-button arrow-out"
                 href={pageContent.course.href}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -230,7 +230,7 @@ const learningSchema = {
           <h2>{pageContent.cta.title}</h2>
           <p>{pageContent.cta.description}</p>
         </div>
-        <button class="primary-button" type="button" data-open="contact">{pageContent.cta.actionLabel}</button>
+        <button class="primary-button arrow-out" type="button" data-open="contact">{pageContent.cta.actionLabel}</button>
       </div>
       <p class="learning-footer-note">{pageContent.cta.footnote}</p>
     </section>
@@ -288,7 +288,7 @@ const learningSchema = {
         ))}
       </div>
       <div class="learning-card-actions">
-        <button class="primary-button" type="button" data-open="contact">{pageContent.catalog.contactActionLabel}</button>
+        <button class="primary-button arrow-out" type="button" data-open="contact">{pageContent.catalog.contactActionLabel}</button>
       </div>
     </div>
   </dialog>

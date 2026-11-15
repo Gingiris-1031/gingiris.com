@@ -240,8 +240,8 @@ export const learningPageContentByLocale: Record<SiteLocale, LearningPageContent
       catalogTitle: "出海实战指南 · 全套目录",
       catalogEyebrow: "GINGIRIS / 完整目录",
       catalogIntro: "当前22份文档，按组合整理。以下为章节目录与PDF页码，不含付费正文。",
-      catalogActionLabel: "查看详细目录 ↗",
-      contactActionLabel: "咨询购买 ↗",
+      catalogActionLabel: "查看详细目录",
+      contactActionLabel: "咨询购买",
       membershipEyebrow: "购买全套，享三项会员权益",
       benefits: [
         { title: "知识库永久更新", description: "一次购买，持续获取新增的方法、案例与模板。" },
@@ -255,8 +255,8 @@ export const learningPageContentByLocale: Record<SiteLocale, LearningPageContent
       description: "精选自完整知识库，¥49 起。已购全套，无需重复购买。",
       cardEyebrow: "独立资料包 · 可单独购买",
       sourceLabel: "精选自完整出海增长知识库",
-      catalogActionLabel: "查看内容与目录 ↗",
-      contactActionLabel: "咨询购买 ↗",
+      catalogActionLabel: "查看内容与目录",
+      contactActionLabel: "咨询购买",
       cards: [
         {
           countLabel: "5 份文档",
@@ -280,7 +280,7 @@ export const learningPageContentByLocale: Record<SiteLocale, LearningPageContent
       opcEyebrow: "服务起步 / 1 份指南",
       opcDescription: "把专业能力整理成可出售的服务。已包含在 ¥599 全套中，也可单独购买。",
       opcPrice: "¥49",
-      opcCatalogActionLabel: "查看目录 ↗",
+      opcCatalogActionLabel: "查看目录",
       note: "组合包按内容范围购买；VIP 群、闭门分享及永久更新权益以上方全套说明为准。目录弹窗仅展示章节与页码，不含付费正文。",
     },
     course: {
@@ -289,7 +289,7 @@ export const learningPageContentByLocale: Record<SiteLocale, LearningPageContent
       subtitle: "出海路上的教科书",
       description: "从用户研究、产品定位到渠道选择，系统理解出海增长的基础知识与工作逻辑。18 节主线课＋3 节专题课，配套文稿、音频与课后作业，含 VIP 同行交流群。",
       price: "¥299",
-      actionLabel: "前往小报童试读 ↗",
+      actionLabel: "前往小报童试读",
       href: "https://xiaobot.net/p/Gingiris?refer=29043fdd-91ec-42c2-a88d-cb47d1718826",
     },
     faq: {
@@ -314,7 +314,7 @@ export const learningPageContentByLocale: Record<SiteLocale, LearningPageContent
       eyebrow: "GINGIRIS / LEARN & GROW",
       title: "想了解更多出海增长学习资源？",
       description: "内容介绍、选购建议与购买咨询，欢迎添加微信：staywildgrow",
-      actionLabel: "添加微信咨询购买 ↗",
+      actionLabel: "添加微信咨询购买",
       footnote: "当前内容规模按本地版本提取统计，约 28.7 万字符，含中英文、模板与附录。内容持续更新。",
     },
     catalog: {
@@ -327,7 +327,7 @@ export const learningPageContentByLocale: Record<SiteLocale, LearningPageContent
       groupToggleAriaLabel: "展开 {title} 目录",
       documentToggleAriaLabel: "展开 {title} 章节",
       closeAriaLabel: "关闭",
-      contactActionLabel: "添加微信咨询购买 ↗",
+      contactActionLabel: "添加微信咨询购买",
     },
   },
   en: {
@@ -358,8 +358,8 @@ export const learningPageContentByLocale: Record<SiteLocale, LearningPageContent
       catalogTitle: "Global Growth Field Guide · Complete Contents",
       catalogEyebrow: "GINGIRIS / COMPLETE CONTENTS",
       catalogIntro: "22 documents organized by topic. Browse chapter titles and PDF page numbers; paid content is not included.",
-      catalogActionLabel: "Browse the complete contents ↗",
-      contactActionLabel: "Ask about purchasing ↗",
+      catalogActionLabel: "Browse the complete contents",
+      contactActionLabel: "Ask about purchasing",
       membershipEyebrow: "Three membership benefits with the complete collection",
       benefits: [
         { title: "Lifetime knowledge base updates", description: "One purchase gives you ongoing access to new methods, cases, and templates." },
@@ -373,8 +373,8 @@ export const learningPageContentByLocale: Record<SiteLocale, LearningPageContent
       description: "Selected from the complete knowledge base, from ¥49. No duplicate purchase is needed with the complete collection.",
       cardEyebrow: "TOPIC PACK · AVAILABLE INDIVIDUALLY",
       sourceLabel: "Selected from the complete global growth knowledge base",
-      catalogActionLabel: "View contents and outline ↗",
-      contactActionLabel: "Ask about purchasing ↗",
+      catalogActionLabel: "View contents and outline",
+      contactActionLabel: "Ask about purchasing",
       cards: [
         {
           countLabel: "5 documents",
@@ -398,7 +398,7 @@ export const learningPageContentByLocale: Record<SiteLocale, LearningPageContent
       opcEyebrow: "SERVICE BUSINESS · 1 GUIDE",
       opcDescription: "Turn professional expertise into a service you can sell. Included in the ¥599 complete collection or available separately.",
       opcPrice: "¥49",
-      opcCatalogActionLabel: "View the outline ↗",
+      opcCatalogActionLabel: "View the outline",
       note: "Topic packs are sold by content scope. VIP peer community, private member sessions, and lifetime updates are included with the complete collection above. The catalog dialog shows chapter titles and page numbers, not paid content.",
     },
     course: {
@@ -407,7 +407,7 @@ export const learningPageContentByLocale: Record<SiteLocale, LearningPageContent
       subtitle: "A field guide for building global growth",
       description: "Build a systematic understanding of global growth, from user research and product positioning to channel selection. Includes 18 core lessons and 3 special-topic lessons, with notes, audio, exercises, and a VIP peer community.",
       price: "¥299",
-      actionLabel: "Preview on Xiaobot ↗",
+      actionLabel: "Preview on Xiaobot",
       href: "https://xiaobot.net/p/Gingiris?refer=29043fdd-91ec-42c2-a88d-cb47d1718826",
     },
     faq: {
@@ -432,7 +432,7 @@ export const learningPageContentByLocale: Record<SiteLocale, LearningPageContent
       eyebrow: "GINGIRIS / LEARN & GROW",
       title: "Want to learn more about global growth?",
       description: "For an introduction, recommendations, or purchasing questions, add us on WeChat: staywildgrow",
-      actionLabel: "Ask about the resources on WeChat ↗",
+      actionLabel: "Ask about the resources on WeChat",
       footnote: "The current local edition contains approximately 287,000 characters across Chinese and English, including templates and appendices. Content is updated continuously.",
     },
     catalog: {
@@ -448,7 +448,7 @@ export const learningPageContentByLocale: Record<SiteLocale, LearningPageContent
       groupToggleAriaLabel: "Expand the {title} group",
       documentToggleAriaLabel: "Expand chapters for {title}",
       closeAriaLabel: "Close",
-      contactActionLabel: "Ask about the resources on WeChat ↗",
+      contactActionLabel: "Ask about the resources on WeChat",
     },
   },
 };
