@@ -56,7 +56,6 @@ const socialImageUrl = new URL("/og-image.png", siteOrigin).toString();
     <link rel="alternate" hreflang="zh-CN" href={zhUrl} />
     <link rel="alternate" hreflang="en" href={enUrl} />
     <link rel="alternate" hreflang="x-default" href={enUrl} />
-    <link rel="prefetch" href={prefetchedLocalePath} as="document" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Gingiris" />
     <meta property="og:locale" content={locale === "zh" ? "zh_CN" : "en_US"} />
@@ -133,6 +132,32 @@ const socialImageUrl = new URL("/og-image.png", siteOrigin).toString();
         window.setTimeout(() => {
           delete document.documentElement.dataset.localeTransition;
         }, 420);
+      })();
+    </script>
+    <script is:inline define:vars={{ prefetchedLocalePath }}>
+      // Warm the other locale well after this page and its fonts have loaded, so it never competes with them.
+      (() => {
+        const prefetch = () => {
+          const link = document.createElement("link");
+          link.rel = "prefetch";
+          link.as = "document";
+          link.href = prefetchedLocalePath;
+          document.head.append(link);
+        };
+        const whenIdle = () =>
+          window.requestIdleCallback ? window.requestIdleCallback(prefetch, { timeout: 4000 }) : window.setTimeout(prefetch, 1000);
+        const schedule = () =>
+          window.setTimeout(() => (document.fonts?.ready ?? Promise.resolve()).then(whenIdle, whenIdle), 2000);
+
+        if (navigator.connection?.saveData) {
+          return;
+        }
+
+        if (document.readyState === "complete") {
+          schedule();
+        } else {
+          window.addEventListener("load", schedule, { once: true });
+        }
       })();
     </script>
   </body>
