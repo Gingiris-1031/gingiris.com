@@ -1,4 +1,5 @@
 import { defineConfig } from "astro/config";
+import subsetFonts from "./integrations/subset-fonts.mjs";
 
 export default defineConfig({
   devToolbar: {
@@ -8,4 +9,5 @@ export default defineConfig({
   build: {
     format: "directory",
   },
+  integrations: [subsetFonts()],
 });
