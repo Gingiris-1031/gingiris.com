@@ -1,4 +1,8 @@
 ---
+import jikeQr from "../assets/qr/iris-jike-white.svg";
+import pmfAiEraQr from "../assets/qr/iris-pmf-ai-era-white.svg";
+import teamPeopleFitQr from "../assets/qr/iris-team-people-fit-latest.svg";
+import xiaohongshuQr from "../assets/qr/iris-xiaohongshu-white.svg";
 import { externalResourceHrefs, type SiteFrameContent, type SiteLocale } from "@yipei/site-content";
 
 interface Props {
@@ -8,12 +12,12 @@ interface Props {
 
 const { locale, frame } = Astro.props;
 const socialQrCodes = [
-  { src: "/qr/iris-jike-white.svg", label: locale === "zh" ? "即刻" : "Jike" },
-  { src: "/qr/iris-xiaohongshu-white.svg", label: locale === "zh" ? "小红书" : "Xiaohongshu" },
+  { src: jikeQr.src, label: locale === "zh" ? "即刻" : "Jike" },
+  { src: xiaohongshuQr.src, label: locale === "zh" ? "小红书" : "Xiaohongshu" },
 ];
 const communityQrCodes = [
-  { src: "/qr/iris-team-people-fit-latest.svg", label: "Gingiris Team People Fit" },
-  { src: "/qr/iris-pmf-ai-era-white.svg", label: "PMF for AI Era" },
+  { src: teamPeopleFitQr.src, label: "Gingiris Team People Fit" },
+  { src: pmfAiEraQr.src, label: "PMF for AI Era" },
 ];
 const footerCopy =
   locale === "zh"

@@ -1,4 +1,5 @@
 ---
+import type { ImageMetadata } from "astro";
 import type { ProjectGroup, SiteLocale } from "@yipei/site-content";
 
 interface Props {
@@ -6,28 +7,118 @@ interface Props {
   locale?: SiteLocale;
 }
 
+// Every file in assets/clients has the card's 408.23 x 150.25 canvas and no background of its own.
+const vectorLogos = import.meta.glob<string>("../assets/clients/*.svg", {
+  eager: true,
+  import: "default",
+  query: "?raw",
+});
+const rasterLogos = import.meta.glob<ImageMetadata>("../assets/clients/*.webp", {
+  eager: true,
+  import: "default",
+});
+
 const { groups, locale = "en" } = Astro.props;
 const wallAriaLabel = locale === "zh" ? "辅导项目案例" : "Coached projects";
-const logos = groups.flatMap((group) => group.logos);
 const wallNote =
   locale === "zh"
     ? "部分服务企业名单 / 名单持续更新中（排名不分先后）"
     : "Selected clients / Continuously updated (in no particular order)";
+
+const logos = groups
+  .flatMap((group) => group.logos)
+  .map((logo) => {
+    const svg = vectorLogos[`../assets/clients/${logo.id}.svg`];
+    const image = rasterLogos[`../assets/clients/${logo.id}.webp`];
+    if (!svg && !image) {
+      throw new Error(`No logo file for ${logo.id} (${logo.name}) in src/assets/clients`);
+    }
+    return { ...logo, svg, image };
+  });
+
+const showAllLabel = locale === "zh" ? `查看全部 ${logos.length} 家` : `Show all ${logos.length}`;
+const showLessLabel = locale === "zh" ? "收起" : "Show fewer";
 ---
 
-<div class="project-wall" aria-label={wallAriaLabel}>
+<div class="project-wall" aria-label={wallAriaLabel} data-project-wall>
   <p class="project-wall-note">{wallNote}</p>
-  <div class="project-logo-grid">
-    {logos.map((logo) =>
-      logo.href ? (
-        <a class="project-card" href={logo.href} target="_blank" rel="noopener noreferrer">
-          <img alt={logo.name} class="project-logo" src={logo.src} loading="lazy" />
-        </a>
-      ) : (
-        <figure class="project-card">
-          <img alt={logo.name} class="project-logo" src={logo.src} loading="lazy" />
-        </figure>
-      ),
-    )}
+  <div class="project-logo-grid" id="project-logo-grid">
+    {
+      logos.map((logo) => {
+        const Card = logo.href ? "a" : "figure";
+        const linkProps = logo.href
+          ? { href: logo.href, target: "_blank", rel: "noopener noreferrer" }
+          : {};
+        return (
+          <Card class="project-card" {...linkProps}>
+            {logo.svg ? (
+              <span class="project-logo" role="img" aria-label={logo.name} set:html={logo.svg} />
+            ) : (
+              <img
+                alt={logo.name}
+                class="project-logo"
+                src={logo.image.src}
+                width={logo.image.width}
+                height={logo.image.height}
+                loading="lazy"
+                decoding="async"
+              />
+            )}
+          </Card>
+        );
+      })
+    }
   </div>
+  <button
+    class="project-wall-toggle"
+    type="button"
+    aria-controls="project-logo-grid"
+    aria-expanded="false"
+    data-label-more={showAllLabel}
+    data-label-less={showLessLabel}
+  >
+    {showAllLabel}
+  </button>
 </div>
+
+<noscript>
+  <style>
+    .project-logo-grid .project-card {
+      display: block !important;
+    }
+
+    .project-wall-toggle {
+      display: none !important;
+    }
+  </style>
+</noscript>
+
+<script>
+  const wall = document.querySelector<HTMLElement>("[data-project-wall]");
+  const toggle = wall?.querySelector<HTMLButtonElement>(".project-wall-toggle");
+
+  toggle?.addEventListener("click", () => {
+    const expanded = wall!.classList.toggle("is-expanded");
+    toggle.setAttribute("aria-expanded", String(expanded));
+    toggle.textContent = (expanded ? toggle.dataset.labelLess : toggle.dataset.labelMore) ?? "";
+    if (!expanded) {
+      wall!.scrollIntoView({ block: "nearest" });
+    }
+  });
+
+  // A logo that fails to load is replaced by the company name instead of an empty card.
+  const showName = (image: HTMLImageElement) => {
+    const name = document.createElement("span");
+    name.className = "project-logo-name";
+    name.textContent = image.alt;
+    image.replaceWith(name);
+  };
+
+  wall?.querySelectorAll<HTMLImageElement>("img.project-logo").forEach((image) => {
+    if (image.complete && image.naturalWidth === 0 && image.currentSrc) {
+      showName(image);
+    } else {
+      image.addEventListener("error", () => showName(image), { once: true });
+    }
+  });
+</script>

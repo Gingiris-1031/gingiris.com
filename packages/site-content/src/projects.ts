@@ -3,7 +3,8 @@ import type { SiteLocale } from "./locales";
 export type ProjectLogo = {
   id: string;
   name: string;
-  src: string;
+  // Client logos are resolved from apps/site/src/assets/clients by id instead.
+  src?: string;
   href?: string;
   fit?: "contain" | "cover";
   sourceKind?: "raw" | "reconstructed" | "composite";
@@ -100,8 +101,6 @@ export const projectGroups: ProjectGroup[] = [
         id: `client-${number}`,
         name,
         href,
-        src: `/projects/clients/client-${number}.svg`,
-        sourceKind: "raw",
       })),
   },
 ];

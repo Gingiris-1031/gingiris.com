@@ -1,4 +1,7 @@
 ---
+import { Image } from "astro:assets";
+import irisProfile from "../../assets/images/iris-profile.webp";
+import wechatQr from "../../assets/qr/iris-wechat.png";
 import {
   homeContentByLocale,
   isSiteLocale,
@@ -130,11 +133,12 @@ const pageCopy =
     </div>
       <div class="hero-stage-visual">
         <div class="hero-portrait">
-          <img
+          <Image
             alt={content.name}
-            src="/figma-assets/raw/iris-profile.webp"
-            width="1066"
-            height="1600"
+            src={irisProfile}
+            width={800}
+            widths={[480, 640, 800]}
+            sizes="(max-width: 560px) 70vw, 400px"
             loading="eager"
             decoding="async"
             fetchpriority="high"
@@ -319,11 +323,10 @@ const pageCopy =
           <strong>{locale === "zh" ? "微信扫码联系" : "Scan on WeChat"}</strong>
           <p>{locale === "zh" ? "添加时请简单备注你的项目与咨询方向。" : "Please include a short note about your project and inquiry."}</p>
         </div>
-        <img
-          src="/qr/iris-wechat.png"
+        <Image
+          src={wechatQr}
           alt={locale === "zh" ? "微信联系二维码" : "WeChat contact QR code"}
-          width="962"
-          height="990"
+          width={480}
           loading="lazy"
           decoding="async"
         />

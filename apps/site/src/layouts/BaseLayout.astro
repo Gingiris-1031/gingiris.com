@@ -35,7 +35,9 @@ const canonicalUrl = new URL(currentPath, siteOrigin).toString();
 const alternateUrl = alternateUrlOverride ?? new URL(prefetchedLocalePath, siteOrigin).toString();
 const zhUrl = locale === "zh" ? canonicalUrl : alternateUrl;
 const enUrl = locale === "en" ? canonicalUrl : alternateUrl;
-const socialImageUrl = new URL("/brand/logo-primary.png", siteOrigin).toString();
+// integrations/subset-fonts.mjs swaps this URL for the hashed subset file at build time.
+const wenKaiFontFace = `@font-face{font-display:swap;font-family:"LXGW WenKai";font-style:normal;font-weight:400;src:url("/fonts/LXGWWenKai-Regular.woff2") format("woff2")}`;
+const socialImageUrl = new URL("/og-image.png", siteOrigin).toString();
 ---
 
 <!doctype html>
@@ -46,12 +48,14 @@ const socialImageUrl = new URL("/brand/logo-primary.png", siteOrigin).toString()
     <meta name="description" content={description} />
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <meta name="theme-color" content="#ffffff" />
-    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="/favicon.png" type="image/png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <style is:inline set:html={wenKaiFontFace}></style>
     <link rel="canonical" href={canonicalUrl} />
     <link rel="alternate" hreflang="zh-CN" href={zhUrl} />
     <link rel="alternate" hreflang="en" href={enUrl} />
     <link rel="alternate" hreflang="x-default" href={enUrl} />
-    <link rel="prefetch" href={prefetchedLocalePath} as="document" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Gingiris" />
     <meta property="og:locale" content={locale === "zh" ? "zh_CN" : "en_US"} />
@@ -59,6 +63,8 @@ const socialImageUrl = new URL("/brand/logo-primary.png", siteOrigin).toString()
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={socialImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
@@ -126,6 +132,32 @@ const socialImageUrl = new URL("/brand/logo-primary.png", siteOrigin).toString()
         window.setTimeout(() => {
           delete document.documentElement.dataset.localeTransition;
         }, 420);
+      })();
+    </script>
+    <script is:inline define:vars={{ prefetchedLocalePath }}>
+      // Warm the other locale well after this page and its fonts have loaded, so it never competes with them.
+      (() => {
+        const prefetch = () => {
+          const link = document.createElement("link");
+          link.rel = "prefetch";
+          link.as = "document";
+          link.href = prefetchedLocalePath;
+          document.head.append(link);
+        };
+        const whenIdle = () =>
+          window.requestIdleCallback ? window.requestIdleCallback(prefetch, { timeout: 4000 }) : window.setTimeout(prefetch, 1000);
+        const schedule = () =>
+          window.setTimeout(() => (document.fonts?.ready ?? Promise.resolve()).then(whenIdle, whenIdle), 2000);
+
+        if (navigator.connection?.saveData) {
+          return;
+        }
+
+        if (document.readyState === "complete") {
+          schedule();
+        } else {
+          window.addEventListener("load", schedule, { once: true });
+        }
       })();
     </script>
   </body>
