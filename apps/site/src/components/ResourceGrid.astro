@@ -1,11 +1,16 @@
 ---
-import type { HomeSectionGroup } from "@yipei/site-content";
+import type { HomeSectionGroup, SiteLocale } from "@yipei/site-content";
 
 interface Props {
   groups: HomeSectionGroup[];
+  locale?: SiteLocale;
 }
 
-const { groups } = Astro.props;
+const { groups, locale = "en" } = Astro.props;
+// Phones show the first few entries of a long group until the visitor asks for the rest.
+const collapsedCount = 4;
+const showAllLabel = (count: number) => (locale === "zh" ? `展开全部 ${count} 条` : `Show all ${count}`);
+const showLessLabel = locale === "zh" ? "收起" : "Show fewer";
 const isExternalHref = (href?: string) => Boolean(href && /^https?:\/\//.test(href));
 ---
 
@@ -44,6 +49,44 @@ const isExternalHref = (href?: string) => Boolean(href && /^https?:\/\//.test(hr
           );
         })}
       </div>
+      {group.items.length > collapsedCount ? (
+        <button
+          class="resource-group-toggle"
+          type="button"
+          aria-expanded="false"
+          data-label-more={showAllLabel(group.items.length)}
+          data-label-less={showLessLabel}
+        >
+          {showAllLabel(group.items.length)}
+        </button>
+      ) : null}
     </section>
   ))}
 </div>
+
+<noscript>
+  <style>
+    .resource-grid > * {
+      display: grid !important;
+    }
+
+    .resource-group-toggle {
+      display: none !important;
+    }
+  </style>
+</noscript>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>(".resource-group-toggle").forEach((toggle) => {
+    const group = toggle.closest<HTMLElement>(".resource-group");
+
+    toggle.addEventListener("click", () => {
+      const expanded = group!.classList.toggle("is-expanded");
+      toggle.setAttribute("aria-expanded", String(expanded));
+      toggle.textContent = (expanded ? toggle.dataset.labelLess : toggle.dataset.labelMore) ?? "";
+      if (!expanded) {
+        group!.scrollIntoView({ block: "nearest" });
+      }
+    });
+  });
+</script>

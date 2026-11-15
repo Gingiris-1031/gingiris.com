@@ -3726,6 +3726,11 @@ body {
   color: var(--text);
   cursor: pointer;
   font-weight: 700;
+  list-style: none;
+}
+
+.insight-faq summary::-webkit-details-marker {
+  display: none;
 }
 
 .service-delivery-note {
@@ -6316,5 +6321,325 @@ h3 {
 
   .site-locale-option.is-active {
     padding: 3px 4px;
+  }
+}
+
+/* Phone and tablet refinements.
+   Kept as the last layer: the sections above restyle the same selectors several times. */
+
+/* FAQ rows: the whole row is the tap target */
+.faq-list details,
+.insight-faq details {
+  padding: 0;
+}
+
+.faq-list summary,
+.insight-faq summary {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  min-height: 44px;
+  padding: 18px 22px;
+}
+
+.faq-list summary::after,
+.insight-faq summary::after {
+  flex: none;
+  float: none;
+}
+
+.faq-list details > p,
+.insight-faq details > p {
+  margin: -6px 0 0;
+  padding: 0 22px 18px;
+}
+
+/* Footer links get a full row to tap */
+@media (max-width: 1180px) {
+  .site-footer-directory-links {
+    gap: 0;
+  }
+
+  .site-footer-directory-links a {
+    align-items: center;
+    display: flex;
+    min-height: 40px;
+  }
+
+  .site-footer-directory-group .site-footer-column-title {
+    margin-bottom: 2px;
+  }
+
+  .site-footer-shop a {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    min-height: 44px;
+  }
+}
+
+/* Phone header: brand and language on the first row, navigation on the second.
+   Only the navigation row stays pinned while scrolling. */
+@media (max-width: 560px) {
+  .site-header {
+    align-items: center;
+    column-gap: 12px;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    justify-content: space-between;
+    padding: 10px 16px;
+    row-gap: 8px;
+    top: -50px;
+  }
+
+  .site-app-rail {
+    display: contents;
+  }
+
+  .site-header-main {
+    grid-column: 1 / span 2;
+    grid-row: 1;
+    min-height: 40px;
+  }
+
+  .site-brand {
+    align-items: center;
+    min-height: 40px;
+  }
+
+  .site-app-rail > .site-locale-switch {
+    font-size: 13px;
+    grid-column: 3 / span 2;
+    grid-row: 1;
+    justify-self: end;
+    min-height: 36px;
+    padding: 0 10px;
+  }
+
+  .site-app-rail > .site-auth-link {
+    align-items: center;
+    display: flex;
+    font-size: 13px;
+    grid-row: 2;
+    justify-content: center;
+    min-height: 36px;
+    padding: 0 12px;
+    position: relative;
+  }
+
+  .site-app-rail > .site-auth-link::after {
+    content: "";
+    inset: -4px -3px;
+    position: absolute;
+  }
+
+  .site-app-rail > .site-header-contact {
+    display: none;
+  }
+
+  .site-locale-option.is-active {
+    padding: 4px 7px;
+  }
+}
+
+@media (max-width: 374px) {
+  .site-app-rail > .site-auth-link {
+    padding: 0 8px;
+  }
+}
+
+/* Headings wrap into even lines instead of leaving one or two characters behind */
+@media (max-width: 1180px) {
+  .hero-copy h1,
+  .page-hero-copy h1,
+  .learning-hero-copy h1,
+  .section-heading h2,
+  .closing-copy h2 {
+    text-wrap: balance;
+  }
+
+  /* Supporting labels stay readable on touch screens */
+  .resource-icon,
+  .service-preview-index,
+  .premium-pricing-card .service-preview-index,
+  .editorial-card-kicker,
+  .editorial-card-insight .editorial-card-kicker {
+    font-size: 12px;
+  }
+
+  /* Text links inside cards get a full row to tap */
+  .insight-topic-card ul {
+    gap: 0;
+  }
+
+  .insight-topic-card a {
+    align-items: center;
+    display: flex;
+    min-height: 44px;
+  }
+
+  .editorial-card-actions-insight a,
+  .insight-inline-link {
+    min-height: 44px;
+  }
+
+  /* Stacked cards size to their content, not to the desktop row height */
+  .service-pillar-card {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 860px) {
+  .resource-card {
+    min-height: 0;
+  }
+}
+
+/* Tablet portrait: keep the portrait beside the introduction */
+@media (min-width: 700px) and (max-width: 860px) {
+  .hero-stage {
+    align-items: center;
+    column-gap: 36px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 290px);
+  }
+
+  .hero-stage-visual {
+    justify-self: end;
+    width: 100%;
+  }
+
+  .hero-signal-strip {
+    grid-column: 1 / -1;
+  }
+
+  .hero-copy h1 {
+    font-size: 56px;
+  }
+
+  .insight-topic-card {
+    align-content: start;
+    padding: 18px;
+  }
+
+  .insight-topic-card a {
+    font-size: 15px;
+  }
+}
+
+/* Learning hero: copy first, illustration underneath */
+@media (max-width: 720px) {
+  .learning-hero-inner {
+    gap: 12px;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* The illustration has its own row now, so it keeps its full size */
+  .learning-book-art {
+    min-height: 290px;
+  }
+
+  .learning-art-orbit {
+    height: 245px;
+    width: 245px;
+  }
+
+  .learning-book {
+    height: 202px;
+    width: 154px;
+  }
+
+  .learning-sheet {
+    height: 154px;
+    width: 122px;
+  }
+}
+
+/* English cover copy is longer than the Chinese it was drawn for */
+@media (max-width: 1180px) {
+  :lang(en) .learning-book strong {
+    font-size: 1.12rem;
+    margin-top: 16px;
+  }
+
+  :lang(en) .learning-book span {
+    margin-top: 12px;
+  }
+
+  :lang(en) .learning-sheet strong {
+    font-size: 0.86rem;
+    margin: 10px 0;
+  }
+}
+
+@media (max-width: 720px) {
+  /* Article titles are sentences, not one-word page names */
+  .page-hero-article .page-hero-copy h1 {
+    font-size: clamp(30px, 8.6vw, 40px);
+    line-height: 1.22;
+  }
+
+  /* Wide tables scroll sideways instead of squeezing every cell */
+  .insight-prose table {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .insight-prose th,
+  .insight-prose td {
+    min-width: 7.5em;
+    padding: 10px 12px;
+  }
+
+  .insight-prose th:first-child,
+  .insight-prose td:first-child {
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .insight-article-card,
+  .insight-article-aside {
+    padding: 20px;
+  }
+}
+
+/* Long resource groups show four entries on phones until expanded */
+.resource-group-toggle {
+  display: none;
+}
+
+@media (max-width: 560px) {
+  .resource-group:not(.is-expanded) .resource-grid > :nth-child(n + 5) {
+    display: none;
+  }
+
+  .resource-group-toggle {
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.32);
+    border-radius: 999px;
+    color: #000000;
+    cursor: pointer;
+    display: block;
+    font: inherit;
+    font-size: 14px;
+    justify-self: center;
+    letter-spacing: 0.03em;
+    min-height: 44px;
+    padding: 10px 24px;
+  }
+
+  .resource-group-toggle:focus-visible {
+    outline: 2px solid rgba(0, 0, 0, 0.72);
+    outline-offset: 2px;
+  }
+}
+
+
+/* Paired section buttons wrap instead of running past the screen edge */
+@media (max-width: 560px) {
+  .section-action {
+    flex-wrap: wrap;
+    max-width: 100%;
   }
 }
