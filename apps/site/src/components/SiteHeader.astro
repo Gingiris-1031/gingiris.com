@@ -17,6 +17,9 @@ const localeSwitchHref = currentLocalePattern.test(currentPath)
 const localeSwitchTargetLang = alternateLocale === "zh" ? "zh-CN" : "en";
 const localeSwitchAriaLabel = alternateLocale === "zh" ? "切换到中文" : "Switch to English";
 const contactLabel = locale === "zh" ? "联系咨询" : "Get in touch";
+// The contact section lives on the locale home page.
+const isHome = currentPath.replace(/\/$/, "") === `/${locale}`;
+const contactHref = isHome ? "#cooperation" : `/${locale}#cooperation`;
 const navLabel = locale === "zh" ? "主导航" : "Main";
 const menuLabel = locale === "zh" ? "菜单" : "Menu";
 ---
@@ -36,11 +39,21 @@ const menuLabel = locale === "zh" ? "菜单" : "Menu";
     </a>
   </div>
   <div class="site-app-rail">
+    <button
+      class="site-nav-toggle"
+      type="button"
+      aria-controls="site-header-nav"
+      aria-expanded="false"
+      aria-label={menuLabel}
+    >
+      <span class="site-nav-toggle-icon" aria-hidden="true"></span>
+    </button>
     <nav class="site-header-nav" id="site-header-nav" aria-label={navLabel}>
       <a class="site-auth-link" href={`/${locale}/services`}>{frame.nav.services}</a>
       <a class="site-auth-link" href={`/${locale}/insights`}>{frame.nav.insights}</a>
       <a class="site-auth-link" href={`/${locale}/learning`}>{frame.nav.learning}</a>
       <a class="site-auth-link site-header-skills" href="https://tools.gingiris.com/">Skills</a>
+      <a class="site-header-nav-contact" href={contactHref}>{contactLabel}</a>
     </nav>
     <a
       class="site-locale-switch"
@@ -53,18 +66,10 @@ const menuLabel = locale === "zh" ? "菜单" : "Menu";
       <span class="site-locale-divider" aria-hidden="true">/</span>
       <span class:list={["site-locale-option", locale === "en" && "is-active"]}>EN</span>
     </a>
-    <a class="site-auth-link site-header-contact" href="#cooperation">{contactLabel}</a>
-    <button
-      class="site-nav-toggle"
-      type="button"
-      aria-controls="site-header-nav"
-      aria-expanded="false"
-      aria-label={menuLabel}
-    >
-      <span class="site-nav-toggle-icon" aria-hidden="true"></span>
-    </button>
+    <a class="site-auth-link site-header-contact" href={contactHref}>{contactLabel}</a>
   </div>
 </header>
+<div class="site-nav-scrim" aria-hidden="true"></div>
 
 <noscript>
   <style>
@@ -80,12 +85,16 @@ const menuLabel = locale === "zh" ? "菜单" : "Menu";
       }
 
       .site-header-nav {
-        border-bottom: 0;
-        display: flex;
+        border: 0;
+        border-radius: 0;
         flex: 1 0 100%;
+        max-height: none;
+        opacity: 1;
         order: 3;
-        padding: 0;
+        padding: 0 0 8px;
         position: static;
+        transform: none;
+        visibility: visible;
       }
 
       .site-nav-toggle {
@@ -108,7 +117,8 @@ const menuLabel = locale === "zh" ? "菜单" : "Menu";
     toggle.addEventListener("click", () => setOpen(!header.classList.contains("is-nav-open")));
 
     document.addEventListener("click", (event) => {
-      if (!header.contains(event.target as Node)) {
+      const target = event.target as Element;
+      if (!header.contains(target) || target.closest(".site-header-nav a")) {
         setOpen(false);
       }
     });
