@@ -246,9 +246,9 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
       eyebrow: "学习资源",
       title: "出海增长学习资源",
       hint: "查阅一线增长方法与项目模板，也可以从系统课程开始了解出海增长。",
-      introCtaLabel: "查看完整介绍 ↗",
+      introCtaLabel: "查看完整介绍",
       introHref: "/zh/learning",
-      consultCtaLabel: "咨询购买 ↗",
+      consultCtaLabel: "咨询购买",
       items: [
         {
           title: "出海实战指南",
@@ -422,9 +422,9 @@ export const homeContentByLocale: Record<SiteLocale, HomeLocaleContent> = {
       eyebrow: "Learning Resources",
       title: "Global Growth Learning Resources",
       hint: "Explore first-hand growth methods and project templates, or start with a structured course.",
-      introCtaLabel: "View full introduction ↗",
+      introCtaLabel: "View full introduction",
       introHref: "/en/learning",
-      consultCtaLabel: "Ask about purchasing ↗",
+      consultCtaLabel: "Ask about purchasing",
       items: [
         {
           title: "Global Growth Playbook",

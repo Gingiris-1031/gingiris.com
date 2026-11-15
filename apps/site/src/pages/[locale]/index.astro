@@ -200,12 +200,8 @@ const pageCopy =
           <p>{content.learningSection.hint}</p>
         </div>
         <div class="section-action" data-reveal>
-          <a class="primary-button" href={content.learningSection.introHref}>
-            {content.learningSection.introCtaLabel}
-          </a>
-          <button class="ghost-button" type="button" data-open="contact">
-            {content.learningSection.consultCtaLabel}
-          </button>
+          <a class="primary-button arrow-out" href={content.learningSection.introHref}>{content.learningSection.introCtaLabel}</a>
+          <button class="ghost-button arrow-out" type="button" data-open="contact">{content.learningSection.consultCtaLabel}</button>
         </div>
       </div>
       <div class="learning-preview-grid">
