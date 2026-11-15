@@ -4661,11 +4661,13 @@ h3 {
 .project-logo-grid .project-card,
 .project-logo-grid .project-card:hover {
   aspect-ratio: 408.23 / 150.25;
-  background: #ffffff;
+  background: #f3f6ec;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   box-shadow: none;
+  display: block;
   height: auto;
+  margin: 0;
   min-width: 0;
   overflow: hidden;
   padding: 0;
@@ -4689,13 +4691,29 @@ h3 {
   border-color: rgba(0, 0, 0, 0.5);
 }
 
-.project-logo-grid .project-logo {
+.project-logo-grid .project-logo,
+.project-logo-grid .project-logo > svg {
   display: block;
   height: 100%;
   max-height: none;
   max-width: none;
-  object-fit: contain;
   width: 100%;
+}
+
+.project-logo-name {
+  align-items: center;
+  color: rgba(0, 0, 0, 0.72);
+  display: flex;
+  font-size: clamp(11px, 1.1vw, 15px);
+  height: 100%;
+  justify-content: center;
+  line-height: 1.2;
+  padding: 0 8%;
+  text-align: center;
+}
+
+.project-wall-toggle {
+  display: none;
 }
 
 .scene-atlas .resource-section {
@@ -4721,6 +4739,31 @@ h3 {
   .project-logo-grid {
     gap: 8px;
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  /* 8 rows of 3 until the visitor asks for the rest */
+  .project-wall:not(.is-expanded) .project-logo-grid .project-card:nth-child(n + 25) {
+    display: none;
+  }
+
+  .project-wall-toggle {
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.32);
+    border-radius: 999px;
+    color: #000000;
+    cursor: pointer;
+    display: block;
+    font: inherit;
+    font-size: 14px;
+    justify-self: center;
+    letter-spacing: 0.03em;
+    min-height: 44px;
+    padding: 10px 24px;
+  }
+
+  .project-wall-toggle:focus-visible {
+    outline: 2px solid rgba(0, 0, 0, 0.72);
+    outline-offset: 2px;
   }
 }
 
