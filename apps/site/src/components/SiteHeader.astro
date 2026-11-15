@@ -17,6 +17,11 @@ const localeSwitchHref = currentLocalePattern.test(currentPath)
 const localeSwitchTargetLang = alternateLocale === "zh" ? "zh-CN" : "en";
 const localeSwitchAriaLabel = alternateLocale === "zh" ? "切换到中文" : "Switch to English";
 const contactLabel = locale === "zh" ? "联系咨询" : "Get in touch";
+// The contact section lives on the locale home page.
+const isHome = currentPath.replace(/\/$/, "") === `/${locale}`;
+const contactHref = isHome ? "#cooperation" : `/${locale}#cooperation`;
+const navLabel = locale === "zh" ? "主导航" : "Main";
+const menuLabel = locale === "zh" ? "菜单" : "Menu";
 ---
 
 <header class="site-header">
@@ -34,10 +39,22 @@ const contactLabel = locale === "zh" ? "联系咨询" : "Get in touch";
     </a>
   </div>
   <div class="site-app-rail">
-    <a class="site-auth-link" href={`/${locale}/services`}>{frame.nav.services}</a>
-    <a class="site-auth-link" href={`/${locale}/insights`}>{frame.nav.insights}</a>
-    <a class="site-auth-link" href={`/${locale}/learning`}>{frame.nav.learning}</a>
-    <a class="site-auth-link site-header-skills" href="https://tools.gingiris.com/">Skills</a>
+    <button
+      class="site-nav-toggle"
+      type="button"
+      aria-controls="site-header-nav"
+      aria-expanded="false"
+      aria-label={menuLabel}
+    >
+      <span class="site-nav-toggle-icon" aria-hidden="true"></span>
+    </button>
+    <nav class="site-header-nav" id="site-header-nav" aria-label={navLabel}>
+      <a class="site-auth-link" href={`/${locale}/services`}>{frame.nav.services}</a>
+      <a class="site-auth-link" href={`/${locale}/insights`}>{frame.nav.insights}</a>
+      <a class="site-auth-link" href={`/${locale}/learning`}>{frame.nav.learning}</a>
+      <a class="site-auth-link site-header-skills" href="https://tools.gingiris.com/">Skills</a>
+      <a class="site-header-nav-contact" href={contactHref}>{contactLabel}</a>
+    </nav>
     <a
       class="site-locale-switch"
       href={localeSwitchHref}
@@ -49,6 +66,71 @@ const contactLabel = locale === "zh" ? "联系咨询" : "Get in touch";
       <span class="site-locale-divider" aria-hidden="true">/</span>
       <span class:list={["site-locale-option", locale === "en" && "is-active"]}>EN</span>
     </a>
-    <a class="site-auth-link site-header-contact" href="#cooperation">{contactLabel}</a>
+    <a class="site-auth-link site-header-contact" href={contactHref}>{contactLabel}</a>
   </div>
 </header>
+<div class="site-nav-scrim" aria-hidden="true"></div>
+
+<noscript>
+  <style>
+    /* Without scripts the menu cannot open, so the links sit below the header row instead. */
+    @media (max-width: 640px) {
+      .site-header {
+        flex-wrap: wrap;
+        position: static;
+      }
+
+      .site-app-rail {
+        display: contents;
+      }
+
+      .site-header-nav {
+        border: 0;
+        border-radius: 0;
+        flex: 1 0 100%;
+        max-height: none;
+        opacity: 1;
+        order: 3;
+        padding: 0 0 8px;
+        position: static;
+        transform: none;
+        visibility: visible;
+      }
+
+      .site-nav-toggle {
+        display: none;
+      }
+    }
+  </style>
+</noscript>
+
+<script>
+  const header = document.querySelector<HTMLElement>(".site-header");
+  const toggle = header?.querySelector<HTMLButtonElement>(".site-nav-toggle");
+
+  if (header && toggle) {
+    const setOpen = (open: boolean) => {
+      header.classList.toggle("is-nav-open", open);
+      toggle.setAttribute("aria-expanded", String(open));
+    };
+
+    toggle.addEventListener("click", () => setOpen(!header.classList.contains("is-nav-open")));
+
+    document.addEventListener("click", (event) => {
+      const target = event.target as Element;
+      if (!header.contains(target) || target.closest(".site-header-nav a")) {
+        setOpen(false);
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && header.classList.contains("is-nav-open")) {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+
+    // A page restored from the back/forward cache should not come back with the menu open.
+    window.addEventListener("pageshow", () => setOpen(false));
+  }
+</script>
