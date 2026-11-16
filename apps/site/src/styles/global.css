@@ -1200,6 +1200,38 @@ p {
   line-height: 1.68;
 }
 
+.table-shell {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow-x: auto;
+}
+
+.table-shell table {
+  border-collapse: collapse;
+  min-width: 720px;
+  width: 100%;
+}
+
+.table-shell th,
+.table-shell td {
+  border-bottom: 1px solid var(--line);
+  padding: 18px 20px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.table-shell th {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.table-shell tr:last-child td {
+  border-bottom: 0;
+}
+
 .service-preview-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }

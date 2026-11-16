@@ -24,6 +24,19 @@ const pageTitle = locale === "zh" ? "出海增长顾问服务｜生姜 Iris" : "
 const pageDescription = locale === "zh"
   ? "面向创业团队的出海增长、开源运营、Product Hunt 发布与创始人定位咨询。先明确问题、交付与边界，再决定合作方式。"
   : "Advisory services for global launch, open-source growth, Product Hunt, and founder positioning. Clarify the decision, scope, and deliverable before starting.";
+const decisionRows = locale === "zh"
+  ? [
+      { need: "出海发布与冷启动", deliverable: "定位、渠道顺序、14 天实验与停止条件", proof: "/zh/insights/first-100-users-without-paid-ads", proofLabel: "前 100 个用户实验" },
+      { need: "开源增长与 GitHub", deliverable: "README 转化、发布分发、社区与贡献者路径", proof: "https://tools.gingiris.com/blog/2026/03/25/how-to-get-more-github-stars-the-definitive-guide-33k-stars-case-study/", proofLabel: "GitHub Stars 案例" },
+      { need: "竞品与增长决策", deliverable: "证据卡、竞争地图、优先级与下一项实验", proof: "/zh/insights/competitive-analysis-template-startups", proofLabel: "竞品分析模板" },
+      { need: "创始人叙事与内容系统", deliverable: "Founder voice、证据边界、内容与转化路径", proof: "/zh/insights/train-ai-brand-voice", proofLabel: "AI 品牌语料系统" },
+    ]
+  : [
+      { need: "Global launch and cold start", deliverable: "Positioning, channel order, a 14-day experiment, and stop conditions", proof: "/en/insights/first-100-users-without-paid-ads", proofLabel: "First 100 users experiment" },
+      { need: "Open-source and GitHub growth", deliverable: "README conversion, launch distribution, community, and contributor path", proof: "https://tools.gingiris.com/blog/2026/03/25/how-to-get-more-github-stars-the-definitive-guide-33k-stars-case-study/", proofLabel: "GitHub Stars case study" },
+      { need: "Competitive and growth decisions", deliverable: "Evidence cards, a competitive map, priorities, and the next experiment", proof: "/en/insights/competitive-analysis-template-startups", proofLabel: "Competitive analysis template" },
+      { need: "Founder narrative and content system", deliverable: "Founder voice, evidence rules, content structure, and conversion path", proof: "/en/insights/train-ai-brand-voice", proofLabel: "AI brand voice system" },
+    ];
 const serviceSchema = {
   "@context": "https://schema.org",
   "@graph": [
@@ -34,6 +47,16 @@ const serviceSchema = {
       provider: { "@type": "Person", name: "Iris Wei", url: "https://gingiris.com" },
       areaServed: "Worldwide",
       url: `https://gingiris.com/${locale}/services`,
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: locale === "zh" ? "顾问合作方式" : "Advisory engagements",
+        itemListElement: content.plans.map((plan) => ({
+          "@type": "Offer",
+          name: plan.title,
+          description: plan.detail,
+          url: `https://gingiris.com/${locale}/services#engagements`,
+        })),
+      },
     },
     {
       "@type": "BreadcrumbList",
@@ -69,6 +92,36 @@ const serviceSchema = {
           <a class="ghost-button" href="#contact">{locale === "zh" ? "联系 Iris" : "Contact Iris"}</a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="scene scene-proof" data-chapter>
+    <div class="section-heading" data-reveal>
+      <p class="eyebrow">{locale === "zh" ? "直接答案" : "Direct answer"}</p>
+      <h2>{locale === "zh" ? "出海增长顾问具体交付什么？" : "What does a global growth advisor actually deliver?"}</h2>
+      <p>{locale === "zh"
+        ? "不是替团队堆更多建议，而是把一个卡住的增长决定转成可执行的证据、优先级、实验和复盘标准。下面是当前最常见的四类问题与对应交付。"
+        : "The job is not to add more advice. It is to turn one blocked growth decision into evidence, priorities, an executable experiment, and a review standard. These are the four most common scopes."}</p>
+    </div>
+    <div class="table-shell" data-reveal>
+      <table>
+        <thead>
+          <tr>
+            <th>{locale === "zh" ? "团队问题" : "Team need"}</th>
+            <th>{locale === "zh" ? "典型交付" : "Typical deliverable"}</th>
+            <th>{locale === "zh" ? "先看证据" : "Review the method"}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {decisionRows.map((row) => (
+            <tr>
+              <td>{row.need}</td>
+              <td>{row.deliverable}</td>
+              <td><a href={row.proof}>{row.proofLabel}</a></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   </section>
 

@@ -5,27 +5,47 @@ export const prerender = true;
 
 const origin = "https://gingiris.com";
 
-function urlEntry(path: string, zhPath: string, enPath: string, priority: string, changefreq: string) {
+function urlEntry(
+  path: string,
+  zhPath: string,
+  enPath: string,
+  priority: string,
+  changefreq: string,
+  lastmod?: string,
+) {
   return `  <url>
     <loc>${origin}${path}</loc>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="${origin}${zhPath}" />
     <xhtml:link rel="alternate" hreflang="en" href="${origin}${enPath}" />
     <xhtml:link rel="alternate" hreflang="x-default" href="${origin}${enPath}" />
-    <changefreq>${changefreq}</changefreq>
+${lastmod ? `    <lastmod>${lastmod}</lastmod>\n` : ""}    <changefreq>${changefreq}</changefreq>
     <priority>${priority}</priority>
   </url>`;
 }
 
 export async function GET() {
   const entries = await getCollection("insights");
-  const articleSlugs = [...new Set(entries.map((entry) => entry.data.slug))].sort();
+  const articleDates = new Map<string, string>();
+  for (const entry of entries) {
+    const updatedAt = entry.data.updatedAt.toISOString().slice(0, 10);
+    const current = articleDates.get(entry.data.slug);
+    if (!current || updatedAt > current) articleDates.set(entry.data.slug, updatedAt);
+  }
+  const articleSlugs = [...articleDates.keys()].sort();
   const urls = [
     ...supportedLocales.map((locale) => urlEntry(`/${locale}`, "/zh", "/en", "1.0", "weekly")),
     ...supportedLocales.map((locale) => urlEntry(`/${locale}/services`, "/zh/services", "/en/services", "0.9", "monthly")),
     ...supportedLocales.map((locale) => urlEntry(`/${locale}/learning`, "/zh/learning", "/en/learning", "0.8", "monthly")),
     ...supportedLocales.map((locale) => urlEntry(`/${locale}/insights`, "/zh/insights", "/en/insights", "0.9", "weekly")),
     ...articleSlugs.flatMap((slug) => supportedLocales.map((locale) =>
-      urlEntry(`/${locale}/insights/${slug}`, `/zh/insights/${slug}`, `/en/insights/${slug}`, "0.8", "monthly"),
+      urlEntry(
+        `/${locale}/insights/${slug}`,
+        `/zh/insights/${slug}`,
+        `/en/insights/${slug}`,
+        "0.8",
+        "monthly",
+        articleDates.get(slug),
+      ),
     )),
   ];
 
