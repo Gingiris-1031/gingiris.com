@@ -23,6 +23,11 @@
 - [Brand ambassador program](https://gingiris.com/en/insights/brand-ambassador-program) — assess readiness, separate contribution models, and run a bounded 90-day pilot.
 - [Statement of work template](https://gingiris.com/en/insights/statement-of-work-template) — define scope, exclusions, acceptance, client inputs, change control, and commercial triggers.
 - [Influencer rate card](https://gingiris.com/en/insights/influencer-rate-card) — evaluate creator pricing through audience fit, recent views, production, rights, disclosure, and attribution.
+- [Monetization strategy](https://gingiris.com/en/insights/monetization-strategy) — validate the customer, outcome, paid pilot, value metric, delivery economics, and evidence required before scaling.
+- [Client onboarding checklist](https://gingiris.com/en/insights/client-onboarding-checklist) — turn a signed consulting scope into named people, access, data, milestones, acceptance, and a first-week evidence plan.
+- [Referral fee agreement](https://gingiris.com/en/insights/referral-fee-agreement) — define qualified referrals, attribution, payment, adjustments, disclosure, data handling, and termination.
+- [Customer onboarding best practices](https://gingiris.com/en/insights/customer-onboarding-best-practices) — define activation, reduce uncertainty, design recovery, and measure time to first value.
+- [Paid acquisition strategy](https://gingiris.com/en/insights/paid-acquisition-strategy) — verify audience, offer, conversion, landing-page intent, economics, and stop rules before increasing budget.
 
 ## Related official properties
 
