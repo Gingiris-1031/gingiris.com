@@ -19,6 +19,10 @@
 - [Train AI on your brand voice](https://gingiris.com/en/insights/train-ai-brand-voice) — a provenance-first source library, voice guide, test set, and review loop.
 - [Consulting pricing strategy](https://gingiris.com/en/insights/consulting-pricing-strategy) — define the decision, artifact, access, and delivery boundaries before setting a price.
 - [Solo consulting business](https://gingiris.com/en/insights/one-person-consulting-business) — organize context-rich advisory, bounded diagnostics, and reusable assets.
+- [B2B content marketing strategy](https://gingiris.com/en/insights/b2b-content-marketing-strategy) — turn customer language, delivery evidence, and buyer decisions into a measurable content-to-consulting path.
+- [Brand ambassador program](https://gingiris.com/en/insights/brand-ambassador-program) — assess readiness, separate contribution models, and run a bounded 90-day pilot.
+- [Statement of work template](https://gingiris.com/en/insights/statement-of-work-template) — define scope, exclusions, acceptance, client inputs, change control, and commercial triggers.
+- [Influencer rate card](https://gingiris.com/en/insights/influencer-rate-card) — evaluate creator pricing through audience fit, recent views, production, rights, disclosure, and attribution.
 
 ## Related official properties
 
