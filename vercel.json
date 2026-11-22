@@ -5,6 +5,36 @@
       "source": "/",
       "destination": "/zh",
       "permanent": true
+    },
+    {
+      "source": "/r/onboarding-li",
+      "destination": "/en/insights/customer-onboarding-best-practices?utm_source=linkedin&utm_medium=organic_social&utm_campaign=gingiris_en_2026w48&utm_content=en10-d04",
+      "permanent": false
+    },
+    {
+      "source": "/r/onboarding-th",
+      "destination": "/en/insights/customer-onboarding-best-practices?utm_source=threads&utm_medium=organic_social&utm_campaign=gingiris_en_2026w48&utm_content=en10-d04",
+      "permanent": false
+    },
+    {
+      "source": "/r/productize-li",
+      "destination": "/en/insights/productize-consulting-expertise?utm_source=linkedin&utm_medium=organic_social&utm_campaign=gingiris_en_2026w48&utm_content=en10-d05",
+      "permanent": false
+    },
+    {
+      "source": "/r/productize-th",
+      "destination": "/en/insights/productize-consulting-expertise?utm_source=threads&utm_medium=organic_social&utm_campaign=gingiris_en_2026w48&utm_content=en10-d05",
+      "permanent": false
+    },
+    {
+      "source": "/r/interviews-li",
+      "destination": "/en/insights/customer-interview-template-startups?utm_source=linkedin&utm_medium=organic_social&utm_campaign=gingiris_en_2026w48&utm_content=en10-d09",
+      "permanent": false
+    },
+    {
+      "source": "/r/interviews-th",
+      "destination": "/en/insights/customer-interview-template-startups?utm_source=threads&utm_medium=organic_social&utm_campaign=gingiris_en_2026w48&utm_content=en10-d09",
+      "permanent": false
     }
   ],
   "buildCommand": "npm run build:site",
