@@ -5,10 +5,10 @@ category: Competitive Research
 title: "Competitive Analysis Template for Startups: From Data to Decisions"
 description: "Use this startup competitive analysis template to choose relevant competitors, reconstruct their early decisions, and turn research into a 14-day action plan."
 publishedAt: 2026-11-10
-updatedAt: 2026-11-10
+updatedAt: 2026-11-22
 directAnswer: "A useful startup competitive analysis compares companies at the same stage, with a similar customer and business model, then converts evidence about positioning, pricing, channels, and product evolution into decisions your team can test."
 author: Iris Wei
-evidenceNote: "Evidence note: the framework and workshop observations in this article come from Iris Wei's first-party workshop on 2026-11-07. Workshop examples are teaching samples, not audited company histories or universal growth rules. Any company-specific conclusion must be independently checked against dated primary sources."
+evidenceNote: "Evidence note: this article draws on Iris Wei's first-party competitor projects, original Chinese essay, and workshop on 2026-11-07. Workshop examples are teaching samples, not audited company histories or universal growth rules. Any company-specific conclusion must be independently checked against dated primary sources."
 ctaLabel: "Review your growth decision"
 ctaHref: /en/services
 faq:
@@ -24,7 +24,13 @@ faq:
     answer: "AI can collect, normalize, and compare evidence, but a human must verify sources and decide whether a competitor is actually comparable. Do not copy an AI-generated verdict without checking dated primary evidence."
 ---
 
-On November 7, 2026, I gave several workshop teams the same assignment: pick a competitor, reconstruct how its website changed, and explain what their own product should do next. The teams that produced the most useful work did not collect the most screenshots. They chose the most comparable company and ended with a decision.
+A founder once sent me a spreadsheet with eight “major competitors.” Each company had one screenshot: the homepage hero.
+
+I searched them one by one. One of the websites returned a 404.
+
+“This is the competitor with the best user reputation,” he told me. “It shut down last year,” I replied. There was a two-second silence before he said, “I never checked whether it was still operating.”
+
+That is the most common failure in startup competitive analysis: knowing a competitor's name is mistaken for understanding why it survives, how it acquired users, and why a customer would choose it over you. In a later workshop, the teams that produced the most useful work did not collect the most screenshots. They chose the most comparable company and ended with a decision.
 
 | Step | Question to answer | Evidence to collect | Output |
 |---|---|---|---|

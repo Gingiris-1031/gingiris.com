@@ -5,7 +5,7 @@ category: Early-Stage Growth
 title: "How to Get Your First 100 Users Without Paid Ads: A 14-Day Plan"
 description: "A practical 14-day plan for finding your first 100 users without paid ads: define activation, build a qualified list, run manual outreach, and learn from real usage."
 publishedAt: 2026-11-10
-updatedAt: 2026-11-10
+updatedAt: 2026-11-22
 directAnswer: "To get your first 100 users without paid ads, choose one narrow customer and one urgent job, recruit manually from places where those people already gather, measure activation rather than signups, and use each conversation to improve the offer and product."
 author: Iris Wei
 evidenceNote: "Evidence note: this plan adapts a 2026-11-08 workshop exercise that asked teams to design a path toward 100 early users and 10 paid conversions. Those numbers are an exercise target, not an industry benchmark or promised result. The 1-3-7-14 follow-up cadence is Iris Wei's operating heuristic, not a platform rule."
@@ -24,7 +24,11 @@ faq:
     answer: "Track qualified contacts, replies, completed onboarding, activation, repeated use, paid conversion or pilot intent, referrals, and time spent per activated user."
 ---
 
-In a November 8, 2026 workshop, I asked teams to design a cold-start plan around a simple exercise target: work toward 100 early users and 10 paid conversions without assuming they had to spend the budget. The target was not a benchmark. Its purpose was to force operational detail: who will you contact, where, with what message, and what happens after they reply?
+During AFFiNE's first week, people opened GitHub issues every day. Some reported bugs. Some requested features. Others said, “I came from Notion, but I don't know how to do this here.”
+
+I wrote a short, personal email to every one of them. No template—just a thank-you, when we expected to fix the problem, and one question about what else had blocked them. A few replied that they had not expected a founder to answer. Some of them stayed for years, shared the product, and helped other users in the community.
+
+After several years of growth work and conversations with more than 150 AI startup teams, I believe this more strongly than ever: **your first 100 users are not there to prove growth. They are there to show whether the company can survive.** A later workshop turned that principle into the operating plan below.
 
 | Layer | Weak metric | Better early signal | Question it answers |
 |---|---|---|---|

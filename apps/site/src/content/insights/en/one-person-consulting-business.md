@@ -5,7 +5,7 @@ category: Solo Business
 title: "One-Person Consulting Business: A Practical Playbook"
 description: "Build a one-person consulting business from one showcase: narrow the problem, price judgment, systemize delivery, and add leverage without rushing to hire."
 publishedAt: 2026-11-05
-updatedAt: 2026-11-05
+updatedAt: 2026-11-22
 directAnswer: "A one-person consulting business becomes repeatable when it stops selling time as the product. Start with one visible result, turn it into a narrow promise, price the judgment behind the work, and add operational leverage only after demand is real."
 author: Iris Wei
 evidenceNote: "Evidence note: financial figures, prices, client counts, and operating details in this article are Iris Wei's first-party, self-reported experience. RMB 1 million refers to cumulative revenue over 14 months, not audited net profit or a guaranteed result."
@@ -24,7 +24,11 @@ faq:
     answer: "No. It is Iris Wei's self-reported cumulative revenue over 14 months. It is not presented as audited net profit."
 ---
 
-In my first 14 months operating independently, I reported cumulative revenue of roughly RMB 1 million. The headline is less useful than the sequence behind it: one showcase, referrals, stronger filtering, recurring advisory work, and a small support system around the founder.
+At an offline event in September 2026, someone asked me a question I had heard at least fifty times: “Who is actually suited to running a one-person company?”
+
+I did not give the room a standard answer. Some people were leaving a job because they were exhausted. Some wanted to build a company and saw solo work as a starting point. Others wanted a different way to live. Those motives lead to very different businesses.
+
+A one-person consulting business is not automatically freedom. You still have to find customers, scope the work, sign the contract, deliver, collect payment, and manage your own uncertainty. The people I have seen do it well are usually not running away from an organization; they are moving toward a specific kind of work. My own first 14 months produced roughly RMB 1 million in self-reported cumulative revenue, but the number matters less than the sequence behind it: one showcase, referrals, stronger filtering, recurring advisory work, and a small support system around the founder.
 
 | Stage | What you need | What you do not need yet | Evidence to collect |
 |---|---|---|---|

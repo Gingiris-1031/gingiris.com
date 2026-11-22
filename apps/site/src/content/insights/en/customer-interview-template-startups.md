@@ -5,10 +5,10 @@ category: Customer Research
 title: "Customer Interview Template for Startups: Evidence Card"
 description: "Run a focused 30-minute startup customer interview, capture behavior instead of compliments, and turn five conversations into a testable product decision."
 publishedAt: 2026-11-10
-updatedAt: 2026-11-10
+updatedAt: 2026-11-22
 directAnswer: "A useful startup customer interview asks about a real recent situation, observes the user's current workflow, tests the product through screen sharing, and records evidence, uncertainty, and the next decision in a consistent evidence card."
 author: Iris Wei
-evidenceNote: "Evidence note: this template is based on Iris Wei's first-party workshops on 2026-11-07 and 2026-11-08. Workshop examples and numbers are teaching samples or self-reported observations, not audited benchmarks. Teams should verify decisions with their own users and product data."
+evidenceNote: "Evidence note: this article draws on Iris Wei's first-party summary after more than 200 customer interviews and workshops on 2026-11-07 and 2026-11-08. Workshop examples and numbers are teaching samples or self-reported observations, not audited benchmarks. Teams should verify decisions with their own users and product data."
 ctaLabel: "Design your customer evidence loop"
 ctaHref: /en/services
 faq:
@@ -24,7 +24,11 @@ faq:
     answer: "It is a compact record of the user context, trigger, current workflow, observed friction, existing workaround, commitment signal, contradictory evidence, source link, confidence, and the product decision affected."
 ---
 
-In an early-stage startup, the goal of a customer interview is not to collect compliments. It is to reduce uncertainty around a decision. On November 7 and 8, 2026, I taught teams to move from a friendly conversation to a repeatable evidence loop: observe a real workflow, record what happened, and review every five interviews before changing the roadmap.
+A startup team once sent me three months of customer-interview notes—more than a dozen dense transcripts. I read them and asked one question: “Did any user tell you how they solved this problem the last time it happened?”
+
+There was a five-second silence. The answer was no. Every interview asked some version of “Do you like this feature?”, “Would you pay for it?”, or “Would you use the product more often if we added X?” Two months later, nobody bought the paid feature they built from those answers.
+
+The users were not deliberately lying. The team had asked about future intention instead of past behavior. **Intention is cheap. Behavior is evidence.** That distinction now sits at the center of the customer interview template I use with founders and teach in workshops.
 
 | Interview section | Time | What to learn | Output |
 |---|---:|---|---|

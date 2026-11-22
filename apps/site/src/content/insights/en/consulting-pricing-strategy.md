@@ -5,7 +5,7 @@ category: Consulting
 title: "Consulting Pricing Strategy: Price the Decision"
 description: "A consulting pricing strategy for solo advisors: define the decision, scope the artifact, choose hourly or monthly pricing, and protect delivery quality."
 publishedAt: 2026-11-05
-updatedAt: 2026-11-05
+updatedAt: 2026-11-22
 directAnswer: "A useful consulting pricing strategy starts by defining the decision the client needs, the artifact they receive, and the access required. Use a paid diagnostic for bounded questions and a retainer for recurring decisions; never let the billing unit become the offer."
 author: Iris Wei
 evidenceNote: "Evidence note: the prices and revenue mix below are historical, self-reported examples from Iris Wei's practice. They are not market benchmarks or guaranteed outcomes."
@@ -24,7 +24,11 @@ faq:
     answer: "No. RMB 800/hour, RMB 1,500/hour, and RMB 7,000/month are historical, self-reported examples from Iris Wei's practice."
 ---
 
-My historical pricing moved from roughly RMB 800 per hour to RMB 1,500 per hour, with a monthly advisory option around RMB 7,000. Those figures show one offer evolving; they do not tell another consultant what to charge.
+Meiji once asked me, “After you left the platform, how did you decide what you were worth?” I paused.
+
+At AFFiNE, the CEO priced my work. At ByteDance, the leveling system did. I had learned how to price other people, but never how to put a price on myself. Becoming an independent consultant—an OPC, or one-person company—forced me to answer the question for the first time in seven years.
+
+The answer did not begin with an hourly rate. It began with a complete loop: find someone with a specific problem, offer something I could actually deliver, get paid, deliver it, agree that it was complete, and collect the money. My historical pricing later moved from roughly RMB 800 per hour to RMB 1,500, with a monthly advisory option around RMB 7,000. Those are self-reported steps in one practice, not instructions for what another consultant should charge.
 
 | Situation | Better starting model | Define before quoting | Main risk |
 |---|---|---|---|
