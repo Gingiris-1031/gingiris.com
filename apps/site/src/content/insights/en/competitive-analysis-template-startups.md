@@ -5,7 +5,7 @@ category: Competitive Research
 title: "Competitive Analysis Template for Startups: From Data to Decisions"
 description: "Use this startup competitive analysis template to choose relevant competitors, reconstruct their early decisions, and turn research into a 14-day action plan."
 publishedAt: 2026-11-10
-updatedAt: 2026-11-22
+updatedAt: 2026-11-25
 directAnswer: "A useful startup competitive analysis compares companies at the same stage, with a similar customer and business model, then converts evidence about positioning, pricing, channels, and product evolution into decisions your team can test."
 author: Iris Wei
 evidenceNote: "Evidence note: this article draws on Iris Wei's first-party competitor projects, original Chinese essay, and workshop on 2026-11-07. Workshop examples are teaching samples, not audited company histories or universal growth rules. Any company-specific conclusion must be independently checked against dated primary sources."
@@ -31,6 +31,17 @@ I searched them one by one. One of the websites returned a 404.
 “This is the competitor with the best user reputation,” he told me. “It shut down last year,” I replied. There was a two-second silence before he said, “I never checked whether it was still operating.”
 
 That is the most common failure in startup competitive analysis: knowing a competitor's name is mistaken for understanding why it survives, how it acquired users, and why a customer would choose it over you. In a later workshop, the teams that produced the most useful work did not collect the most screenshots. They chose the most comparable company and ended with a decision.
+
+## Copy this startup competitor analysis matrix
+
+Create one row per competitor or alternative. Include the customer's current workaround when it competes with your product for the same job. Fill the evidence column before writing the conclusion.
+
+| Competitor or workaround | Customer, stage, and job | Offer or channel observed | Source and date | Decision to test |
+|---|---|---|---|---|
+| [Name] | [Comparable buyer and job] | [What you can see] | [Source URL and date checked] | [Action, owner, and signal] |
+| Spreadsheet (illustrative) | Small support team triaging inbound bugs | A shared sheet is how the team assigns issues today | Example only. In real research, cite the approved interview or observed workflow. | Product lead tests an issue-import prototype and records whether the team can assign its first issue without help. |
+
+Use market research to establish who has the problem and how they solve it today. Use the matrix to compare those alternatives and pick one decision to validate in the next 14 days.
 
 | Step | Question to answer | Evidence to collect | Output |
 |---|---|---|---|

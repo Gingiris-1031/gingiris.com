@@ -5,7 +5,7 @@ category: Customer Research
 title: "Customer Interview Template for Startups: Evidence Card"
 description: "Run a focused 30-minute startup customer interview, capture behavior instead of compliments, and turn five conversations into a testable product decision."
 publishedAt: 2026-11-10
-updatedAt: 2026-11-22
+updatedAt: 2026-11-25
 directAnswer: "A useful startup customer interview asks about a real recent situation, observes the user's current workflow, tests the product through screen sharing, and records evidence, uncertainty, and the next decision in a consistent evidence card."
 author: Iris Wei
 evidenceNote: "Evidence note: this article draws on Iris Wei's first-party summary after more than 200 customer interviews and workshops on 2026-11-07 and 2026-11-08. Workshop examples and numbers are teaching samples or self-reported observations, not audited benchmarks. Teams should verify decisions with their own users and product data."
@@ -36,6 +36,24 @@ The users were not deliberately lying. The team had asked about future intention
 | Last real event | 10 min | What actually happened | Behavior timeline |
 | Screen-shared workflow | 10 min | Friction and workarounds | Observation notes |
 | Evidence review | 5 min | Commitment, contradiction, next step | Evidence card |
+
+## Copy the customer interview evidence card
+
+Copy this block into your notes before the call. Fill in observations during the interview and record your interpretation separately afterward.
+
+```text
+Interview ID / date:
+Customer segment and role:
+Last real trigger:
+Observed steps and workaround:
+Friction and consequence:
+Evidence reference (with permission):
+Interpretation and confidence:
+Contradiction or missing evidence:
+Next action, owner, and date:
+```
+
+Illustrative example: a support lead copies issue details from email into a shared sheet, then assigns an owner by hand. Record the copying and assignment as observations. Treat “an import tool would help” as a hypothesis. A follow-up test can check whether the lead imports a real issue and assigns it unassisted.
 
 ## What should a startup learn from a customer interview?
 

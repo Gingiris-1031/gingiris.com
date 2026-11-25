@@ -5,7 +5,7 @@ category: AI Content Operations
 title: "How to Train AI on Your Brand Voice: A Founder Guide"
 description: "Build an evidence-based AI brand voice guide from founder material, positive and negative examples, privacy rules, test prompts, and a weekly feedback loop."
 publishedAt: 2026-11-10
-updatedAt: 2026-11-10
+updatedAt: 2026-11-25
 directAnswer: "Train AI on your brand voice by curating approved first-party material, defining specific voice dimensions and red lines, supplying paired good and bad examples, testing the guide on a fixed prompt set, and feeding human edits back into a versioned system."
 author: Iris Wei
 evidenceNote: "Evidence note: this workflow comes from Iris Wei's first-party content-operations workshop on 2026-11-08. Any performance examples from the workshop are self-reported and are not used here as guaranteed outcomes. Private meetings, customer material, and personal transcripts require permission and redaction before reuse."
@@ -27,6 +27,21 @@ faq:
 AI content becomes generic when the system has no evidence about who is speaking. A list of adjectives such as “bold, warm, and insightful” is not enough. The model needs approved material, explicit boundaries, contrasting examples, and a feedback loop that turns human edits into rules.
 
 In my November 8, 2026 workshop, I taught this as a content operating system rather than a single prompt. The founder supplies judgment and evidence; AI helps transform and distribute the material; humans remain responsible for factual accuracy, privacy, and publication.
+
+## A copyable brand voice prompt
+
+Start by giving the model approved examples as context in an AI project or prompt. This setup does not require changing the model's weights. Reuse the same brief on one public draft and compare the result with a human-edited version before expanding to more channels.
+
+```text
+Task and audience: [format, reader, decision this should help with]
+Approved examples: [short excerpts and source labels]
+Voice rules: [three observable patterns to follow]
+Claims and privacy: [facts allowed, details to omit, evidence required]
+Draft from the supplied evidence. Flag unsupported claims for review.
+Before returning the draft, identify one place you followed a voice rule.
+```
+
+For example, replace “We revolutionize release planning” with “Use this checklist to see what still needs an owner before release.” This illustrative edit replaces an unsupported benefit with an action the reader can verify.
 
 | Layer | What it contains | Why it matters |
 |---|---|---|
